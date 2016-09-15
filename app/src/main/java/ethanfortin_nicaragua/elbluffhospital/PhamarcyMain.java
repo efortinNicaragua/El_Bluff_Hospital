@@ -1,5 +1,7 @@
 package ethanfortin_nicaragua.elbluffhospital;
 
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -16,23 +18,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class MainMenu extends AppCompatActivity {
-    public final static String EXTRA_MESSSAGE="com.example.ElBluffHospital.MESSAGE";
+public class PhamarcyMain extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_menu);
-
+        setContentView(R.layout.activity_phamarcy_main);
     }
-
-    public void MainMenu_PharmacyClick(View v) {
-        Intent intent = new Intent(this, pharmacymain.class);
-        EditText editText=(EditText) findViewById(R.id.edit_message);
-        String message =editText.getText().toString();
-        intent.putExtra(EXTRA_MESSSAGE,message);
-        startActivity();
-    }
-
 
 }

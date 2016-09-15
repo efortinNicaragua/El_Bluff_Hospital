@@ -7,10 +7,54 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="ethanfortin_nicaragua.elbluffhospital.MainMenu">
+    tools:context="ethanfortin_nicaragua.elbluffhospital.MainMenu"
+    android:background="#108acd"
+    android:forceHasOverlappingRendering="false">
+
+    <ImageButton
+        android:layout_width="550px"
+        android:layout_height="375px"
+        android:id="@+id/button_Doctor"
+        android:text="El Doctor"
+        android:src="@drawable/stethoscope"
+        android:scaleType="fitCenter"
+        android:layout_below="@+id/text_Doctor"
+        android:layout_centerHorizontal="true"
+        android:background="#c1949b9e" />
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:layout_width="300px"
+        android:layout_height="75px"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="El Doctor"
+        android:id="@+id/text_Doctor"
+        android:textAlignment="center"
+        android:textSize="70px"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="700px"
+        android:layout_height="75px"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="La Farmacia"
+        android:id="@+id/text_Farmacia"
+        android:textAlignment="center"
+        android:textSize="70px"
+        android:layout_above="@+id/button_pharmacy"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <ImageButton
+        android:layout_width="550px"
+        android:layout_height="375px"
+        android:id="@+id/button_pharmacy"
+        android:text="El Doctor"
+        android:src="@drawable/farmacia2"
+        android:scaleType="fitCenter"
+        android:background="#c1949b9e"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/button_Doctor"
+        android:layout_alignStart="@+id/button_Doctor"
+        android:onClick="pharmacy_main" />
 </RelativeLayout>
