@@ -15,8 +15,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="pharmacymain.xml.PharmacyMain" />
-        <activity android:name=".PhamarcyMain"></activity>
+        <activity android:name=".PharmacyMain" />
+
     </application>
 
 </manifest>
