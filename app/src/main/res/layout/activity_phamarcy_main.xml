@@ -30,7 +30,8 @@
         android:scaleType="fitCenter"
         android:background="#7cc0baba"
         android:layout_below="@+id/text_inventory"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:onClick="seeInventory"/>
 
     <TextView
         android:layout_width="800dp"
@@ -62,7 +63,8 @@
         android:scaleType="fitCenter"
         android:background="#7cc0baba"
         android:layout_below="@+id/text_Añadir"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:onClick="addMedicine"/>
 
     <TextView
         android:layout_width="800dp"
@@ -86,5 +88,9 @@
         android:layout_alignLeft="@+id/imageButton"
         android:layout_alignStart="@+id/imageButton"
         android:layout_alignRight="@+id/imageButton"
-        android:layout_alignEnd="@+id/imageButton" />
+        android:layout_alignEnd="@+id/imageButton"
+        android:layout_alignParentBottom="true"
+        android:onClick="subMedicine"/>
+
+
 </RelativeLayout>
