@@ -33,6 +33,13 @@ public class MainMenu extends AppCompatActivity {
         //intent.putExtra(EXTRA_MESSSAGE,message);
         startActivity(intent_phmain);
     }
+    public void MainMenu_DoctorClick(View v) {
+        Intent intent_drmain = new Intent(this, PatientInfo.class);
+        //EditText editText=(EditText) findViewById(R.id.edit_message);
+        //String message =editText.getText().toString();
+        //intent.putExtra(EXTRA_MESSSAGE,message);
+        startActivity(intent_drmain);
+    }
 
 
 }

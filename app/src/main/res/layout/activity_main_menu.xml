@@ -48,7 +48,8 @@
         android:longClickable="false"
         android:layout_above="@+id/text_Farmacia"
         android:layout_alignLeft="@+id/button_Farmacia"
-        android:layout_alignStart="@+id/button_Farmacia" />
+        android:layout_alignStart="@+id/button_Farmacia"
+        android:onClick="MainMenu_DoctorClick" />
 
     <ImageButton
         android:layout_width="200dp"

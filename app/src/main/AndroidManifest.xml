@@ -16,7 +16,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".PharmacyMain" />
-
+        <activity android:name=".PatientInfo"></activity>
     </application>
 
 </manifest>

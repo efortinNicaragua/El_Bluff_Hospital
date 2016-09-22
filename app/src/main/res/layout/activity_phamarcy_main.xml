@@ -77,7 +77,7 @@
 
     <ImageButton
         android:layout_width="200dp"
-        android:layout_height="90dp"
+        android:layout_height="95dp"
         android:id="@+id/imageButton2"
         android:src="@drawable/substract"
         android:scaleType="fitCenter"
@@ -85,5 +85,6 @@
         android:layout_below="@+id/textView"
         android:layout_alignLeft="@+id/imageButton"
         android:layout_alignStart="@+id/imageButton"
-        android:layout_alignParentBottom="true" />
+        android:layout_alignRight="@+id/imageButton"
+        android:layout_alignEnd="@+id/imageButton" />
 </RelativeLayout>
