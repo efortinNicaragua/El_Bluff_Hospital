@@ -26,13 +26,13 @@ public class MainMenu extends AppCompatActivity {
 
     }
 
-   /* public void MainMenu_PharmacyClick(View v) {
+    public void MainMenu_PharmacyClick(View v) {
         Intent intent_phmain = new Intent(this, PharmacyMain.class);
         //EditText editText=(EditText) findViewById(R.id.edit_message);
         //String message =editText.getText().toString();
         //intent.putExtra(EXTRA_MESSSAGE,message);
         startActivity(intent_phmain);
-    }*/
+    }
 
 
 }
