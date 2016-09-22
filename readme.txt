@@ -1,0 +1,1 @@
+This project is an Android App that will automate the processes of a hospital in El Bluff, Nicaragua.
