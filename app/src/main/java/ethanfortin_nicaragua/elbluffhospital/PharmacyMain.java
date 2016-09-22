@@ -26,4 +26,20 @@ public class PharmacyMain extends AppCompatActivity {
         setContentView(R.layout.activity_phamarcy_main);
     }
 
+    public void seeInventory(View v) {
+        Intent seeInv = new Intent(this, SeeInventory.class);
+        startActivity(seeInv);
+    }
+
+    public void addMedicine(View v) {
+        Intent addMed = new Intent(this, AddMedicine.class);
+        startActivity(addMed);
+    }
+
+    public void subMedicine(View v) {
+        Intent subMed = new Intent(this, SubtractMedicine.class);
+        startActivity(subMed);
+    }
 }
+
+

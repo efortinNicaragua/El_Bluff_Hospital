@@ -16,7 +16,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".PharmacyMain" />
-
+        <activity android:name=".SeeInventory" />
+        <activity android:name=".AddMedicine" />
+        <activity android:name=".SubtractMedicine"></activity>
     </application>
 
 </manifest>
