@@ -49,7 +49,7 @@
         android:layout_above="@+id/text_Farmacia"
         android:layout_alignLeft="@+id/button_Farmacia"
         android:layout_alignStart="@+id/button_Farmacia"
-        android:onClick="docHome" />
+        android:onClick="doctorHome" />
 
     <ImageButton
         android:layout_width="200dp"
