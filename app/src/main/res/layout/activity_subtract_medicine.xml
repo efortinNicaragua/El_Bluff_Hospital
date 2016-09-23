@@ -22,32 +22,20 @@
         android:textColor="@android:color/black" />
 
     <TextView
-        android:text="ID de paciente:   "
+        android:text="ID o nombre del paciente   "
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView5"
         android:textSize="18sp"
         android:layout_marginBottom="33dp"
         android:textColor="@android:color/black"
-        android:layout_above="@+id/editText4"
-        android:layout_toLeftOf="@+id/editText3"
+        android:layout_above="@+id/medId"
+        android:layout_toLeftOf="@+id/patIdOrName"
         android:layout_alignLeft="@+id/textView6"
         android:layout_alignStart="@+id/textView6" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:id="@+id/editText3"
-        android:hint="     llena identificacion"
-        android:layout_alignBaseline="@+id/textView5"
-        android:layout_alignBottom="@+id/textView5"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
     <TextView
-        android:text="ID de medicina:"
+        android:text="ID de medicina"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="144dp"
@@ -55,15 +43,15 @@
         android:textSize="18sp"
         android:textColor="@android:color/black"
         android:layout_below="@+id/textView3"
-        android:layout_toLeftOf="@+id/editText4"
-        android:layout_toStartOf="@+id/editText4" />
+        android:layout_toLeftOf="@+id/medId"
+        android:layout_toStartOf="@+id/medId" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:ems="10"
-        android:id="@+id/editText4"
+        android:id="@+id/medId"
         android:hint="     llena identificacion"
         android:layout_alignBaseline="@+id/textView6"
         android:layout_alignBottom="@+id/textView6"
@@ -71,23 +59,23 @@
         android:layout_alignParentEnd="true" />
 
     <TextView
-        android:text="cantidad:"
+        android:text="cantidad"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView7"
         android:textSize="18sp"
         android:textColor="@android:color/black"
         android:layout_marginTop="36dp"
-        android:layout_below="@+id/editText4"
-        android:layout_toLeftOf="@+id/editText5"
-        android:layout_toStartOf="@+id/editText5" />
+        android:layout_below="@+id/medId"
+        android:layout_toLeftOf="@+id/pillQuantity"
+        android:layout_toStartOf="@+id/pillQuantity" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="number"
         android:ems="10"
-        android:id="@+id/editText5"
+        android:id="@+id/pillQuantity"
         android:hint="     llena cantidad"
         android:layout_alignBaseline="@+id/textView7"
         android:layout_alignBottom="@+id/textView7"
@@ -98,8 +86,20 @@
         android:text="Proceed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/editText5"
+        android:layout_below="@+id/pillQuantity"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="58dp"
-        android:id="@+id/button" />
+        android:id="@+id/button"
+        android:onClick="createPrescrip"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/patIdOrName"
+        android:hint="     llena identificacion"
+        android:layout_alignBottom="@+id/textView5"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 </RelativeLayout>
