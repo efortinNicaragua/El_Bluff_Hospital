@@ -20,7 +20,8 @@
         <activity android:name=".SeeInventory" />
         <activity android:name=".AddMedicine" />
         <activity android:name=".SubtractMedicine" />
-        <activity android:name=".PrescriptionConfirmation"></activity>
+        <activity android:name=".PrescriptionConfirmation" />
+        <activity android:name=".DoctorMain"></activity>
     </application>
 
 </manifest>
