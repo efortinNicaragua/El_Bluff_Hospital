@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_doctor_home"
     android:layout_width="match_parent"
@@ -12,51 +13,96 @@
     tools:context="ethanfortin_nicaragua.elbluffhospital.DoctorMain">
 
 
-
-    <TextView
-        android:text="Nuevo Examen"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView8"
-        android:textAppearance="@style/TextAppearance.AppCompat.Button"
-        android:layout_width="wrap_content"
-        android:backgroundTint="#cccccc"
-        android:background="#cccccc"
-        android:typeface="normal"
-        android:textSize="24sp"
-        android:textAlignment="center"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+    <ImageButton
+        android:layout_width="200dip"
+        android:layout_height="200dip"
+        android:scaleType="fitCenter"
+        app:srcCompat="@drawable/addfile"
+        android:id="@+id/imageButton5"
+        android:backgroundTint="@android:color/transparent"
+        android:layout_marginTop="30dp"
+        android:layout_below="@+id/imageButton4"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="11dp"
+        android:layout_marginStart="11dp"
+        android:onClick="uploadOldFileHome"/>
 
     <TextView
         android:text="Informacion de Paciente"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="132dp"
+        android:layout_height="100sp"
         android:id="@+id/textView10"
         android:textAppearance="@style/TextAppearance.AppCompat.Button"
         android:backgroundTint="#cccccc"
         android:background="#f2f2f2"
         android:typeface="normal"
-        android:textSize="24sp"
+        android:textSize="36sp"
         android:textAlignment="center"
         android:drawableLeft="@android:color/black"
-        android:layout_width="wrap_content"
-        android:layout_below="@+id/textView8"
-        android:layout_centerHorizontal="true" />
+        android:layout_width="300sp"
+        android:layout_marginTop="48dp"
+        android:layout_alignTop="@+id/imageButton4"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <ImageButton
+        android:layout_width="200dip"
+        android:layout_height="200dip"
+        android:scaleType="fitCenter"
+        app:srcCompat="@drawable/form"
+        android:id="@+id/imageButton3"
+        android:backgroundTint="@color/colorPrimary"
+        android:background="@drawable/form"
+        android:layout_marginTop="61dp"
+        android:onClick="newExamHome"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <ImageButton
+        android:layout_width="200dip"
+        android:layout_height="200dip"
+        android:scaleType="fitCenter"
+        app:srcCompat="@drawable/doctorandpatient"
+        android:id="@+id/imageButton4"
+        android:backgroundTint="@android:color/transparent"
+        android:layout_marginTop="42dp"
+        android:onClick="patientHome"
+        android:layout_below="@+id/imageButton3"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="Nuevo Examen"
+        android:layout_height="50sp"
+        android:id="@+id/textView8"
+        android:textAppearance="@style/TextAppearance.AppCompat.Button"
+        android:layout_width="300sp"
+        android:typeface="normal"
+        android:textSize="36sp"
+        android:backgroundTint="#cccccc"
+        android:background="#cccccc"
+        android:textAlignment="center"
+        android:layout_marginTop="71dp"
+        android:layout_alignTop="@+id/imageButton3"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <TextView
         android:text="Anadir documento al archivo de paciente "
-        android:layout_height="wrap_content"
         android:id="@+id/textView9"
         android:textAppearance="@style/TextAppearance.AppCompat.Button"
         android:backgroundTint="#cccccc"
         android:background="#cccccc"
         android:typeface="normal"
-        android:textSize="18sp"
+        android:textSize="36sp"
         android:textAlignment="center"
         android:drawableLeft="@android:color/black"
-        android:layout_width="wrap_content"
-        android:layout_marginBottom="93dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_width="325sp"
+        android:layout_height="200sp"
+        android:layout_alignTop="@+id/imageButton5"
+        android:layout_alignLeft="@+id/textView10"
+        android:layout_alignStart="@+id/textView10"
+        android:layout_marginLeft="27dp"
+        android:layout_marginStart="27dp" />
 </RelativeLayout>
