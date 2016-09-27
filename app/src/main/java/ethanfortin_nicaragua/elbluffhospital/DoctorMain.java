@@ -10,7 +10,7 @@ public class DoctorMain extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_doctor_home);
+        setContentView(R.layout.activity_doctor_main);
     }
 
     public void patientHome (View v) {
