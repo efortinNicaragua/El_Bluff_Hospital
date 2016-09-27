@@ -21,7 +21,9 @@
         <activity android:name=".AddMedicine" />
         <activity android:name=".SubtractMedicine" />
         <activity android:name=".PrescriptionConfirmation" />
-        <activity android:name=".DoctorMain"></activity>
+        <activity android:name=".DoctorMain" />
+        <activity android:name=".UploadOldFileHome" />
+        <activity android:name=".OldPDFConfirmation"></activity>
     </application>
 
 </manifest>
