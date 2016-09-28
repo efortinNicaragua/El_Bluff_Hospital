@@ -1,3 +1,14 @@
 <resources>
+
+    <!-- Button Strings -->
     <string name="app_name">"El Bluff Hospital "</string>
+    <string name="sTB">Busca por totales especificas</string>
+    <string name="sSB">Busca por envios</string>
+    <string name="entInv">Inventario en total</string>
+
+    <!-- Inventory Table Strings -->
+    <string name="attrMID">Identificacion</string>
+    <string name="attrMName">Nombre</string>
+    <string name="attrQuantity">Cantidad</string>
+
 </resources>

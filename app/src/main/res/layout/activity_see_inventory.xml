@@ -8,6 +8,40 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="ethanfortin_nicaragua.elbluffhospital.SeeInventory">
+    tools:context="ethanfortin_nicaragua.elbluffhospital.SeeInventory"
+    android:animationCache="false"
+    android:background="#108acd">
+
+    <Button
+        android:text="@string/entInv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="38dp"
+        android:id="@+id/b_entireInventory"
+        android:textSize="24sp"
+        android:layout_below="@+id/b_searchTotals"
+        android:layout_centerHorizontal="true"
+        android:onClick="entireInventory" />
+
+    <Button
+        android:text="@string/sSB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:id="@+id/b_searchShipments"
+        android:onClick="searchShipments"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:text="@string/sTB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="95dp"
+        android:textSize="24sp"
+        android:id="@+id/b_searchTotals"
+        android:onClick="searchTotals"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

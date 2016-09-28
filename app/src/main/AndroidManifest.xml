@@ -23,7 +23,10 @@
         <activity android:name=".PrescriptionConfirmation" />
         <activity android:name=".DoctorMain" />
         <activity android:name=".UploadOldFileHome" />
-        <activity android:name=".OldPDFConfirmation"></activity>
+        <activity android:name=".OldPDFConfirmation" />
+        <activity android:name=".SearchTotals" />
+        <activity android:name=".SearchShipments" />
+        <activity android:name=".Inventory"></activity>
     </application>
 
 </manifest>
