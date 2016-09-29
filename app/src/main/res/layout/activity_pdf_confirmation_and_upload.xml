@@ -15,7 +15,7 @@
     <ImageView
     android:id = "@+id/pdfView"
     android:layout_width="50dp"
-    android:layout_height="50dp"
+    android:layout_height="60dp"
     android:layout_weight="1"
     android:layout_alignParentTop="true"
     android:scaleType="centerInside"/>
