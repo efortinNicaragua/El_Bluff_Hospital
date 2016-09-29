@@ -1,5 +1,6 @@
 package ethanfortin_nicaragua.elbluffhospital;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.BitmapFactory;
@@ -7,6 +8,7 @@ import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -14,6 +16,8 @@ public class PDFConfirmationandUpload extends AppCompatActivity {
 
     private static int RESULT_LOAD_IMG = 1;
     String imgDecodableString;
+
+    private ProgressDialog progress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,14 +53,45 @@ public class PDFConfirmationandUpload extends AppCompatActivity {
                 ImageView imgView = (ImageView) findViewById(R.id.pdfView);
                 //Set the Image in ImageView after decoding the String
                 imgView.setImageBitmap(BitmapFactory.decodeFile(imgDecodableString));
-            }
-            else {
+            } else {
                 Toast.makeText(this, "You haven't picked an Image", Toast.LENGTH_LONG).show();
             }
         } catch (Exception e) {
-            Toast.makeText(this, "Something went wrong.",Toast.LENGTH_LONG).show();
-        }
-
+            Toast.makeText(this, "Something went wrong.", Toast.LENGTH_LONG).show();
         }
 
     }
+
+    public void button3(View view) {
+        // TODO   This is for the progress bar while the record is being saved to the database. It may be
+        // TODO   inoperative but not sure because it isn't linked to anything yet, not sure how it times without file size
+        progress = new ProgressDialog(this);
+        progress.setMessage("Uploading Record");
+        progress.setCancelable(true);
+        progress.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+        progress.setIndeterminate(true);
+        progress.setProgress(0);
+        progress.show();
+
+        final int totalProgressTime = 100;
+        final Thread t = new Thread() {
+            @Override
+            public void run() {
+                int jumpTime = 0;
+
+                while (jumpTime < totalProgressTime) {
+                    try {
+                        sleep(200);
+                        jumpTime += 5;
+                        progress.setProgress(jumpTime);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        };
+        t.start();
+    }
+
+
+}
