@@ -19,7 +19,7 @@ public class UploadOldFileHome extends AppCompatActivity {
 
     // On Button Click Method
     public void createFile(View v) {
-        Intent createF = new Intent(this, PrescriptionConfirmation.class);
+        Intent createF = new Intent(this, PDFConfirmationandUpload.class);
         int eFlag = 0; // This flag set if one or more fields are blank when button is pressed
 
         // Creation of Toast warning that is displayed if fields are blank
