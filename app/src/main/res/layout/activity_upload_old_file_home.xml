@@ -75,7 +75,7 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
+        android:inputType="date"
         android:ems="10"
         android:id="@+id/date1st"
         android:hint="         MM/DD/YYYY"
