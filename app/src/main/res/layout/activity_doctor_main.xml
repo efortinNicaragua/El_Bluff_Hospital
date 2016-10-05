@@ -9,7 +9,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="#99ccff"
+    android:background="@drawable/greygradient"
     tools:context="ethanfortin_nicaragua.elbluffhospital.DoctorMain">
 
 
@@ -20,48 +20,25 @@
         app:srcCompat="@drawable/addfile"
         android:id="@+id/imageButton5"
         android:backgroundTint="@android:color/transparent"
-        android:layout_marginTop="30dp"
-        android:layout_below="@+id/imageButton4"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="11dp"
-        android:layout_marginStart="11dp"
-        android:onClick="uploadOldFileHome"/>
-
-    <TextView
-        android:text="Informacion de Paciente"
-        android:layout_height="100sp"
-        android:id="@+id/textView10"
-        android:textAppearance="@style/TextAppearance.AppCompat.Button"
-        android:backgroundTint="#cccccc"
-        android:background="#f2f2f2"
-        android:typeface="normal"
-        android:textSize="36sp"
-        android:textAlignment="center"
-        android:drawableLeft="@android:color/black"
-        android:layout_width="300sp"
-        android:layout_marginTop="48dp"
-        android:layout_alignTop="@+id/imageButton4"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:onClick="uploadOldFileHome"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="67dp" />
 
     <TextView
         android:text="Anadir documento al archivo de paciente "
         android:id="@+id/textView9"
-        android:textAppearance="@style/TextAppearance.AppCompat.Button"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:backgroundTint="#cccccc"
         android:background="#cccccc"
         android:typeface="normal"
-        android:textSize="36sp"
-        android:textAlignment="center"
         android:drawableLeft="@android:color/black"
-        android:layout_width="325sp"
-        android:layout_height="200sp"
-        android:layout_alignTop="@+id/imageButton5"
-        android:layout_alignLeft="@+id/textView10"
-        android:layout_alignStart="@+id/textView10"
-        android:layout_marginLeft="27dp"
-        android:layout_marginStart="27dp" />
+        android:textColor="#121254"
+        android:layout_height="100dp"
+        android:layout_width="800dp"
+        android:layout_above="@+id/imageButton5"
+        android:layout_centerHorizontal="true"
+        android:textAlignment="center" />
 
     <ImageButton
         android:layout_width="200dip"
@@ -70,8 +47,26 @@
         app:srcCompat="@drawable/doctorandpatient"
         android:id="@+id/imageButton4"
         android:backgroundTint="@android:color/transparent"
-        android:layout_marginTop="40dp"
         android:onClick="patientHome"
+        android:layout_marginBottom="108dp"
+        android:layout_above="@+id/textView9"
+        android:layout_alignLeft="@+id/imageButton5"
+        android:layout_alignStart="@+id/imageButton5" />
+
+    <TextView
+        android:text="Informacion de Paciente"
+        android:id="@+id/textView10"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:backgroundTint="@android:color/transparent"
+        android:background="@android:color/transparent"
+        android:typeface="normal"
+        android:textSize="36sp"
+        android:textAlignment="center"
+        android:drawableLeft="@android:color/black"
+        android:textColor="#121254"
+        android:layout_width="800dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="65dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />

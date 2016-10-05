@@ -8,7 +8,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="ethanfortin_nicaragua.elbluffhospital.PharmacyMain"
-    android:background="#108acd">
+    android:background="@drawable/greygradient">
 
     <TextView
         android:layout_width="800dp"
@@ -20,29 +20,8 @@
         android:textSize="30sp"
         android:layout_below="@+id/text_farmaciaMain"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="false" />
-
-    <ImageButton
-        android:layout_width="200dp"
-        android:layout_height="95dp"
-        android:id="@+id/button_Totales"
-        android:src="@drawable/inventory"
-        android:scaleType="fitCenter"
-        android:background="#7cc0baba"
-        android:layout_below="@+id/text_inventory"
-        android:layout_centerHorizontal="true"
-        android:onClick="seeInventory"/>
-
-    <TextView
-        android:layout_width="800dp"
-        android:layout_height="105dp"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Menu Principal de la Farmacia"
-        android:id="@+id/text_farmaciaMain"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:textAlignment="center"
-        android:textSize="35sp" />
+        android:layout_alignParentStart="false"
+        android:textColor="#121254"/>
 
     <TextView
         android:layout_width="800dp"
@@ -55,7 +34,8 @@
         android:layout_marginTop="74dp"
         android:layout_below="@+id/imageButton"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:textColor="#121254"/>
 
     <ImageButton
         android:layout_width="200dp"
@@ -63,7 +43,7 @@
         android:id="@+id/imageButton2"
         android:src="@drawable/substract"
         android:scaleType="fitCenter"
-        android:background="#7cc0baba"
+        android:background="@android:color/transparent"
         android:onClick="subMedicine"
         android:layout_below="@+id/textView"
         android:layout_alignLeft="@+id/imageButton"
@@ -80,7 +60,8 @@
         android:layout_below="@+id/button_Totales"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="50dp" />
+        android:layout_marginTop="50dp"
+        android:textColor="#121254"/>
 
     <ImageButton
         android:layout_width="200dp"
@@ -88,11 +69,37 @@
         android:id="@+id/imageButton"
         android:src="@drawable/add"
         android:scaleType="fitCenter"
-        android:background="#7cc0baba"
+        android:background="@android:color/transparent"
         android:onClick="addMedicine"
         android:layout_below="@+id/text_Añadir"
         android:layout_alignLeft="@+id/button_Totales"
         android:layout_alignStart="@+id/button_Totales" />
+
+    <ImageButton
+        android:layout_width="200dp"
+        android:layout_height="95dp"
+        android:id="@+id/button_Totales"
+        android:src="@drawable/inventory"
+        android:scaleType="fitCenter"
+        android:background="@android:color/transparent"
+        android:onClick="seeInventory"
+        android:layout_below="@+id/text_inventory"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="800dp"
+        android:layout_height="105dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:text="Menu Principal de la Farmacia"
+        android:id="@+id/text_farmaciaMain"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textColor="#121254"
+        android:layout_centerHorizontal="true"
+        android:layout_centerInParent="false"
+        android:layout_centerVertical="false"
+        android:textAlignment="center"/>
 
 
 </RelativeLayout>
