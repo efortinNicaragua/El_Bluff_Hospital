@@ -15,21 +15,21 @@
         android:text="New Medicine"
         android:layout_width="400dp"
         android:layout_height="90dp"
-        android:id="@+id/button2"
+        android:id="@+id/newMedicine"
         android:textSize="30sp"
         android:layout_marginTop="140dp"
         android:background="#00004d"
         android:textColor="#cccccc"
         android:padding="1dp"
-        android:layout_below="@+id/button1"
-        android:layout_alignLeft="@+id/button1"
-        android:layout_alignStart="@+id/button1" />
+        android:layout_below="@+id/existMedicine"
+        android:layout_alignLeft="@+id/existMedicine"
+        android:layout_alignStart="@+id/existMedicine" />
 
     <Button
         android:text="Existing Medicine"
         android:layout_width="400dp"
         android:layout_height="90dp"
-        android:id="@+id/button1"
+        android:id="@+id/existMedicine"
         android:textSize="30sp"
         android:background="#00004d"
         android:textColor="#cccccc"
