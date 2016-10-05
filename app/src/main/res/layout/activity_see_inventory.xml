@@ -10,38 +10,64 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="ethanfortin_nicaragua.elbluffhospital.SeeInventory"
     android:animationCache="false"
-    android:background="#108acd">
-
-    <Button
-        android:text="@string/entInv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="38dp"
-        android:id="@+id/b_entireInventory"
-        android:textSize="24sp"
-        android:layout_below="@+id/b_searchTotals"
-        android:layout_centerHorizontal="true"
-        android:onClick="entireInventory" />
+    android:background="@drawable/greygradient">
 
     <Button
         android:text="@string/sSB"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="24sp"
+        android:layout_width="500dp"
+        android:layout_height="100dp"
+        android:textSize="30sp"
         android:id="@+id/b_searchShipments"
         android:onClick="searchShipments"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:background="#00004d"
+        android:textColor="#cccccc"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/b_entireInventory"
+        android:layout_alignStart="@+id/b_entireInventory"
+        android:layout_marginBottom="119dp" />
 
     <Button
         android:text="@string/sTB"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="95dp"
-        android:textSize="24sp"
+        android:layout_height="100dp"
+        android:textSize="30sp"
         android:id="@+id/b_searchTotals"
         android:onClick="searchTotals"
-        android:layout_alignParentTop="true"
+        android:background="#00004d"
+        android:textColor="#cccccc"
+        android:layout_width="500dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:layout_marginRight="21dp"
+        android:layout_marginEnd="21dp"
+        android:layout_marginBottom="89dp"
+        android:layout_above="@+id/b_entireInventory"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:text="@string/entInv"
+        android:layout_width="500dp"
+        android:layout_height="100dp"
+        android:id="@+id/b_entireInventory"
+        android:textSize="30sp"
+        android:onClick="entireInventory"
+        android:background="#00004d"
+        android:textColor="#cccccc"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:layout_marginBottom="103dp"
+        android:layout_above="@+id/b_searchShipments"
         android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:text="Opciones de Inventario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView8"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textSize="36sp"
+        android:textColor="#121254"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="42dp" />
 
 </RelativeLayout>
