@@ -14,34 +14,6 @@
 
 
     <TextView
-        android:text="Añadir documento al archivo de paciente "
-        android:id="@+id/textView9"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:backgroundTint="#cccccc"
-        android:background="#cccccc"
-        android:typeface="normal"
-        android:drawableLeft="@android:color/black"
-        android:textColor="#121254"
-        android:layout_height="100dp"
-        android:layout_width="800dp"
-        android:layout_above="@+id/imageButton5"
-        android:layout_centerHorizontal="true"
-        android:textAlignment="center" />
-
-    <ImageButton
-        android:layout_width="200dip"
-        android:layout_height="200dip"
-        android:scaleType="fitCenter"
-        app:srcCompat="@drawable/doctorandpatient"
-        android:id="@+id/imageButton4"
-        android:backgroundTint="@android:color/transparent"
-        android:onClick="patientHome"
-        android:layout_marginBottom="108dp"
-        android:layout_above="@+id/textView9"
-        android:layout_alignLeft="@+id/imageButton5"
-        android:layout_alignStart="@+id/imageButton5" />
-
-    <TextView
         android:text="Información de Paciente"
         android:id="@+id/textView10"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
@@ -54,8 +26,35 @@
         android:textColor="#121254"
         android:layout_width="800dp"
         android:layout_height="100dp"
-        android:layout_marginTop="65dp"
+        android:layout_marginTop="114dp"
         android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <ImageButton
+        android:layout_width="200dip"
+        android:layout_height="200dip"
+        android:scaleType="fitCenter"
+        app:srcCompat="@drawable/doctorandpatient"
+        android:id="@+id/imageButton4"
+        android:backgroundTint="@android:color/transparent"
+        android:onClick="patientHome"
+        android:layout_below="@+id/textView10"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:text="Añadir documento al archivo de paciente "
+        android:id="@+id/textView9"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:backgroundTint="#cccccc"
+        android:background="#cccccc"
+        android:typeface="normal"
+        android:drawableLeft="@android:color/black"
+        android:textColor="#121254"
+        android:layout_height="100dp"
+        android:layout_width="800dp"
+        android:textAlignment="center"
+        android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -67,10 +66,7 @@
         android:id="@+id/imageButton5"
         android:backgroundTint="@android:color/transparent"
         android:onClick="uploadOldFileHome"
-        android:layout_marginBottom="67dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginRight="170dp"
-        android:layout_marginEnd="170dp" />
+        android:layout_below="@+id/textView9"
+        android:layout_alignLeft="@+id/imageButton4"
+        android:layout_alignStart="@+id/imageButton4" />
 </RelativeLayout>

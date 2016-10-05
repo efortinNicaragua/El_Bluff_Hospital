@@ -21,7 +21,8 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="134dp"
-        android:layout_height="100dp" />
+        android:layout_height="100dp"
+        android:onClick="buscar" />
 
     <TextView
         android:layout_width="250dp"
@@ -42,14 +43,14 @@
     <EditText
         android:layout_width="250dp"
         android:layout_height="45dp"
-        android:inputType="textPersonName"
         android:ems="10"
         android:id="@+id/edit_name"
         android:textSize="25dp"
         android:hint="Nombre"
         android:layout_alignTop="@+id/patient_name"
         android:layout_alignLeft="@+id/edit_ID"
-        android:layout_alignStart="@+id/edit_ID" />
+        android:layout_alignStart="@+id/edit_ID"
+        android:inputType="text" />
 
     <TextView
         android:layout_width="250dp"
@@ -76,7 +77,8 @@
         android:layout_alignBaseline="@+id/text_patientID"
         android:layout_alignBottom="@+id/text_patientID"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:inputType="text" />
 
     <TextView
         android:layout_width="800dp"

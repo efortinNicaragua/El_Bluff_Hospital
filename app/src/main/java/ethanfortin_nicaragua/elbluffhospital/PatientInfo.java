@@ -32,7 +32,7 @@ public class PatientInfo extends AppCompatActivity {
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
 
-    public void Buscar (View v) {
+    public void buscar (View v) {
         EditText name_EditText = (EditText) findViewById(R.id.edit_name);
         EditText id_EditText = (EditText) findViewById(R.id.edit_ID);
         String sName = name_EditText.getText().toString();
