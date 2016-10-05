@@ -7,32 +7,21 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="#108acd"
+    android:background="@drawable/greygradient"
     tools:context="ethanfortin_nicaragua.elbluffhospital.PatientInfo">
 
-    <TextView
-        android:layout_width="800dp"
-        android:layout_height="40dp"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Buscar Paciente"
-        android:id="@+id/text_title"
-        android:layout_alignParentTop="true"
-        android:textAlignment="center"
-        android:textSize="35sp"
-        android:layout_centerHorizontal="true" />
-
-    <TextView
-        android:layout_width="250dp"
-        android:layout_height="35dp"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Paciente ID "
-        android:id="@+id/text_patientID"
-        android:textAlignment="center"
-        android:textSize="25sp"
-        android:layout_marginTop="96dp"
-        android:layout_below="@+id/text_title"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+    <Button
+        android:layout_width="200dp"
+        android:text="Buscar"
+        android:id="@+id/button_search"
+        android:textSize="35dp"
+        android:background="#7cc0baba"
+        android:textColor="#121254"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="134dp"
+        android:layout_height="100dp" />
 
     <TextView
         android:layout_width="250dp"
@@ -42,9 +31,13 @@
         android:id="@+id/patient_name"
         android:textAlignment="center"
         android:textSize="25sp"
-        android:layout_alignTop="@+id/text_patientID"
-        android:layout_alignRight="@+id/text_title"
-        android:layout_alignEnd="@+id/text_title" />
+        android:textColor="#121254"
+        android:layout_above="@+id/button_search"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="110dp" />
 
     <EditText
         android:layout_width="250dp"
@@ -52,42 +45,64 @@
         android:inputType="textPersonName"
         android:ems="10"
         android:id="@+id/edit_name"
-        android:layout_below="@+id/patient_name"
+        android:textSize="25dp"
+        android:hint="Nombre"
+        android:layout_alignTop="@+id/patient_name"
+        android:layout_alignLeft="@+id/edit_ID"
+        android:layout_alignStart="@+id/edit_ID" />
+
+    <TextView
+        android:layout_width="250dp"
+        android:layout_height="35dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Paciente ID "
+        android:id="@+id/text_patientID"
+        android:textAlignment="center"
+        android:textSize="25sp"
+        android:textColor="#121254"
+        android:layout_above="@+id/patient_name"
         android:layout_alignLeft="@+id/patient_name"
         android:layout_alignStart="@+id/patient_name"
-        android:textSize="25dp"
-        android:hint="Nombre" />
+        android:layout_marginBottom="86dp" />
 
     <EditText
         android:layout_width="250dp"
         android:layout_height="45dp"
         android:id="@+id/edit_ID"
-        android:layout_alignTop="@+id/edit_name"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="false"
         android:textSize="25sp"
-        android:hint="ID" />
-
-    <Button
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-        android:text="Buscar"
-        android:id="@+id/button_search"
-        android:layout_below="@+id/edit_name"
-        android:layout_centerHorizontal="true"
-        android:textSize="35dp"
-        android:background="#7cc0baba"/>
+        android:hint="ID"
+        android:layout_marginRight="12dp"
+        android:layout_marginEnd="12dp"
+        android:layout_alignBaseline="@+id/text_patientID"
+        android:layout_alignBottom="@+id/text_patientID"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <TextView
         android:layout_width="800dp"
-        android:layout_height="35dp"
+        android:layout_height="40dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Buscar Paciente"
+        android:id="@+id/text_title"
+        android:textAlignment="center"
+        android:textSize="35sp"
+        android:textColor="#121254"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="49dp" />
+
+    <TextView
+        android:layout_width="800dp"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Entra ID o Nombre o los dos para buscar un paciente"
         android:id="@+id/text_instructions"
-        android:layout_centerHorizontal="true"
-        android:layout_above="@+id/patient_name"
-        android:layout_below="@+id/text_title"
         android:textSize="25sp"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:layout_marginBottom="70dp"
+        android:layout_above="@+id/edit_ID"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_height="70dp" />
 
 </RelativeLayout>

@@ -8,19 +8,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="ethanfortin_nicaragua.elbluffhospital.PrescriptionConfirmation">
-
-    <TextView
-        android:text="Prescription Stored"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="32dp"
-        android:id="@+id/textView4"
-        android:textSize="36sp"
-        android:textStyle="normal|bold"
-        android:textColor="@android:color/black" />
+    tools:context="ethanfortin_nicaragua.elbluffhospital.PrescriptionConfirmation"
+    android:background="@drawable/greygradient">
 
     <TextView
         android:text="Medicina"
@@ -31,20 +20,9 @@
         android:layout_below="@+id/Name"
         android:layout_alignLeft="@+id/Name"
         android:layout_alignStart="@+id/Name"
-        android:textStyle="normal|italic" />
-
-    <TextView
-        android:text="Paciente"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="61dp"
-        android:id="@+id/Name"
-        android:layout_below="@+id/textView4"
-        android:layout_alignLeft="@+id/textView4"
-        android:layout_alignStart="@+id/textView4"
-        android:layout_marginLeft="70dp"
-        android:layout_marginStart="70dp"
-        android:textStyle="normal|italic" />
+        android:textStyle="normal|italic"
+        android:textColor="#121254"
+        android:textSize="30sp" />
 
     <TextView
         android:text="Cantidad"
@@ -55,7 +33,9 @@
         android:layout_below="@+id/Drug"
         android:layout_alignLeft="@+id/Drug"
         android:layout_alignStart="@+id/Drug"
-        android:textStyle="normal|italic" />
+        android:textStyle="normal|italic"
+        android:textColor="#121254"
+        android:textSize="30sp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -64,7 +44,8 @@
         android:layout_alignLeft="@+id/reName"
         android:layout_alignStart="@+id/reName"
         android:id="@+id/reDrug"
-        android:textStyle="normal|bold" />
+        android:textStyle="normal|bold"
+        android:textColor="#121254"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -73,7 +54,8 @@
         android:layout_alignLeft="@+id/reDrug"
         android:layout_alignStart="@+id/reDrug"
         android:id="@+id/reQuant"
-        android:textStyle="normal|bold" />
+        android:textStyle="normal|bold"
+        android:textColor="#121254"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -85,5 +67,34 @@
         android:layout_alignBottom="@+id/Name"
         android:layout_toRightOf="@+id/Name"
         android:layout_toEndOf="@+id/Name"
-        android:textStyle="normal|bold" />
+        android:textStyle="normal|bold"
+        android:textColor="#121254"/>
+
+    <TextView
+        android:text="Paciente"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="87dp"
+        android:id="@+id/Name"
+        android:layout_marginLeft="93dp"
+        android:layout_marginStart="93dp"
+        android:textStyle="normal|italic"
+        android:textColor="#121254"
+        android:textSize="30sp"
+        android:layout_below="@+id/textView4"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="Prescription Stored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:id="@+id/textView4"
+        android:textSize="36sp"
+        android:textStyle="normal|bold"
+        android:textColor="#121254"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>
