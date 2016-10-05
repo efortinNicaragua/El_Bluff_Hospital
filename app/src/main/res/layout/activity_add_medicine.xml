@@ -12,7 +12,7 @@
     android:background="@drawable/greygradient">
 
     <Button
-        android:text="New Medicine"
+        android:text="Medicina Nueva"
         android:layout_width="400dp"
         android:layout_height="90dp"
         android:id="@+id/newMedicine"
@@ -26,7 +26,7 @@
         android:layout_alignStart="@+id/existMedicine" />
 
     <Button
-        android:text="Existing Medicine"
+        android:text="Medicina Existente"
         android:layout_width="400dp"
         android:layout_height="90dp"
         android:id="@+id/existMedicine"
