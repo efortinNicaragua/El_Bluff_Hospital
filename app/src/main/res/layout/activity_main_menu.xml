@@ -8,19 +8,8 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="ethanfortin_nicaragua.elbluffhospital.MainMenu"
-    android:background="#108acd"
+    android:background="@drawable/greygradient"
     android:forceHasOverlappingRendering="false">
-
-    <TextView
-        android:layout_width="800dp"
-        android:layout_height="65dp"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Menu Principal"
-        android:id="@+id/textView2"
-        android:textAlignment="center"
-        android:textSize="50sp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="800dp"
@@ -34,22 +23,8 @@
         android:layout_marginTop="68dp"
         android:layout_below="@+id/textView2"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <ImageButton
-        android:layout_width="200dp"
-        android:layout_height="160dp"
-        android:text="New Button"
-        android:id="@+id/button_Doctor"
-        android:src="@drawable/doctor1"
-        android:scaleType="fitCenter"
-        android:background="#7cc0baba"
-        android:clickable="true"
-        android:longClickable="false"
-        android:onClick="doctorHome"
-        android:layout_below="@+id/text_Doctor"
-        android:layout_alignLeft="@+id/button_Farmacia"
-        android:layout_alignStart="@+id/button_Farmacia" />
+        android:layout_alignParentStart="true"
+        android:textColor="#121254"/>
 
     <TextView
         android:layout_width="800dp"
@@ -59,10 +34,25 @@
         android:id="@+id/text_Farmacia"
         android:textAlignment="center"
         android:textSize="40sp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="100dp"
         android:layout_below="@+id/button_Doctor"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:textColor="#121254"/>
+
+    <TextView
+        android:layout_width="800dp"
+        android:layout_height="65dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:text="Menu Principal"
+        android:id="@+id/textView2"
+        android:layout_centerInParent="false"
+        android:textColor="#121254"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textSize="48sp"
+        android:textAlignment="center" />
 
     <ImageButton
         android:layout_width="200dp"
@@ -71,11 +61,30 @@
         android:id="@+id/button_Farmacia"
         android:src="@drawable/farmacy"
         android:scaleType="fitCenter"
-        android:background="#7cc0baba"
+        android:background="@android:color/transparent"
         android:clickable="false"
         android:contentDescription="main_doctor"
         android:onClick="MainMenu_PharmacyClick"
+        android:layout_marginTop="20dp"
         android:layout_below="@+id/text_Farmacia"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:padding="1dp"/>
+
+    <ImageButton
+        android:layout_width="200dp"
+        android:layout_height="160dp"
+        android:text="New Button"
+        android:id="@+id/button_Doctor"
+        android:src="@drawable/doctor1"
+        android:scaleType="fitCenter"
+        android:background="@android:color/transparent"
+        android:clickable="true"
+        android:longClickable="false"
+        android:onClick="doctorHome"
+        android:elevation="1dp"
+        android:layout_marginTop="11dp"
+        android:layout_below="@+id/text_Doctor"
+        android:layout_alignLeft="@+id/button_Farmacia"
+        android:layout_alignStart="@+id/button_Farmacia" />
 
 </RelativeLayout>
