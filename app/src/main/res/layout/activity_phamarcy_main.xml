@@ -48,34 +48,14 @@
         android:layout_width="800dp"
         android:layout_height="40dp"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Añadir Medicina"
-        android:id="@+id/text_Añadir"
-        android:textAlignment="center"
-        android:textSize="30sp"
-        android:layout_below="@+id/button_Totales"
-        android:layout_centerHorizontal="true" />
-
-    <ImageButton
-        android:layout_width="200dp"
-        android:layout_height="95dp"
-        android:id="@+id/imageButton"
-        android:src="@drawable/add"
-        android:scaleType="fitCenter"
-        android:background="#7cc0baba"
-        android:layout_below="@+id/text_Añadir"
-        android:layout_centerHorizontal="true"
-        android:onClick="addMedicine"/>
-
-    <TextView
-        android:layout_width="800dp"
-        android:layout_height="40dp"
-        android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Sacar Medicina"
         android:id="@+id/textView"
         android:textAlignment="center"
         android:textSize="30sp"
+        android:layout_marginTop="74dp"
         android:layout_below="@+id/imageButton"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <ImageButton
         android:layout_width="200dp"
@@ -84,13 +64,35 @@
         android:src="@drawable/substract"
         android:scaleType="fitCenter"
         android:background="#7cc0baba"
+        android:onClick="subMedicine"
         android:layout_below="@+id/textView"
         android:layout_alignLeft="@+id/imageButton"
-        android:layout_alignStart="@+id/imageButton"
-        android:layout_alignRight="@+id/imageButton"
-        android:layout_alignEnd="@+id/imageButton"
-        android:layout_alignParentBottom="true"
-        android:onClick="subMedicine"/>
+        android:layout_alignStart="@+id/imageButton" />
+
+    <TextView
+        android:layout_width="800dp"
+        android:layout_height="40dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Añadir Medicina"
+        android:id="@+id/text_Añadir"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:layout_below="@+id/button_Totales"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="50dp" />
+
+    <ImageButton
+        android:layout_width="200dp"
+        android:layout_height="95dp"
+        android:id="@+id/imageButton"
+        android:src="@drawable/add"
+        android:scaleType="fitCenter"
+        android:background="#7cc0baba"
+        android:onClick="addMedicine"
+        android:layout_below="@+id/text_Añadir"
+        android:layout_alignLeft="@+id/button_Totales"
+        android:layout_alignStart="@+id/button_Totales" />
 
 
 </RelativeLayout>

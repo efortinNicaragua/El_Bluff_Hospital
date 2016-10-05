@@ -13,6 +13,17 @@
 
     <TextView
         android:layout_width="800dp"
+        android:layout_height="65dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Menu Principal"
+        android:id="@+id/textView2"
+        android:textAlignment="center"
+        android:textSize="50sp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="800dp"
         android:layout_height="50dp"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="El Doctor"
@@ -20,21 +31,10 @@
         android:textAlignment="center"
         android:textSize="40sp"
         android:textIsSelectable="false"
-        android:layout_above="@+id/button_Doctor"
+        android:layout_marginTop="68dp"
+        android:layout_below="@+id/textView2"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
-
-    <TextView
-        android:layout_width="800dp"
-        android:layout_height="50dp"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="La Farmacia"
-        android:id="@+id/text_Farmacia"
-        android:textAlignment="center"
-        android:textSize="40sp"
-        android:layout_above="@+id/button_Farmacia"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
 
     <ImageButton
         android:layout_width="200dp"
@@ -46,10 +46,23 @@
         android:background="#7cc0baba"
         android:clickable="true"
         android:longClickable="false"
-        android:layout_above="@+id/text_Farmacia"
+        android:onClick="doctorHome"
+        android:layout_below="@+id/text_Doctor"
         android:layout_alignLeft="@+id/button_Farmacia"
-        android:layout_alignStart="@+id/button_Farmacia"
-        android:onClick="doctorHome" />
+        android:layout_alignStart="@+id/button_Farmacia" />
+
+    <TextView
+        android:layout_width="800dp"
+        android:layout_height="50dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="La Farmacia"
+        android:id="@+id/text_Farmacia"
+        android:textAlignment="center"
+        android:textSize="40sp"
+        android:layout_marginTop="48dp"
+        android:layout_below="@+id/button_Doctor"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <ImageButton
         android:layout_width="200dp"
@@ -59,21 +72,10 @@
         android:src="@drawable/farmacy"
         android:scaleType="fitCenter"
         android:background="#7cc0baba"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
         android:clickable="false"
         android:contentDescription="main_doctor"
-        android:onClick="MainMenu_PharmacyClick" />
-
-    <TextView
-        android:layout_width="800dp"
-        android:layout_height="65dp"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Menu Principal"
-        android:id="@+id/textView2"
-        android:textAlignment="center"
-        android:textSize="50sp"
-        android:layout_alignParentTop="true"
+        android:onClick="MainMenu_PharmacyClick"
+        android:layout_below="@+id/text_Farmacia"
         android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
