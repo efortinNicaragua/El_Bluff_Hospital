@@ -10,5 +10,8 @@
     <string name="attrMID">Identificacion</string>
     <string name="attrMName">Nombre</string>
     <string name="attrQuantity">Cantidad</string>
+    <string name="title_activity_patient_data">PatientData</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
 
 </resources>
