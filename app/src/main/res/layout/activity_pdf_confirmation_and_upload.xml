@@ -28,7 +28,8 @@
      android:layout_alignParentBottom="true"
      android:layout_centerHorizontal="true"
      android:textColor="#121254"
-        android:textSize="30sp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+     android:textSize="30sp"
+     android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+     android:onClick="BackToPDF"/>
 
 </RelativeLayout>

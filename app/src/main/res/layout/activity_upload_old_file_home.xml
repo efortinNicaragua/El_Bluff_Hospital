@@ -50,7 +50,7 @@
         android:layout_alignStart="@+id/button3" />
 
     <TextView
-        android:text="La fecha de visita primero"
+        android:text="La fecha del documento"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView15"
