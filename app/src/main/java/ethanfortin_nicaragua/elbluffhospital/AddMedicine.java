@@ -162,7 +162,7 @@ public class AddMedicine extends AppCompatActivity {
                                 if(eFlag == 0){
                                     int duration = Toast.LENGTH_LONG;
                                     Context context = getApplicationContext();
-                                    String text1 = "Medicina nueva archivada.";
+                                    String text1 = "Medicina archivada.";
                                     Toast toast1 = Toast.makeText(context, text1, duration);
                                     toast1.show();
                                     //AddMedicine.this.finish();

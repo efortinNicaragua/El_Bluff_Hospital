@@ -93,5 +93,8 @@ public class PDFConfirmationandUpload extends AppCompatActivity {
         t.start();
     }
 
-
+    public void BackToPDF (View v) {
+        Intent backtopdf = new Intent(this, UploadOldFileHome.class);
+        startActivity(backtopdf);
+    }
 }
