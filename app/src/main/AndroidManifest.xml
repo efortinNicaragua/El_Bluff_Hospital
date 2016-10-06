@@ -29,7 +29,11 @@
         <activity android:name=".SearchTotals" />
         <activity android:name=".SearchShipments" />
         <activity android:name=".Inventory" />
-        <activity android:name=".SplashScreen"></activity>
+        <activity android:name=".SplashScreen" />
+        <activity
+            android:name=".PatientData"
+            android:label="@string/title_activity_patient_data"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
