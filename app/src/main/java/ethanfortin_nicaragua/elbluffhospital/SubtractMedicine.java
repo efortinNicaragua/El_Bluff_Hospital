@@ -2,77 +2,138 @@ package ethanfortin_nicaragua.elbluffhospital;
 
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 public class SubtractMedicine extends AppCompatActivity {
+
+    final Context context = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_subtract_medicine);
-    }
 
-    // On Button Click Method
-    public void createPrescrip(View v) {
-        Intent createPre = new Intent(this, PrescriptionConfirmation.class);
-        int eFlag = 0; // This flag set if one or more fields are blank when button is pressed
+        Button newMed = (Button) findViewById(R.id.button);
+        newMed.setOnClickListener(new View.OnClickListener() {
 
-        // Creation of Toast warning that is displayed if fields are blank
-        Context context = getApplicationContext();
-        CharSequence text = "Por Favor, llena toda la informacion.";
-        int duration = Toast.LENGTH_SHORT;
-        Toast toast = Toast.makeText(context, text, duration);
+            public void onClick(View v) {
+                LayoutInflater inflater = LayoutInflater.from(SubtractMedicine.this);
+                View subView = inflater.inflate(R.layout.dialog_rx_confirm, null);
 
-        // Verifies patient name/id
-        EditText editText1 = (EditText) findViewById(R.id.patIdOrName);
-        String s_patId = editText1.getText().toString();
-        if(s_patId.equals("")) {
-            eFlag = 1;
-            toast.show();
-        }
-        else {
-            createPre.putExtra("patID", s_patId);
-        }
+                final EditText subEditText1 = (EditText)findViewById(R.id.patIdOrName);
+                final EditText subEditText2 = (EditText)findViewById(R.id.medId);
+                final EditText subEditText3 = (EditText)findViewById(R.id.pillQuantity);
 
-        // Verifies medicine name/id
-        EditText editText2 = (EditText) findViewById(R.id.medId);
-        String s_medId = editText2.getText().toString();
-        if(s_medId.equals("")) {
-            eFlag = 1;
-            toast.show();
-        }
-        else {
-            createPre.putExtra("medID", s_medId);
-        }
+                TextView tv1 = (TextView)subView.findViewById(R.id.dPatIdOrName);
+                TextView tv2 = (TextView)subView.findViewById(R.id.dMedId);
+                TextView tv3 = (TextView)subView.findViewById(R.id.dPillQuantity);
+                TextView tv4 = (TextView)subView.findViewById(R.id.date);
 
-        // Verifies pill quantity
-        EditText editText3 = (EditText) findViewById(R.id.pillQuantity);
-        if(editText3.getText().toString().equals("")) {
-            eFlag = 1;
-            toast.show();
-        }
-        else {
-            int i_pillQuan = Integer.parseInt(editText3.getText().toString());
-            createPre.putExtra("pills", i_pillQuan);
-        }
+                int eFlag = 0;
 
-        /*
-        TODO: - Add functionality that synthesizes this info with the db.
-                - Subtracts number of pills from correct store.
-                - Stores record of prescription under patient's info.
-                  - Include Medicine info (id, name, strength(?), quantity),
-                    plus date, reason, etc.
-         */
+                // Verify pat name
+                String s_patId = subEditText1.getText().toString();
 
-        // Only move to next activity if all fields are populated
-        if(eFlag == 0) {
-            startActivity(createPre);
-        }
+                if(s_patId.equals("")) {
+                    eFlag = 1;
+                }
+                else {
+                    tv1.setText(s_patId);
+                }
+
+                // Verify drug id
+                String s_drugId = subEditText2.getText().toString();
+
+                if(s_drugId.equals("")) {
+                    eFlag = 1;
+                }
+                else {
+                    tv2.setText(s_drugId);
+                }
+
+                // Verify drug quantity
+                String s_drugQuant = subEditText3.getText().toString();
+
+                if(s_drugQuant.equals("")) {
+                    eFlag = 1;
+                }
+                else {
+                    tv3.setText(s_drugQuant);
+                }
+
+                // Get Current Date and Time
+                SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+                Date date = new Date();
+                tv4.setText(dateFormat.format(date));
+
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+
+                // set title
+                alertDialogBuilder.setTitle("Confirmación de la prescripción.");
+
+                // set Dialog message
+                alertDialogBuilder
+                        .setView(subView)
+                        .setPositiveButton("Confirma",new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog,int id) {
+                                // for now...
+
+                                // Creation of Toast warning that is displayed if fields are blank
+                                Context apContext2 = getApplicationContext();
+                                CharSequence text = "La prescripción ha sido creado.";
+                                int duration = Toast.LENGTH_SHORT;
+                                Toast toast2 = Toast.makeText(apContext2, text, duration);
+                                toast2.show();
+
+                                dialog.cancel();
+
+                                /*
+                                    TODO: - Add functionality that synthesizes this info with the db.
+                                            - If drug Id is used, convert to name and display.
+                                            - Subtracts number of pills from correct store.
+                                            - Stores record of prescription under patient's info.
+                                            - Include Medicine info (id, name, strength(?), quantity),
+                                                plus reason, etc.
+                                */
+                            }
+                        })
+                        .setNegativeButton("Cancel",new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog,int id) {
+                                // if this button is clicked, just close
+                                // the dialog box and do nothing
+                                dialog.cancel();
+                            }
+                        });
+
+                // create alert dialog
+                AlertDialog alertDialog = alertDialogBuilder.create();
+
+                if(eFlag == 0) {
+                    alertDialog.show();
+                }
+                else {
+                    // Creation of Toast warning that is displayed if fields are blank
+                    Context apContext1 = getApplicationContext();
+                    CharSequence text = "Por Favor, llena toda la informacion.";
+                    int duration = Toast.LENGTH_SHORT;
+                    Toast toast = Toast.makeText(apContext1, text, duration);
+
+                    toast.show();
+                }
+            }
+
+        });
     }
 }
