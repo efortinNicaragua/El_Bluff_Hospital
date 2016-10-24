@@ -23,17 +23,6 @@
         android:layout_alignStart="@+id/patIdOrName"
         android:layout_marginTop="82dp" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="number"
-        android:ems="10"
-        android:id="@+id/pillQuantity"
-        android:hint="     llena cantidad"
-        android:layout_alignTop="@+id/textView7"
-        android:layout_alignLeft="@+id/medId"
-        android:layout_alignStart="@+id/medId" />
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -44,47 +33,7 @@
         android:layout_marginTop="62dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:text="Nuevo Prescriptión" />
-
-    <Button
-        android:text="Proceed"
-        android:layout_width="200dp"
-        android:layout_height="100dp"
-        android:id="@+id/button"
-        android:onClick="createPrescrip"
-        android:layout_marginBottom="65dp"
-        android:textSize="18sp"
-        android:textColor="#121254"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
-
-    <TextView
-        android:text="cantidad"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView7"
-        android:textSize="24sp"
-        android:textColor="#121254"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:layout_marginTop="62dp"
-        android:layout_below="@+id/medId"
-        android:layout_alignLeft="@+id/textView3"
-        android:layout_alignStart="@+id/textView3"
-        android:layout_marginLeft="23dp"
-        android:layout_marginStart="23dp" />
-
-    <TextView
-        android:text="ID de medicina"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView6"
-        android:textSize="24sp"
-        android:textColor="#121254"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:layout_alignBaseline="@+id/medId"
-        android:layout_alignBottom="@+id/medId"
-        android:layout_alignRight="@+id/textView7"
-        android:layout_alignEnd="@+id/textView7" />
+        android:text="Nuevo Prescripción" />
 
     <TextView
         android:text="ID o nombre del paciente   "
@@ -114,4 +63,55 @@
         android:layout_toEndOf="@+id/textView5"
         android:layout_marginLeft="76dp"
         android:layout_marginStart="76dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/pillQuantity"
+        android:hint="     llena cantidad"
+        android:layout_below="@+id/medId"
+        android:layout_alignLeft="@+id/medId"
+        android:layout_alignStart="@+id/medId"
+        android:layout_marginTop="81dp" />
+
+    <TextView
+        android:text="cantidad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView7"
+        android:textSize="24sp"
+        android:textColor="#121254"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:layout_marginLeft="27dp"
+        android:layout_marginStart="27dp"
+        android:layout_alignTop="@+id/pillQuantity"
+        android:layout_alignLeft="@+id/textView3"
+        android:layout_alignStart="@+id/textView3" />
+
+    <TextView
+        android:text="ID de medicina"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView6"
+        android:textSize="24sp"
+        android:textColor="#121254"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:layout_alignTop="@+id/medId"
+        android:layout_alignRight="@+id/textView7"
+        android:layout_alignEnd="@+id/textView7" />
+
+    <Button
+        android:text="Confirmar"
+        android:layout_width="400dp"
+        android:layout_height="90dp"
+        android:id="@+id/button"
+        android:textSize="30sp"
+        android:textColor="#cccccc"
+        android:background="#00004d"
+        android:padding="1dp"
+        android:layout_below="@+id/pillQuantity"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="96dp" />
 </RelativeLayout>

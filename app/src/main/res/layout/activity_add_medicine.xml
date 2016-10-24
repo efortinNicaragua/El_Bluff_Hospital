@@ -12,20 +12,6 @@
     android:background="@drawable/greygradient">
 
     <Button
-        android:text="Medicina Nueva"
-        android:layout_width="400dp"
-        android:layout_height="90dp"
-        android:id="@+id/newMedicine"
-        android:textSize="30sp"
-        android:layout_marginTop="140dp"
-        android:background="#00004d"
-        android:textColor="#cccccc"
-        android:padding="1dp"
-        android:layout_below="@+id/existMedicine"
-        android:layout_alignLeft="@+id/existMedicine"
-        android:layout_alignStart="@+id/existMedicine" />
-
-    <Button
         android:text="Medicina Existente"
         android:layout_width="400dp"
         android:layout_height="90dp"
@@ -45,11 +31,23 @@
         android:id="@+id/textView2"
         android:textAlignment="center"
         android:textSize="48sp"
-
-        android:layout_marginTop="67dp"
+        android:layout_marginTop="45dp"
         android:textColor="#121254"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
+
+    <Button
+        android:text="Medicina Nueva"
+        android:layout_width="400dp"
+        android:layout_height="90dp"
+        android:id="@+id/newMedicine"
+        android:textSize="30sp"
+        android:layout_marginTop="138dp"
+        android:background="#00004d"
+        android:textColor="#cccccc"
+        android:padding="1dp"
+        android:layout_below="@+id/existMedicine"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
