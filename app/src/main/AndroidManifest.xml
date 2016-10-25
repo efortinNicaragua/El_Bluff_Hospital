@@ -10,7 +10,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainMenu">
+        <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,7 +29,7 @@
         <activity android:name=".SearchTotals" />
         <activity android:name=".SearchShipments" />
         <activity android:name=".Inventory" />
-        <activity android:name=".SplashScreen" />
+        <activity android:name=".MainMenu" />
         <activity
             android:name=".PatientData"
             android:label="@string/title_activity_patient_data"
