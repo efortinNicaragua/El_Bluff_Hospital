@@ -36,14 +36,6 @@
         android:layout_alignLeft="@+id/searchByName"
         android:layout_alignStart="@+id/searchByName" />
 
-    <CalendarView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView29"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/calendarView3"
-        android:minHeight="100dp" />
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -55,5 +47,14 @@
         android:layout_marginTop="21dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
+
+    <DatePicker
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView29"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp"
+        android:calendarViewShown="false"
+        android:id="@+id/datePicker2" />
 
 </RelativeLayout>
