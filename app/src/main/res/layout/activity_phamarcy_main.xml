@@ -27,7 +27,7 @@
         android:layout_width="800dp"
         android:layout_height="40dp"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Sacar Medicina"
+        android:text="Crear Prescripción"
         android:id="@+id/textView"
         android:textAlignment="center"
         android:textSize="30sp"
