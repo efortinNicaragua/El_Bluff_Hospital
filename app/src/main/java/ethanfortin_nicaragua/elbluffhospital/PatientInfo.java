@@ -90,6 +90,14 @@ public class PatientInfo extends AppCompatActivity {
                                     PatientInfo.this);
                             builderInner.setMessage(strName);
                             builderInner.setTitle("Eligiste el paciente");
+                            builderInner.setNegativeButton(
+                                    "cancel",
+                                    new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            dialog.dismiss();
+                                        }
+                                    });
                             builderInner.setPositiveButton(
                                     "OK",
                                     new DialogInterface.OnClickListener() {
@@ -99,7 +107,7 @@ public class PatientInfo extends AppCompatActivity {
                                                 DialogInterface dialog,
                                                 int which) {
                                             dialog.dismiss();
-                                            Intent intent_patientData = new Intent(PatientInfo.this, PatientData.class);
+                                            Intent intent_patientData = new Intent(PatientInfo.this, PatientGeneralInfo.class);
                                             startActivity(intent_patientData);
                                         }
                                     });
