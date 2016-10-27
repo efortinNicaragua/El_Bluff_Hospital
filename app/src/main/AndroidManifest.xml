@@ -30,11 +30,12 @@
         <activity android:name=".SearchShipments" />
         <activity android:name=".Inventory" />
         <activity android:name=".MainMenu" />
-        <activity
-            android:name=".PatientData"
-            android:label="@string/title_activity_patient_data"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".SearchInventory"></activity>
+        <activity android:name=".SearchInventory" />
+        <activity android:name=".PatientGeneralInfo" />
+        <activity android:name=".PatientHistory" />
+        <activity android:name=".PatientPrescription"></activity>
+
+
     </application>
 
 </manifest>
