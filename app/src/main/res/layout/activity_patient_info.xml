@@ -97,7 +97,7 @@
         android:textColor="#121254"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:layout_height="100dp"
-        android:onClick="buscar"
+        android:onClick="NuevoPaciente"
         android:layout_marginBottom="96dp"
         android:layout_alignParentBottom="true"
         android:layout_alignLeft="@+id/button2"

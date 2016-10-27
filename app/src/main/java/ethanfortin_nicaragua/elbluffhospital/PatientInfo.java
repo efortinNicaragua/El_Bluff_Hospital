@@ -6,16 +6,31 @@ import android.net.Uri;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.appindexing.Thing;
 import com.google.android.gms.common.api.GoogleApiClient;
+
+import static ethanfortin_nicaragua.elbluffhospital.R.id.edit_Allergies;
+import static ethanfortin_nicaragua.elbluffhospital.R.id.edit_Birthdate;
+import static ethanfortin_nicaragua.elbluffhospital.R.id.edit_Children;
+import static ethanfortin_nicaragua.elbluffhospital.R.id.edit_Height;
+import static ethanfortin_nicaragua.elbluffhospital.R.id.edit_ID;
+import static ethanfortin_nicaragua.elbluffhospital.R.id.edit_Married;
+import static ethanfortin_nicaragua.elbluffhospital.R.id.edit_MedicalConditions;
+import static ethanfortin_nicaragua.elbluffhospital.R.id.edit_Telephone;
+import static ethanfortin_nicaragua.elbluffhospital.R.id.edit_Weight;
+import static ethanfortin_nicaragua.elbluffhospital.R.id.edit_adress;
+import static ethanfortin_nicaragua.elbluffhospital.R.id.edit_gender;
+import static ethanfortin_nicaragua.elbluffhospital.R.id.edit_name;
 
 public class PatientInfo extends AppCompatActivity {
 
@@ -29,7 +44,6 @@ public class PatientInfo extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient_info);
-
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
@@ -136,6 +150,48 @@ public class PatientInfo extends AppCompatActivity {
                 .build();
     }
 
+    public void NuevoPaciente (View V)
+    {
+        //Need to make dialog_patient_preccription pull data from DB not my made up stuff
+        //create layout inflater and subView assign sub view to dialog xml
+        LayoutInflater inflater = LayoutInflater.from(PatientInfo.this);
+        View subView = inflater.inflate(R.layout.dialog_new_pacient, null);
+        //Build dialog set it to subview
+        AlertDialog.Builder builderSingle1 = new AlertDialog.Builder(this);
+        builderSingle1.setView(subView);
+        //Set dialog        title
+        builderSingle1.setTitle("Entrar Nueva Paciente");
+        final EditText edit_name2 = (EditText) subView.findViewById(R.id.newdialog_edit_name);
+        final EditText edit_ID2 = (EditText) subView.findViewById(R.id.newdialog_edit_ID);
+        final EditText edit_adress2 = (EditText) subView.findViewById(R.id.newdialog_edit_adress);
+        final EditText edit_telephone2 = (EditText) subView.findViewById(R.id.newdialog_edit_Telephone);
+        final EditText edit_gender2 = (EditText) subView.findViewById(R.id.newdialog_edit_gender);
+        final EditText edit_married2 = (EditText) subView.findViewById(R.id.newdialog_edit_Married);
+        final EditText edit_birthday2 = (EditText) subView.findViewById(R.id.newdialog_edit_Birthdate);
+        final EditText edit_children2 = (EditText) subView.findViewById(R.id.newdialog_edit_Children);
+        final EditText edit_height2 = (EditText) subView.findViewById(R.id.newdialog_edit_Height);
+        final EditText edit_weight2 = (EditText) subView.findViewById(R.id.newdialog_edit_Weight);
+        final EditText edit_allergies2 = (EditText) subView.findViewById(R.id.newdialog_edit_Allergies);
+        final EditText edit_medicalConditions2 = (EditText) subView.findViewById(R.id.newdialog_edit_MedicalConditions);
+        builderSingle1.setNegativeButton(
+                "Cancel",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+        builderSingle1.setPositiveButton(
+                "OK",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //Push to DB including ones not above but in Dialog
+                        dialog.dismiss();
+                    }
+                });
+        builderSingle1.show();
+    }
     @Override
     public void onStart() {
         super.onStart();
