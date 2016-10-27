@@ -26,9 +26,10 @@
      android:layout_height="100dp"
      android:text="Archiva el documento"
      android:layout_alignParentBottom="true"
-     android:layout_centerHorizontal="true"
-     android:textColor="#121254"
-     android:textSize="30sp"
+     android:layout_centerHorizontal="true" android:textSize="30sp"
+     android:textColor="#cccccc"
+     android:background="#00004d"
+     android:padding="1dp"
      android:textAppearance="@style/TextAppearance.AppCompat.Display1"
      android:onClick="BackToPDF"/>
 
