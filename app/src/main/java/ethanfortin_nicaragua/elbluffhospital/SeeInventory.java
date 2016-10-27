@@ -3,6 +3,7 @@ package ethanfortin_nicaragua.elbluffhospital;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -37,6 +38,7 @@ public class SeeInventory extends AppCompatActivity {
 
                 final Button dateEnable = (Button)subView.findViewById(R.id.button4);
                 dateEnable.setText("apagado");
+                dateEnable.setBackgroundColor(Color.parseColor("#DFDAD5"));
 
                 // Clicking on the "habilitar" button will toggle whether the user
                 // would like to search by date or not.
@@ -45,9 +47,12 @@ public class SeeInventory extends AppCompatActivity {
                     public void onClick(View v) {
                         if(dateEnable.getText() == "apagado") {
                             dateEnable.setText("abierto");
+                            dateEnable.setBackgroundColor(Color.parseColor("#4286f4"));
                         }
                         else {
                             dateEnable.setText("apagado");
+                            dateEnable.setBackgroundColor(Color.parseColor("#DFDAD5"));
+
                         }
                     }
                 });
