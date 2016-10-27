@@ -48,7 +48,10 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textSize="48sp"
         android:textColor="#121254"
-        android:layout_marginTop="45dp"
+        android:layout_marginTop="43dp"
+        android:fontFamily="sans-serif-condensed"
+        android:textAlignment="textStart"
+        android:layout_gravity = "start"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 

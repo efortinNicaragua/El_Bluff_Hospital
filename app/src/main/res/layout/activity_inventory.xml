@@ -32,7 +32,8 @@
                 android:textAlignment="center"
                 android:textSize="30sp"
                 android:textColor="@color/colorPrimaryDark"
-                android:textStyle="normal|italic" />
+                android:textStyle="normal|italic"
+                android:fontFamily="serif" />
         </TableRow>
 
         <TableRow

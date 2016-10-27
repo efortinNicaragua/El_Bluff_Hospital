@@ -1,7 +1,9 @@
 package ethanfortin_nicaragua.elbluffhospital;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 public class PrescriptionConfirmation extends AppCompatActivity {
@@ -31,5 +33,10 @@ public class PrescriptionConfirmation extends AppCompatActivity {
         }
 
 
+    }
+
+    public void returnRXhome(View v) {
+        Intent returnRx = new Intent(this, PharmacyMain.class);
+        startActivity(returnRx);
     }
 }
