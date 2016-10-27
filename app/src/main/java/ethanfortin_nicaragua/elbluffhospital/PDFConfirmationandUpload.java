@@ -1,16 +1,24 @@
 package ethanfortin_nicaragua.elbluffhospital;
 
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.provider.MediaStore;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
+
+import static ethanfortin_nicaragua.elbluffhospital.R.id.imageView;
+import static ethanfortin_nicaragua.elbluffhospital.R.id.pdfView;
 
 public class PDFConfirmationandUpload extends AppCompatActivity {
 
@@ -20,6 +28,7 @@ public class PDFConfirmationandUpload extends AppCompatActivity {
     private ProgressDialog progress;
 
     @Override
+    //Opening the photo gallery
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pdf_confirmation_and_upload);
@@ -32,8 +41,7 @@ public class PDFConfirmationandUpload extends AppCompatActivity {
 
     }
 
-
-
+    //Choosing a picture and displaying it on the screen
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         try {
@@ -64,6 +72,89 @@ public class PDFConfirmationandUpload extends AppCompatActivity {
 
     }
 
+//
+//    Button confirm_doc = (Button) findViewById(R.id.confirm_doc);
+//    confirm_doc.setOnClickListener(new View.OnClickListener(){
+//        public void onClick(View view) {
+//            //Intent myIntent = new Intent(view.getContext(), PDFConfirmationandUpload.class);
+//            //startActivityForResult(myIntent, 0);
+//
+//
+//            AlertDialog alertDialog = new AlertDialog.Builder(PDFConfirmationandUpload.this).create(); //Read Update
+//            alertDialog.setTitle("Confirmar");
+//            alertDialog.setMessage("Su documento se ha guardado");
+//
+//            alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+//                public void onClick(DialogInterface dialog, int which) {
+//                    Intent backtopdf = new Intent(this, DoctorMain.class);
+//                    startActivity(backtopdf);
+//                }
+//            });
+//
+//            alertDialog.show();  //<-- See This!
+//        }
+//
+//    });
+//
+//private Button button;
+//    final Context context = this;
+//    button = (Button) findViewById(R.id.confirm_doc);
+//
+//
+//    // add button listener
+//    button.setOnClickListener(new OnClickListener() {
+//
+//        @Override
+//        public void onClick(View arg0) {
+//
+//            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+//
+//            // set title
+//            alertDialogBuilder.setTitle("Confirmar");
+//
+//            // set dialog message
+//            alertDialogBuilder
+//                    .setMessage("Su documento se ha guardado")
+//                    .setCancelable(false)
+//                    .setPositiveButton("OK",new DialogInterface.OnClickListener() {
+//                        public void onClick(DialogInterface dialog,int id) {
+//                            // if this button is clicked, close
+//                            // current activity
+//                            PDFConfirmationandUpload.this.finish();
+//                        }
+//                    })
+//
+//            // create alert dialog
+//            AlertDialog alertDialog = alertDialogBuilder.create();
+//
+//            // show it
+//            alertDialog.show();
+
+
+
+/*    Touch the picture to make it full screen
+    boolean isImageFitToScreen;
+    ImageView imgView = (ImageView) findViewById(R.id.pdfView);
+
+    @Override
+            imgView.setOnClickListener(new View.OnClickListener(){
+        @Override
+        public void pdfbig(View v){
+            if (isImageFitToScreen) {
+                isImageFitToScreen = false;
+                imgView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+                imgView.setAdjustViewBounds(true);
+            } else {
+                isImageFitToScreen = true;
+                imgView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
+                imgView.setScaleType(ImageView.ScaleType.FIT_XY);
+
+            }
+        }
+    };*/
+
+
+   /* //Loading bar while picture is uploading
     public void button3(View view) {
         // TODO   This is for the progress bar while the record is being saved to the database. It may be
         // TODO   inoperative but not sure because it isn't linked to anything yet, not sure how it times without file size
@@ -93,10 +184,15 @@ public class PDFConfirmationandUpload extends AppCompatActivity {
             }
         };
         t.start();
-    }
+    }*/
 
-    public void BackToPDF (View v) {
-        Intent backtopdf = new Intent(this, UploadOldFileHome.class);
-        startActivity(backtopdf);
-    }
+
+//    public void BackToPDF(View v) {
+//        Intent backtopdf = new Intent(this, UploadOldFileHome.class);
+//        startActivity(backtopdf);
+//    }
+
+
+
 }
+
