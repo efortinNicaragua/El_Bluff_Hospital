@@ -35,21 +35,21 @@ public class AddMedicine extends AppCompatActivity {
             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
 
             // set title
-            alertDialogBuilder.setTitle("Add New Medicine");
+            alertDialogBuilder.setTitle("Añadir nuevo medicamento");
 
             // set Dialog message
             alertDialogBuilder
                     .setView(subView)
-                    .setMessage("Enter Drug Name, ID, and quantity")
+                    .setMessage("Encuentra la droga por su nombre o identificación, y dar a la cantidad.")
                     .setPositiveButton("Añadir",new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog,int id) {
 
-                            int eFlag = 0;
+                            int nameFlag = 0; int idFlag = 0; int countFlag = 0;
 
                             // Verify drug name
                             String s_drugName = subEditText1.getText().toString();
                             if(s_drugName.equals("")) {
-                                eFlag = 1;
+                                nameFlag = 1;
                             }
                             else {
                                 // TODO Transfer variable to database
@@ -58,7 +58,7 @@ public class AddMedicine extends AppCompatActivity {
                             // Verify drug id
                             String s_drugId = subEditText2.getText().toString();
                             if(s_drugId.equals("")) {
-                                eFlag = 1;
+                                idFlag = 1;
                             }
                             else {
                                 // TODO Transfer variable to database
@@ -67,14 +67,14 @@ public class AddMedicine extends AppCompatActivity {
                             // Verify drug quantity
                             String s_drugQuant = subEditText3.getText().toString();
                             if(s_drugQuant.equals("")) {
-                                eFlag = 1;
+                                countFlag = 1;
                             }
                             else {
                                 // TODO Transfer variable to database
                             }
 
                             // If all entries are populated, close window and confirm
-                            if(eFlag == 0){
+                            if(nameFlag + idFlag + countFlag == 0){
                                 int duration = Toast.LENGTH_LONG;
                                 Context context = getApplicationContext();
                                 String text1 = "Medicina nueva archivada.";
@@ -82,9 +82,14 @@ public class AddMedicine extends AppCompatActivity {
                                 toast1.show();
                                 //AddMedicine.this.finish();
                             }
-                            else{
-
-                            }
+                            /*else if(countFlag == 1) {
+                                int duration = Toast.LENGTH_LONG;
+                                Context context = getApplicationContext();
+                                String text2 = "Da una cantidad.";
+                                Toast toast2 = Toast.makeText(context, text2, duration);
+                                toast2.show();
+                            }*/
+                            // TODO ^ More error handling here ^
 
                         }
                     })
@@ -119,12 +124,12 @@ public class AddMedicine extends AppCompatActivity {
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
 
                 // set title
-                alertDialogBuilder.setTitle("Add Existing Medicine");
+                alertDialogBuilder.setTitle("Añadir medicina existente");
 
                 // set Dialog message
                 alertDialogBuilder
                         .setView(subView)
-                        .setMessage("Find Drug Name or ID, Enter quantity")
+                        .setMessage("Encuentra la droga por su nombre o identificación, y dar a la cantidad.")
                         .setPositiveButton("Añadir",new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog,int id) {
 
