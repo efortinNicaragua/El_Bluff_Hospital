@@ -41,16 +41,16 @@ public class UploadOldFileHome extends AppCompatActivity {
             createF.putExtra("patID", s_patID);
              }
 
-        // Verifies date of first visit
-        EditText editText2 = (EditText) findViewById(R.id.date1st);
-        String s_date1st = editText2.getText().toString();
-        if(s_date1st.equals("")) {
-            eFlag = 1;
-            toast.show();
-        }
-        else {
-            createF.putExtra("date1st", s_date1st);
-        }
+//        // Verifies date of first visit
+//        EditText editText2 = (EditText) findViewById(R.id.date1st);
+//        String s_date1st = editText2.getText().toString();
+//        if(s_date1st.equals("")) {
+//            eFlag = 1;
+//            toast.show();
+//        }
+//        else {
+//            createF.putExtra("date1st", s_date1st);
+//        }
 
 
 

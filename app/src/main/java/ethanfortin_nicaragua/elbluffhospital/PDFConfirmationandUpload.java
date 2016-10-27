@@ -39,6 +39,20 @@ public class PDFConfirmationandUpload extends AppCompatActivity {
         //Start the intent
         startActivityForResult(galleryIntent, RESULT_LOAD_IMG);
 
+        final Button confirm_doc = (Button) findViewById(R.id.confirm_doc);
+        confirm_doc.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View view) {
+                Context context = getApplicationContext();
+                CharSequence text = "El documento se ha guardado.";
+                int duration = Toast.LENGTH_SHORT;
+                Toast toast2 = Toast.makeText(context, text, duration);
+                toast2.show();
+
+                Intent i = new Intent(confirm_doc.getContext(),DoctorMain.class);
+                startActivity(i);
+            }
+        });
+
     }
 
     //Choosing a picture and displaying it on the screen
@@ -71,66 +85,6 @@ public class PDFConfirmationandUpload extends AppCompatActivity {
         }
 
     }
-
-//
-//    Button confirm_doc = (Button) findViewById(R.id.confirm_doc);
-//    confirm_doc.setOnClickListener(new View.OnClickListener(){
-//        public void onClick(View view) {
-//            //Intent myIntent = new Intent(view.getContext(), PDFConfirmationandUpload.class);
-//            //startActivityForResult(myIntent, 0);
-//
-//
-//            AlertDialog alertDialog = new AlertDialog.Builder(PDFConfirmationandUpload.this).create(); //Read Update
-//            alertDialog.setTitle("Confirmar");
-//            alertDialog.setMessage("Su documento se ha guardado");
-//
-//            alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
-//                public void onClick(DialogInterface dialog, int which) {
-//                    Intent backtopdf = new Intent(this, DoctorMain.class);
-//                    startActivity(backtopdf);
-//                }
-//            });
-//
-//            alertDialog.show();  //<-- See This!
-//        }
-//
-//    });
-//
-//private Button button;
-//    final Context context = this;
-//    button = (Button) findViewById(R.id.confirm_doc);
-//
-//
-//    // add button listener
-//    button.setOnClickListener(new OnClickListener() {
-//
-//        @Override
-//        public void onClick(View arg0) {
-//
-//            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
-//
-//            // set title
-//            alertDialogBuilder.setTitle("Confirmar");
-//
-//            // set dialog message
-//            alertDialogBuilder
-//                    .setMessage("Su documento se ha guardado")
-//                    .setCancelable(false)
-//                    .setPositiveButton("OK",new DialogInterface.OnClickListener() {
-//                        public void onClick(DialogInterface dialog,int id) {
-//                            // if this button is clicked, close
-//                            // current activity
-//                            PDFConfirmationandUpload.this.finish();
-//                        }
-//                    })
-//
-//            // create alert dialog
-//            AlertDialog alertDialog = alertDialogBuilder.create();
-//
-//            // show it
-//            alertDialog.show();
-
-
 
 /*    Touch the picture to make it full screen
     boolean isImageFitToScreen;
