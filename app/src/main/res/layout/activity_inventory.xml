@@ -1,332 +1,687 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_inventory"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="ethanfortin_nicaragua.elbluffhospital.Inventory"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     android:background="@drawable/greygradient">
-
     <TableLayout
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/activity_inventory"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:id="@+id/invTable"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:textColor="#121254">
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        tools:context="ethanfortin_nicaragua.elbluffhospital.Inventory"
+        android:background="@drawable/greygradient"
+        android:stretchColumns="*">
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:gravity="center_vertical|center_horizontal"
+            android:id="@+id/titleRow">
 
             <TextView
-                android:text="@string/attrMID"
+                android:text="Resultados de la busqueda"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/tvTitle"
+                android:textAlignment="center"
+                android:textSize="30sp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="normal|italic" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/bufferRow">
+
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="36sp"
-                android:textStyle="normal|bold"
-                android:width="230dp"
-                android:id="@+id/attrID"
-                android:textColor="#121254"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+                android:id="@+id/textView20" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:id="@+id/fieldNames">
 
             <TextView
-                android:text="@string/attrMName"
-                android:layout_width="wrap_content"
+                android:text="Identificación"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:textSize="36sp"
+                android:layout_weight="1"
+                android:id="@+id/fnID"
+                android:textAlignment="center"
                 android:textStyle="normal|bold"
-                android:width="150dp"
-                android:id="@+id/attrName"
-                android:textColor="#121254"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+                android:textSize="24sp"
+                android:textColor="@color/colorPrimaryDark" />
 
             <TextView
-                android:text="@string/attrQuantity"
+                android:text="Nombre"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/fnName"
+                android:textStyle="normal|bold"
+                android:textAlignment="center"
+                android:textSize="24sp"
+                android:textColor="@color/colorPrimaryDark" />
+
+            <TextView
+                android:text="Cantidad"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/fnQuantity"
+                android:textAlignment="center"
+                android:textStyle="normal|bold"
+                android:textSize="24sp"
+                android:textColor="@color/colorPrimaryDark" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:id="@+id/dataRow1">
+
+            <TextView
+                android:text="TY-748920"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/dataID1"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:background="@drawable/cell_border"/>
+
+            <TextView
+                android:text="Tylenol"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/dataName1"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:background="@drawable/cell_border"/>
+
+            <TextView
+                android:text="1054"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/dataCount1"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:background="@drawable/cell_border"/>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:id="@+id/dataRow2">
+
+            <TextView
+                android:text="PE-166283"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/dataID2"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:background="@drawable/cell_border"/>
+
+            <TextView
+                android:text="Percocet"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/dataName2"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:background="@drawable/cell_border"/>
+
+            <TextView
+                android:text="429"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/dataCount2"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:background="@drawable/cell_border"/>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:id="@+id/dataRow3">
+
+            <TextView
+                android:text="QL-789256"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/dataID3"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:background="@drawable/cell_border"/>
+
+            <TextView
+                android:text="Nyquil"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/dataName3"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:background="@drawable/cell_border"/>
+
+            <TextView
+                android:text="980"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/dataCount3"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:background="@drawable/cell_border"/>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:id="@+id/dataRow4">
+
+            <TextView
+                android:text="QL-110002"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/dataID4"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:background="@drawable/cell_border"/>
+
+            <TextView
+                android:text="Dayquil"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/dataName4"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:background="@drawable/cell_border"/>
+
+            <TextView
+                android:text="980"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/dataCount4"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:background="@drawable/cell_border"/>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:id="@+id/dataRow5">
+
+            <TextView
+                android:text="_example"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/dataID5"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:background="@drawable/cell_border"/>
+
+            <TextView
+                android:text="_example"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/dataName5"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:background="@drawable/cell_border"/>
+
+            <TextView
+                android:text="_example"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/dataCount5"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:background="@drawable/cell_border"/>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:id="@+id/dataRow6">
+
+            <TextView
+                android:text="_example"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/dataID6"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:background="@drawable/cell_border"/>
+
+            <TextView
+                android:text="_example"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/dataName6"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:background="@drawable/cell_border"/>
+
+            <TextView
+                android:text="_example"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/dataCount6"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:background="@drawable/cell_border"/>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:id="@+id/dataRow7">
+
+            <TextView
+                android:text="_example"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/dataID7"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:background="@drawable/cell_border"/>
+
+            <TextView
+                android:text="_example"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/dataName7"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:background="@drawable/cell_border"/>
+
+            <TextView
+                android:text="_example"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/dataCount7"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:background="@drawable/cell_border"/>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:id="@+id/dataRow8">
+
+            <TextView
+                android:text="_example"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/dataID8"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:background="@drawable/cell_border"/>
+
+            <TextView
+                android:text="_example"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/dataName8"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:background="@drawable/cell_border"/>
+
+            <TextView
+                android:text="_example"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/dataCount8"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:background="@drawable/cell_border"/>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:id="@+id/dataRow9">
+
+            <TextView
+                android:text="_example"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/dataID9"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:background="@drawable/cell_border"/>
+
+            <TextView
+                android:text="_example"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/dataName9"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:background="@drawable/cell_border"/>
+
+            <TextView
+                android:text="_example"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/dataCount9"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:background="@drawable/cell_border"/>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:id="@+id/scrollExample1" >
+
+            <TextView
+                android:text="scroll example"
+                android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="36sp"
-                android:textStyle="normal|bold"
-                android:width="175dp"
-                android:id="@+id/attrQuantity"
-                android:textColor="#121254"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
-
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" >
-
-            <TextView
-                android:text="TextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/textView21"
-                android:textSize="30sp"
-                android:textColor="#121254"/>
-
-            <TextView
-                android:text="TextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/textView20"
-                android:textColor="#121254"/>
-
-            <TextView
-                android:text="TextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:id="@+id/textView13"
-                android:textColor="#121254"/>
+                android:textAlignment="center"
+                android:textSize="36sp" />
         </TableRow>
-
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:id="@+id/scrollExample2" >
 
             <TextView
-                android:text="TextView"
-                android:layout_width="wrap_content"
+                android:text="scroll example"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/textView27"
-                android:textSize="30sp"
-                android:textColor="#121254"/>
-
-            <TextView
-                android:text="TextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/textView25"
-                android:textColor="#121254"/>
-
-            <TextView
-                android:text="TextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/textView16"
-                android:textColor="#121254"/>
+                android:id="@+id/textView99"
+                android:textAlignment="center"
+                android:textSize="36sp" />
         </TableRow>
-
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:id="@+id/scrollExample3" >
 
             <TextView
-                android:text="TextView"
-                android:layout_width="wrap_content"
+                android:text="scroll example"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/textView30"
-                android:textSize="30sp"
-                android:textColor="#121254"/>
-
-            <TextView
-                android:text="TextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/textView24"
-                android:textColor="#121254"/>
-
-            <TextView
-                android:text="TextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/textView17"
-                android:textColor="#121254"/>
+                android:id="@+id/textView98"
+                android:textAlignment="center"
+                android:textSize="36sp" />
         </TableRow>
-
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:id="@+id/scrollExample4" >
 
             <TextView
-                android:text="TextView"
-                android:layout_width="wrap_content"
+                android:text="scroll example"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/textView31"
-                android:textSize="30sp"
-                android:textColor="#121254"/>
-
-            <TextView
-                android:text="TextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/textView23"
-                android:textColor="#121254"/>
-
-            <TextView
-                android:text="TextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/textView22"
-                android:textColor="#121254"/>
+                android:id="@+id/textView97"
+                android:textAlignment="center"
+                android:textSize="36sp" />
         </TableRow>
-
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:id="@+id/scrollExample5" >
 
             <TextView
-                android:text="TextView"
-                android:layout_width="wrap_content"
+                android:text="scroll example"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/textView34"
-                android:textSize="30sp"
-                android:textColor="#121254"/>
-
-            <TextView
-                android:text="TextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/textView33"
-                android:textColor="#121254"/>
-
-            <TextView
-                android:text="TextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/textView32" />
+                android:id="@+id/textView96"
+                android:textAlignment="center"
+                android:textSize="36sp" />
         </TableRow>
-
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:id="@+id/scrollExample6" >
 
             <TextView
-                android:text="TextView"
-                android:layout_width="wrap_content"
+                android:text="scroll example"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/textView37"
-                android:textSize="30sp"
-                android:textColor="#121254"/>
-
-            <TextView
-                android:text="TextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/textView36"
-                android:textColor="#121254"/>
-
-            <TextView
-                android:text="TextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/textView35"
-                android:textColor="#121254"/>
+                android:id="@+id/textView95"
+                android:textAlignment="center"
+                android:textSize="36sp" />
         </TableRow>
-
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:id="@+id/scrollExample7" >
 
             <TextView
-                android:text="TextView"
-                android:layout_width="wrap_content"
+                android:text="scroll example"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/textView49"
-                android:textSize="30sp"
-                android:textColor="#121254"/>
-
-            <TextView
-                android:text="TextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/textView39"
-                android:textColor="#121254"/>
-
-            <TextView
-                android:text="TextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/textView38"
-                android:textColor="#121254"/>
+                android:id="@+id/textView94"
+                android:textAlignment="center"
+                android:textSize="36sp" />
         </TableRow>
-
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:id="@+id/scrollExample8" >
 
             <TextView
-                android:text="TextView"
-                android:layout_width="wrap_content"
+                android:text="scroll example"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/textView48"
-                android:textSize="30sp"
-                android:textColor="#121254"/>
-
-            <TextView
-                android:text="TextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/textView47"
-                android:textColor="#121254"/>
-
-            <TextView
-                android:text="TextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/textView40"
-                android:textColor="#121254"/>
+                android:id="@+id/textView93"
+                android:textAlignment="center"
+                android:textSize="36sp" />
         </TableRow>
-
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:id="@+id/scrollExample9" >
 
             <TextView
-                android:text="TextView"
-                android:layout_width="wrap_content"
+                android:text="scroll example"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/textView46"
-                android:textSize="30sp"
-                android:textColor="#121254"/>
-
-            <TextView
-                android:text="TextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/textView42"
-                android:textColor="#121254"/>
-
-            <TextView
-                android:text="TextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/textView41"
-                android:textColor="#121254"/>
+                android:id="@+id/textView92"
+                android:textAlignment="center"
+                android:textSize="36sp" />
         </TableRow>
-
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:id="@+id/scrollExample10" >
 
             <TextView
-                android:text="TextView"
-                android:layout_width="wrap_content"
+                android:text="scroll example"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/textView45"
-                android:textSize="30sp"
-                android:textColor="#121254"/>
+                android:id="@+id/textView91"
+                android:textAlignment="center"
+                android:textSize="36sp" />
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:id="@+id/scrollExample11" >
 
             <TextView
-                android:text="TextView"
-                android:layout_width="wrap_content"
+                android:text="scroll example"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/textView44"
-                android:textColor="#121254"/>
+                android:id="@+id/textView90"
+                android:textAlignment="center"
+                android:textSize="36sp" />
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:id="@+id/scrollExample12" >
 
             <TextView
-                android:text="TextView"
-                android:layout_width="wrap_content"
+                android:text="scroll example"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/textView43"
-                android:textColor="#121254"/>
+                android:id="@+id/textView89"
+                android:textAlignment="center"
+                android:textSize="36sp" />
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:id="@+id/scrollExample13" >
+
+            <TextView
+                android:text="scroll example"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView88"
+                android:textAlignment="center"
+                android:textSize="36sp" />
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:id="@+id/scrollExample14" >
+
+            <TextView
+                android:text="scroll example"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView87"
+                android:textAlignment="center"
+                android:textSize="36sp" />
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:id="@+id/scrollExample" >
+
+            <TextView
+                android:text="scroll example"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView86"
+                android:textAlignment="center"
+                android:textSize="36sp" />
         </TableRow>
     </TableLayout>
-</RelativeLayout>
+</ScrollView>
+
+

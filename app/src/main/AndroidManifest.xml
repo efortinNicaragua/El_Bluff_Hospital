@@ -34,6 +34,8 @@
         <activity android:name=".PatientGeneralInfo" />
         <activity android:name=".PatientHistory" />
         <activity android:name=".PatientPrescription"></activity>
+
+
     </application>
 
 </manifest>
