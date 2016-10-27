@@ -53,19 +53,6 @@
         android:layout_alignParentStart="true" />
 
     <TextView
-        android:layout_width="800dp"
-        android:layout_height="40dp"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Crear Prescripción"
-        android:id="@+id/textView"
-        android:textAlignment="center"
-        android:textSize="30sp"
-        android:textColor="#121254"
-        android:layout_above="@+id/imageButton2"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <TextView
         android:text="Toca un botón para seleccionar"
         android:layout_width="500dp"
         android:id="@+id/textView17"
@@ -119,6 +106,19 @@
         android:layout_marginTop="14dp"
         android:layout_below="@+id/text_Añadir"
         android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="800dp"
+        android:layout_height="40dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Crear Prescripción"
+        android:id="@+id/textView"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:textColor="#121254"
+        android:layout_above="@+id/imageButton2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
 
 </RelativeLayout>
