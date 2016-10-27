@@ -37,19 +37,6 @@
         android:layout_alignParentEnd="true" />
 
     <TextView
-        android:text="Nuevo PDF "
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView12"
-        android:textSize="36sp"
-        android:textColor="#121254"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:layout_marginTop="69dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignLeft="@+id/button3"
-        android:layout_alignStart="@+id/button3" />
-
-    <TextView
         android:text="La fecha del documento"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -85,9 +72,38 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textSize="24sp"
         android:onClick="createFile"
-        android:textColor="#121254"
+        android:textColor="#cccccc"
         android:layout_below="@+id/patID"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="117dp" />
+        android:layout_marginTop="117dp"
+        android:background="#00004d"
+        android:padding="1dp"/>
+
+    <TextView
+        android:text="Nuevo PDF "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView12"
+        android:textSize="36sp"
+        android:textColor="#121254"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:layout_marginTop="59dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignLeft="@+id/button3"
+        android:layout_alignStart="@+id/button3"
+        android:fontFamily="sans-serif-condensed" />
+
+    <TextView
+        android:text="Por favor complete la información"
+        android:layout_width="500dp"
+        android:id="@+id/textView19"
+        android:typeface="serif"
+        android:textSize="24sp"
+        android:textColor="#121254"
+        android:layout_height="100dp"
+        android:textStyle="normal|italic"
+        android:textAlignment="center"
+        android:layout_below="@+id/textView12"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

@@ -96,5 +96,20 @@
         android:textColor="#121254"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:fontFamily="sans-serif-condensed" />
+
+    <Button
+        android:text="OK"
+        android:layout_height="100dp"
+        android:layout_below="@+id/reQuant"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="166dp"
+        android:id="@+id/rxgoback"
+        android:textSize="30sp"
+        android:textColor="#cccccc"
+        android:background="#00004d"
+        android:padding="1dp"
+        android:layout_width="200dp"
+        android:onClick="returnRXhome"/>
 </RelativeLayout>
