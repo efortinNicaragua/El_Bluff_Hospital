@@ -164,8 +164,8 @@
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"/>
                 <TextView
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="@color/colorPrimaryDark"
                     android:text="Cantidad"
@@ -244,8 +244,8 @@
                 android:layout_alignParentStart="true"
                 android:textStyle="bold"/>
             <TextView
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="25 pills"
                 android:onClick="moreinfo1"

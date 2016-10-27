@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TableRow
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="15dp"
+            android:layout_height="fill_parent"
+            android:layout_width="fill_parent"
+            android:minHeight="50dp"
+            android:minWidth="300dp">
+
+            <TextView
+                android:id="@+id/dialog1_text_start"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Fecha"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textSize="30sp"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/dialog1_edit_start"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="26/10/2016"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textSize="30sp"
+                android:inputType="date"
+                android:textAlignment="center"
+                android:textStyle="bold"/>
+        </TableRow>
+        <TableRow
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="15dp"
+            android:layout_height="fill_parent"
+            android:layout_width="fill_parent"
+            android:minHeight="50dp"
+            android:minWidth="300dp">
+
+            <TextView
+                android:id="@+id/dialog1_text_end"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Razon"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textSize="30sp"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/dialog1_edit_end"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Dedo Rompido"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textSize="30sp"
+                android:inputType="text"
+                android:textAlignment="center"
+                android:textStyle="bold"/>
+        </TableRow>
+        <TableRow
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="15dp"
+            android:layout_height="fill_parent"
+            android:layout_width="fill_parent"
+            android:minHeight="50dp"
+            android:minWidth="300dp">
+
+            <TextView
+                android:id="@+id/dialog1_text_medicine"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Termina"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textSize="30sp"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/dialog1_edit_medicine"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tylenol"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textSize="30sp"
+                android:inputType="text"
+                android:textAlignment="center"
+                android:textStyle="bold"/>
+        </TableRow>
+        <TableRow
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="15dp"
+            android:layout_height="fill_parent"
+            android:layout_width="fill_parent"
+            android:minHeight="50dp"
+            android:minWidth="300dp">
+
+            <TextView
+                android:id="@+id/dialog1_text_strength"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Porción"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textSize="30sp"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/dialog1_edit_strength"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="120mg"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textSize="30sp"
+                android:inputType="text"
+                android:textAlignment="center"
+                android:textStyle="bold"/>
+        </TableRow>
+        <TableRow
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="15dp"
+            android:layout_height="fill_parent"
+            android:layout_width="fill_parent"
+            android:minHeight="50dp"
+            android:minWidth="300dp">
+
+            <TextView
+                android:id="@+id/dialog1_text_totalAmount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Cantidad"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textSize="30sp"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/dialog1_edit_totalAmount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="25 pills"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textSize="30sp"
+                android:inputType="text"
+                android:textAlignment="center"
+                android:textStyle="bold"/>
+        </TableRow>
+        <TableRow
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="15dp"
+            android:layout_height="fill_parent"
+            android:layout_width="fill_parent"
+            android:minHeight="50dp"
+            android:minWidth="300dp">
+
+            <TextView
+                android:id="@+id/dialog1_text_directions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Direcciones"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textSize="30sp"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/dialog1_edit_directions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="1 con cada comida"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textSize="30sp"
+                android:inputType="text"
+                android:textAlignment="center"
+                android:textStyle="bold"/>
+        </TableRow>
+        <TableRow
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="15dp"
+            android:layout_height="fill_parent"
+            android:layout_width="fill_parent"
+            android:minHeight="50dp"
+            android:minWidth="300dp">
+
+            <TextView
+                android:id="@+id/dialog1_text_doctor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Doctor"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textSize="30sp"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/dialog1_edit_doctor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Dr. Barquero"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textSize="30sp"
+                android:inputType="text"
+                android:textAlignment="center"
+                android:textStyle="bold"/>
+        </TableRow>
+        <TableRow
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="15dp"
+            android:layout_height="fill_parent"
+            android:layout_width="fill_parent"
+            android:minHeight="50dp"
+            android:minWidth="300dp">
+
+        </TableRow>
+    </TableLayout>
+</LinearLayout>

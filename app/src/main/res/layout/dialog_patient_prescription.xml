@@ -93,7 +93,7 @@
             android:textAlignment="center" />
 
         <EditText
-            android:id="@+id/dialog_edit_medicine"
+            android:id="@+id/dialog1_edit_medicine"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Tylenol"
@@ -126,7 +126,7 @@
             android:textAlignment="center" />
 
         <EditText
-            android:id="@+id/dialog_edit_strength"
+            android:id="@+id/dialog1_edit_strength"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="120mg"
@@ -159,7 +159,7 @@
             android:textAlignment="center" />
 
         <EditText
-            android:id="@+id/dialog_edit_totalAmount"
+            android:id="@+id/dialog1_edit_totalAmount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="25 pills"
@@ -192,7 +192,7 @@
             android:textAlignment="center" />
 
         <EditText
-            android:id="@+id/dialog_edit_directions"
+            android:id="@+id/dialog1_edit_directions"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="1 con cada comida"
@@ -225,7 +225,7 @@
             android:textAlignment="center" />
 
         <EditText
-            android:id="@+id/dialog_edit_doctor"
+            android:id="@+id/dialog1_edit_doctor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Dr. Barquero"
@@ -258,7 +258,7 @@
             android:textAlignment="center" />
 
         <EditText
-            android:id="@+id/dialog_edit_reason"
+            android:id="@+id/dialog1_edit_reason"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Dedo quebrado"
