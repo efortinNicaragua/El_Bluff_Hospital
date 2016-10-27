@@ -2,6 +2,7 @@ package ethanfortin_nicaragua.elbluffhospital;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -32,51 +33,93 @@ public class SubtractMedicine extends AppCompatActivity {
                 LayoutInflater inflater = LayoutInflater.from(SubtractMedicine.this);
                 View subView = inflater.inflate(R.layout.dialog_rx_confirm, null);
 
-                final EditText subEditText1 = (EditText)findViewById(R.id.patIdOrName);
-                final EditText subEditText2 = (EditText)findViewById(R.id.medId);
-                final EditText subEditText3 = (EditText)findViewById(R.id.pillQuantity);
+                final EditText entryPatIdOrName = (EditText)findViewById(R.id.patIdOrName);
+                final EditText entryMedId = (EditText)findViewById(R.id.medId);
+                final EditText entryPillQuant = (EditText)findViewById(R.id.pillQuantity);
+                final EditText entryDirections = (EditText)findViewById(R.id.etDirections);
+                final EditText entryDuration = (EditText)findViewById(R.id.etDuration);
+                final EditText entryDoctor = (EditText)findViewById(R.id.etDoctor);
+                final EditText entryReason = (EditText)findViewById(R.id.etReason);
 
                 TextView tv1 = (TextView)subView.findViewById(R.id.dPatIdOrName);
                 TextView tv2 = (TextView)subView.findViewById(R.id.dMedId);
                 TextView tv3 = (TextView)subView.findViewById(R.id.dPillQuantity);
-                TextView tv4 = (TextView)subView.findViewById(R.id.date);
+                TextView tv4 = (TextView)subView.findViewById(R.id.dDoctor);
+                TextView tv5 = (TextView)subView.findViewById(R.id.date);
 
                 int eFlag = 0;
 
                 // Verify pat name
-                String s_patId = subEditText1.getText().toString();
-
+                String s_patId = entryPatIdOrName.getText().toString();
                 if(s_patId.equals("")) {
                     eFlag = 1;
                 }
                 else {
                     tv1.setText(s_patId);
+                    // INSERT in database
                 }
 
                 // Verify drug id
-                String s_drugId = subEditText2.getText().toString();
-
+                String s_drugId = entryMedId.getText().toString();
                 if(s_drugId.equals("")) {
                     eFlag = 1;
                 }
                 else {
                     tv2.setText(s_drugId);
+                    // INSERT in database
                 }
 
                 // Verify drug quantity
-                String s_drugQuant = subEditText3.getText().toString();
-
+                String s_drugQuant = entryPillQuant.getText().toString();
                 if(s_drugQuant.equals("")) {
                     eFlag = 1;
                 }
                 else {
                     tv3.setText(s_drugQuant);
+                    // INSERT in database
+                }
+
+                // Verify directions
+                String s_directions = entryDirections.getText().toString();
+                if(s_directions.equals("")) {
+                    eFlag = 1;
+                }
+                else {
+                    // INSERT in database
+                }
+
+                // Verify duration
+                String s_duration = entryDuration.getText().toString();
+                if(s_duration.equals("")) {
+                    eFlag = 1;
+                }
+                else {
+                    // INSERT in database
+                }
+
+                // Verify Doctor
+                String s_doctor = entryDoctor.getText().toString();
+                if(s_doctor.equals("")) {
+                    eFlag = 1;
+                }
+                else {
+                    tv4.setText(s_doctor);
+                    // INSERT in database
+                }
+
+                // Verify Reason
+                String s_reason = entryReason.getText().toString();
+                if(s_reason.equals("")) {
+                    eFlag = 1;
+                }
+                else {
+                    // INSERT in database
                 }
 
                 // Get Current Date and Time
                 SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm");
                 Date date = new Date();
-                tv4.setText(dateFormat.format(date));
+                tv5.setText(dateFormat.format(date));
 
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
 
@@ -97,8 +140,6 @@ public class SubtractMedicine extends AppCompatActivity {
                                 Toast toast2 = Toast.makeText(apContext2, text, duration);
                                 toast2.show();
 
-                                dialog.cancel();
-
                                 /*
                                     TODO: - Add functionality that synthesizes this info with the db.
                                             - If drug Id is used, convert to name and display.
@@ -107,6 +148,7 @@ public class SubtractMedicine extends AppCompatActivity {
                                             - Include Medicine info (id, name, strength(?), quantity),
                                                 plus reason, etc.
                                 */
+
                             }
                         })
                         .setNegativeButton("Cancel",new DialogInterface.OnClickListener() {

@@ -1,0 +1,516 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/greygradient">
+    <TableLayout
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/activity_inventory"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        tools:context="ethanfortin_nicaragua.elbluffhospital.Inventory"
+        android:background="@drawable/greygradient"
+        android:stretchColumns="*">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:gravity="center_vertical|center_horizontal"
+            android:id="@+id/titleRow">
+
+            <TextView
+                android:text="Resultados de la busqueda"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/tvTitle"
+                android:textAlignment="center"
+                android:textSize="30sp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="normal|italic" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/bufferRow">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView20" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:id="@+id/textView19"
+                android:textSize="24sp"
+                android:textAlignment="center"
+                android:text="La fecha:" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:id="@+id/retrieveDate"
+                android:textSize="24sp"
+                android:textColor="@color/cellBorder" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:id="@+id/textView21"
+                android:textSize="24sp"
+                android:textAlignment="center"
+                android:text="La droga:" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:id="@+id/retrieveName"
+                android:textSize="24sp"
+                android:textColor="@color/cellBorder" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/bufferRow2" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView17" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:id="@+id/fieldNames">
+
+            <TextView
+                android:text="Identificación"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/fnID"
+                android:textAlignment="center"
+                android:textStyle="normal|bold"
+                android:textSize="24sp"
+                android:textColor="@color/colorPrimaryDark" />
+
+            <TextView
+                android:text="Nombre"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/fnName"
+                android:textStyle="normal|bold"
+                android:textAlignment="center"
+                android:textSize="24sp"
+                android:textColor="@color/colorPrimaryDark" />
+
+            <TextView
+                android:text="Cantidad"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/fnQuantity"
+                android:textAlignment="center"
+                android:textStyle="normal|bold"
+                android:textSize="24sp"
+                android:textColor="@color/colorPrimaryDark" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:id="@+id/dataRow1">
+
+            <TextView
+                android:text="TY-748920"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/dataID1"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:background="@drawable/cell_border"/>
+
+            <TextView
+                android:text="Tylenol"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/dataName1"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:background="@drawable/cell_border"/>
+
+            <TextView
+                android:text="150"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/dataCount1"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:background="@drawable/cell_border"/>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:id="@+id/dataRow2">
+
+            <TextView
+                android:text="PE-166283"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/dataID2"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:background="@drawable/cell_border"/>
+
+            <TextView
+                android:text="Percocet"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/dataName2"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:background="@drawable/cell_border"/>
+
+            <TextView
+                android:text="50"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/dataCount2"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:background="@drawable/cell_border"/>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:id="@+id/dataRow3">
+
+            <TextView
+                android:text="QL-789256"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/dataID3"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:background="@drawable/cell_border"/>
+
+            <TextView
+                android:text="Nyquil"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/dataName3"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:background="@drawable/cell_border"/>
+
+            <TextView
+                android:text="35"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/dataCount3"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:background="@drawable/cell_border"/>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:id="@+id/dataRow4">
+
+            <TextView
+                android:text="QL-110002"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/dataID4"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:background="@drawable/cell_border"/>
+
+            <TextView
+                android:text="Dayquil"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/dataName4"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:background="@drawable/cell_border"/>
+
+            <TextView
+                android:text="35"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/dataCount4"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:background="@drawable/cell_border"/>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:id="@+id/dataRow5">
+
+            <TextView
+                android:text="_example"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/dataID5"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:background="@drawable/cell_border"/>
+
+            <TextView
+                android:text="_example"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/dataName5"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:background="@drawable/cell_border"/>
+
+            <TextView
+                android:text="_example"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/dataCount5"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:background="@drawable/cell_border"/>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:id="@+id/dataRow6">
+
+            <TextView
+                android:text="_example"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/dataID6"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:background="@drawable/cell_border"/>
+
+            <TextView
+                android:text="_example"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/dataName6"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:background="@drawable/cell_border"/>
+
+            <TextView
+                android:text="_example"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/dataCount6"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:background="@drawable/cell_border"/>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:id="@+id/dataRow7">
+
+            <TextView
+                android:text="_example"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/dataID7"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:background="@drawable/cell_border"/>
+
+            <TextView
+                android:text="_example"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/dataName7"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:background="@drawable/cell_border"/>
+
+            <TextView
+                android:text="_example"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/dataCount7"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:background="@drawable/cell_border"/>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:id="@+id/dataRow8">
+
+            <TextView
+                android:text="_example"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/dataID8"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:background="@drawable/cell_border"/>
+
+            <TextView
+                android:text="_example"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/dataName8"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:background="@drawable/cell_border"/>
+
+            <TextView
+                android:text="_example"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/dataCount8"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:background="@drawable/cell_border"/>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:id="@+id/dataRow9">
+
+            <TextView
+                android:text="_example"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/dataID9"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:background="@drawable/cell_border"/>
+
+            <TextView
+                android:text="_example"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/dataName9"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:background="@drawable/cell_border"/>
+
+            <TextView
+                android:text="_example"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/dataCount9"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:background="@drawable/cell_border"/>
+
+        </TableRow>
+
+
+    </TableLayout>
+</ScrollView>

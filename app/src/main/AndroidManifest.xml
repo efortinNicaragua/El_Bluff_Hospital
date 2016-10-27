@@ -33,9 +33,8 @@
         <activity android:name=".SearchInventory" />
         <activity android:name=".PatientGeneralInfo" />
         <activity android:name=".PatientHistory" />
-        <activity android:name=".PatientPrescription"></activity>
-
-
+        <activity android:name=".PatientPrescription" />
+        <activity android:name=".SearchByNameShipmentResults"></activity>
     </application>
 
 </manifest>

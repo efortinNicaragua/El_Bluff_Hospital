@@ -14,17 +14,6 @@
         android:id="@+id/searchByName"
         android:hint="Nombre de medicina" />
 
-    <TextView
-        android:text="La fecha del envio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="34dp"
-        android:id="@+id/textView29"
-        android:textSize="24sp"
-        android:textColor="@color/colorPrimaryDark"
-        android:layout_below="@+id/searchByID"
-        android:layout_centerHorizontal="true" />
-
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -48,13 +37,36 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
+    <TextView
+        android:text="busca por la fecha del envio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView29"
+        android:textSize="24sp"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_marginTop="65dp"
+        android:layout_below="@+id/searchByID"
+        android:layout_alignRight="@+id/textView28"
+        android:layout_alignEnd="@+id/textView28" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button4"
+        android:layout_marginLeft="18dp"
+        android:layout_marginStart="18dp"
+        android:layout_alignBaseline="@+id/textView29"
+        android:layout_alignBottom="@+id/textView29"
+        android:layout_toRightOf="@+id/searchByID"
+        android:layout_toEndOf="@+id/searchByID" />
+
     <DatePicker
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView29"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="24dp"
         android:calendarViewShown="false"
-        android:id="@+id/datePicker2" />
+        android:id="@+id/datePicker2"
+        android:layout_marginTop="23dp"
+        android:layout_below="@+id/button4"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

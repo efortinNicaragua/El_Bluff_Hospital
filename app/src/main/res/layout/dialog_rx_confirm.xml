@@ -54,30 +54,37 @@
         android:text="TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/dPatIdOrName"
-        android:layout_weight="1"
-        android:textColor="@color/colorPrimaryDark"
-        android:textAlignment="center"
+        android:id="@+id/dMedId"
         android:textSize="24sp"
-        android:layout_marginTop="26dp"
-        android:layout_marginRight="37dp"
-        android:layout_marginEnd="37dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_marginTop="30dp"
+        android:layout_below="@+id/dPatIdOrName"
+        android:layout_alignLeft="@+id/dPatIdOrName"
+        android:layout_alignStart="@+id/dPatIdOrName" />
+
+    <TextView
+        android:text="El médico"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView61"
+        android:layout_alignLeft="@+id/textView61"
+        android:layout_alignStart="@+id/textView61"
+        android:layout_marginTop="30dp"
+        android:id="@+id/textView11"
+        android:textSize="24sp" />
 
     <TextView
         android:text="TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/dMedId"
+        android:layout_alignBottom="@+id/textView11"
+        android:layout_alignLeft="@+id/date"
+        android:layout_alignStart="@+id/date"
+        android:layout_marginTop="30dp"
+        android:id="@+id/dDoctor"
         android:textSize="24sp"
-        android:textAlignment="center"
-        android:textColor="@color/colorPrimaryDark"
-        android:layout_marginTop="31dp"
-        android:layout_below="@+id/dPatIdOrName"
-        android:layout_alignLeft="@+id/dPatIdOrName"
-        android:layout_alignStart="@+id/dPatIdOrName" />
+        android:textColor="@color/colorPrimaryDark" />
 
     <TextView
         android:text="TextView"
@@ -100,8 +107,24 @@
         android:textSize="24sp"
         android:textAlignment="center"
         android:textColor="@color/colorPrimaryDark"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="30dp"
         android:layout_below="@+id/dPillQuantity"
         android:layout_alignLeft="@+id/dPillQuantity"
         android:layout_alignStart="@+id/dPillQuantity" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/dPatIdOrName"
+        android:layout_weight="1"
+        android:textColor="@color/colorPrimaryDark"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:layout_marginTop="29dp"
+        android:layout_marginRight="156dp"
+        android:layout_marginEnd="156dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 </RelativeLayout>
