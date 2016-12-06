@@ -41,7 +41,7 @@ public class Inventory extends ListActivity {
     ListView listView;
     ArrayList<Class_FetchAllDrugInfo> druginfo_data = new ArrayList();
 
-//Standard onCreate methos
+//Standard onCreate method
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
