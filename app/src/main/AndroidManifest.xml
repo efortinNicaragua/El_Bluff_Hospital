@@ -35,6 +35,10 @@
         <activity android:name=".PatientHistory" />
         <activity android:name=".PatientPrescription" />
         <activity android:name=".SearchByNameShipmentResults"></activity>
+        <activity
+            android:name=".AppBar"
+            android:label="@string/title_activity_app_bar"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

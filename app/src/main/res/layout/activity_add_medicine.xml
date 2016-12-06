@@ -27,7 +27,7 @@
         android:layout_width="800dp"
         android:layout_height="65dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:text="Añadir Medicina"
+        android:text="Añadir Envío"
         android:id="@+id/textView2"
         android:textAlignment="center"
         android:textSize="48sp"
