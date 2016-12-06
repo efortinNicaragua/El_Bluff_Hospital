@@ -2,7 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="ethanfortin_nicaragua.elbluffhospital">
 
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+   <!--<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> -->
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -26,11 +27,8 @@
         <activity android:name=".DoctorMain" />
         <activity android:name=".UploadOldFileHome" />
         <activity android:name=".PDFConfirmationandUpload" />
-        <activity android:name=".SearchTotals" />
-        <activity android:name=".SearchShipments" />
         <activity android:name=".Inventory" />
         <activity android:name=".MainMenu" />
-        <activity android:name=".SearchInventory" />
         <activity android:name=".PatientGeneralInfo" />
         <activity android:name=".PatientHistory" />
         <activity android:name=".PatientPrescription" />
