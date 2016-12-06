@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#FeFeFe</color>
-    <color name="colorPrimaryDark">#101950</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#96d6f2</color>
+    <color name="colorPrimaryDark">#09094d</color>
+    <color name="colorAccent">#4070ff</color>
     <color name="cellBackground">#00000000</color>
-    <color name="cellBorder">#000000</color>
+    <color name="cellBorder">#020202</color>
+    <color name="secondary_text_material_light">#8abe600d</color>
 </resources>
