@@ -461,7 +461,7 @@
         android:textAllCaps="false"
         android:textSize="25sp"
         android:scaleType="fitCenter"
-        android:background="@android:color/transparent"
+        android:background="@android:drawable/btn_default"
         android:padding="1dp"
         android:layout_width="190dp"
         android:layout_alignParentBottom="true"

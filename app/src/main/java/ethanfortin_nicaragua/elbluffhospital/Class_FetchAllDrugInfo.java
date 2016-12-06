@@ -23,5 +23,8 @@ public Class_FetchAllDrugInfo(String drugid, String drugname, int drugtotal) {
     public String getDrugID() { return drugid; }
     public String getDrugName() { return drugname; }
     public int getDrugTotal() { return drugtotal; }
-    public String getAllData(){String all= drugid+ " "+ drugname + " "+drugtotal; return all;}
+    public String getAllData(){
+        String all = drugid + " " + drugname + " " + drugtotal;
+        return all;
+    }
 }

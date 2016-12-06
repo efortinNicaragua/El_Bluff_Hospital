@@ -10,14 +10,14 @@
 
     <!-- Patient History should always appear -->
     <item
-        android:if = "@+id/pat_history"
+        android:id = "@+id/pat_history"
         android:icon = "@drawable/reloj"
         android:title="patient history"
         app:showAsAction="always"/>
 
     <!---Patient Prescriptions should ways be shown-->
     <item
-        android:if = "@+id/pat_rx"
+        android:id = "@+id/pat_rx"
         android:icon = "@drawable/pillbottle_mini"
         android:title="patient prescription"
         app:showAsAction="always"/>

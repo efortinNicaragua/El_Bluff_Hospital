@@ -2,8 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="ethanfortin_nicaragua.elbluffhospital">
 
-   <!--<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> -->
+    <!-- <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> -->
     <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
 
     <application
         android:allowBackup="true"
@@ -21,7 +26,6 @@
         <activity android:name=".PharmacyMain" />
         <activity android:name=".PatientInfo" />
         <activity android:name=".SeeInventory" />
-        <activity android:name=".AddMedicine" />
         <activity android:name=".SubtractMedicine" />
         <activity android:name=".PrescriptionConfirmation" />
         <activity android:name=".DoctorMain" />
@@ -32,11 +36,14 @@
         <activity android:name=".PatientGeneralInfo" />
         <activity android:name=".PatientHistory" />
         <activity android:name=".PatientPrescription" />
-        <activity android:name=".SearchByNameShipmentResults"></activity>
+        <activity android:name=".SearchByNameShipmentResults" />
         <activity
             android:name=".AppBar"
             android:label="@string/title_activity_app_bar"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".LoginActivity"
+            android:label="@string/title_activity_login"></activity>
     </application>
 
 </manifest>
