@@ -35,12 +35,12 @@ public class AddMedicine extends AppCompatActivity {
             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
 
             // set title
-            alertDialogBuilder.setTitle("Añadir nuevo medicamento");
+            alertDialogBuilder.setTitle("Añadir nuevo medicina");
 
             // set Dialog message
             alertDialogBuilder
                     .setView(subView)
-                    .setMessage("Encuentra la droga por su nombre o identificación, y dar a la cantidad.")
+                    .setMessage("Añadir la medicina nueva del envío al inventario.")
                     .setPositiveButton("Añadir",new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog,int id) {
 

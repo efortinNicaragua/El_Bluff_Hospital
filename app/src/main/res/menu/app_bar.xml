@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <!---"General Info" as an action button-->
+    <item
+            android:id = "@+id/general_info"
+            android:icon = "@drawable/manillafolder"
+            android:title="general info"
+            app:showAsAction = "always"/>
+
+    <!-- Patient History should always appear -->
+    <item
+        android:if = "@+id/pat_history"
+        android:icon = "@drawable/reloj"
+        android:title="patient history"
+        app:showAsAction="always"/>
+
+    <!---Patient Prescriptions should ways be shown-->
+    <item
+        android:if = "@+id/pat_rx"
+        android:icon = "@drawable/pillbottle_mini"
+        android:title="patient prescription"
+        app:showAsAction="always"/>
+
+</menu>

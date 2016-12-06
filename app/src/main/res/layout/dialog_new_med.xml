@@ -1,31 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_marginBottom="30dp"
+    android:layout_marginTop = "30dp">
 
     <EditText
         android:id="@+id/addName"
-        android:layout_width="match_parent"
+        android:layout_width="405dp"
         android:layout_height="wrap_content"
         android:inputType="text"
-        android:hint="Nombre"
-        android:textAlignment="center" />
+        android:hint="Nombre de Medicina"
+        android:textAlignment="center"
+        android:layout_marginTop="76dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <EditText
         android:id="@+id/addId"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="text"
-        android:hint="Identificacion"
-        android:textAlignment="center" />
+        android:hint="ID de Medicina"
+        android:textAlignment="center"
+        android:layout_marginTop="30dp"
+        android:layout_below="@+id/addName"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <EditText
         android:id="@+id/addQuantity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="number"
-        android:hint="Cantidad"
-        android:textAlignment="center" />
+        android:hint="Cantidad de medicina en envío"
+        android:textAlignment="center"
+        android:layout_marginTop="30dp"
+        android:layout_below="@+id/addId"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
-</LinearLayout>
+    <DatePicker
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/datePicker3"
+        android:headerBackground="#00004d"
+        android:calendarViewShown="false"
+        android:layout_below="@+id/addQuantity"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="47dp" />
+
+    <TextView
+        android:text="Elige la fecha de envío"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView22"
+        android:textSize="18sp"
+        android:textStyle="normal|italic"
+        android:textColor="#00004d"
+        android:layout_alignTop="@+id/datePicker3"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>
