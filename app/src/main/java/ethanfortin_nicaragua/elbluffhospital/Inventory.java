@@ -47,9 +47,6 @@ public class Inventory extends ListActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inventory);
 
-        //For presentation
-
-
         fetch_druginfo_all fetch_druginfo_all = new fetch_druginfo_all(this);
         fetch_druginfo_all.execute();
 
