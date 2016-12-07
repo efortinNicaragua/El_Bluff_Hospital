@@ -9,28 +9,13 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.appindexing.Thing;
 import com.google.android.gms.common.api.GoogleApiClient;
-
-import static ethanfortin_nicaragua.elbluffhospital.R.id.edit_Allergies;
-import static ethanfortin_nicaragua.elbluffhospital.R.id.edit_Birthdate;
-import static ethanfortin_nicaragua.elbluffhospital.R.id.edit_Children;
-import static ethanfortin_nicaragua.elbluffhospital.R.id.edit_Height;
-import static ethanfortin_nicaragua.elbluffhospital.R.id.edit_ID;
-import static ethanfortin_nicaragua.elbluffhospital.R.id.edit_Married;
-import static ethanfortin_nicaragua.elbluffhospital.R.id.edit_MedicalConditions;
-import static ethanfortin_nicaragua.elbluffhospital.R.id.edit_Telephone;
-import static ethanfortin_nicaragua.elbluffhospital.R.id.edit_Weight;
-import static ethanfortin_nicaragua.elbluffhospital.R.id.edit_adress;
-import static ethanfortin_nicaragua.elbluffhospital.R.id.edit_gender;
-import static ethanfortin_nicaragua.elbluffhospital.R.id.edit_name;
 
 public class PatientInfo extends AppCompatActivity {
 
@@ -121,7 +106,8 @@ public class PatientInfo extends AppCompatActivity {
                                                 DialogInterface dialog,
                                                 int which) {
                                             dialog.dismiss();
-                                            Intent intent_patientData = new Intent(PatientInfo.this, PatientGeneralInfo.class);
+                                            Intent intent_patientData = new Intent(PatientInfo.this, NewPatientGenInfo.class);
+
                                             startActivity(intent_patientData);
                                         }
                                     });

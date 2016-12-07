@@ -1,25 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-    <!---"General Info" as an action button-->
-    <item
-            android:id = "@+id/general_info"
-            android:icon = "@drawable/manillafolder"
-            android:title="general info"
-            app:showAsAction = "always"/>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:android2 = "http://schemas.android.com/apk/res-auto"
+    >
 
-    <!-- Patient History should always appear -->
-    <item
-        android:id = "@+id/pat_history"
-        android:icon = "@drawable/reloj"
-        android:title="patient history"
-        app:showAsAction="always"/>
 
-    <!---Patient Prescriptions should ways be shown-->
-    <item
-        android:id = "@+id/pat_rx"
-        android:icon = "@drawable/pillbottle_mini"
-        android:title="patient prescription"
-        app:showAsAction="always"/>
+            <item android:id="@+id/pat_gen_info"
+                android:icon="@drawable/manillafolder"
+                android:title="Patient General Info   "
+                android2:showAsAction="always|withText"/>
+            <item android:id="@+id/pat_history"
+                android:icon="@drawable/reloj"
+                android:title="Visit History   "
+                android2:showAsAction="always|withText"/>
+            <item android:id="@+id/pat_prescription"
+                android:icon="@drawable/pillbottle_mini"
+                android:title="Prescriptions   "
+                android2:showAsAction="always|withText"/>
 
 </menu>
+
+
+

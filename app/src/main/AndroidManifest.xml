@@ -44,6 +44,17 @@
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_login"></activity>
+            android:name=".NewPatientGenInfo"
+            android:label="AppBar"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".NewVisitHistory"
+            android:label="NewVisitHistory"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".NewPatientPrescription"
+            android:label="NewPatientPrescription"
+            android:theme="@style/AppTheme"/>
     </application>
 
 </manifest>
