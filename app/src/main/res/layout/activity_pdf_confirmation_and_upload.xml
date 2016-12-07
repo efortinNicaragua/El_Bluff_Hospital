@@ -13,18 +13,6 @@
     android:background="@drawable/greygradient">
 
 
-    <ImageView
-    android:id = "@+id/pdfView"
-        android:layout_height="500dp"
-    android:layout_weight="1"
-        android:scaleType="centerInside"
-        android:layout_width="600dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="44dp"
-        android:onClick="picbig"/>
-
     <Button
      android:layout_width="500dp"
      android:layout_height="100dp"
@@ -39,5 +27,17 @@
      android:layout_centerHorizontal="true"
      android:layout_marginTop="41dp"
      android:id="@+id/confirm_doc" />
+
+    <ImageView
+    android:id = "@+id/pdfView"
+        android:layout_height="500dp"
+    android:layout_weight="1"
+        android:scaleType="centerInside"
+        android:layout_width="600dp"
+        android:layout_marginTop="44dp"
+        android:onClick="picbig"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>

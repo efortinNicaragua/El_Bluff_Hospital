@@ -34,13 +34,12 @@
         <activity android:name=".Inventory" />
         <activity android:name=".MainMenu" />
         <activity android:name=".SearchByNameShipmentResults" />
-
         <activity
             android:name=".LoginActivity"
-            android:label="@string/title_activity_login"></activity>
-            android:name=".NewPatientGenInfo"
-            android:label="AppBar"
-            android:theme="@style/AppTheme" />
+            android:label="@string/title_activity_login" />
+        android:name=".NewPatientGenInfo"
+        android:label="AppBar"
+        android:theme="@style/AppTheme" />
         <activity
             android:name=".NewVisitHistory"
             android:label="NewVisitHistory"
@@ -48,11 +47,15 @@
         <activity
             android:name=".NewPatientPrescription"
             android:label="NewPatientPrescription"
-            android:theme="@style/AppTheme"/>
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".NewPatientGenInfo"
             android:label="NewPatientGenInfo"
-            android:theme="@style/AppTheme"/>
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".AddNewVisit"
+            android:label="@string/title_activity_add_new_visit"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

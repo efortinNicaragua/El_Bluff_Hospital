@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:text="La Fecha"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/Date"
+        android:textSize="20sp"
+        android:layout_alignBaseline="@+id/ddate"
+        android:layout_alignBottom="@+id/ddate"
+        android:layout_alignLeft="@+id/Reason"
+        android:layout_alignStart="@+id/Reason"
+        android:textColor="#00004d"/>
+
+    <TextView
+        android:text="El Razon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/Reason"
+        android:textSize="20sp"
+        android:layout_alignBaseline="@+id/dReason"
+        android:layout_alignBottom="@+id/dReason"
+        android:layout_alignLeft="@+id/Doctor"
+        android:layout_alignStart="@+id/Doctor"
+        android:textColor="#00004d"/>
+
+    <TextView
+        android:text="El Doctor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/Doctor"
+        android:textSize="20sp"
+        android:layout_alignBaseline="@+id/dDoctor"
+        android:layout_alignBottom="@+id/dDoctor"
+        android:layout_alignLeft="@+id/Rx"
+        android:layout_alignStart="@+id/Rx"
+        android:textColor="#00004d"/>
+
+    <TextView
+        android:text="La Prescripcion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="56dp"
+        android:layout_marginStart="56dp"
+        android:id="@+id/Rx"
+        android:textSize="20sp"
+        android:layout_alignBaseline="@+id/dRx"
+        android:layout_alignBottom="@+id/dRx"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textColor="#00004d"/>
+
+    <TextView
+        android:text="El documento archivo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="56dp"
+        android:layout_marginStart="56dp"
+        android:id="@+id/PDF"
+        android:textSize="20sp"
+        android:layout_alignBaseline="@+id/dPDF"
+        android:layout_alignBottom="@+id/dPDF"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textColor="#00004d"/>
+
+    <!--These are the variable quantities-->
+
+    <EditText
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/dReason"
+        android:textSize="20sp"
+        android:textAlignment="viewEnd"
+        android:layout_gravity ="end"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_marginTop="30dp"
+        android:layout_below="@+id/ddate"
+        android:layout_alignLeft="@+id/ddate"/>
+        <!--android:layout_alignStart="@+id/ddate"-->
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/dDoctor"
+        android:textSize="20sp"
+        android:textAlignment="viewEnd"
+        android:layout_gravity ="end"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_marginTop="30dp"
+        android:layout_below="@+id/dReason"
+        android:layout_alignLeft="@+id/dReason"/>
+        <!--android:layout_alignStart="@+id/dReason"-->
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/dRx"
+        android:textSize="20sp"
+        android:textAlignment="viewEnd"
+        android:layout_gravity ="end"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_marginTop="30dp"
+        android:layout_below="@+id/dDoctor"
+        android:layout_alignLeft="@+id/dDoctor"/>
+        <!--android:layout_alignStart="@+id/dDoctor"-->
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/dPDF"
+        android:textSize="20sp"
+        android:textAlignment="viewEnd"
+        android:layout_gravity ="end"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_marginTop="30dp"
+        android:layout_below="@+id/dRx"
+        android:layout_alignLeft="@+id/dRx"/>
+
+    <EditText
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/ddate"
+        android:layout_weight="1"
+        android:textColor="@color/colorPrimaryDark"
+        android:textAlignment="viewEnd"
+        android:layout_gravity ="end"
+        android:textSize="20sp"
+        android:layout_marginTop="28dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+    <!--android:layout_alignStart="@+id/dDoctor"-->
+
+
+</RelativeLayout>
