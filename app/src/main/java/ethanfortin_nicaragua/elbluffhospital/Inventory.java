@@ -50,7 +50,6 @@ public class Inventory extends ListActivity {
         fetch_druginfo_all fetch_druginfo_all = new fetch_druginfo_all(this);
         fetch_druginfo_all.execute();
 
-
     }
 
 
