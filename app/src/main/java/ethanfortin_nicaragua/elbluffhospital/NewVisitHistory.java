@@ -1,5 +1,6 @@
 package ethanfortin_nicaragua.elbluffhospital;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -35,8 +36,7 @@ public class NewVisitHistory extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_visit_history);
 
-        FloatingActionButton addVisit = (FloatingActionButton) findViewById(R.id.fab_add);
-
+        final FloatingActionButton addVisit = (FloatingActionButton) findViewById(R.id.fab_add);
 
         addVisit.setOnClickListener(new View.OnClickListener() {
 
@@ -44,12 +44,11 @@ public class NewVisitHistory extends AppCompatActivity {
                 LayoutInflater inflater = LayoutInflater.from(NewVisitHistory.this);
                 final View subView = inflater.inflate(R.layout.dialog_add_visit, null);
 
-                final EditText entryDate = (EditText)subView.findViewById(R.id.ddate);
-                final EditText entryReason = (EditText)subView.findViewById(R.id.dReason);
-                final EditText entryDoctor = (EditText)subView.findViewById(R.id.dDoctor);
-                final EditText entryRx = (EditText)subView.findViewById(R.id.dRx);
-                final EditText entryPDF = (EditText)subView.findViewById(R.id.dPDF);
-
+                final EditText entryDate = (EditText) subView.findViewById(R.id.ddate);
+                final EditText entryReason = (EditText) subView.findViewById(R.id.dReason);
+                final EditText entryDoctor = (EditText) subView.findViewById(R.id.dDoctor);
+                final EditText entryRx = (EditText) subView.findViewById(R.id.dRx);
+                final EditText entryPDF = (EditText) subView.findViewById(R.id.dPDF);
 
 
                 // Get Current Date
@@ -57,91 +56,135 @@ public class NewVisitHistory extends AppCompatActivity {
                 Date date = new Date();
                 entryDate.setText(dateFormat.format(date));
 
-                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
-
-                // set title
-                alertDialogBuilder.setTitle("Anadir la visita nueva");
-
-                // set Dialog message
-                alertDialogBuilder
-                        .setView(subView)
-                        .setMessage("Ingrese la informacion de la visita")
-                        .setPositiveButton("Aceptar",new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog,int id) {
-
-                                //Checking to see if edit text's are filled
-                                //int eFlag = 0;
-
+                final AlertDialog alertDialogBuilder = new AlertDialog.Builder(context)
+                    .setTitle("Anadir la visita nueva")
+                    .setView(subView)
+                    .setMessage("Ingrese la informacion de la visita")
+                    .setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
                                 // Verify reason
-                                String  s_razon = entryReason.getText().toString();
-                                //if(s_razon.matches("")) {
-                                    //eFlag = 1;
-                                //}
-
-                               // // Verify doctor
-                                String s_doc = entryDoctor.getText().toString();
-                                //if(s_doc.matches("")) {
-                                   // eFlag = 1;
-                               // }
-
-                                if(TextUtils.isEmpty(s_razon)) {
-                                    entryReason.setError("Por Favor, llena toda la informacion.");
-                                    int duration = Toast.LENGTH_LONG;
-                                    Context context = getApplicationContext();
+                                String s_razon = entryReason.getText().toString();
+                                if (TextUtils.isEmpty(s_razon)) {
+                                    //entryReason.setError("Por Favor, llena toda la informacion.");
+                                    //int duration = Toast.LENGTH_LONG;
+                                    //Context context = getApplicationContext();
                                     String text1 = "Por Favor, llena toda la informacion.";
-                                    Toast toast1 = Toast.makeText(context, text1, duration);
+                                    Toast toast1 = Toast.makeText(getApplicationContext(), text1, Toast.LENGTH_LONG);
                                     toast1.show();
                                 }
 
-                                if(TextUtils.isEmpty(s_doc)) {
-                                    entryDoctor.setError("Por Favor, llena toda la informacion.");
-                                    int duration = Toast.LENGTH_LONG;
-                                    Context context = getApplicationContext();
+
+                                // Verify doctor
+                                String s_doc = entryDoctor.getText().toString();
+                                if (TextUtils.isEmpty(s_doc)) {
+                                    //entryDoctor.setError("Por Favor, llena toda la informacion.");
+                                    // int duration = Toast.LENGTH_LONG;
+                                    // Context context = getApplicationContext();
                                     String text1 = "Por Favor, llena toda la informacion.";
-                                    Toast toast1 = Toast.makeText(context, text1, duration);
+                                    Toast toast1 = Toast.makeText(getApplicationContext(), text1, Toast.LENGTH_LONG);
                                     toast1.show();
                                 }
 
                                 //Set confirmation toast
-                                int duration = Toast.LENGTH_LONG;
-                                Context context = getApplicationContext();
-                                String text1 = "La visita se ha guardado.";
-                                Toast toast1 = Toast.makeText(context, text1, duration);
-                                toast1.show();
+
+                                if(entryReason.getText().toString().trim().length() > 0 && entryDoctor.getText().toString().trim().length() >0) {
+                                    Toast toast2 = Toast.makeText(getApplicationContext(), "La visita se ha guardado.", Toast.LENGTH_LONG);
+                                    toast2.show();
+                                }
                             }
 
-                            })
+                        })
 
-                        .setNegativeButton("Cancel",new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog,int id) {
+                    .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
                                 // if this button is clicked, just close
                                 // the dialog box and do nothing
                                 dialog.cancel();
                             }
-                        });
+                        })
 
-                // create alert dialog
-                AlertDialog alertDialog = alertDialogBuilder.create();
-                alertDialog.show();
 
-                /*if(eFlag == 0) {
-
-                }
-                else {
-                    // Creation of Toast warning that is displayed if fields are blank
-                    Context apContext1 = getApplicationContext();
-                    CharSequence text = "Por Favor, llena toda la informacion.";
-                    int duration = Toast.LENGTH_SHORT;
-                    Toast toast = Toast.makeText(apContext1, text, duration);
-
-                    toast.show();
-                }
-*/
-
+                    .create();
+                alertDialogBuilder.show();
             }
+
 
         });
     }
+
+
+
+
+
+
+/* //Set Positive Button
+                    .setPositiveButton("Aceptar", null)
+                    //Set Negative Button
+                    .setNegativeButton("Cancel", null)*/
+
+
+/*
+                        alertDialogBuilder.setOnShowListener(new DialogInterface.OnShowListener(){
+
+                            @Override
+                            public void onShow(DialogInterface alertDialogBuilder){
+                                Button button = ((AlertDialog)alertDialogBuilder).getButton(AlertDialog.BUTTON_POSITIVE);
+                                button.setOnClickListener(new View.OnClickListener(){
+
+                                    @Override
+                                    public void onClick(View view){
+                                        // Verify reason
+                                        String s_razon = entryReason.getText().toString();
+                                        if (TextUtils.isEmpty(s_razon)) {
+                                            //entryReason.setError("Por Favor, llena toda la informacion.");
+                                            //int duration = Toast.LENGTH_LONG;
+                                            //Context context = getApplicationContext();
+                                            String text1 = "Por Favor, llena toda la informacion.";
+                                            Toast toast1 = Toast.makeText(getApplicationContext(), text1, Toast.LENGTH_LONG);
+                                            toast1.show();
+                                        }
+
+
+                                        // // Verify doctor
+                                        String s_doc = entryDoctor.getText().toString();
+                                        if (TextUtils.isEmpty(s_doc)) {
+                                            //entryDoctor.setError("Por Favor, llena toda la informacion.");
+                                            // int duration = Toast.LENGTH_LONG;
+                                            // Context context = getApplicationContext();
+                                            String text1 = "Por Favor, llena toda la informacion.";
+                                            Toast toast1 = Toast.makeText(getApplicationContext(), text1, Toast.LENGTH_LONG);
+                                            toast1.show();
+                                        }
+
+                                        //Set confirmation toast
+                                        //int duration = Toast.LENGTH_LONG;
+                                        //Context context = getApplicationContext();
+                                      *//*  String text1 = "La visita se ha guardado.";
+                                        Toast toast1 = Toast.makeText(getApplicationContext(), text1, Toast.LENGTH_LONG);
+                                        toast1.show();
+                                        alertDialogBuilder.dismiss;*//*
+
+                                    }
+
+                                });*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     public boolean onCreateOptionsMenu(Menu menu) {
