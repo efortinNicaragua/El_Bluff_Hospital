@@ -37,16 +37,16 @@
         <activity android:name=".SearchByNameShipmentResults" />
         <activity
             android:name=".NewPatientGenInfo"
-            android:label="@string/title_activity_app_bar"
+            android:label="AppBar"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".NewVisitHistory"
-            android:label="@string/title_activity_new_visit_history"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:label="NewVisitHistory"
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".NewPatientPrescription"
-            android:label="@string/title_activity_new_patient_prescription"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:label="NewPatientPrescription"
+            android:theme="@style/AppTheme"/>
     </application>
 
 </manifest>
