@@ -33,14 +33,8 @@
         <activity android:name=".PDFConfirmationandUpload" />
         <activity android:name=".Inventory" />
         <activity android:name=".MainMenu" />
-        <activity android:name=".PatientGeneralInfo" />
-        <activity android:name=".PatientHistory" />
-        <activity android:name=".PatientPrescription" />
         <activity android:name=".SearchByNameShipmentResults" />
-        <activity
-            android:name=".AppBar"
-            android:label="@string/title_activity_app_bar"
-            android:theme="@style/AppTheme.NoActionBar" />
+
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_login"></activity>
@@ -54,6 +48,10 @@
         <activity
             android:name=".NewPatientPrescription"
             android:label="NewPatientPrescription"
+            android:theme="@style/AppTheme"/>
+        <activity
+            android:name=".NewPatientGenInfo"
+            android:label="NewPatientGenInfo"
             android:theme="@style/AppTheme"/>
     </application>
 

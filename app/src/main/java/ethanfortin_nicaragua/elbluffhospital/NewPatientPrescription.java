@@ -40,6 +40,13 @@ public class NewPatientPrescription extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
+
+
+    @Override
+    public void onBackPressed(){
+        Intent go_back_to_PGI = new Intent(this, NewPatientGenInfo.class);
+        startActivity(go_back_to_PGI);
+    }
 }
 
 
