@@ -40,5 +40,12 @@ public class NewVisitHistory extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
+
+    @Override
+    public void onBackPressed(){
+        Intent go_back_to_PGI_2 = new Intent(this, NewPatientGenInfo.class);
+        startActivity(go_back_to_PGI_2);
+    }
+
 }
 

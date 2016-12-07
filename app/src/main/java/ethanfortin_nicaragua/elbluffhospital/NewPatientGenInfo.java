@@ -35,6 +35,14 @@ public class NewPatientGenInfo extends AppCompatActivity {
                     return super.onOptionsItemSelected(item);
             }
         }
+    @Override
+    public void onBackPressed(){
+        Intent go_back = new Intent(this, PatientInfo.class);
+        startActivity(go_back);
+    }
+
+
+
     }
 
 
