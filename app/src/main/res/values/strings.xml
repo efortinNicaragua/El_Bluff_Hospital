@@ -29,5 +29,6 @@
     </string>
     <string name="title_activity_new_visit_history">NewVisitHistory</string>
     <string name="title_activity_new_patient_prescription">NewPatientPrescription</string>
+    <string name="title_activity_add_new_visit">AddNewVisit</string>
 
 </resources>
