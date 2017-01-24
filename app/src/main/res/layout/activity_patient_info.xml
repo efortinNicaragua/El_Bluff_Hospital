@@ -13,6 +13,32 @@
     <EditText
         android:layout_width="250dp"
         android:layout_height="45dp"
+        android:id="@+id/edit_ID"
+        android:textSize="25sp"
+        android:hint="ID"
+        android:inputType="number"
+        android:layout_below="@+id/text_instructions"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="24dp" />
+
+    <TextView
+        android:layout_width="250dp"
+        android:layout_height="35dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Paciente ID "
+        android:id="@+id/text_patientID"
+        android:textAlignment="center"
+        android:textSize="25sp"
+        android:textColor="#121254"
+        android:layout_alignBaseline="@+id/edit_ID"
+        android:layout_alignBottom="@+id/edit_ID"
+        android:layout_alignLeft="@+id/patient_name"
+        android:layout_alignStart="@+id/patient_name" />
+
+    <EditText
+        android:layout_width="250dp"
+        android:layout_height="45dp"
         android:ems="10"
         android:id="@+id/edit_name"
         android:textSize="25dp"
@@ -37,32 +63,6 @@
         android:fontFamily="serif"
         android:textStyle="normal|italic"
         android:textColor="#121254"/>
-
-    <EditText
-        android:layout_width="250dp"
-        android:layout_height="45dp"
-        android:id="@+id/edit_ID"
-        android:textSize="25sp"
-        android:hint="ID"
-        android:inputType="text"
-        android:layout_below="@+id/text_instructions"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="24dp" />
-
-    <TextView
-        android:layout_width="250dp"
-        android:layout_height="35dp"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Paciente ID "
-        android:id="@+id/text_patientID"
-        android:textAlignment="center"
-        android:textSize="25sp"
-        android:textColor="#121254"
-        android:layout_alignBaseline="@+id/edit_ID"
-        android:layout_alignBottom="@+id/edit_ID"
-        android:layout_alignLeft="@+id/patient_name"
-        android:layout_alignStart="@+id/patient_name" />
 
     <TextView
         android:layout_width="250dp"

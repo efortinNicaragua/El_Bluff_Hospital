@@ -111,6 +111,7 @@ public class PatientInfo extends AppCompatActivity {
             arrayAdapter.add("Pablo Shancez 6/1/2010  M 245674");
             arrayAdapter.add("Pablo Tarin 12/3/2015   M 264510");
 
+
             builderSingle.setNegativeButton(
                     "cancel",
                     new DialogInterface.OnClickListener() {
@@ -119,39 +120,21 @@ public class PatientInfo extends AppCompatActivity {
                             dialog.dismiss();
                         }
                     });
+
+
             builderSingle.setAdapter(
                     arrayAdapter,
                     new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            String strName = arrayAdapter.getItem(which);
-                            AlertDialog.Builder builderInner = new AlertDialog.Builder(
-                                    PatientInfo.this);
-                            builderInner.setMessage(strName);
-                            builderInner.setTitle("Eligiste el paciente");
-                            builderInner.setNegativeButton(
-                                    "cancel",
-                                    new DialogInterface.OnClickListener() {
-                                        @Override
-                                        public void onClick(DialogInterface dialog, int which) {
-                                            dialog.dismiss();
-                                        }
-                                    });
-                            builderInner.setPositiveButton(
-                                    "OK",
-                                    new DialogInterface.OnClickListener() {
-                                        @Override
-                                        public void onClick(
+                            Intent intent_patientData = new Intent(PatientInfo.this, NewPatientGenInfo.class);
+                            startActivity(intent_patientData);
+                            /**
+                             * This next line is the variable that will be used to reference the correct row
+                             * in the database for the patient that was clicked
+                             */
+//                            String strName = arrayAdapter.getItem(which);
 
-                                                DialogInterface dialog,
-                                                int which) {
-                                            dialog.dismiss();
-                                            Intent intent_patientData = new Intent(PatientInfo.this, NewPatientGenInfo.class);
-
-                                            startActivity(intent_patientData);
-                                        }
-                                    });
-                            builderInner.show();
                         }
                     });
             builderSingle.show();
@@ -177,13 +160,16 @@ public class PatientInfo extends AppCompatActivity {
     }
 
     public void NuevoPaciente(View V) {
-        //Need to make dialog_patient_preccription pull data from DB not my made up stuff
-        //create layout inflater and subView assign sub view to dialog xml
+        /**Need to make dialog_patient_preccription pull data from DB not my made up stuff
+        *create layout inflater and subView assign sub view to dialog xml
+         * */
         LayoutInflater inflater = LayoutInflater.from(PatientInfo.this);
         View subView = inflater.inflate(R.layout.dialog_new_pacient, null);
+
         //Build dialog set it to subview
         AlertDialog.Builder builderSingle1 = new AlertDialog.Builder(this);
         builderSingle1.setView(subView);
+
         //Set dialog        title
         builderSingle1.setTitle("Entrar Nueva Paciente");
         final EditText edit_name2 = (EditText) subView.findViewById(R.id.newdialog_edit_name);
@@ -294,14 +280,18 @@ public class PatientInfo extends AppCompatActivity {
                 URL url = new URL(link);
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 httpURLConnection.setRequestMethod("POST");
+
                 //setDoOutput allows you to access PHP server?
                 //setDoInput lets you to recieve data from PHP server?
                 httpURLConnection.setDoOutput(true);
                 httpURLConnection.setDoInput(true);
+
                 //OutputStream Writer is how you write the data along with the connection request
                 OutputStream outputStream = httpURLConnection.getOutputStream();
+
                 //BufferedWriter lets you write to the PHP clasuse
                 BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
+
                 //This is how you send JSON values along with the request
                 String post_data = URLEncoder.encode("patname", "UTF-8") + "=" + URLEncoder.encode(patname, "UTF-8") + "&"
                         + URLEncoder.encode("patid", "UTF-8") + "=" + URLEncoder.encode(patid, "UTF-8");// + "&"
@@ -318,6 +308,7 @@ public class PatientInfo extends AppCompatActivity {
 
                 //bufferedWriter writes data
                 bufferedWriter.write(post_data);
+
                 //Deletes data, closes everything
                 bufferedWriter.flush();
                 bufferedWriter.close();
@@ -326,15 +317,18 @@ public class PatientInfo extends AppCompatActivity {
                 //we will store result in string builder
                 StringBuilder sb = new StringBuilder();
                 String result = "";
+
                 //Input from PHP
                 InputStream inputStream = httpURLConnection.getInputStream();
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "iso-8859-1"));
-                //Writting data from JSON in to result(string) and sb(String Builder)
+
+                //Writing data from JSON in to result(string) and sb(String Builder)
                 String line = "";
                 while ((line = bufferedReader.readLine()) != null) {
                     result += line;
                     sb.append(line);
                 }
+
                 //Closing all things we opened
                 bufferedReader.close();
                 inputStream.close();
