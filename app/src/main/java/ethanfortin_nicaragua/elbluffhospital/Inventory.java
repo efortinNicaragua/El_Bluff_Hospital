@@ -47,8 +47,37 @@ public class Inventory extends ListActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inventory);
 
-        fetch_druginfo_all fetch_druginfo_all = new fetch_druginfo_all(this);
-        fetch_druginfo_all.execute();
+        /*
+        *
+        * Following is only for demonstration, should be commented for PHP functionality
+        *
+        * */
+        listView = (ListView) findViewById(android.R.id.list);
+        ArrayList<Class_FetchAllDrugInfo> druginfo_data = new ArrayList();
+
+        druginfo_data.add(new Class_FetchAllDrugInfo("<Example Drug ID>", "<Example Name>", 9999));
+        druginfo_data.add(new Class_FetchAllDrugInfo("113649", "Tylenol", 9999));
+        druginfo_data.add(new Class_FetchAllDrugInfo("780283", "Advil", 9999));
+        druginfo_data.add(new Class_FetchAllDrugInfo("098342", "Dayquil", 9999));
+        druginfo_data.add(new Class_FetchAllDrugInfo("389913", "Nyquil", 9999));
+        druginfo_data.add(new Class_FetchAllDrugInfo("919191", "Ibuprofin", 9999));
+        druginfo_data.add(new Class_FetchAllDrugInfo("789789", "Vicodin", 9999));
+
+        ArrayAdapter<Class_FetchAllDrugInfo> adapter = new ArrayAdapter_FetchAllDrugInfo(this, druginfo_data);
+
+        //set list view to listview in the xml file
+        ListView listView=(ListView) findViewById(android.R.id.list);
+        //turn on list view
+        listView.setAdapter(adapter);
+
+
+        /*
+        *
+        * Below should be uncommented for PHP functionality; above is for example only
+        *
+        * */
+        //fetch_druginfo_all fetch_druginfo_all = new fetch_druginfo_all(this);
+        //fetch_druginfo_all.execute();
 
     }
 

@@ -32,21 +32,9 @@
         android:id="@+id/datePicker3"
         android:headerBackground="#00004d"
         android:calendarViewShown="false"
-        android:layout_below="@+id/textView22"
+        android:layout_below="@+id/addQuantity"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp" />
-
-    <TextView
-        android:text="Elige la fecha de envío"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView22"
-        android:textSize="18sp"
-        android:textStyle="normal|italic"
-        android:textColor="#00004d"
-        android:layout_below="@+id/addQuantity"
-        android:layout_marginTop="30dp"
-        android:layout_centerHorizontal="true" />
 
     <EditText
         android:id="@+id/addQuantity"
@@ -58,5 +46,26 @@
         android:layout_marginTop="30dp"
         android:layout_below="@+id/addId"
         android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:text="Crear nuevo envío"
+        android:id="@+id/text_farmaciaMain"
+        android:textAlignment="center"
+        android:fontFamily="sans-serif-condensed"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="30sp" />
+
+    <Button
+        android:text="Guardar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/button5"
+        android:textSize="24sp"
+        android:onClick="createShipment" />
 
 </RelativeLayout>

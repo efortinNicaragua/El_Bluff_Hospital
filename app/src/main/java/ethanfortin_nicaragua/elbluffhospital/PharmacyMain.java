@@ -11,6 +11,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -26,65 +27,73 @@ public class PharmacyMain extends AppCompatActivity {
 
     final Context context = this;
 
+    private EditText et_drugName;
+    private EditText et_drugId;
+    private EditText et_drugQuant;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_phamarcy_main);
 
-        ImageButton newShip = (ImageButton) findViewById(R.id.newShipment);
+        /*ImageButton newShip = (ImageButton) findViewById(R.id.newShipment);
         newShip.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
                 LayoutInflater inflater = LayoutInflater.from(PharmacyMain.this);
                 View subView = inflater.inflate(R.layout.dialog_new_med, null);
 
-                final EditText subEditText1 = (EditText)subView.findViewById(R.id.addName);
-                final EditText subEditText2 = (EditText)subView.findViewById(R.id.addId);
-                final EditText subEditText3 = (EditText)subView.findViewById(R.id.addQuantity);
+                et_drugName = (EditText)subView.findViewById(R.id.addName);
+                et_drugId = (EditText)subView.findViewById(R.id.addId);
+                et_drugQuant = (EditText)subView.findViewById(R.id.addQuantity);
 
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
 
                 // set title
-                alertDialogBuilder.setTitle("Añadir nuevo envío");
+                alertDialogBuilder.setTitle("Crear nuevo envío");
 
                 // set Dialog message
                 alertDialogBuilder
                         .setView(subView)
+                        .setCancelable(false)
                         .setMessage("Añadir la medicina nueva del envío al inventario.")
                         .setPositiveButton("Guardar",new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog,int id) {
 
-                                int nameFlag = 0; int idFlag = 0; int countFlag = 0;
+                                boolean cancel = false;
+                                View focusView = null;
 
                                 // Verify drug name
-                                String s_drugName = subEditText1.getText().toString();
-                                if(s_drugName.equals("")) {
-                                    nameFlag = 1;
-                                }
-                                else {
-                                    // TODO Transfer variable to database
+                                String s_drugName = et_drugName.getText().toString();
+                                if(TextUtils.isEmpty(s_drugName)) {
+                                    et_drugName.setError("Not Valid");
+                                    focusView = et_drugName;
+                                    cancel = true;
+                                    System.out.println("%%%%%%%%%%%%%%%%%%%%11111111%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
                                 }
 
                                 // Verify drug id
-                                String s_drugId = subEditText2.getText().toString();
-                                if(s_drugId.equals("")) {
-                                    idFlag = 1;
-                                }
-                                else {
-                                    // TODO Transfer variable to database
+                                String s_drugId = et_drugId.getText().toString();
+                                if(TextUtils.isEmpty(s_drugId)) {
+                                    et_drugId.setError("Not Valid");
+                                    focusView = et_drugId;
+                                    cancel = true;
+                                    System.out.println("%%%%%%%%%%%%%%%%%%%%11111111%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
                                 }
 
                                 // Verify drug quantity
-                                String s_drugQuant = subEditText3.getText().toString();
-                                if(s_drugQuant.equals("")) {
-                                    countFlag = 1;
-                                }
-                                else {
-                                    // TODO Transfer variable to database
+                                String s_drugQuant = et_drugQuant.getText().toString();
+                                if(TextUtils.isEmpty(s_drugQuant)) {
+                                    et_drugQuant.setError("Not Valid");
+                                    focusView = et_drugQuant;
+                                    cancel = true;
+                                    System.out.println("%%%%%%%%%%%%%%%%%%%%11111111%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
                                 }
 
-                                // If all entries are populated, close window and confirm
-                                if(nameFlag + idFlag + countFlag == 0){
+                                if(cancel) {
+                                    focusView.requestFocus();
+                                }
+                                else {
                                     int duration = Toast.LENGTH_LONG;
                                     Context context = getApplicationContext();
                                     String text1 = "Medicina nueva archivada.";
@@ -110,7 +119,12 @@ public class PharmacyMain extends AppCompatActivity {
                 alertDialog.show();
             }
 
-        });
+        });*/
+    }
+
+    public void createShipmentPage(View v) {
+        Intent i = new Intent(this, CreateNewShipment.class);
+        startActivity(i);
     }
 
     public void seeInventory(View v) {

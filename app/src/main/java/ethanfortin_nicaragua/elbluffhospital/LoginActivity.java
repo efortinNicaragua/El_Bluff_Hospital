@@ -63,6 +63,11 @@ public class LoginActivity extends AppCompatActivity {
     private View mLoginFormView;
 
     @Override
+    public void onBackPressed() {
+        this.finishAffinity();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);

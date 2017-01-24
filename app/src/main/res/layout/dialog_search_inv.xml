@@ -37,36 +37,23 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
-    <TextView
-        android:text="busca por la fecha del envio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView29"
-        android:textSize="24sp"
-        android:textColor="@color/colorPrimaryDark"
-        android:layout_marginTop="65dp"
-        android:layout_below="@+id/searchByID"
-        android:layout_alignRight="@+id/textView28"
-        android:layout_alignEnd="@+id/textView28" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/button4"
-        android:layout_marginLeft="18dp"
-        android:layout_marginStart="18dp"
-        android:layout_alignBaseline="@+id/textView29"
-        android:layout_alignBottom="@+id/textView29"
-        android:layout_toRightOf="@+id/searchByID"
-        android:layout_toEndOf="@+id/searchByID" />
-
     <DatePicker
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:calendarViewShown="false"
         android:id="@+id/datePicker2"
         android:layout_marginTop="23dp"
-        android:layout_below="@+id/button4"
+        android:layout_below="@+id/dateEnable"
         android:layout_centerHorizontal="true" />
+
+    <Switch
+        android:text="busca por la fecha del envio    "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/dateEnable"
+        android:layout_marginTop="18dp"
+        android:layout_below="@+id/searchByID"
+        android:layout_alignLeft="@+id/searchByID"
+        android:layout_alignStart="@+id/searchByID" />
 
 </RelativeLayout>
