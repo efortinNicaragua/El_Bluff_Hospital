@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="150dp">
+
+    <TextView
+        android:id="@+id/shipdate"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="5dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:textSize="25sp"
+        android:textAlignment="center"
+        android:textColor="#00004d"
+        android:text="Date My Man?"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        />
+
+    <TextView android:id="@+id/drugid"
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="5dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="10dp"
+        android:textStyle="bold"
+        android:textSize="25sp"
+        android:textAlignment="center"
+        android:textColor="#00004d"
+        android:text="ID de Medicina "
+        android:layout_below="@id/shipdate"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView android:id="@+id/drugname"
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="10dp"
+            android:textStyle="bold"
+            android:textSize="25sp"
+            android:textAlignment="center"
+            android:textColor="#00004d"
+            android:text="La Medicina"
+            android:layout_alignTop="@id/drugid"
+            android:layout_alignParentBottom="true"
+            android:layout_toRightOf="@+id/drugid"
+            android:layout_toEndOf="@+id/drugid" />
+
+    <TextView android:id="@+id/shipquant"
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="10dp"
+        android:textStyle="bold"
+        android:textSize="25sp"
+        android:textAlignment="center"
+        android:textColor="#00004d"
+        android:text="ShipQuant"
+        android:layout_alignTop="@id/drugid"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/drugname"
+        android:layout_toEndOf="@+id/drugname" />
+
+
+</RelativeLayout>

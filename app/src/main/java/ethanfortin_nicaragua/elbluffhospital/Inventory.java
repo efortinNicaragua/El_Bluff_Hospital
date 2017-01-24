@@ -59,8 +59,6 @@ public class Inventory extends ListActivity {
         AlertDialog alertDialog;
         String json_string;
         JSONObject jsonObject;
-        private Inventory activity;
-        private View rootView;
         JSONArray jsonArray;
         LayoutInflater inflater;
         ArrayList<Class_FetchAllDrugInfo> druginfo_data = new ArrayList();
@@ -72,9 +70,7 @@ public class Inventory extends ListActivity {
 
         @Override
         protected String doInBackground(Void... parms) {
-            String link = "http://192.168.0.100/android_connect/fetch_druginfo_all.php"; //153.104
-            String user_name = "Ethan";
-            String password = "GoCatz";
+            String link = "http://192.168.0.101/android_connect/fetch_druginfo_all.php"; //192.168.0.100 is one that usually works
             String data;
             String fail = "fail";
             try {
@@ -91,8 +87,8 @@ public class Inventory extends ListActivity {
                 //BufferedWriter lets you write to the PHP clasuse
                 BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
                 //This is how you send JSON values along with the request
-                String post_data = URLEncoder.encode("user_name", "UTF-8") + "=" + URLEncoder.encode(user_name, "UTF-8") + "&"
-                        + URLEncoder.encode("password", "UTF-8") + "=" + URLEncoder.encode(password, "UTF-8");
+                String post_data = URLEncoder.encode("user_name", "UTF-8") + "=" + URLEncoder.encode("example", "UTF-8") + "&"
+                        + URLEncoder.encode("password", "UTF-8") + "=" + URLEncoder.encode("ejemplo", "UTF-8");
 
                 //bufferedWriter writes data
                 bufferedWriter.write(post_data);
