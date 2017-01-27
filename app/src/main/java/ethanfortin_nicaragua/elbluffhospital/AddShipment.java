@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class CreateNewShipment extends AppCompatActivity {
+public class AddShipment extends AppCompatActivity {
 
     private EditText et_drugName;
     private EditText et_drugId;
@@ -17,7 +17,7 @@ public class CreateNewShipment extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_new_shipment);
+        setContentView(R.layout.activity_add_shipment);
 
 
     }

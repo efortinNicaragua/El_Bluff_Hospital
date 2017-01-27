@@ -14,7 +14,7 @@ public class DoctorMain extends AppCompatActivity {
     }
 
     public void patientHome (View v) {
-        Intent patHome = new Intent(this, PatientInfo.class);
+        Intent patHome = new Intent(this, SearchAddPatients.class);
         startActivity(patHome);
     }
     public void uploadOldFileHome (View v) {

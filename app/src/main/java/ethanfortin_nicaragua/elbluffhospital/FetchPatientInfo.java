@@ -22,23 +22,16 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedWriter;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
-import java.net.ProtocolException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
-import java.util.Scanner;
 
-public class NewPatientGenInfo extends AppCompatActivity {
+public class FetchPatientInfo extends AppCompatActivity {
     //Create global variables for list view and ArrayList<Class_FetchAllDrugInfo>
     ListView listView;
     ArrayList<Class_FetchAllDrugInfo> patientgeninfo_data = new ArrayList();
@@ -46,7 +39,7 @@ public class NewPatientGenInfo extends AppCompatActivity {
 @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_patient_gen_info);
+        setContentView(R.layout.activity_fetch_patient_info);
 
         /*
         *
@@ -186,13 +179,13 @@ public class NewPatientGenInfo extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.pat_gen_info:
-                    startActivity(new Intent(this, NewPatientGenInfo.class));
+                    startActivity(new Intent(this, FetchPatientInfo.class));
                     return true;
             case R.id.pat_history:
-                    startActivity(new Intent(this, NewVisitHistory.class));
+                    startActivity(new Intent(this, FetchVisits.class));
                     return true;
             case R.id.pat_prescription:
-                    startActivity(new Intent(this, NewPatientPrescription.class));
+                    startActivity(new Intent(this, FetchPrescriptions.class));
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -200,14 +193,14 @@ public class NewPatientGenInfo extends AppCompatActivity {
 
     @Override
     public void onBackPressed(){
-        Intent go_back = new Intent(this, PatientInfo.class);
+        Intent go_back = new Intent(this, SearchAddPatients.class);
         startActivity(go_back);
     }
 
 
     public void EditPatient(View view){
 
-        LayoutInflater inflater = LayoutInflater.from(NewPatientGenInfo.this);
+        LayoutInflater inflater = LayoutInflater.from(FetchPatientInfo.this);
         View subView = inflater.inflate(R.layout.dialog_new_patient_gen_info, null);
 
         //Build dialog set it to subview

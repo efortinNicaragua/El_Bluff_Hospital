@@ -3,25 +3,9 @@ package ethanfortin_nicaragua.elbluffhospital;
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.annotation.SuppressLint;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.os.Handler;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
-import android.app.Activity;
-import android.view.Menu;
-import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.Toast;
 
 public class PharmacyMain extends AppCompatActivity {
 
@@ -123,12 +107,12 @@ public class PharmacyMain extends AppCompatActivity {
     }
 
     public void createShipmentPage(View v) {
-        Intent i = new Intent(this, CreateNewShipment.class);
+        Intent i = new Intent(this, AddShipment.class);
         startActivity(i);
     }
 
     public void seeInventory(View v) {
-        Intent seeInv = new Intent(this, SeeInventory.class);
+        Intent seeInv = new Intent(this, InventoryOptions.class);
         startActivity(seeInv);
     }
 

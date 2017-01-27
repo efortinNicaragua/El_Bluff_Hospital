@@ -2,7 +2,6 @@ package ethanfortin_nicaragua.elbluffhospital;
 
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,23 +13,22 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 
-public class SubtractMedicine extends AppCompatActivity {
+public class AddPrescription extends AppCompatActivity {
 
     final Context context = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_subtract_medicine);
+        setContentView(R.layout.activity_add_prescription);
 
         Button newMed = (Button) findViewById(R.id.button);
         newMed.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
-                LayoutInflater inflater = LayoutInflater.from(SubtractMedicine.this);
+                LayoutInflater inflater = LayoutInflater.from(AddPrescription.this);
                 View subView = inflater.inflate(R.layout.dialog_rx_confirm, null);
 
                 final EditText entryPatIdOrName = (EditText)findViewById(R.id.patIdOrName);

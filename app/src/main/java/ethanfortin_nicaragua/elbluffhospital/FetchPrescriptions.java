@@ -2,21 +2,17 @@ package ethanfortin_nicaragua.elbluffhospital;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 
-public class NewPatientPrescription extends AppCompatActivity {
+public class FetchPrescriptions extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_patient_prescription);
+        setContentView(R.layout.activity_fetch_prescriptions);
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -29,13 +25,13 @@ public class NewPatientPrescription extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.pat_gen_info:
-                startActivity(new Intent(this, NewPatientGenInfo.class));
+                startActivity(new Intent(this, FetchPatientInfo.class));
                 return true;
             case R.id.pat_history:
-                startActivity(new Intent(this, NewVisitHistory.class));
+                startActivity(new Intent(this, FetchVisits.class));
                 return true;
             case R.id.pat_prescription:
-                startActivity(new Intent(this, NewPatientPrescription.class));
+                startActivity(new Intent(this, FetchPrescriptions.class));
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -44,7 +40,7 @@ public class NewPatientPrescription extends AppCompatActivity {
 
     @Override
     public void onBackPressed(){
-        Intent go_back_to_PGI = new Intent(this, NewPatientGenInfo.class);
+        Intent go_back_to_PGI = new Intent(this, FetchPatientInfo.class);
         startActivity(go_back_to_PGI);
     }
 }

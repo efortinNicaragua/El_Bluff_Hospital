@@ -8,8 +8,6 @@ import android.os.AsyncTask;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -36,12 +34,10 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class PatientInfo extends AppCompatActivity {
+public class SearchAddPatients extends AppCompatActivity {
 
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
@@ -69,7 +65,7 @@ public class PatientInfo extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_patient_info);
+        setContentView(R.layout.activity_search_add_patients);
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
@@ -102,10 +98,10 @@ public class PatientInfo extends AppCompatActivity {
            builder.setItems(Nombres.toString(), );
             builder.show();*/
 
-            AlertDialog.Builder builderSingle = new AlertDialog.Builder(PatientInfo.this);
+            AlertDialog.Builder builderSingle = new AlertDialog.Builder(SearchAddPatients.this);
             builderSingle.setTitle("Elige el paciente");
             final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
-                    PatientInfo.this,
+                    SearchAddPatients.this,
                     android.R.layout.select_dialog_singlechoice);
             arrayAdapter.add("Pablo Himenz 8/7/1990 M 194356");
             arrayAdapter.add("Pablo Himnez 6/19/2004 M 23345");
@@ -128,7 +124,7 @@ public class PatientInfo extends AppCompatActivity {
                     new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            Intent intent_patientData = new Intent(PatientInfo.this, NewPatientGenInfo.class);
+                            Intent intent_patientData = new Intent(SearchAddPatients.this, FetchPatientInfo.class);
                             startActivity(intent_patientData);
                             /**
                              * This next line is the variable that will be used to reference the correct row
@@ -150,7 +146,7 @@ public class PatientInfo extends AppCompatActivity {
      */
     public Action getIndexApiAction() {
         Thing object = new Thing.Builder()
-                .setName("PatientInfo Page") // TODO: Define a title for the content shown.
+                .setName("SearchAddPatients Page") // TODO: Define a title for the content shown.
                 // TODO: Make sure this auto-generated URL is correct.
                 .setUrl(Uri.parse("http://[ENTER-YOUR-URL-HERE]"))
                 .build();
@@ -164,7 +160,7 @@ public class PatientInfo extends AppCompatActivity {
         /**Need to make dialog_patient_preccription pull data from DB not my made up stuff
         *create layout inflater and subView assign sub view to dialog xml
          * */
-        LayoutInflater inflater = LayoutInflater.from(PatientInfo.this);
+        LayoutInflater inflater = LayoutInflater.from(SearchAddPatients.this);
         View subView = inflater.inflate(R.layout.dialog_new_pacient, null);
 
         //Build dialog set it to subview
@@ -271,7 +267,7 @@ public class PatientInfo extends AppCompatActivity {
                             Toast toast = Toast.makeText(getApplicationContext(), "Paciente guarde.", Toast.LENGTH_LONG);
                             toast.show();
 
-                            Intent i = new Intent(getApplicationContext(), PatientInfo.class);
+                            Intent i = new Intent(getApplicationContext(), SearchAddPatients.class);
                             startActivity(i);
                         }
 

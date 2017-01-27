@@ -15,20 +15,20 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Switch;
 
-public class SeeInventory extends AppCompatActivity {
+public class InventoryOptions extends AppCompatActivity {
 
     final Context context = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_see_inventory);
+        setContentView(R.layout.activity_inventory_options);
 
         Button searchInv = (Button) findViewById(R.id.b_searchShipments);
         searchInv.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
-                LayoutInflater inflater = LayoutInflater.from(SeeInventory.this);
+                LayoutInflater inflater = LayoutInflater.from(InventoryOptions.this);
                 final View subView = inflater.inflate(R.layout.dialog_search_shipments, null);
 
                 final EditText entryName = (EditText) subView.findViewById(R.id.searchByName);

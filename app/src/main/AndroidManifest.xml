@@ -24,9 +24,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".PharmacyMain" />
-        <activity android:name=".PatientInfo" />
-        <activity android:name=".SeeInventory" />
-        <activity android:name=".SubtractMedicine" />
+        <activity android:name=".SearchAddPatients" />
+        <activity android:name=".InventoryOptions" />
+        <activity android:name=".AddPrescription" />
         <activity android:name=".PrescriptionConfirmation" />
         <activity android:name=".DoctorMain" />
         <activity android:name=".UploadOldFileHome" />
@@ -34,7 +34,7 @@
         <activity android:name=".Inventory" />
         <activity android:name=".MainMenu" />
         <activity android:name=".SearchByNameShipmentResults" />
-        <activity android:name=".CreateNewShipment" />
+        <activity android:name=".AddShipment" />
         <activity android:name=".FetchSpecificDrug" />
         <activity
             android:name=".LoginActivity"
@@ -43,15 +43,15 @@
         android:label="AppBar"
         android:theme="@style/AppTheme" />
         <activity
-            android:name=".NewVisitHistory"
+            android:name=".FetchVisits"
             android:label="NewVisitHistory"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".NewPatientPrescription"
+            android:name=".FetchPrescriptions"
             android:label="NewPatientPrescription"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".NewPatientGenInfo"
+            android:name=".FetchPatientInfo"
             android:label="NewPatientGenInfo"
             android:theme="@style/AppTheme" />
         <activity
