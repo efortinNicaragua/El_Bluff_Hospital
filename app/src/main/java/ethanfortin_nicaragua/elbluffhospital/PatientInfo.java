@@ -8,6 +8,7 @@ import android.os.AsyncTask;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -197,6 +198,87 @@ public class PatientInfo extends AppCompatActivity {
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+
+                        /* This is to be used for demonstration where communication
+                        to database is not an option. Take out for actual DB communication.
+                         */
+
+                        boolean cancel = false;
+                        View focusView = null;
+
+                        final String s_edit_name2 = edit_name2.getText().toString();
+                        final String s_edit_ID2 = edit_ID2.getText().toString();
+                        final String s_edit_adress2 = edit_adress2.getText().toString();
+                        final String s_edit_telephone2 = edit_telephone2.getText().toString();
+                        final String s_edit_gender2 = edit_gender2.getText().toString();
+                        final String s_edit_married2 = edit_married2.getText().toString();
+                        final String s_edit_birthday2 = edit_birthday2.getText().toString();
+                        final String s_edit_children2 = edit_children2.getText().toString();
+                        final String s_edit_height2 = edit_height2.getText().toString();
+                        final String s_edit_weight2 = edit_weight2.getText().toString();
+                        final String s_edit_allergies2 = edit_allergies2.getText().toString();
+                        final String s_edit_medicalConditions2 = edit_medicalConditions2.getText().toString();
+
+                       if(s_edit_name2.matches("")){
+                           Toast.makeText(getApplicationContext(), "Por favor rellena todos los campos.", Toast.LENGTH_LONG).show();
+                           return;
+                       }
+                        if(s_edit_ID2.matches("")){
+                            Toast.makeText(getApplicationContext(), "Por favor rellena todos los campos.", Toast.LENGTH_LONG).show();
+                            return;
+                        }
+                        if(s_edit_adress2.matches("")){
+                            Toast.makeText(getApplicationContext(), "Por favor rellena todos los campos.", Toast.LENGTH_LONG).show();
+                            return;
+                        }
+                        if(s_edit_telephone2.matches("")){
+                            Toast.makeText(getApplicationContext(), "Por favor rellena todos los campos.", Toast.LENGTH_LONG).show();
+                            return;
+                        }
+                        if(s_edit_gender2.matches("")){
+                            Toast.makeText(getApplicationContext(), "Por favor rellena todos los campos.", Toast.LENGTH_LONG).show();
+                            return;
+                        }
+                        if(s_edit_married2.matches("")){
+                            Toast.makeText(getApplicationContext(), "Por favor rellena todos los campos.", Toast.LENGTH_LONG).show();
+                            return;
+                        }
+                        if(s_edit_birthday2.matches("")){
+                            Toast.makeText(getApplicationContext(), "Por favor rellena todos los campos.", Toast.LENGTH_LONG).show();
+                            return;
+                        }
+                        if(s_edit_children2.matches("")){
+                            Toast.makeText(getApplicationContext(), "Por favor rellena todos los campos.", Toast.LENGTH_LONG).show();
+                            return;
+                        }
+                        if(s_edit_height2.matches("")){
+                            Toast.makeText(getApplicationContext(), "Por favor rellena todos los campos.", Toast.LENGTH_LONG).show();
+                            return;
+                        }
+                        if(s_edit_weight2.matches("")){
+                            Toast.makeText(getApplicationContext(), "Por favor rellena todos los campos.", Toast.LENGTH_LONG).show();
+                            return;
+                        }
+                        if(s_edit_allergies2.matches("")){
+                            Toast.makeText(getApplicationContext(), "Por favor rellena todos los campos.", Toast.LENGTH_LONG).show();
+                            return;
+                        }
+                        if(s_edit_medicalConditions2.matches("")){
+                            Toast.makeText(getApplicationContext(), "Por favor rellena todos los campos.", Toast.LENGTH_LONG).show();
+                            return;
+                        }
+                        else{
+                            Toast toast = Toast.makeText(getApplicationContext(), "Paciente guarde.", Toast.LENGTH_LONG);
+                            toast.show();
+
+                            Intent i = new Intent(getApplicationContext(), PatientInfo.class);
+                            startActivity(i);
+                        }
+
+
+
+                        /*This is the code needed for db communication.
+
                         patname = edit_name2.toString();
                         patid = edit_ID2.toString();
                         address = edit_adress2.toString();
@@ -225,7 +307,7 @@ public class PatientInfo extends AppCompatActivity {
                         toast.show();
 
                         add_patient_info_row add_patient_info_row= new add_patient_info_row(context);
-                        add_patient_info_row.execute();
+                        add_patient_info_row.execute();*/
 
                         //Push to DB including ones not above but in Dialog
                         dialog.dismiss();

@@ -32,12 +32,17 @@ import java.util.Scanner;
 public class NewPatientGenInfo extends AppCompatActivity {
 
 
+
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_patient_gen_info);
 
-        add_patientinfo_row add_patientinfo_row = new add_patientinfo_row(this);
-        add_patientinfo_row.execute();
+        /*add_patientinfo_row add_patientinfo_row = new add_patientinfo_row(this);
+        add_patientinfo_row.execute();*/
+
+
+
+
 
     }
 
