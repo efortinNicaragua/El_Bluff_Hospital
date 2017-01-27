@@ -22,5 +22,12 @@ public class DoctorMain extends AppCompatActivity {
         startActivity(uofHome);
     }
 
+    @Override
+    public void onBackPressed(){
+        Intent go_back = new Intent(this, MainMenu.class);
+        startActivity(go_back);
+    }
+
+
 
 }

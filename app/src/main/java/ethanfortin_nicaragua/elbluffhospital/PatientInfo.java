@@ -318,6 +318,12 @@ public class PatientInfo extends AppCompatActivity {
     }
 
     @Override
+    public void onBackPressed(){
+        Intent go_back = new Intent(this, DoctorMain.class);
+        startActivity(go_back);
+    }
+
+    @Override
     public void onStart() {
         super.onStart();
 
