@@ -32,4 +32,24 @@
     <string name="title_activity_new_patient_prescription">NewPatientPrescription</string>
     <string name="title_activity_add_new_visit">AddNewVisit</string>
 
+    <string-array name="PatientInfoDD">
+        <item >Nombre</item>
+        <item >ID</item>
+        <item >Dirección</item>
+        <item >Tele</item>
+        <item >Genero</item>
+        <item >Casado</item>
+        <item >La fecha de nacimiento</item>
+        <item >Ninos</item>
+        <item >Altura</item>
+        <item >Pesadura</item>
+        <item >Alergias</item>
+        <item >Condiciones Medicos</item>
+    </string-array>
+
+
+
+
+
+
 </resources>

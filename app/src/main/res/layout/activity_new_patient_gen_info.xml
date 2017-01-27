@@ -13,7 +13,8 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_marginBottom="100dp"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="10dp"
+        />
 
     <Button
         android:text="Editar Paciente"
@@ -23,6 +24,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="22dp"
         android:id="@+id/new_patient"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:onClick="EditPatient"/>
 
 </RelativeLayout>
