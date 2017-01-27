@@ -67,7 +67,7 @@
         app:srcCompat="@drawable/doctorandpatient"
         android:id="@+id/imageButton4"
         android:backgroundTint="@android:color/transparent"
-        android:onClick="patientHome (DoctorMain)"
+        android:onClick="patientHome"
         android:layout_above="@+id/textView9"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="53dp" />

@@ -6,9 +6,12 @@ import android.text.TextUtils;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.SortedMap;
 
 public class FetchShipments extends AppCompatActivity {
 
@@ -24,20 +27,22 @@ public class FetchShipments extends AppCompatActivity {
         String str2 = getIntent().getStringExtra("drugid");
         String str3 = getIntent().getStringExtra("drugname");
 
+        System.out.println("Date String: " + str1);
+
         listView = (ListView) findViewById(android.R.id.list);
 
-        Calendar c = Calendar.getInstance();
-        c.set(2017, Calendar.JANUARY, 10);
-        Date date = c.getTime();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyy");
+        try {
+            Date date = sdf.parse(str1);
 
-        shipment_data.add(new Class_Fetch_shipment_rows(date, "Example ID","Example Name",9999));
-        shipment_data.add(new Class_Fetch_shipment_rows(date, "Example ID","Example Name",9999));
-        shipment_data.add(new Class_Fetch_shipment_rows(date, "Example ID","Example Name",9999));
-        shipment_data.add(new Class_Fetch_shipment_rows(date, "Example ID","Example Name",9999));
-        shipment_data.add(new Class_Fetch_shipment_rows(date, "Example ID","Example Name",9999));
-        shipment_data.add(new Class_Fetch_shipment_rows(date, "Example ID","Example Name",9999));
-        shipment_data.add(new Class_Fetch_shipment_rows(date, "Example ID","Example Name",9999));
+            shipment_data.add(new Class_Fetch_shipment_rows(date, "Example ID","Example Name",9999));
+            shipment_data.add(new Class_Fetch_shipment_rows(date, "123456","Tylenol",534));
+            shipment_data.add(new Class_Fetch_shipment_rows(date, "875943","Nyquil",888));
+            shipment_data.add(new Class_Fetch_shipment_rows(date, "232323","Dayquil",125));
 
+        } catch (ParseException p) {
+            System.out.println("Parse error.");
+        }
 
         ArrayAdapter<Class_Fetch_shipment_rows> adapter = new ArrayAdapter_Fetch_shipment_rows(this, shipment_data);
 
@@ -47,9 +52,6 @@ public class FetchShipments extends AppCompatActivity {
         listView.setAdapter(adapter);
         // Dummy logic below for Scarleth.apk
         // TODO - add logic to contact and search shipment table
-
-
-
 
     }
 }

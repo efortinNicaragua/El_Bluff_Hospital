@@ -35,6 +35,7 @@
         <activity android:name=".MainMenu" />
         <activity android:name=".SearchByNameShipmentResults" />
         <activity android:name=".CreateNewShipment" />
+        <activity android:name=".FetchSpecificDrug" />
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_login" />

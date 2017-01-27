@@ -68,13 +68,14 @@ public class SeeInventory extends AppCompatActivity {
 
                                 Intent i = new Intent(subView.getContext(), FetchShipments.class);
 
-                                if(dateEnable.isChecked()) {
-                                    int day = datePicker.getDayOfMonth();
-                                    int month = datePicker.getMonth();
-                                    int year = datePicker.getYear();
-                                    String sdate = year + "-" + month + "-" + day;
-                                    i.putExtra("shipdate", sdate);
-                                }
+                                // Later on use this, but for now always send date value
+                                //if(dateEnable.isChecked()) {
+                                int day = datePicker.getDayOfMonth();
+                                int month = datePicker.getMonth();
+                                int year = datePicker.getYear();
+                                String sdate = year + "-" + month + "-" + day;
+                                i.putExtra("shipdate", sdate);
+                                //}
 
                                 /* TODO - Make it so you're passing a boolean for each of these
                                  * variables, so you can test on the next page which values
@@ -108,5 +109,10 @@ public class SeeInventory extends AppCompatActivity {
     public void entireInventory(View v) {
         Intent entInv = new Intent(this, Inventory.class);
         startActivity(entInv);
+    }
+
+    public void specificDrug(View v) {
+        Intent specDrug = new Intent(this, FetchSpecificDrug.class);
+        startActivity(specDrug);
     }
 }
