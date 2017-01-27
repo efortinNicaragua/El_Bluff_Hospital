@@ -3,7 +3,6 @@ package ethanfortin_nicaragua.elbluffhospital;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,9 +14,6 @@ import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Switch;
-import android.widget.Toast;
-
-import java.util.Date;
 
 public class SeeInventory extends AppCompatActivity {
 
@@ -28,12 +24,12 @@ public class SeeInventory extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_see_inventory);
 
-        Button searchInv = (Button) findViewById(R.id.b_searchInv);
+        Button searchInv = (Button) findViewById(R.id.b_searchShipments);
         searchInv.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
                 LayoutInflater inflater = LayoutInflater.from(SeeInventory.this);
-                final View subView = inflater.inflate(R.layout.dialog_search_inv, null);
+                final View subView = inflater.inflate(R.layout.dialog_search_shipments, null);
 
                 final EditText entryName = (EditText) subView.findViewById(R.id.searchByName);
                 final EditText entryId = (EditText) subView.findViewById(R.id.searchByID);
@@ -57,7 +53,7 @@ public class SeeInventory extends AppCompatActivity {
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
 
                 // set title
-                alertDialogBuilder.setTitle("Busca por medicamentos O por la fecha:");
+                alertDialogBuilder.setTitle("Busca por envios por la fecha, la droga, o los dos:");
 
                 // set Dialog message
                 alertDialogBuilder
@@ -70,7 +66,7 @@ public class SeeInventory extends AppCompatActivity {
                                 String s_drugName = entryName.getText().toString();
                                 String s_drugId = entryId.getText().toString();
 
-                                Intent i = new Intent(subView.getContext(), fetchDrugRow.class);
+                                Intent i = new Intent(subView.getContext(), FetchShipments.class);
 
                                 if(dateEnable.isChecked()) {
                                     int day = datePicker.getDayOfMonth();
@@ -84,8 +80,8 @@ public class SeeInventory extends AppCompatActivity {
                                  * variables, so you can test on the next page which values
                                  * to search by
                                 * */
-                                if(TextUtils.isEmpty(s_drugId)) i.putExtra("drugid", s_drugId);
-                                if(TextUtils.isEmpty(s_drugName)) i.putExtra("drugname", s_drugName);
+                                if(!TextUtils.isEmpty(s_drugId)) i.putExtra("drugid", s_drugId);
+                                if(!TextUtils.isEmpty(s_drugName)) i.putExtra("drugname", s_drugName);
 
                                 startActivity(i);
 

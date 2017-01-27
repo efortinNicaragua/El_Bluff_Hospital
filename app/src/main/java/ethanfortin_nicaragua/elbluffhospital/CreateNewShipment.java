@@ -67,6 +67,8 @@ public class CreateNewShipment extends AppCompatActivity {
             String text1 = "Medicina nueva archivada.";
             Toast toast1 = Toast.makeText(context, text1, duration);
             toast1.show();
+
+            finish();
         }
     }
 }

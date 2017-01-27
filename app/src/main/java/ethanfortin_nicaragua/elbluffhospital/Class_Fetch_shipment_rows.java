@@ -15,7 +15,7 @@ public class Class_Fetch_shipment_rows {
         super();
     }
 
-    public Class_Fetch_shipment_rows(String drugid, String drugname, int shipquant, Date shipdate) {
+    public Class_Fetch_shipment_rows(Date shipdate, String drugid, String drugname, int shipquant) {
 
         super();
         this.drugid = drugid;
