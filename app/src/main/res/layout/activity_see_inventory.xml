@@ -12,6 +12,21 @@
     android:animationCache="false"
     android:background="@drawable/greygradient">
 
+    <TextView
+        android:text="Opciones de Inventario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView8"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textSize="48sp"
+        android:textColor="#121254"
+        android:layout_marginTop="43dp"
+        android:fontFamily="sans-serif-condensed"
+        android:textAlignment="textStart"
+        android:layout_gravity = "start"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
     <Button
         android:text="@string/entInv"
         android:layout_width="500dp"
@@ -27,11 +42,25 @@
         android:layout_centerHorizontal="true" />
 
     <Button
-        android:text="@string/sTE"
+        android:text="@string/specificDrug"
         android:layout_width="500dp"
         android:layout_height="100dp"
         android:textSize="30sp"
-        android:id="@+id/b_searchInv"
+        android:id="@+id/b_searchDrug"
+        android:background="#00004d"
+        android:textColor="#cccccc"
+        android:textAppearance="@style/TextAppearance.AppCompat.Widget.Button"
+        android:layout_marginTop="102dp"
+        android:layout_below="@+id/b_searchShipments"
+        android:layout_alignLeft="@+id/b_searchShipments"
+        android:layout_alignStart="@+id/b_searchShipments" />
+
+    <Button
+        android:text="@string/searchShipments"
+        android:layout_width="500dp"
+        android:layout_height="100dp"
+        android:textSize="30sp"
+        android:id="@+id/b_searchShipments"
         android:background="#00004d"
         android:textColor="#cccccc"
         android:textAppearance="@style/TextAppearance.AppCompat.Widget.Button"
@@ -39,20 +68,5 @@
         android:layout_below="@+id/b_entireInventory"
         android:layout_alignLeft="@+id/b_entireInventory"
         android:layout_alignStart="@+id/b_entireInventory" />
-
-    <TextView
-        android:text="Opciones de Inventario"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView8"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:textSize="48sp"
-        android:textColor="#121254"
-        android:layout_marginTop="43dp"
-        android:fontFamily="sans-serif-condensed"
-        android:textAlignment="textStart"
-        android:layout_gravity = "start"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

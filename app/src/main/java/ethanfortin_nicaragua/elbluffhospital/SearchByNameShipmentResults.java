@@ -226,7 +226,7 @@ public class SearchByNameShipmentResults extends AppCompatActivity {
                         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                         Date d = sdf.parse("2005-12-03");
 
-                        druginfo_data.add(new Class_Fetch_shipment_rows(drugid, drugname, int_shipquant, d));
+                        druginfo_data.add(new Class_Fetch_shipment_rows(d, drugid, drugname, int_shipquant));
                     } catch (NumberFormatException nfe) {
                         //make exception handlers?
                     } catch (ParseException ex) {

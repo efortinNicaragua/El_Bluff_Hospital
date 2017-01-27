@@ -2,7 +2,8 @@
 
     <!-- Button Strings -->
     <string name="app_name">"El Bluff Hospital "</string>
-    <string name="sTE">Totales o envios especificas</string>
+    <string name="searchShipments">Envios</string>
+    <string name="specificDrug">Droga específica</string>
     <string name="entInv">Inventario en total</string>
 
     <!-- Inventory Table Strings -->
