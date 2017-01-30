@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -14,19 +15,35 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ExpandableListView;
 import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
 
 public class FetchVisits extends AppCompatActivity {
-
+    HashMap<String, List<String>> HashMap_hashmap;
+    List<String> HastMap_list;
+    ExpandableListView Exp_list;
+    Adapter_ExpandableList adapter;
     final Context context = this;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fetch_visits);
+
+        Exp_list = (ExpandableListView) findViewById(R.id.exp_list);
+        HashMap_hashmap= DataProvider.getInfo();
+        HastMap_list=new ArrayList<String>(HashMap_hashmap.keySet());
+        adapter=new Adapter_ExpandableList(this, HashMap_hashmap, HastMap_list);
+        Exp_list.setAdapter(adapter);
+
 
         final FloatingActionButton addVisit = (FloatingActionButton) findViewById(R.id.fab_add);
 
@@ -103,7 +120,40 @@ public class FetchVisits extends AppCompatActivity {
 
         });
     }
+public static class DataProvider{
+    public static HashMap<String, List<String>> getInfo()
+    {
+        HashMap<String, List<String>> HashMap_details = new HashMap<String, List<String>>();
 
+        List<String> ActionMovies = new ArrayList<String>();
+         ActionMovies.add("Movie1");
+         ActionMovies.add("Movie2");
+         ActionMovies.add("Movie3");
+
+        List<String>RomanticMovies = new ArrayList<String>();
+       RomanticMovies.add("Movie1");
+       RomanticMovies.add("Movie2");
+       RomanticMovies.add("Movie3");
+
+        List<String>HorrorMovies = new ArrayList<String>();
+        HorrorMovies.add("Movie1");
+        HorrorMovies.add("Movie2");
+        HorrorMovies.add("Movie3");
+
+        List<String>ComedyMovies = new ArrayList<String>();
+        ComedyMovies.add("Movie1");
+        ComedyMovies.add("Movie2");
+        ComedyMovies.add("Movie3");
+
+        HashMap_details.put("Action MOOvoes",ActionMovies);
+        HashMap_details.put("Romantic MOOvies", RomanticMovies);
+        HashMap_details.put("Horror MOOvies", HorrorMovies);
+        HashMap_details.put("Comedy MOOvies",ComedyMovies);
+
+        return HashMap_details;
+    }
+
+}
 
 
 
