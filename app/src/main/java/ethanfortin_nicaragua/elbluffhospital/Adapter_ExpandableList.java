@@ -7,8 +7,6 @@ import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 import java.util.HashMap;
 import java.util.List;
 
@@ -46,14 +44,19 @@ public class Adapter_ExpandableList extends BaseExpandableListAdapter{
     public View getChildView(int parent, int child, boolean lastChild, View convertview,
                              ViewGroup parentview)
     {
-        String child_title= (String) getChild(parent,child);
+        String child_title= "Fake Title"; //title should be taken from the class we create, this is just a place holder.
+        String child_details = (String) getChild(parent,child);
         if(convertview == null)
         {
             LayoutInflater inflator =(LayoutInflater) ctx.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertview=inflator.inflate(R.layout.row_patinethistory_child, parentview,false);
+            convertview=inflator.inflate(R.layout.row_patinet_visit_history_child, parentview,false);
         }
-        TextView child_textView=(TextView) convertview.findViewById(R.id.child_txt);
-        child_textView.setText(child_title);
+        TextView child_textViewTitle=(TextView) convertview.findViewById(R.id.child_instruction);
+        TextView child_textViewdetails=(TextView) convertview.findViewById(R.id.child_txt);
+
+        child_textViewTitle.setText(child_title);
+        child_textViewdetails.setText(child_details);
+
             return convertview;
     }
 
@@ -61,7 +64,8 @@ public class Adapter_ExpandableList extends BaseExpandableListAdapter{
     @Override
     public int getChildrenCount(int arg0){
 
-        return Movies_Category.get(Movies_List.get(arg0)).size();
+        //return 3;
+     return Movies_Category.get(Movies_List.get(arg0)).size();
     }
 
     @Override
@@ -88,7 +92,7 @@ public class Adapter_ExpandableList extends BaseExpandableListAdapter{
         if(convertview == null)
         {
             LayoutInflater inflator = (LayoutInflater) ctx.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertview = inflator.inflate(R.layout.row_patienthistory_parent, parentview, false);
+            convertview = inflator.inflate(R.layout.row_patient_visit_history_parent, parentview, false);
         }
         TextView parent_textview = (TextView) convertview.findViewById(R.id.parent_txt);
         parent_textview.setTypeface(null, Typeface.BOLD);
@@ -105,7 +109,7 @@ public class Adapter_ExpandableList extends BaseExpandableListAdapter{
     @Override
     public boolean isChildSelectable(int arg0, int arg1){
 
-        return false;
+        return true;
     }
 
 }

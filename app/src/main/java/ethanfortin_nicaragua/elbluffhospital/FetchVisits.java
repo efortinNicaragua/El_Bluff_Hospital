@@ -43,6 +43,56 @@ public class FetchVisits extends AppCompatActivity {
         adapter=new Adapter_ExpandableList(this, HashMap_hashmap, HastMap_list);
         Exp_list.setAdapter(adapter);
 
+        //Example code of things you could do but we dont need this
+       /* Exp_list.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener(){
+            @Override
+            public void onGroupExpand(int groupPosition){
+                Toast.makeText(getBaseContext(),HastMap_list.get(groupPosition)+" is expanded", Toast.LENGTH_SHORT).show();
+            }
+        });*/
+
+        Exp_list.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+            @Override
+            public boolean onChildClick(ExpandableListView expandableListView, View view, int i, int i1, long l) {
+
+                LayoutInflater inflater = LayoutInflater.from(FetchVisits.this);
+                final View subView = inflater.inflate(R.layout.dialog_patient_history, null);
+
+                final EditText edit_date = (EditText) subView.findViewById(R.id.dialog1_edit_date);
+                final EditText edit_reason = (EditText) subView.findViewById(R.id.dialog1_edit_reason);
+                final EditText edit_medecine = (EditText) subView.findViewById(R.id.dialog1_edit_medicine);
+                final EditText edit_strength = (EditText) subView.findViewById(R.id.dialog1_edit_strength);
+                final EditText edit_totalAmount = (EditText) subView.findViewById(R.id.dialog1_edit_totalAmount);
+                final EditText edit_directions = (EditText) subView.findViewById(R.id.dialog1_edit_directions);
+                final EditText edit_doctor = (EditText) subView.findViewById(R.id.dialog1_edit_doctor);
+                final EditText edit_PDFLink = (EditText) subView.findViewById(R.id.dialog1_edit_PDFLink);
+                final EditText edit_comments = (EditText) subView.findViewById(R.id.dialog1_edit_treatment_comments);
+
+                final AlertDialog alertDialogBuilder = new AlertDialog.Builder(context)
+                        .setTitle("Anadir la visita nueva")
+                        .setView(subView)
+                        .setMessage("Ingrese la informacion de la visita")
+                        .setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                // if this button is clicked, just close
+                                // the dialog box and do nothing
+                                dialog.dismiss();
+                            }
+                        })
+
+                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    // if this button is clicked, just close
+                                    // the dialog box and do nothing
+                                    dialog.cancel();
+                                }
+                        })
+                        .create();
+                        alertDialogBuilder.show();
+
+                return false;
+            }
+        });
 
         final FloatingActionButton addVisit = (FloatingActionButton) findViewById(R.id.fab_add);
 
@@ -125,29 +175,29 @@ public static class DataProvider{
         HashMap<String, List<String>> HashMap_details = new HashMap<String, List<String>>();
 
         List<String> ActionMovies = new ArrayList<String>();
-         ActionMovies.add("Movie1");
-         ActionMovies.add("Movie2");
-         ActionMovies.add("Movie3");
+         ActionMovies.add("Doctor:Barquero");
+         ActionMovies.add("Prescripcion: No");
+         ActionMovies.add("PDF: link");
 
         List<String>RomanticMovies = new ArrayList<String>();
-       RomanticMovies.add("Movie1");
-       RomanticMovies.add("Movie2");
-       RomanticMovies.add("Movie3");
+        RomanticMovies.add("Doctor:Barquero");
+        RomanticMovies.add("Prescripcion: 12 Tylenol 125mg");
+        RomanticMovies.add("PDF: link");
 
         List<String>HorrorMovies = new ArrayList<String>();
-        HorrorMovies.add("Movie1");
-        HorrorMovies.add("Movie2");
-        HorrorMovies.add("Movie3");
+        HorrorMovies.add("Doctor:Barquero");
+        HorrorMovies.add("Prescripcion:No");
+        HorrorMovies.add("PDF: link");
 
         List<String>ComedyMovies = new ArrayList<String>();
-        ComedyMovies.add("Movie1");
-        ComedyMovies.add("Movie2");
-        ComedyMovies.add("Movie3");
+        ComedyMovies.add("Doctor:Barquero");
+        ComedyMovies.add("Prescripcion: No");
+        ComedyMovies.add("PDF: link");
 
-        HashMap_details.put("Action MOOvoes",ActionMovies);
-        HashMap_details.put("Romantic MOOvies", RomanticMovies);
-        HashMap_details.put("Horror MOOvies", HorrorMovies);
-        HashMap_details.put("Comedy MOOvies",ComedyMovies);
+        HashMap_details.put("30/1/2016   Brazo Rompido",ActionMovies);
+        HashMap_details.put("23/12/2015 Inflamacion del pie", RomanticMovies);
+        HashMap_details.put("13/8/2016   Palpaciones irregulares", HorrorMovies);
+        HashMap_details.put("8/11/2015 4 puntadas en la cabeza",ComedyMovies);
 
         return HashMap_details;
     }
