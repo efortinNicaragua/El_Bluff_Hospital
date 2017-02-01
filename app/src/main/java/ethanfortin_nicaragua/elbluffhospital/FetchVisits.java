@@ -126,29 +126,29 @@ public static class DataProvider{
         HashMap<String, List<String>> HashMap_details = new HashMap<String, List<String>>();
 
         List<String> ActionMovies = new ArrayList<String>();
-         ActionMovies.add("Movie1");
-         ActionMovies.add("Movie2");
-         ActionMovies.add("Movie3");
+         ActionMovies.add("Doctor:Barquero");
+         ActionMovies.add("Prescripcion: No");
+         ActionMovies.add("PDF: link");
 
         List<String>RomanticMovies = new ArrayList<String>();
-       RomanticMovies.add("Movie1");
-       RomanticMovies.add("Movie2");
-       RomanticMovies.add("Movie3");
+        RomanticMovies.add("Doctor:Barquero");
+        RomanticMovies.add("Prescripcion: 12 Tylenol 125mg");
+        RomanticMovies.add("PDF: link");
 
         List<String>HorrorMovies = new ArrayList<String>();
-        HorrorMovies.add("Movie1");
-        HorrorMovies.add("Movie2");
-        HorrorMovies.add("Movie3");
+        HorrorMovies.add("Doctor:Barquero");
+        HorrorMovies.add("Prescripcion:No");
+        HorrorMovies.add("PDF: link");
 
         List<String>ComedyMovies = new ArrayList<String>();
-        ComedyMovies.add("Movie1");
-        ComedyMovies.add("Movie2");
-        ComedyMovies.add("Movie3");
+        ComedyMovies.add("Doctor:Barquero");
+        ComedyMovies.add("Prescripcion: No");
+        ComedyMovies.add("PDF: link");
 
-        HashMap_details.put("Action MOOvoes",ActionMovies);
-        HashMap_details.put("Romantic MOOvies", RomanticMovies);
-        HashMap_details.put("Horror MOOvies", HorrorMovies);
-        HashMap_details.put("Comedy MOOvies",ComedyMovies);
+        HashMap_details.put("30/1/2016   Brazo Rompido",ActionMovies);
+        HashMap_details.put("23/12/2015 Inflamacion del pie", RomanticMovies);
+        HashMap_details.put("13/8/2016   Palpaciones irregulares", HorrorMovies);
+        HashMap_details.put("8/11/2015 4 puntadas en la cabeza",ComedyMovies);
 
         return HashMap_details;
     }
