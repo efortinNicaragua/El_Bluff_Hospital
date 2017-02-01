@@ -44,6 +44,56 @@ public class FetchVisits extends AppCompatActivity {
         adapter=new Adapter_ExpandableList(this, HashMap_hashmap, HastMap_list);
         Exp_list.setAdapter(adapter);
 
+        //Example code of things you could do but we dont need this
+       /* Exp_list.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener(){
+            @Override
+            public void onGroupExpand(int groupPosition){
+                Toast.makeText(getBaseContext(),HastMap_list.get(groupPosition)+" is expanded", Toast.LENGTH_SHORT).show();
+            }
+        });*/
+
+        Exp_list.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+            @Override
+            public boolean onChildClick(ExpandableListView expandableListView, View view, int i, int i1, long l) {
+
+                LayoutInflater inflater = LayoutInflater.from(FetchVisits.this);
+                final View subView = inflater.inflate(R.layout.dialog_patient_history, null);
+
+                final EditText edit_date = (EditText) subView.findViewById(R.id.dialog1_edit_date);
+                final EditText edit_reason = (EditText) subView.findViewById(R.id.dialog1_edit_reason);
+                final EditText edit_medecine = (EditText) subView.findViewById(R.id.dialog1_edit_medicine);
+                final EditText edit_strength = (EditText) subView.findViewById(R.id.dialog1_edit_strength);
+                final EditText edit_totalAmount = (EditText) subView.findViewById(R.id.dialog1_edit_totalAmount);
+                final EditText edit_directions = (EditText) subView.findViewById(R.id.dialog1_edit_directions);
+                final EditText edit_doctor = (EditText) subView.findViewById(R.id.dialog1_edit_doctor);
+                final EditText edit_PDFLink = (EditText) subView.findViewById(R.id.dialog1_edit_PDFLink);
+                final EditText edit_comments = (EditText) subView.findViewById(R.id.dialog1_edit_treatment_comments);
+
+                final AlertDialog alertDialogBuilder = new AlertDialog.Builder(context)
+                        .setTitle("Anadir la visita nueva")
+                        .setView(subView)
+                        .setMessage("Ingrese la informacion de la visita")
+                        .setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                // if this button is clicked, just close
+                                // the dialog box and do nothing
+                                dialog.dismiss();
+                            }
+                        })
+
+                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    // if this button is clicked, just close
+                                    // the dialog box and do nothing
+                                    dialog.cancel();
+                                }
+                        })
+                        .create();
+                        alertDialogBuilder.show();
+
+                return false;
+            }
+        });
 
         final FloatingActionButton addVisit = (FloatingActionButton) findViewById(R.id.fab_add);
 

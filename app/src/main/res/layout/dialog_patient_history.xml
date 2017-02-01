@@ -16,7 +16,7 @@
             android:minWidth="300dp">
 
             <TextView
-                android:id="@+id/dialog1_text_start"
+                android:id="@+id/dialog1_text_date"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Fecha"
@@ -28,7 +28,7 @@
                 android:textAlignment="center" />
 
             <EditText
-                android:id="@+id/dialog1_edit_start"
+                android:id="@+id/dialog1_edit_date"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="26/10/2016"
@@ -49,7 +49,7 @@
             android:minWidth="300dp">
 
             <TextView
-                android:id="@+id/dialog1_text_end"
+                android:id="@+id/dialog1_text_reason"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Razon"
@@ -61,7 +61,7 @@
                 android:textAlignment="center" />
 
             <EditText
-                android:id="@+id/dialog1_edit_end"
+                android:id="@+id/dialog1_edit_reason"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Dedo Rompido"
@@ -85,7 +85,7 @@
                 android:id="@+id/dialog1_text_medicine"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Termina"
+                android:text="Medecina"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:textColor="@color/colorPrimaryDark"
@@ -230,6 +230,72 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Dr. Barquero"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textSize="30sp"
+                android:inputType="text"
+                android:textAlignment="center"
+                android:textStyle="bold"/>
+        </TableRow>
+        <TableRow
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="15dp"
+            android:layout_height="fill_parent"
+            android:layout_width="fill_parent"
+            android:minHeight="50dp"
+            android:minWidth="300dp">
+
+            <TextView
+                android:id="@+id/dialog1_text_PDFLink"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="PDF Link"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textSize="30sp"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/dialog1_edit_PDFLink"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="example_link_click"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textSize="30sp"
+                android:inputType="text"
+                android:textAlignment="center"
+                android:textStyle="bold"/>
+        </TableRow>
+        <TableRow
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="15dp"
+            android:layout_height="fill_parent"
+            android:layout_width="fill_parent"
+            android:minHeight="50dp"
+            android:minWidth="300dp">
+
+            <TextView
+                android:id="@+id/dialog1_text_treament_comments"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Comentarios"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textSize="30sp"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/dialog1_edit_treatment_comments"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Comentarios"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:textAppearance="?android:attr/textAppearanceMedium"
