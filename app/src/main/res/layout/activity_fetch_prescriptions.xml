@@ -22,7 +22,6 @@
             android:layout_height="match_parent"
             android:indicatorLeft="?android:attr/expandableListPreferredItemIndicatorLeft"
             android:dividerHeight="0.5dp">
-
         </ExpandableListView>
 
         <android.support.design.widget.FloatingActionButton

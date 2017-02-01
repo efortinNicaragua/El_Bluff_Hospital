@@ -140,7 +140,7 @@ public class AddPrescription extends AppCompatActivity {
 
                                 /*
                                     TODO: - Add functionality that synthesizes this info with the db.
-                                            - If drug Id is used, convert to name and display.
+                                            - if drug Id is used, convert to name and display.
                                             - Subtracts number of pills from correct store.
                                             - Stores record of prescription under patient's info.
                                             - Include Medicine info (id, name, strength(?), quantity),

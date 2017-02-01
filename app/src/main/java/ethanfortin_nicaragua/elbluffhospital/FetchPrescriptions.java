@@ -58,8 +58,8 @@ public class FetchPrescriptions extends AppCompatActivity {
 
 
                 // Get Current Date
-                SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-                Date date = new Date();
+                // SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+                // Date date = new Date();
                 // entryDate.setText(dateFormat.format(date));
 
                 final AlertDialog alertDialogBuilder = new AlertDialog.Builder(context)

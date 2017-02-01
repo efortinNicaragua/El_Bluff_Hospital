@@ -121,7 +121,7 @@
         android:textColor="@color/colorPrimaryDark"
         android:textAlignment="center"
         android:textSize="24sp"
-        android:layout_marginTop="29dp"
+        android:layout_marginTop="30dp"
         android:layout_marginRight="156dp"
         android:layout_marginEnd="156dp"
         android:layout_alignParentTop="true"

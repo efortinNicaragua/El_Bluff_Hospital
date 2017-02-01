@@ -183,7 +183,7 @@
         android:textSize="20sp"
         android:layout_marginTop="30dp"
         android:inputType="none"
-        android:text="XXRT-0021"
+        android:text="XXRT-0029"
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/txtRxID"
         android:layout_toEndOf="@+id/txtRxID"

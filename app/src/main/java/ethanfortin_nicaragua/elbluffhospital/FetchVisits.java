@@ -74,7 +74,7 @@ public class FetchVisits extends AppCompatActivity {
                         .setMessage("Ingrese la informacion de la visita")
                         .setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
-                                // if this button is clicked, just close
+                                // If this button is clicked, just close
                                 // the dialog box and do nothing
                                 dialog.dismiss();
                             }
