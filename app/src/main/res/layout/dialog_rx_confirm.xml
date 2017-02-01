@@ -82,7 +82,7 @@
         android:layout_alignLeft="@+id/date"
         android:layout_alignStart="@+id/date"
         android:layout_marginTop="30dp"
-        android:id="@+id/dDoctor"
+        android:id="@+id/etDoctor"
         android:textSize="24sp"
         android:textColor="@color/colorPrimaryDark" />
 

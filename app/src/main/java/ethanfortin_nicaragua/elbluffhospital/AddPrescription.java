@@ -42,7 +42,7 @@ public class AddPrescription extends AppCompatActivity {
                 TextView tv1 = (TextView)subView.findViewById(R.id.dPatIdOrName);
                 TextView tv2 = (TextView)subView.findViewById(R.id.dMedId);
                 TextView tv3 = (TextView)subView.findViewById(R.id.dPillQuantity);
-                TextView tv4 = (TextView)subView.findViewById(R.id.dDoctor);
+                TextView tv4 = (TextView)subView.findViewById(R.id.etDoctor);
                 TextView tv5 = (TextView)subView.findViewById(R.id.date);
 
                 int eFlag = 0;

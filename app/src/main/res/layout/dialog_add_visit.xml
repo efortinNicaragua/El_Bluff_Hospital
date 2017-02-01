@@ -11,10 +11,10 @@
         android:layout_height="wrap_content"
         android:id="@+id/Date"
         android:textSize="20sp"
-        android:layout_alignBaseline="@+id/ddate"
-        android:layout_alignBottom="@+id/ddate"
-        android:layout_alignLeft="@+id/Reason"
-        android:layout_alignStart="@+id/Reason"
+        android:layout_alignBaseline="@+id/etRxID"
+        android:layout_alignBottom="@+id/etRxID"
+        android:layout_alignLeft="@+id/txtPatient"
+        android:layout_alignStart="@+id/txtPatient"
         android:textColor="#00004d"/>
 
     <TextView
@@ -22,10 +22,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="0dp"
-        android:id="@+id/Reason"
+        android:id="@+id/txtPatient"
         android:textSize="20sp"
-        android:layout_alignBaseline="@+id/dReason"
-        android:layout_alignBottom="@+id/dReason"
+        android:layout_alignBaseline="@+id/etPaciente"
+        android:layout_alignBottom="@+id/etPaciente"
         android:layout_alignLeft="@+id/Doctor"
         android:layout_alignStart="@+id/Doctor"
         android:textColor="#00004d"/>
@@ -37,8 +37,8 @@
         android:layout_marginLeft="86dp"
         android:id="@+id/Doctor"
         android:textSize="20sp"
-        android:layout_alignBaseline="@+id/dDoctor"
-        android:layout_alignBottom="@+id/dDoctor"
+        android:layout_alignBaseline="@+id/etDoctor"
+        android:layout_alignBottom="@+id/etDoctor"
         android:textColor="#00004d"/>
 
     <TextView
@@ -70,27 +70,27 @@
     <EditText
         android:layout_width="400dp"
         android:layout_height="wrap_content"
-        android:id="@+id/dReason"
+        android:id="@+id/etPaciente"
         android:textSize="20sp"
         android:textAlignment="center"
         android:layout_gravity ="end"
         android:textColor="@color/colorPrimaryDark"
         android:layout_marginTop="30dp"
-        android:layout_below="@+id/ddate"
-        android:layout_alignLeft="@+id/ddate"/>
+        android:layout_below="@+id/etRxID"
+        android:layout_alignLeft="@+id/etRxID"/>
         <!--android:layout_alignStart="@+id/ddate"-->
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/dDoctor"
+        android:id="@+id/etDoctor"
         android:textSize="20sp"
         android:textAlignment="center"
         android:layout_gravity ="end"
         android:textColor="@color/colorPrimaryDark"
         android:layout_marginTop="30dp"
-        android:layout_below="@+id/dReason"
-        android:layout_alignLeft="@+id/dReason"/>
+        android:layout_below="@+id/etPaciente"
+        android:layout_alignLeft="@+id/etPaciente"/>
         <!--android:layout_alignStart="@+id/dReason"-->
 
     <EditText
@@ -102,7 +102,7 @@
         android:layout_gravity ="end"
         android:textColor="@color/colorPrimaryDark"
         android:layout_marginTop="30dp"
-        android:layout_below="@+id/dDoctor"
+        android:layout_below="@+id/etDoctor"
         android:layout_alignParentRight="true"/>
         <!--android:layout_alignStart="@+id/dDoctor"-->
 
@@ -121,7 +121,7 @@
     <EditText
         android:layout_width="400dp"
         android:layout_height="wrap_content"
-        android:id="@+id/ddate"
+        android:id="@+id/etRxID"
         android:layout_weight="1"
         android:textColor="@color/colorPrimaryDark"
         android:textAlignment="center"

@@ -1,193 +1,196 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_subtract_medicine"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="ethanfortin_nicaragua.elbluffhospital.AddPrescription"
+    android:orientation="vertical"
     android:background="@drawable/greygradient">
 
     <TextView
+        android:text="Droga"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textView3"
-        android:textSize="36sp"
-        android:textColor="#121254"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:layout_marginTop="62dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:text="Nuevo Prescripción" />
+        android:id="@+id/txtDrug"
+        android:textSize="20sp"
+        android:layout_alignBaseline="@+id/etDrug"
+        android:layout_alignBottom="@+id/etDrug"
+        android:layout_alignLeft="@+id/txtRxID"
+        android:layout_alignRight="@+id/txtRxID"
+        android:textAlignment="center"
+        android:textColor="#00004d"/>
 
     <TextView
-        android:text="ID o nombre del paciente"
+        android:text="Cantidad"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textView5"
-        android:textSize="24sp"
-        android:textColor="#121254"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:layout_marginTop="36dp"
-        android:layout_below="@+id/textView3" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:id="@+id/patIdOrName"
-        android:hint="     llena identificación"
-        android:layout_alignBottom="@+id/textView5"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="35dp"/>
+        android:id="@+id/txtQuantity"
+        android:textSize="20sp"
+        android:layout_alignBaseline="@+id/etQuantity"
+        android:layout_alignBottom="@+id/etQuantity"
+        android:layout_alignLeft="@+id/txtRxID"
+        android:layout_alignRight="@+id/txtRxID"
+        android:textAlignment="center"
+        android:textColor="#00004d"/>
 
     <TextView
-        android:text="ID de medicina"
+        android:text="Duración"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textView6"
-        android:textSize="24sp"
-        android:textColor="#121254"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:layout_marginTop="40dp"
-        android:layout_alignTop="@+id/textView5"
-        android:layout_alignRight="@+id/textView5" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:id="@+id/medId"
-        android:hint="     llena identificación"
-        android:layout_alignBottom="@+id/textView6"
-        android:layout_alignLeft="@+id/patIdOrName" />
+        android:id="@+id/txtDuration"
+        android:textSize="20sp"
+        android:layout_alignBaseline="@+id/etDuration"
+        android:layout_alignBottom="@+id/etDuration"
+        android:layout_alignLeft="@+id/txtRxID"
+        android:layout_alignRight="@+id/txtRxID"
+        android:textAlignment="center"
+        android:textColor="#00004d"/>
 
     <TextView
-        android:text="cantidad"
+        android:text="Razón"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textView7"
-        android:textSize="24sp"
-        android:textColor="#121254"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:layout_marginTop="40dp"
-        android:layout_alignTop="@+id/textView6"
-        android:layout_alignRight="@+id/textView6" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="number"
-        android:ems="10"
-        android:id="@+id/pillQuantity"
-        android:hint="     llena cantidad"
-        android:layout_alignBottom="@+id/textView7"
-        android:layout_alignLeft="@+id/medId" />
+        android:id="@+id/txtReason"
+        android:textSize="20sp"
+        android:layout_alignBaseline="@+id/etReason"
+        android:layout_alignBottom="@+id/etReason"
+        android:layout_alignLeft="@+id/txtRxID"
+        android:layout_alignRight="@+id/txtRxID"
+        android:textAlignment="center"
+        android:textColor="#00004d"/>
 
     <TextView
-        android:text="direcciones"
-        android:id="@+id/tvDirections"
+        android:text="Instrucciónes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="24sp"
-        android:textColor="#121254"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:layout_marginTop="40dp"
-        android:layout_alignTop="@+id/textView7"
-        android:layout_alignRight="@+id/textView7"/>
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textMultiLine"
-        android:ems="10"
-        android:id="@+id/etDirections"
-        android:hint="     llena direcciones"
-        android:layout_alignBottom="@+id/tvDirections"
-        android:layout_alignLeft="@+id/pillQuantity" />
+        android:id="@+id/txtDirections"
+        android:textSize="20sp"
+        android:layout_alignBaseline="@+id/etDirections"
+        android:layout_alignBottom="@+id/etDirections"
+        android:layout_alignLeft="@+id/txtRxID"
+        android:layout_alignRight="@+id/txtRxID"
+        android:textAlignment="center"
+        android:textColor="#00004d"/>
 
     <TextView
-        android:text="duración"
-        android:id="@+id/tvDuration"
+        android:text="El Doctor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="24sp"
-        android:textColor="#121254"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:layout_marginTop="40dp"
-        android:layout_alignTop="@+id/tvDirections"
-        android:layout_alignRight="@+id/tvDirections"/>
+        android:id="@+id/Doctor"
+        android:textSize="20sp"
+        android:layout_alignBaseline="@+id/etDoctor"
+        android:layout_alignBottom="@+id/etDoctor"
+        android:layout_alignLeft="@+id/txtRxID"
+        android:layout_alignRight="@+id/txtRxID"
+        android:textAlignment="center"
+        android:textColor="#00004d"/>
+
 
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:inputType="number"
-        android:ems="10"
-        android:id="@+id/etDuration"
-        android:hint="     duración en días"
-        android:layout_alignBottom="@+id/tvDuration"
-        android:layout_alignLeft="@+id/etDirections" />
-
-    <TextView
-        android:text="médico"
-        android:id="@+id/tvDoctor"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="24sp"
-        android:textColor="#121254"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:layout_marginTop="40dp"
-        android:layout_alignTop="@+id/tvDuration"
-        android:layout_alignRight="@+id/tvDuration"/>
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
         android:id="@+id/etDoctor"
-        android:hint="     nombre del médico"
-        android:layout_alignBottom="@+id/tvDoctor"
-        android:layout_alignLeft="@+id/etDuration" />
-
-    <TextView
-        android:text="razón"
-        android:id="@+id/tvReason"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="24sp"
-        android:textColor="#121254"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:layout_marginTop="40dp"
-        android:layout_alignTop="@+id/tvDoctor"
-        android:layout_alignRight="@+id/tvDoctor"/>
+        android:textSize="20sp"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_marginTop="30dp"
+        android:layout_below="@+id/etRxID"
+        android:layout_alignLeft="@+id/etRxID"
+        android:inputType="textPersonName" />
 
     <EditText
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/etDrug"
+        android:textSize="20sp"
+        android:textAlignment="center"
+        android:layout_gravity ="end"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_marginTop="30dp"
+        android:layout_below="@+id/etDoctor"
+        android:layout_alignLeft="@+id/etDoctor"
+        android:inputType="textShortMessage" />
+
+    <EditText
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/etQuantity"
+        android:textSize="20sp"
+        android:textAlignment="center"
+        android:layout_gravity ="end"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_marginTop="30dp"
+        android:layout_below="@+id/etDrug"
+        android:layout_alignLeft="@+id/etDrug"
+        android:inputType="number" />
+
+    <EditText
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/etDuration"
+        android:textSize="20sp"
+        android:textAlignment="center"
+        android:layout_gravity ="end"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_marginTop="30dp"
+        android:layout_below="@+id/etQuantity"
+        android:layout_alignLeft="@+id/etQuantity"
+        android:inputType="textShortMessage" />
+
+    <EditText
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/etReason"
+        android:textSize="20sp"
+        android:textAlignment="center"
+        android:layout_gravity ="end"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_marginTop="30dp"
+        android:layout_below="@+id/etDuration"
+        android:inputType="textMultiLine"
+        android:layout_alignLeft="@+id/etDuration"/>
+
+    <EditText
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/etDirections"
+        android:textSize="20sp"
+        android:textAlignment="center"
+        android:layout_gravity ="end"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_marginTop="30dp"
+        android:layout_below="@+id/etReason"
+        android:inputType="textMultiLine"
+        android:layout_alignLeft="@+id/etReason"
+        android:layout_marginBottom="30dp"/>
+
+    <TextView
+        android:text="Identificación"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:id="@+id/etReason"
-        android:hint="  razón por la medicina"
-        android:layout_alignBottom="@+id/tvReason"
-        android:layout_alignLeft="@+id/etDoctor" />
+        android:id="@+id/txtRxID"
+        android:textSize="20sp"
+        android:textColor="#00004d"
+        android:layout_alignBaseline="@+id/etRxID"
+        android:layout_alignBottom="@+id/etRxID"
+        android:layout_marginLeft="80dp" />
 
-    <Button
-        android:text="Confirmar"
-        android:layout_width="400dp"
-        android:layout_height="90dp"
-        android:id="@+id/button"
-        android:textSize="30sp"
-        android:textColor="#cccccc"
-        android:background="#00004d"
-        android:padding="1dp"
-        android:layout_marginTop="50dp"
-        android:layout_below="@+id/tvReason"
-        android:layout_centerHorizontal="true" />
+    <EditText
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/etRxID"
+        android:textColor="@color/colorPrimaryDark"
+        android:textAlignment="center"
+        android:layout_gravity ="end"
+        android:textSize="20sp"
+        android:layout_marginTop="30dp"
+        android:inputType="none"
+        android:text="XXRT-0021"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/txtRxID"
+        android:layout_toEndOf="@+id/txtRxID"
+        android:layout_marginLeft="50dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginRight="80dp"
+        android:layout_marginEnd="80dp"/>
+
 
 </RelativeLayout>
