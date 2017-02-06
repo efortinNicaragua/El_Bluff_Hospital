@@ -8,10 +8,12 @@ import android.os.AsyncTask;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.google.android.gms.appindexing.Action;
@@ -34,6 +36,9 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -60,14 +65,15 @@ public class SearchAddPatients extends AppCompatActivity {
     int weight;
     String allergies;
     String medcond;
-    Context context= this;
+    Context context = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_add_patients);
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
+
+        /** ATTENTION: This was auto-generated to implement the App Indexing API.
+         See https://g.co/AppIndexing/AndroidStudio for more information.*/
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
 
@@ -140,13 +146,15 @@ public class SearchAddPatients extends AppCompatActivity {
 
     }
 
+
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
      */
     public Action getIndexApiAction() {
         Thing object = new Thing.Builder()
-                .setName("SearchAddPatients Page") // TODO: Define a title for the content shown.
+                .setName("SearchAddPatients Page")
+                // TODO: Define a title for the content shown.
                 // TODO: Make sure this auto-generated URL is correct.
                 .setUrl(Uri.parse("http://[ENTER-YOUR-URL-HERE]"))
                 .build();
@@ -158,10 +166,10 @@ public class SearchAddPatients extends AppCompatActivity {
 
     public void NuevoPaciente(View V) {
         /**Need to make dialog_patient_preccription pull data from DB not my made up stuff
-        *create layout inflater and subView assign sub view to dialog xml
+         *create layout inflater and subView assign sub view to dialog xml
          * */
         LayoutInflater inflater = LayoutInflater.from(SearchAddPatients.this);
-        View subView = inflater.inflate(R.layout.dialog_new_pacient, null);
+        View subView = inflater.inflate(R.layout.dialog_new_patient, null);
 
         //Build dialog set it to subview
         AlertDialog.Builder builderSingle1 = new AlertDialog.Builder(this);
@@ -197,7 +205,7 @@ public class SearchAddPatients extends AppCompatActivity {
 
                         /* This is to be used for demonstration where communication
                         to database is not an option. Take out for actual DB communication.
-                         */
+
 
                         boolean cancel = false;
                         View focusView = null;
@@ -270,10 +278,10 @@ public class SearchAddPatients extends AppCompatActivity {
                             Intent i = new Intent(getApplicationContext(), SearchAddPatients.class);
                             startActivity(i);
                         }
+                        */
 
 
-
-                        /*This is the code needed for db communication.
+                        /***This is the code needed for db communication.***/
 
                         patname = edit_name2.toString();
                         patid = edit_ID2.toString();
@@ -302,8 +310,14 @@ public class SearchAddPatients extends AppCompatActivity {
                         toast.setText("go catz");
                         toast.show();
 
-                        add_patient_info_row add_patient_info_row= new add_patient_info_row(context);
-                        add_patient_info_row.execute();*/
+                        add_patient_info_row add_patient_info_row = new add_patient_info_row(context);
+                        add_patient_info_row.execute();
+
+                        Toast toasty = new Toast(getApplicationContext());
+                        toasty.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+                        toasty.setDuration(Toast.LENGTH_LONG);
+                        toasty.setText("if you see this, info was sent to DB!!!!");
+                        toasty.show();
 
                         //Push to DB including ones not above but in Dialog
                         dialog.dismiss();
@@ -314,7 +328,7 @@ public class SearchAddPatients extends AppCompatActivity {
     }
 
     @Override
-    public void onBackPressed(){
+    public void onBackPressed() {
         Intent go_back = new Intent(this, DoctorMain.class);
         startActivity(go_back);
     }
@@ -347,7 +361,7 @@ public class SearchAddPatients extends AppCompatActivity {
         JSONObject jsonObject;
         JSONArray jsonArray;
         LayoutInflater inflater;
-        ArrayList<Class_FetchAllDrugInfo> druginfo_data = new ArrayList();
+        ArrayList<Class_add_patient_info_row> newpatient_data = new ArrayList();
 
         public add_patient_info_row(Context ctx) {
             context = ctx;
@@ -356,7 +370,7 @@ public class SearchAddPatients extends AppCompatActivity {
 
         @Override
         protected String doInBackground(Void... parms) {
-            String link = "http://192.168.0.101/android_connect/fetch_druginfo_all.php"; //192.168.0.100
+            String link = "http://192.168.0.101/android_connect/add_patientinfo_row.php"; //192.168.0.100
             String data;
             String fail = "fail";
             try {
@@ -366,7 +380,7 @@ public class SearchAddPatients extends AppCompatActivity {
                 httpURLConnection.setRequestMethod("POST");
 
                 //setDoOutput allows you to access PHP server?
-                //setDoInput lets you to recieve data from PHP server?
+                //setDoInput lets you to receive data from PHP server?
                 httpURLConnection.setDoOutput(true);
                 httpURLConnection.setDoInput(true);
 
@@ -378,8 +392,8 @@ public class SearchAddPatients extends AppCompatActivity {
 
                 //This is how you send JSON values along with the request
                 String post_data = URLEncoder.encode("patname", "UTF-8") + "=" + URLEncoder.encode(patname, "UTF-8") + "&"
-                        + URLEncoder.encode("patid", "UTF-8") + "=" + URLEncoder.encode(patid, "UTF-8");// + "&"
-                        /*+ URLEncoder.encode("address", "UTF-8") + "=" + URLEncoder.encode(address, "UTF-8") + "&"
+                        + URLEncoder.encode("patid", "UTF-8") + "=" + URLEncoder.encode(patid, "UTF-8") + "&"
+                        + URLEncoder.encode("address", "UTF-8") + "=" + URLEncoder.encode(address, "UTF-8") + "&"
                         + URLEncoder.encode("telephone", "UTF-8") + "=" + URLEncoder.encode(telephone, "UTF-8") + "&"
                         + URLEncoder.encode("gender", "UTF-8") + "=" + URLEncoder.encode(gender, "UTF-8") + "&"
                         + URLEncoder.encode("marstat", "UTF-8") + "=" + URLEncoder.encode(marstat, "UTF-8") + "&"
@@ -388,7 +402,7 @@ public class SearchAddPatients extends AppCompatActivity {
                         + URLEncoder.encode("height", "UTF-8") + "=" + URLEncoder.encode(s_height, "UTF-8") + "&"
                         + URLEncoder.encode("weight", "UTF-8") + "=" + URLEncoder.encode(s_weight, "UTF-8") + "&"
                         + URLEncoder.encode("allergies", "UTF-8") + "=" + URLEncoder.encode(allergies, "UTF-8") + "&"
-                        + URLEncoder.encode("medoncd", "UTF-8") + "=" + URLEncoder.encode(medcond, "UTF-8");*/
+                        + URLEncoder.encode("medcond", "UTF-8") + "=" + URLEncoder.encode(medcond, "UTF-8");
 
                 //bufferedWriter writes data
                 bufferedWriter.write(post_data);
@@ -441,7 +455,8 @@ public class SearchAddPatients extends AppCompatActivity {
         protected void onPreExecute() {
         }
 
-        //doInBackground return value goes here to onPostExecute
+
+        //doInBackground return value (json_string) goes here to onPostExecute
         @Override
         protected void onPostExecute(String json_string) {
             String message;
@@ -449,30 +464,68 @@ public class SearchAddPatients extends AppCompatActivity {
             //we try to convert string to jsonObject
             try {
                 //listView = (ListView) findViewById(R.id.activity_add_medicine);
-
                 jsonObject = new JSONObject(json_string);
-                //from object we make json array druginfo because that is what it is called in php
+
+                //from object we make json array with the name from the php script
                 jsonArray = jsonObject.getJSONArray("message");
 
 
-                //initiliaze count for while loop, strings for all data we will get from json
-                //all data comes out as strings so for int values we need to cast them into int values later
-                //hence drugtotal has int and string variables
+                //Initialize count for while loop.
+                // Define strings for all data we will get from json.
+                // For non string values (such as dob and height), need to cast them into strings.
+
                 int count = 0;
-                int drugtotal_int;
+                int children_int, height_int, weight_int;
+                Date dob_date;
+                String patname, patid, adress, tel, gender, marstat, dob, children, height, weight, allergies, medcond;
+
 
                 //while count is less than length of jsonarray
                 while (count < jsonArray.length()) {
+
                     //get the object put drugid into drugid ect..
                     JSONObject JO = jsonArray.getJSONObject(count);
-                    message = JO.getString("message");
+
+                    /**This needs to be added for every variable**/
+                    patname = JO.getString("patname");
+                    patid = JO.getString("patid");
+                    adress = JO.getString("patid");
+                    tel = JO.getString("tel");
+                    gender = JO.getString("gender");
+                    marstat = JO.getString("marstat");
+                    dob = JO.getString("dob");
+                    children = JO.getString("children");
+                    height = JO.getString("height");
+                    weight = JO.getString("weight");
+                    allergies = JO.getString("allergies");
+                    medcond = JO.getString("medcond");
+
+                    //try to cast string into int/date
+                    try {
+                        children_int = Integer.parseInt(children);
+                        height_int = Integer.parseInt(height);
+                        weight_int = Integer.parseInt(weight);
+
+
+                         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                         dob_date = dateFormat.parse(dob);
+
+                        //add this data as Class_add_patient_info_row to ArrayList
+                        newpatient_data.add(new Class_add_patient_info_row(patname, patid, adress, tel, gender, marstat, dob_date, children_int, height_int, weight_int, allergies, medcond));
+
+                    } catch (NumberFormatException nfe) {
+                        //make exception handlers?
+                    } catch (ParseException ParseE) {
+                        //make exception handlers?
+                    }
+
                     count++;
                 }
 
             } catch (JSONException e) {
-                //make excetion handler
-
+                //make exception handler
             }
+
         }
     }
 }

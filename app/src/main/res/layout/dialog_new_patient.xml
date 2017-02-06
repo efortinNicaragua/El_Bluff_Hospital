@@ -262,7 +262,7 @@
                 android:layout_height="30dp"
                 android:hint="Click to type"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:inputType="number"
+                android:inputType="date"
                 android:id="@+id/newdialog_edit_Birthdate"
                 android:background="@android:color/transparent"
                 android:textSize="22sp"
