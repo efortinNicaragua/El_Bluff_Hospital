@@ -19,9 +19,11 @@ public class Class_add_patient_info_row {
     public int weight;
     public String allergies;
     public String medcond;
+
     public Class_add_patient_info_row(){super();}
-public Class_add_patient_info_row(String patname,String patid,String tel, String adress,String gender, String marstat, Date dob,int children,
-                                  int height, int weight,String allergies,String medcond){
+
+    public Class_add_patient_info_row(String patname,String patid,String tel, String adress,String gender, String marstat, Date dob,int children, int height, int weight,String allergies,String medcond)
+    {
     super();
     this.patname= patname;
     this.patid=patid;
@@ -36,7 +38,8 @@ public Class_add_patient_info_row(String patname,String patid,String tel, String
     this.allergies=allergies;
     this.medcond=medcond;
 }
-    public String patnam(){return patname;}
+
+    public String patname(){return patname;}
     public String patid(){return patid;}
     public String tel(){return tel;}
     public String adress(){return adress;}
@@ -46,6 +49,6 @@ public Class_add_patient_info_row(String patname,String patid,String tel, String
     public int children(){return children;}
     public int height(){return height;}
     public int weight(){return weight;}
-    public String allergie(){return allergies;}
+    public String allergies(){return allergies;}
     public String medcond(){return medcond;}
 }

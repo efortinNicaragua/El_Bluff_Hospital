@@ -21,13 +21,17 @@ public class ArrayAdapter_add_patient_info_row extends ArrayAdapter<Class_add_pa
     public ArrayAdapter_add_patient_info_row(Context context, ArrayList<Class_add_patient_info_row> patientdata){
         super(context,0,patientdata);
     }
+
+
 @Override
 public View getView(int position, View convertView, ViewGroup parent){
     Class_add_patient_info_row single_patient=getItem(position);
 
     if(convertView==null){
-        convertView= LayoutInflater.from(getContext()).inflate(R.layout.dialog_patient_history, parent, false);
+        convertView= LayoutInflater.from(getContext()).inflate(R.layout.dialog_new_patient, parent, false);
     }
+
+    //The newdialog does not actually indicate a new dialog, it's the ID tag of the edit text for the dialog_new_patient screen//
 
     EditText patname=(EditText) convertView.findViewById(R.id.newdialog_edit_ID);
     EditText patid=(EditText) convertView.findViewById(R.id.newdialog_edit_name);

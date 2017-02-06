@@ -201,7 +201,7 @@ public class FetchPatientInfo extends AppCompatActivity {
     public void EditPatient(View view){
 
         LayoutInflater inflater = LayoutInflater.from(FetchPatientInfo.this);
-        View subView = inflater.inflate(R.layout.dialog_new_patient_gen_info, null);
+        View subView = inflater.inflate(R.layout.dialog_patient_gen_info, null);
 
         //Build dialog set it to subview
         AlertDialog.Builder builderSingle1 = new AlertDialog.Builder(this);
