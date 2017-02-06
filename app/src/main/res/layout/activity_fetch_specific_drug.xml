@@ -13,8 +13,23 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="34dp"
-        android:id="@+id/textView25"
+        android:layout_marginTop="30dp"
+        android:id="@+id/resID"
+        android:textSize="24sp"
+        android:textStyle="normal|bold|italic"
+        android:text="........"
+        android:textAlignment="center"
+        android:layout_alignBaseline="@+id/txtID"
+        android:layout_alignBottom="@+id/txtID"
+        android:layout_toRightOf="@+id/bFind"
+        android:layout_toEndOf="@+id/bFind"
+        android:textColor="@color/cellBorder" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:id="@+id/txtDrug"
         android:textSize="24sp"
         android:textStyle="normal|bold"
         android:text="Medicina"
@@ -33,18 +48,6 @@
         android:layout_below="@+id/etDrugName"
         android:layout_alignLeft="@+id/etDrugName"
         android:layout_alignStart="@+id/etDrugName" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/Title"
-        android:layout_weight="1"
-        android:textSize="24sp"
-        android:text="Da el nombre o el ID de la medicina"
-        android:textColor="@color/colorPrimaryDark"
-        android:layout_marginTop="11dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -74,10 +77,10 @@
         android:textSize="24sp"
         android:textStyle="normal|bold"
         android:text="Cantidad"
-        android:layout_alignBaseline="@+id/resQuant"
-        android:layout_alignBottom="@+id/resQuant"
-        android:layout_alignLeft="@+id/textView25"
-        android:layout_alignStart="@+id/textView25" />
+        android:layout_below="@+id/txtID"
+        android:layout_marginTop="35dp"
+        android:layout_alignLeft="@+id/txtID"
+        android:layout_alignStart="@+id/txtID" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -87,8 +90,8 @@
         android:textStyle="normal|bold|italic"
         android:text="........"
         android:textAlignment="center"
-        android:layout_alignBaseline="@+id/textView25"
-        android:layout_alignBottom="@+id/textView25"
+        android:layout_alignBaseline="@+id/txtDrug"
+        android:layout_alignBottom="@+id/txtDrug"
         android:layout_toRightOf="@+id/bFind"
         android:layout_toEndOf="@+id/bFind"
         android:textColor="@color/cellBorder" />
@@ -96,15 +99,39 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:id="@+id/Title"
+        android:layout_weight="1"
+        android:textSize="24sp"
+        android:text="Da el nombre o el ID de la medicina"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_marginTop="12dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:id="@+id/resQuant"
         android:textSize="24sp"
         android:textStyle="normal|bold|italic"
         android:text="........"
         android:textAlignment="center"
-        android:layout_below="@+id/resDrug"
-        android:layout_alignLeft="@+id/resDrug"
-        android:layout_alignStart="@+id/resDrug"
+        android:layout_alignBaseline="@+id/txtQuantity"
+        android:layout_alignBottom="@+id/txtQuantity"
+        android:layout_toRightOf="@+id/bFind"
+        android:layout_toEndOf="@+id/bFind"
         android:textColor="@color/cellBorder" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtID"
+        android:textSize="24sp"
+        android:textStyle="normal|bold"
+        android:text="Identificacion"
+        android:layout_below="@+id/txtDrug"
+        android:layout_marginTop="35dp"
+        android:layout_alignLeft="@+id/txtDrug"
+        android:layout_alignStart="@+id/txtDrug" />
 
 </RelativeLayout>

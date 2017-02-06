@@ -44,7 +44,7 @@ public class Adapter_ExpandableList extends BaseExpandableListAdapter{
     public View getChildView(int parent, int child, boolean lastChild, View convertview,
                              ViewGroup parentview)
     {
-        String child_title= "Fake Title"; //title should be taken from the class we create, this is just a place holder.
+        String child_title= "-- "; //title should be taken from the class we create, this is just a place holder.
         String child_details = (String) getChild(parent,child);
         if(convertview == null)
         {

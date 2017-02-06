@@ -1,57 +1,168 @@
 package ethanfortin_nicaragua.elbluffhospital;
 
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
-public class FetchSpecificDrug extends AppCompatActivity {
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
+public class FetchSpecificDrug extends AppCompatActivity implements View.OnClickListener {
+
+    // Declare global layout variables
+
+    // results
+    private TextView textViewDrugName;
+    private TextView textViewDrugId;
+    private TextView textViewDrugTotal;
+
+    // search parameters
+    private EditText editTextDrugName;
+    private EditText editTextDrugId;
+
+    // button listener
+    private Button buttonSearch;
+
+
+    // Set layout, initialize layout object handles and listener
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fetch_specific_drug);
 
-        final Button btFind = (Button) findViewById(R.id.bFind);
-        btFind.setOnClickListener(new View.OnClickListener() {
+        buttonSearch = (Button) findViewById(R.id.bFind);
+
+        editTextDrugName = (EditText) findViewById(R.id.etDrugName);
+        editTextDrugId = (EditText) findViewById(R.id.etDrugID);
+
+        textViewDrugName = (TextView) findViewById(R.id.resDrug);
+        textViewDrugTotal = (TextView) findViewById(R.id.resQuant);
+        textViewDrugId = (TextView) findViewById(R.id.resID);
+
+        buttonSearch.setOnClickListener(this);
+    }
+
+    // argChoice = 1 --> search by name
+    // argChoice = 2 --> search by ID
+    private void drugFetch(final String argVal, final int argChoice) {
+
+        class fetchSpecificDrug extends AsyncTask<Void,Void,String> {
+
+            ProgressDialog loading;
+
             @Override
-            public void onClick(View v) {
+            protected void onPreExecute() {
+                super.onPreExecute();
+                loading = ProgressDialog.show(FetchSpecificDrug.this,"Buscando...","Espera, por favor",false,false);
+            }
 
-                final EditText drugName = (EditText) findViewById(R.id.etDrugName);
-                final EditText drugId = (EditText) findViewById(R.id.etDrugID);
+            // Once JSON received correctly, parse and display it
+            @Override
+            protected void onPostExecute(String s) {
+                super.onPostExecute(s);
+                loading.dismiss();
+                drugShow(s);
+            }
 
-                TextView viewName = (TextView) findViewById(R.id.resDrug);
-                TextView viewQuant = (TextView) findViewById(R.id.resQuant);
+            // In here, split between argChoice Value (1 or 2)
+            protected String doInBackground(Void... params) {
 
-                String sName = drugName.getText().toString();
-                String sId = drugId.getText().toString();
+                RequestHandler reqHan = new RequestHandler();
+                String s;
 
-                int resQuant;
+                switch (argChoice) {
 
-                viewName.setText(sName);
-                switch (sName) {
-                    case "Tylenol":
-                        resQuant = 500;
+                    case 1:
+                        // search by name
+                        s = reqHan.sendGetRequestParam(ConnVars.URL_FETCH_SPECIFIC_DRUG_NAME, argVal);
                         break;
 
-                    case "Nyquil":
-                        resQuant = 350;
-                        break;
-
-                    case "Ibuprofin":
-                        resQuant = 1005;
+                    case 2:
+                        // search by id
+                        s = reqHan.sendGetRequestParam(ConnVars.URL_FETCH_SPECIFIC_DRUG_ID, argVal);
                         break;
 
                     default:
-                        resQuant = 0;
+                        System.out.println("Default -- neither name/ID worked: argChoice == " + argChoice);
+                        s = "badMethod";
                         break;
                 }
 
-                viewQuant.setText(String.valueOf(resQuant));
-
+                return s;
             }
-        });
+        }
+
+        fetchSpecificDrug specDrug = new fetchSpecificDrug();
+        specDrug.execute();
+    }
+
+    // Parses JSON - isn't robust because listView isn't involved
+    // Should only return one drug record, i.e. one name, id, and quantity
+    private void drugShow(String json) {
+
+        try {
+            JSONObject jsonObject = new JSONObject(json);
+            JSONArray resArr = jsonObject.getJSONArray(ConnVars.TAG_JSON_ARRAY);
+            JSONObject resObj = resArr.getJSONObject(0);
+
+            String drugName = resObj.getString(ConnVars.TAG_DRUGINFO_NAME);
+            String drugId = resObj.getString(ConnVars.TAG_DRUGINFO_ID);
+            String drugTotal = resObj.getString(ConnVars.TAG_DRUGINFO_QUANT);
+
+            textViewDrugName.setText(drugName);
+            textViewDrugId.setText(drugId);
+            textViewDrugTotal.setText(drugTotal);
+
+        } catch (JSONException j) {
+            System.out.println("JSON Exception occurred...");
+        }
+    }
+
+    @Override
+    public void onClick(View v) {
+
+        // Get
+        String sName = editTextDrugName.getText().toString();
+        String sId = editTextDrugId.getText().toString();
+
+        // If neither field is populated, give toast
+        if (TextUtils.equals("", sName)) {
+            if (TextUtils.equals("", sId)) {
+                int duration = Toast.LENGTH_LONG;
+                Context context = getApplicationContext();
+                String text1 = "Da el nombre o el ID de la medicina, por favor";
+                Toast toast1 = Toast.makeText(context, text1, duration);
+                toast1.show();
+            }
+            else {
+                // If name is blank but ID is populated, search by ID
+                System.out.println("Searching by ID");
+                drugFetch(sId, 2);
+            }
+        }
+        else {
+            if (TextUtils.equals("", sId)) {
+                // If name is populated and ID is blank, search by name
+                System.out.println("Searching by name");
+                drugFetch(sName, 1);
+            }
+            else {
+                // If both fields are populated, toast to only fill one.
+                int duration = Toast.LENGTH_LONG;
+                Context context = getApplicationContext();
+                String text1 = "el nombre o el ID, no los dos, por favor";
+                Toast toast1 = Toast.makeText(context, text1, duration);
+                toast1.show();
+            }
+        }
     }
 }

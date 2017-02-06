@@ -1,19 +1,11 @@
 package ethanfortin_nicaragua.elbluffhospital;
 
-import android.app.Activity;
 import android.app.ListActivity;
 import android.content.Context;
 import android.os.AsyncTask;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
-import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -29,11 +21,8 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.URLConnection;
 import java.net.URLEncoder;
 import java.util.ArrayList;
-import java.util.List;
-import static android.R.id.list;
 
 public class Inventory extends ListActivity {
 
@@ -52,6 +41,7 @@ public class Inventory extends ListActivity {
         * Following is only for demonstration, should be commented for PHP functionality
         *
         * */
+        /*
         listView = (ListView) findViewById(android.R.id.list);
         ArrayList<Class_FetchAllDrugInfo> druginfo_data = new ArrayList();
 
@@ -64,11 +54,13 @@ public class Inventory extends ListActivity {
         druginfo_data.add(new Class_FetchAllDrugInfo("789789", "Vicodin", 9999));
 
         ArrayAdapter<Class_FetchAllDrugInfo> adapter = new ArrayAdapter_FetchAllDrugInfo(this, druginfo_data);
+        */
 
         //set list view to listview in the xml file
-        ListView listView=(ListView) findViewById(android.R.id.list);
+        //ListView listView=(ListView) findViewById(android.R.id.list);
         //turn on list view
-        listView.setAdapter(adapter);
+        //listView.setAdapter(adapter);
+
 
 
         /*
@@ -76,32 +68,26 @@ public class Inventory extends ListActivity {
         * Below should be uncommented for PHP functionality; above is for example only
         *
         * */
-        //fetch_druginfo_all fetch_druginfo_all = new fetch_druginfo_all(this);
-        //fetch_druginfo_all.execute();
+        fetch_druginfo_all fetch_druginfo_all = new fetch_druginfo_all(this);
+        fetch_druginfo_all.execute();
 
     }
-
 
     public class fetch_druginfo_all extends AsyncTask<Void, Class_FetchAllDrugInfo, String> {
 
         Context context;
-        AlertDialog alertDialog;
         String json_string;
         JSONObject jsonObject;
         JSONArray jsonArray;
-        LayoutInflater inflater;
-        ArrayList<Class_FetchAllDrugInfo> druginfo_data = new ArrayList();
 
         public fetch_druginfo_all(Context ctx) {
-            context=ctx;
-
+            context = ctx;
         }
 
         @Override
         protected String doInBackground(Void... parms) {
             String link = "http://192.168.0.101/android_connect/fetch_druginfo_all.php"; //192.168.0.100 is one that usually works
-            String data;
-            String fail = "fail";
+
             try {
                 //Create and open the URL connection
                 URL url = new URL(link);
@@ -128,16 +114,19 @@ public class Inventory extends ListActivity {
 
                 //we will store result in string builder
                 StringBuilder sb = new StringBuilder();
-                String result = "";
+
                 //Input from PHP
                 InputStream inputStream = httpURLConnection.getInputStream();
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "iso-8859-1"));
-                //Writting data from JSON in to result(string) and sb(String Builder)
-                String line = "";
+
+                //Writing data from JSON in to result(string) and sb(String Builder)
+                String result = "";
+                String line;
                 while ((line = bufferedReader.readLine()) != null) {
                     result += line;
                     sb.append(line);
                 }
+
                 //Closing all things we opened
                 bufferedReader.close();
                 inputStream.close();
@@ -152,31 +141,27 @@ public class Inventory extends ListActivity {
                 json_string = sb.toString().trim();
 
             } catch (MalformedURLException e) {
-               //need to add exception handler
-
+                System.out.println("MalformedURLException occurred while making connection ");
             } catch (IOException e) {
-
-                //need to add exception handler
-
+                System.out.println("IOException occurred while making connection ");
             }
             return json_string;
         }
 
         @Override
         protected void onPreExecute() {
+            // Do nothing
         }
 
-        //doInBackground return value goes here to onPostExecute
         @Override
         protected void onPostExecute(String json_string) {
         //we try to convert string to jsonObject
             try {
-                //listView = (ListView) findViewById(R.id.activity_add_medicine);
 
+                // Make JSONObject and designate the array jsonArray to grab the array
+                // that's title is "druginfo" from the received object
                 jsonObject = new JSONObject(json_string);
-                //from object we make json array druginfo because that is what it is called in php
                 jsonArray = jsonObject.getJSONArray("druginfo");
-
 
                 //initiliaze count for while loop, strings for all data we will get from json
                 //all data comes out as strings so for int values we need to cast them into int values later
@@ -188,10 +173,10 @@ public class Inventory extends ListActivity {
                 //while count is less than length of jsonarray
                 while (count < jsonArray.length()) {
                     //get the object put drugid into drugid ect..
-                    JSONObject JO = jsonArray.getJSONObject(count);
-                    drugid = JO.getString("drugid");
-                    drugname = JO.getString("drugname");
-                    drugtotal = JO.getString("drugtotal");
+                    JSONObject jo = jsonArray.getJSONObject(count);
+                    drugid = jo.getString("drugid");
+                    drugname = jo.getString("drugname");
+                    drugtotal = jo.getString("drugtotal");
 
                     //try to cast string into int
                     try {
@@ -200,24 +185,22 @@ public class Inventory extends ListActivity {
                         druginfo_data.add(new Class_FetchAllDrugInfo(drugid, drugname, drugtotal_int));
 
                     } catch (NumberFormatException nfe) {
-                        //make exception handlers?
+                        System.out.println("Number Format Exception occurred...");
                     }
                     //increment count
                     count++;
                 }
 
             } catch (JSONException e) {
-                //make excetion handler
-
+                System.out.println("JSON Exception occurred...");
             }
-
 
 
             //Initiliaze arrayadapter and provide it with context and arraylist
             ArrayAdapter<Class_FetchAllDrugInfo> adapter = new ArrayAdapter_FetchAllDrugInfo(context, druginfo_data);
 
             //setliest view to lsitview in the xml file
-            ListView listView=(ListView) findViewById(android.R.id.list);
+            listView = (ListView) findViewById(android.R.id.list);
             //turn on list view
             listView.setAdapter(adapter);
 
