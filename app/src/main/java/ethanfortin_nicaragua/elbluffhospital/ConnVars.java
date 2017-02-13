@@ -8,14 +8,12 @@ package ethanfortin_nicaragua.elbluffhospital;
 public class ConnVars {
 
     // IP Addresses for PHP Scripts
-    public static final String URL_FETCH_SPECIFIC_DRUG_NAME = "http://192.168.0.101/android_connect/fetch_druginfo_row_name.php";
-    public static final String URL_FETCH_SPECIFIC_DRUG_ID = "http://192.168.0.101/android_connect/fetch_druginfo_row_id.php";
+    public static final String URL_FETCH_SPECIFIC_DRUG = "http://192.168.0.101/android_connect/fetch_druginfo_row.php";
 
     // Keys used to to send request to scripts
 
     // JSON Tags
-    public static final String TAG_JSON_ARRAY = "result";
-
+    public static final String TAG_DRUGINFO = "druginfo";
     public static final String TAG_DRUGINFO_ID = "drugid";
     public static final String TAG_DRUGINFO_NAME = "drugname";
     public static final String TAG_DRUGINFO_QUANT = "drugtotal";

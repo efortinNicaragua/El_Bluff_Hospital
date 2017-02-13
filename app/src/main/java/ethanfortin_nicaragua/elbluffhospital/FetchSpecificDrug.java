@@ -16,6 +16,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class FetchSpecificDrug extends AppCompatActivity implements View.OnClickListener {
 
     // Declare global layout variables
@@ -70,6 +73,7 @@ public class FetchSpecificDrug extends AppCompatActivity implements View.OnClick
             protected void onPostExecute(String s) {
                 super.onPostExecute(s);
                 loading.dismiss();
+                System.out.println("Executing Drugshow");
                 drugShow(s);
             }
 
@@ -77,18 +81,21 @@ public class FetchSpecificDrug extends AppCompatActivity implements View.OnClick
             protected String doInBackground(Void... params) {
 
                 RequestHandler reqHan = new RequestHandler();
+                HashMap<String, String> map = new HashMap<>();
                 String s;
 
                 switch (argChoice) {
 
                     case 1:
-                        // search by name
-                        s = reqHan.sendGetRequestParam(ConnVars.URL_FETCH_SPECIFIC_DRUG_NAME, argVal);
+                        // search by
+                        map.put("drugname", argVal);
+                        s = reqHan.sendGetRequestParam(ConnVars.URL_FETCH_SPECIFIC_DRUG, map);
                         break;
 
                     case 2:
                         // search by id
-                        s = reqHan.sendGetRequestParam(ConnVars.URL_FETCH_SPECIFIC_DRUG_ID, argVal);
+                        map.put("drugid", argVal);
+                        s = reqHan.sendGetRequestParam(ConnVars.URL_FETCH_SPECIFIC_DRUG, map);
                         break;
 
                     default:
@@ -110,8 +117,9 @@ public class FetchSpecificDrug extends AppCompatActivity implements View.OnClick
     private void drugShow(String json) {
 
         try {
+            System.out.println("Mark 1");
             JSONObject jsonObject = new JSONObject(json);
-            JSONArray resArr = jsonObject.getJSONArray(ConnVars.TAG_JSON_ARRAY);
+            JSONArray resArr = jsonObject.getJSONArray(ConnVars.TAG_DRUGINFO);
             JSONObject resObj = resArr.getJSONObject(0);
 
             String drugName = resObj.getString(ConnVars.TAG_DRUGINFO_NAME);

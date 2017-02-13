@@ -115,7 +115,7 @@ public class RequestHandler {
     * Used when fetching from MySQL with parameter (i.e. any time specification is needed by user)
     * Only difference between this and sendGetRequest is the id is included in URL
     * */
-    public String sendGetRequestParam(String requestURL, String id) {
+    public String sendGetRequestParam(String requestURL, HashMap<String, String> params) {
 
         URL url;
 
@@ -123,13 +123,11 @@ public class RequestHandler {
         StringBuilder sb = new StringBuilder();
 
         try {
-            System.out.println("Mark 1");
-            url = new URL(requestURL + id);
 
-            System.out.println("Mark 2");
+            url = new URL(requestURL + "?" + getPostDataString(params));
+
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
 
-            System.out.println("Mark 3");
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
 
             String s;
