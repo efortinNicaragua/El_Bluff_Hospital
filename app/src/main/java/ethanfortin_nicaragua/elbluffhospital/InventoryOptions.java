@@ -15,6 +15,8 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Switch;
 
+import static android.R.string.cancel;
+
 public class InventoryOptions extends AppCompatActivity {
 
     final Context context = this;
@@ -43,12 +45,6 @@ public class InventoryOptions extends AppCompatActivity {
                 // Clicking on the switch will toggle whether the user
                 // would like to search by date or not.
                 dateEnable.setChecked(false);
-                dateEnable.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                        if (isChecked) datePicker.setEnabled(true);
-                        if (isChecked) datePicker.setEnabled(false);
-                    }
-                });
 
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
 
@@ -62,29 +58,34 @@ public class InventoryOptions extends AppCompatActivity {
                         .setPositiveButton("Aceptar",new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog,int id) {
 
+                                Intent i = new Intent(subView.getContext(), FetchShipments.class);
+                                View focus = null;
+                                boolean cancel = false;
+
                                 // Verify drug name and/or ID + Date
                                 String s_drugName = entryName.getText().toString();
                                 String s_drugId = entryId.getText().toString();
 
-                                Intent i = new Intent(subView.getContext(), FetchShipments.class);
+                                if (!TextUtils.isEmpty(s_drugName) && !TextUtils.isEmpty(s_drugId)
+                                        && !dateEnable.isChecked()) {
+                                    entryName.setError("Attencion");
+                                    focus = entryName;
+                                    cancel = true;
+                                }
+                                if (cancel) {
+                                    focus.requestFocus();
+                                } else {
+                                    int day = datePicker.getDayOfMonth();
+                                    int month = datePicker.getMonth() + 1;
+                                    int year = datePicker.getYear();
+                                    String sdate = year + "-" + month + "-" + day;
 
-                                // Later on use this, but for now always send date value
-                                //if(dateEnable.isChecked()) {
-                                int day = datePicker.getDayOfMonth();
-                                int month = datePicker.getMonth();
-                                int year = datePicker.getYear();
-                                String sdate = year + "-" + month + "-" + day;
-                                i.putExtra("shipdate", sdate);
-                                //}
+                                    if(dateEnable.isChecked()) i.putExtra("shipdate", sdate);
+                                    i.putExtra("drugid", s_drugId);
+                                    i.putExtra("drugname", s_drugName);
 
-                                /* TODO - Make it so you're passing a boolean for each of these
-                                 * variables, so you can test on the next page which values
-                                 * to search by
-                                * */
-                                if(!TextUtils.isEmpty(s_drugId)) i.putExtra("drugid", s_drugId);
-                                if(!TextUtils.isEmpty(s_drugName)) i.putExtra("drugname", s_drugName);
-
-                                startActivity(i);
+                                    startActivity(i);
+                                }
 
 
                             }

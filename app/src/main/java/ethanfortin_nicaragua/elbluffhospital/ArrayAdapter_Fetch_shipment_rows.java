@@ -26,7 +26,7 @@ public class ArrayAdapter_Fetch_shipment_rows extends ArrayAdapter<Class_Fetch_s
     @Override
     public View getView(int position, View convertView, ViewGroup parent){
 
-        Class_Fetch_shipment_rows single_druginfo = getItem(position);
+        Class_Fetch_shipment_rows shipRow = getItem(position);
 
         if(convertView == null){
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.row_fetch_shipments_rows, parent, false);
@@ -37,19 +37,10 @@ public class ArrayAdapter_Fetch_shipment_rows extends ArrayAdapter<Class_Fetch_s
         TextView shipquant = (TextView)convertView.findViewById(R.id.shipquant);
         TextView shipdate = (TextView)convertView.findViewById(R.id.shipdate) ;
 
-        SimpleDateFormat sdf = new SimpleDateFormat("dd MMM yyyy");
-        String date = sdf.format(single_druginfo.shipdate);
-
-        drugid.setText(single_druginfo.drugid);
-        drugname.setText(single_druginfo.drugname);
-        shipquant.setText(Integer.toString(single_druginfo.shipquant));
-        shipdate.setText(date);
-
-        /*
-        Still need to figure out this date thing
-        SimpleDateFormat df = new SimpleDateFortmat("dd/MM/yyyy");
-        shipdate.setText(df.format(single_druginfo.shipdate));*/
-
+        drugid.setText(shipRow.drugid);
+        drugname.setText(shipRow.drugname);
+        shipquant.setText(Integer.toString(shipRow.shipquant));
+        shipdate.setText(shipRow.shipdate);
 
         return convertView;
 

@@ -10,12 +10,12 @@ public class Class_Fetch_shipment_rows {
     public String drugid;
     public String drugname;
     public int shipquant;
-    public Date shipdate;
+    public String shipdate;
     public Class_Fetch_shipment_rows(){
         super();
     }
 
-    public Class_Fetch_shipment_rows(Date shipdate, String drugid, String drugname, int shipquant) {
+    public Class_Fetch_shipment_rows(String shipdate, String drugid, String drugname, int shipquant) {
 
         super();
         this.drugid = drugid;
@@ -27,7 +27,7 @@ public class Class_Fetch_shipment_rows {
     public String getDrugID() { return drugid; }
     public String getDrugName() { return drugname; }
     public int getShipQuant() { return shipquant; }
-    public Date getShipDate(){return shipdate;}
+    public String getShipDate(){return shipdate;}
     public String getAllData(){
         String all = drugid + " " + drugname + " " + shipquant + " "+ shipdate;
         return all;

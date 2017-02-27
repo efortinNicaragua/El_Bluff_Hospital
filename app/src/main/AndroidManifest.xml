@@ -33,7 +33,6 @@
         <activity android:name=".PDFConfirmationandUpload" />
         <activity android:name=".Inventory" />
         <activity android:name=".MainMenu" />
-        <activity android:name=".SearchByNameShipmentResults" />
         <activity android:name=".AddShipment" />
         <activity android:name=".FetchSpecificDrug" />
         <activity
