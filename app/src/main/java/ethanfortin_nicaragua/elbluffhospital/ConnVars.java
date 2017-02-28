@@ -14,12 +14,14 @@ public class ConnVars {
 
     // JSON Tags
 
+    public static final String TAG_SUCCESS = "success";
+
     public static final String TAG_DRUGINFO = "druginfo";
     public static final String TAG_DRUGINFO_ID = "drugid";
     public static final String TAG_DRUGINFO_NAME = "drugname";
     public static final String TAG_DRUGINFO_QUANT = "drugtotal";
 
-    public static final String TAG_SHIPMENTS = "shipments";
+    public static final String TAG_SHIPMENTS = "shipment";
     public static final String TAG_SHIPMENTS_SHIPDATE = "shipdate";
     public static final String TAG_SHIPMENTS_DRUGID = "drugid";
     public static final String TAG_SHIPMENTS_DRUGNAME = "drugname";

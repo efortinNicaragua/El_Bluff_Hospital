@@ -95,6 +95,8 @@ public class RequestHandler {
         try {
             url = new URL(requestURL);
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
+            con.setReadTimeout(3000);
+            con.setConnectTimeout(3000);
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
 
             String s;
@@ -125,8 +127,11 @@ public class RequestHandler {
         try {
 
             url = new URL(requestURL + "?" + getPostDataString(params));
+            System.out.println("URL initiated: " + url);
 
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
+            con.setReadTimeout(3000);
+            con.setConnectTimeout(3000);
 
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
 

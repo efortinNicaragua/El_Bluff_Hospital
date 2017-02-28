@@ -1,75 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout  xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="150dp">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/shipdate"
+        android:text="date"
+        android:textSize="23sp"
+        android:textColor="@android:color/background_light"
         android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="5dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:textSize="25sp"
-        android:textAlignment="center"
-        android:textColor="#00004d"
-        android:text="Date My Man?"
+        android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        />
+        android:id="@+id/shipdate"
+        android:textStyle="normal|bold" />
 
-    <TextView android:id="@+id/drugid"
-        android:layout_width="wrap_content"
-        android:layout_height="80dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="5dp"
-        android:paddingTop="20dp"
-        android:paddingBottom="10dp"
-        android:textStyle="bold"
+    <TextView
+        android:text="ID: "
         android:textSize="25sp"
-        android:textAlignment="center"
         android:textColor="#00004d"
-        android:text="ID de Medicina "
-        android:layout_below="@id/shipdate"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <TextView android:id="@+id/drugname"
-            android:layout_width="wrap_content"
-            android:layout_height="80dp"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:paddingTop="20dp"
-            android:paddingBottom="10dp"
-            android:textStyle="bold"
-            android:textSize="25sp"
-            android:textAlignment="center"
-            android:textColor="#00004d"
-            android:text="La Medicina"
-            android:layout_alignTop="@id/drugid"
-            android:layout_alignParentBottom="true"
-            android:layout_toRightOf="@+id/drugid"
-            android:layout_toEndOf="@+id/drugid" />
-
-    <TextView android:id="@+id/shipquant"
-        android:layout_width="wrap_content"
-        android:layout_height="80dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:paddingTop="20dp"
-        android:paddingBottom="10dp"
         android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/shipdate"
+        android:layout_alignLeft="@+id/shipdate"
+        android:id="@+id/qualID" />
+
+    <TextView
+        android:text="drugid"
         android:textSize="25sp"
-        android:textAlignment="center"
         android:textColor="#00004d"
-        android:text="ShipQuant"
-        android:layout_alignTop="@id/drugid"
-        android:layout_alignParentBottom="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/qualID"
+        android:layout_toRightOf="@+id/qualID"
+        android:layout_toEndOf="@+id/qualID"
+        android:id="@+id/drugid" />
+
+    <TextView
+        android:text="  Nombre: "
+        android:textSize="25sp"
+        android:textColor="#00004d"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/qualID"
+        android:layout_toRightOf="@+id/drugid"
+        android:layout_toEndOf="@+id/drugid"
+        android:id="@+id/qualName" />
+
+    <TextView
+        android:text="drugname"
+        android:textSize="25sp"
+        android:textColor="#00004d"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/qualID"
+        android:layout_toRightOf="@+id/qualName"
+        android:layout_toEndOf="@+id/qualName"
+        android:id="@+id/drugname" />
+
+    <TextView
+        android:text="  Cantidad: "
+        android:textSize="25sp"
+        android:textColor="#00004d"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/qualID"
         android:layout_toRightOf="@+id/drugname"
-        android:layout_toEndOf="@+id/drugname" />
+        android:layout_toEndOf="@+id/drugname"
+        android:id="@+id/qualQuant" />
 
-
+    <TextView
+        android:text="shipquant"
+        android:textSize="25sp"
+        android:textColor="#00004d"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/qualID"
+        android:layout_toRightOf="@+id/qualQuant"
+        android:layout_toEndOf="@+id/qualQuant"
+        android:id="@+id/shipquant" />
 </RelativeLayout>

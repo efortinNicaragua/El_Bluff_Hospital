@@ -6,8 +6,12 @@ import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -23,8 +27,6 @@ import java.util.SortedMap;
 
 public class FetchShipments extends AppCompatActivity {
 
-    ListView listView;
-    ArrayList<Class_Fetch_shipment_rows> shipment_data = new ArrayList();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,7 +74,6 @@ public class FetchShipments extends AppCompatActivity {
                 map.put("shipdate", str3);
 
                 s = reqHan.sendGetRequestParam(ConnVars.URL_FETCH_SHIPMENTS, map);
-
                 return s;
             }
         }
@@ -82,6 +83,7 @@ public class FetchShipments extends AppCompatActivity {
     }
 
     private void parseShipments(String json) {
+        System.out.println(json);
 
         Context context = this;
         ListView listView;
@@ -92,32 +94,49 @@ public class FetchShipments extends AppCompatActivity {
 
         try {
             JSONObject jsonObject = new JSONObject(json);
-            JSONArray resArr = jsonObject.getJSONArray(ConnVars.TAG_SHIPMENTS);
 
-            while (count < resArr.length()) {
-                JSONObject resObj = resArr.getJSONObject(count);
-                drugName = resObj.getString(ConnVars.TAG_SHIPMENTS_DRUGNAME);
-                drugId = resObj.getString(ConnVars.TAG_SHIPMENTS_DRUGID);
-                shipQuant = resObj.getString(ConnVars.TAG_SHIPMENTS_SHIPQUANT);
-                shipDate = resObj.getString(ConnVars.TAG_SHIPMENTS_SHIPDATE);
+            // Handle case when nothing is returned
+            int success = jsonObject.getInt(ConnVars.TAG_SUCCESS);
+            if (success == 0) {
+                onBackPressed();
+                Toast toast = Toast.makeText(getApplicationContext(),
+                        "No hay resultados", Toast.LENGTH_LONG);
+                ViewGroup vg = (ViewGroup) toast.getView();
+                TextView toastTV = (TextView) vg.getChildAt(0);
+                toastTV.setTextSize(25);
+                toast.show();
+            } else {
 
-                try {
-                    totalCast = Integer.parseInt(shipQuant);
-                    shipmentData.add(new Class_Fetch_shipment_rows(shipDate, drugId, drugName, totalCast));
-                } catch (NumberFormatException e) {
-                    System.out.println("Number format exception occurred...");
+                JSONArray resArr = jsonObject.getJSONArray(ConnVars.TAG_SHIPMENTS);
+
+                while (count < resArr.length()) {
+                    JSONObject resObj = resArr.getJSONObject(count);
+                    drugName = resObj.getString(ConnVars.TAG_SHIPMENTS_DRUGNAME);
+                    drugId = resObj.getString(ConnVars.TAG_SHIPMENTS_DRUGID);
+                    shipQuant = resObj.getString(ConnVars.TAG_SHIPMENTS_SHIPQUANT);
+                    shipDate = resObj.getString(ConnVars.TAG_SHIPMENTS_SHIPDATE);
+
+                    try {
+                        totalCast = Integer.parseInt(shipQuant);
+                        shipmentData.add(new Class_Fetch_shipment_rows(shipDate, drugId, drugName, totalCast));
+                    } catch (NumberFormatException e) {
+                        System.out.println("Number format exception occurred...");
+                    }
+
+                    count++;
                 }
 
-                count++;
+                ArrayAdapter<Class_Fetch_shipment_rows> adapter = new ArrayAdapter_Fetch_shipment_rows(context, shipmentData);
+                listView = (ListView) findViewById(android.R.id.list);
+                listView.setAdapter(adapter);
+
             }
 
         } catch (JSONException j) {
             System.out.println("JSON Exception occurred...");
         }
 
-        ArrayAdapter<Class_Fetch_shipment_rows> adapter = new ArrayAdapter_Fetch_shipment_rows(context, shipmentData);
-        listView = (ListView) findViewById(android.R.id.list);
-        listView.setAdapter(adapter);
+
     }
 
 }
