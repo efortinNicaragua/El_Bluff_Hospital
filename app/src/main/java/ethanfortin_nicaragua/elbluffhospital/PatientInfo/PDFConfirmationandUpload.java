@@ -1,24 +1,20 @@
-package ethanfortin_nicaragua.elbluffhospital;
+package ethanfortin_nicaragua.elbluffhospital.PatientInfo;
 
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.provider.MediaStore;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import static ethanfortin_nicaragua.elbluffhospital.R.id.imageView;
-import static ethanfortin_nicaragua.elbluffhospital.R.id.pdfView;
+import ethanfortin_nicaragua.elbluffhospital.R;
 
 public class PDFConfirmationandUpload extends AppCompatActivity {
 

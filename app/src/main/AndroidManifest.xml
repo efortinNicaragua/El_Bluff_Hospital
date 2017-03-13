@@ -23,18 +23,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".PharmacyMain" />
-        <activity android:name=".SearchAddPatients" />
-        <activity android:name=".InventoryOptions" />
-        <activity android:name=".AddPrescription" />
-        <activity android:name=".PrescriptionConfirmation" />
-        <activity android:name=".DoctorMain" />
-        <activity android:name=".UploadOldFileHome" />
-        <activity android:name=".PDFConfirmationandUpload" />
-        <activity android:name=".Inventory" />
+        <activity android:name=".Inventory.PharmacyMain" />
+        <activity android:name=".PatientInfo.SearchAddPatients" />
+        <activity android:name=".Inventory.InventoryOptions" />
+        <activity android:name=".PatientInfo.AddPrescription" />
+        <activity android:name=".PatientInfo.PrescriptionConfirmation" />
+        <activity android:name=".PatientInfo.DoctorMain" />
+        <activity android:name=".PatientInfo.UploadOldFileHome" />
+        <activity android:name=".PatientInfo.PDFConfirmationandUpload" />
+        <activity android:name=".Inventory.Inventory" />
         <activity android:name=".MainMenu" />
-        <activity android:name=".AddShipment" />
-        <activity android:name=".FetchSpecificDrug" />
+        <activity android:name=".Inventory.AddShipment" />
+        <activity android:name=".Inventory.FetchSpecificDrug" />
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_login" />
@@ -42,19 +42,19 @@
         android:label="AppBar"
         android:theme="@style/AppTheme" />
         <activity
-            android:name=".FetchVisits"
+            android:name=".PatientInfo.FetchVisits"
             android:label="NewVisitHistory"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".FetchPrescriptions"
+            android:name=".PatientInfo.FetchPrescriptions"
             android:label="NewPatientPrescription"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".FetchPatientInfo"
+            android:name=".PatientInfo.FetchPatientInfo"
             android:label="NewPatientGenInfo"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".AddNewVisit"
+            android:name=".PatientInfo.AddNewVisit"
             android:label="@string/title_activity_add_new_visit"
             android:theme="@style/AppTheme.NoActionBar" />
         <!--
@@ -65,7 +65,7 @@
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
-        <activity android:name=".FetchShipments"></activity>
+        <activity android:name=".Inventory.FetchShipments"></activity>
     </application>
 
 </manifest>

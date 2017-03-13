@@ -1,4 +1,4 @@
-package ethanfortin_nicaragua.elbluffhospital;
+package ethanfortin_nicaragua.elbluffhospital.Inventory;
 
 import android.app.ListActivity;
 import android.app.ProgressDialog;
@@ -12,19 +12,14 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import ethanfortin_nicaragua.elbluffhospital.ArrayAdapters.ArrayAdapter_FetchAllDrugInfo;
+import ethanfortin_nicaragua.elbluffhospital.ConnVars;
+import ethanfortin_nicaragua.elbluffhospital.DataClasses.Class_FetchAllDrugInfo;
+import ethanfortin_nicaragua.elbluffhospital.R;
+import ethanfortin_nicaragua.elbluffhospital.RequestHandler;
 
 public class Inventory extends ListActivity {
 

@@ -1,4 +1,4 @@
-package ethanfortin_nicaragua.elbluffhospital;
+package ethanfortin_nicaragua.elbluffhospital.ArrayAdapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -6,12 +6,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.TextView;
 
-import java.sql.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+
+import ethanfortin_nicaragua.elbluffhospital.DataClasses.Class_add_patient_info_row;
+import ethanfortin_nicaragua.elbluffhospital.R;
 
 /**
  * Created by Wildcat on 12/8/2016.

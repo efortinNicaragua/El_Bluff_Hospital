@@ -5,6 +5,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import ethanfortin_nicaragua.elbluffhospital.Inventory.PharmacyMain;
+import ethanfortin_nicaragua.elbluffhospital.PatientInfo.DoctorMain;
+
 public class MainMenu extends AppCompatActivity {
 
     @Override

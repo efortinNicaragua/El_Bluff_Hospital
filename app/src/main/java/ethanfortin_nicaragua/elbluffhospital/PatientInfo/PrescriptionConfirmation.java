@@ -1,10 +1,13 @@
-package ethanfortin_nicaragua.elbluffhospital;
+package ethanfortin_nicaragua.elbluffhospital.PatientInfo;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+
+import ethanfortin_nicaragua.elbluffhospital.Inventory.PharmacyMain;
+import ethanfortin_nicaragua.elbluffhospital.R;
 
 public class PrescriptionConfirmation extends AppCompatActivity {
 
