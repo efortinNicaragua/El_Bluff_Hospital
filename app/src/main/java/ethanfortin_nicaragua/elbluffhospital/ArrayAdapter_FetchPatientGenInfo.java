@@ -24,11 +24,19 @@ public class ArrayAdapter_FetchPatientGenInfo extends ArrayAdapter<Class_FetchPa
         if(convertView==null){
             convertView= LayoutInflater.from(getContext()).inflate(R.layout.row_patgeninfo_all, parent, false);
         }
-        TextView category=(TextView)convertView.findViewById(R.id.category);
-        TextView information=(TextView)convertView.findViewById(R.id.information);
 
-        category.setText(single_patgeninfo.category);
-        information.setText(single_patgeninfo.information);
+        //Needs to be updated for all data from pat info class but for now row_patinfo_all only has 2 text views
+
+
+        TextView patid=(TextView)convertView.findViewById(R.id.patname);
+        TextView patname=(TextView)convertView.findViewById(R.id.patid);
+
+        //String test1="DID IT WORK";
+        //String test2="YA BRO IT DID";
+        //patid.setText(test1);
+        //patname.setText(test2);
+        patid.setText(single_patgeninfo.patid);
+        patname.setText(single_patgeninfo.patname);
 
         return convertView;
 

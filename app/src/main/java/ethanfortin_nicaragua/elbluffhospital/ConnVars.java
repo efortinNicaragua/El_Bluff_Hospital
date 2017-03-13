@@ -11,6 +11,7 @@ public class ConnVars {
     public static final String URL_FETCH_SPECIFIC_DRUG = "http://192.168.0.100/android_connect/fetch_druginfo_row.php";
     public static final String URL_FETCH_DRUGINFO_ALL = "http://192.168.0.100/android_connect/fetch_druginfo_all.php";
     public static final String URL_FETCH_SHIPMENTS = "http://192.168.0.100/android_connect/fetch_shipment_rows.php";
+    public static final String URL_FETCH_PATIENT_GENERAL_INFO="http://192.168.0.100/android_connect/fetch_patientinfo_row.php";
 
     // JSON Tags
 
@@ -18,6 +19,7 @@ public class ConnVars {
     public static final String TAG_DRUGINFO_ID = "drugid";
     public static final String TAG_DRUGINFO_NAME = "drugname";
     public static final String TAG_DRUGINFO_QUANT = "drugtotal";
+    public static final String TAG_PatientInfo= "patientinfo";
 
     public static final String TAG_SHIPMENTS = "shipments";
     public static final String TAG_SHIPMENTS_SHIPDATE = "shipdate";
@@ -25,4 +27,5 @@ public class ConnVars {
     public static final String TAG_SHIPMENTS_DRUGNAME = "drugname";
     public static final String TAG_SHIPMENTS_SHIPQUANT = "shipquant";
 
+    //
 }

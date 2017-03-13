@@ -49,7 +49,7 @@ public class FetchPatientInfo extends AppCompatActivity {
         listView = (ListView) findViewById(android.R.id.list);
         ArrayList<Class_FetchPatientGenInfo> patientgeninfo_data = new ArrayList();
 
-        patientgeninfo_data.add(new Class_FetchPatientGenInfo("Nombre", "Pablo Sanchez"));
+       /* patientgeninfo_data.add(new Class_FetchPatientGenInfo("Nombre", "Pablo Sanchez"));
         patientgeninfo_data.add(new Class_FetchPatientGenInfo("ID", "123456"));
         patientgeninfo_data.add(new Class_FetchPatientGenInfo("Direccion", "532 El Bluff"));
         patientgeninfo_data.add(new Class_FetchPatientGenInfo("Tele", "18972892200"));
@@ -60,7 +60,7 @@ public class FetchPatientInfo extends AppCompatActivity {
         patientgeninfo_data.add(new Class_FetchPatientGenInfo("Altura", "86cm"));
         patientgeninfo_data.add(new Class_FetchPatientGenInfo("Pesadura", "65kg"));
         patientgeninfo_data.add(new Class_FetchPatientGenInfo("Alergias", "Penecilinia, Azufre"));
-        patientgeninfo_data.add(new Class_FetchPatientGenInfo("Condiciones Medicos", "Alta presion sanguinea"));
+        patientgeninfo_data.add(new Class_FetchPatientGenInfo("Condiciones Medicos", "Alta presion sanguinea"));*/
 
         ArrayAdapter<Class_FetchPatientGenInfo> adapter = new ArrayAdapter_FetchPatientGenInfo(this, patientgeninfo_data);
 
