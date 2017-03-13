@@ -1,4 +1,4 @@
-package ethanfortin_nicaragua.elbluffhospital;
+package ethanfortin_nicaragua.elbluffhospital.ArrayAdapters;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.view.LayoutInflater;
@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import java.util.HashMap;
 import java.util.List;
+
+import ethanfortin_nicaragua.elbluffhospital.R;
 
 /**
  * Created by Wildcat on 1/30/2017.

@@ -1,4 +1,4 @@
-package ethanfortin_nicaragua.elbluffhospital;
+package ethanfortin_nicaragua.elbluffhospital.ArrayAdapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,6 +8,9 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+
+import ethanfortin_nicaragua.elbluffhospital.DataClasses.Class_FetchPatientGenInfo;
+import ethanfortin_nicaragua.elbluffhospital.R;
 
 /**
  * Created by wildcat on 1/26/2017.

@@ -1,4 +1,4 @@
-package ethanfortin_nicaragua.elbluffhospital;
+package ethanfortin_nicaragua.elbluffhospital.Inventory;
 
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.content.Intent;
 import android.view.View;
 import android.widget.EditText;
+
+import ethanfortin_nicaragua.elbluffhospital.R;
 
 public class PharmacyMain extends AppCompatActivity {
 

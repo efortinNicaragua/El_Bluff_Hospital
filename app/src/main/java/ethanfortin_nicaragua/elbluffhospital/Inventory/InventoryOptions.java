@@ -1,4 +1,4 @@
-package ethanfortin_nicaragua.elbluffhospital;
+package ethanfortin_nicaragua.elbluffhospital.Inventory;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -15,7 +15,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Switch;
 
-import static android.R.string.cancel;
+import ethanfortin_nicaragua.elbluffhospital.R;
 
 public class InventoryOptions extends AppCompatActivity {
 

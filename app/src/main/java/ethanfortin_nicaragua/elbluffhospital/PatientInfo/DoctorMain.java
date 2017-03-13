@@ -1,9 +1,12 @@
-package ethanfortin_nicaragua.elbluffhospital;
+package ethanfortin_nicaragua.elbluffhospital.PatientInfo;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+
+import ethanfortin_nicaragua.elbluffhospital.MainMenu;
+import ethanfortin_nicaragua.elbluffhospital.R;
 
 public class DoctorMain extends AppCompatActivity {
 

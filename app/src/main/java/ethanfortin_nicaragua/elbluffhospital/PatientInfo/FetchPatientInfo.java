@@ -1,4 +1,4 @@
-package ethanfortin_nicaragua.elbluffhospital;
+package ethanfortin_nicaragua.elbluffhospital.PatientInfo;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -30,6 +30,11 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+
+import ethanfortin_nicaragua.elbluffhospital.ArrayAdapters.ArrayAdapter_FetchPatientGenInfo;
+import ethanfortin_nicaragua.elbluffhospital.DataClasses.Class_FetchAllDrugInfo;
+import ethanfortin_nicaragua.elbluffhospital.DataClasses.Class_FetchPatientGenInfo;
+import ethanfortin_nicaragua.elbluffhospital.R;
 
 public class FetchPatientInfo extends AppCompatActivity {
     //Create global variables for list view and ArrayList<Class_FetchAllDrugInfo>

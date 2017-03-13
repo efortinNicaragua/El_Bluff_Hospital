@@ -1,4 +1,4 @@
-package ethanfortin_nicaragua.elbluffhospital;
+package ethanfortin_nicaragua.elbluffhospital.PatientInfo;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -22,6 +22,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+
+import ethanfortin_nicaragua.elbluffhospital.ArrayAdapters.Adapter_ExpandableList;
+import ethanfortin_nicaragua.elbluffhospital.R;
 
 public class FetchVisits extends AppCompatActivity {
     HashMap<String, List<String>> HashMap_hashmap;

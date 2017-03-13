@@ -1,4 +1,4 @@
-package ethanfortin_nicaragua.elbluffhospital;
+package ethanfortin_nicaragua.elbluffhospital.DataClasses;
 
 /**
  * Created by Wildcat on 12/3/2016.

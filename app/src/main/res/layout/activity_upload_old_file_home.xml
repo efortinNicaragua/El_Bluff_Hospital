@@ -9,7 +9,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="ethanfortin_nicaragua.elbluffhospital.UploadOldFileHome">
+    tools:context="ethanfortin_nicaragua.elbluffhospital.PatientInfo.UploadOldFileHome">
 
     <TextView
         android:text="Por favor complete la información"

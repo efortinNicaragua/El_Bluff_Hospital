@@ -1,4 +1,4 @@
-package ethanfortin_nicaragua.elbluffhospital;
+package ethanfortin_nicaragua.elbluffhospital.ArrayAdapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,13 +7,10 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
-import java.sql.Date;
-import java.text.Format;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.GregorianCalendar;
+
+import ethanfortin_nicaragua.elbluffhospital.DataClasses.Class_Fetch_shipment_rows;
+import ethanfortin_nicaragua.elbluffhospital.R;
 
 /**
  * Created by Wildcat on 1/3/2017.

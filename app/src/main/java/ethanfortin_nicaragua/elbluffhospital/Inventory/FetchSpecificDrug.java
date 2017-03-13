@@ -1,4 +1,4 @@
-package ethanfortin_nicaragua.elbluffhospital;
+package ethanfortin_nicaragua.elbluffhospital.Inventory;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -17,7 +17,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
-import java.util.Map;
+
+import ethanfortin_nicaragua.elbluffhospital.ConnVars;
+import ethanfortin_nicaragua.elbluffhospital.R;
+import ethanfortin_nicaragua.elbluffhospital.RequestHandler;
 
 public class FetchSpecificDrug extends AppCompatActivity implements View.OnClickListener {
 

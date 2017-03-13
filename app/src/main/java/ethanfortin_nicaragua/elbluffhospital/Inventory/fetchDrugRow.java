@@ -1,4 +1,4 @@
-package ethanfortin_nicaragua.elbluffhospital;
+package ethanfortin_nicaragua.elbluffhospital.Inventory;
 
 import android.app.ListActivity;
 import android.content.Context;
@@ -28,6 +28,10 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+
+import ethanfortin_nicaragua.elbluffhospital.ArrayAdapters.ArrayAdapter_FetchDruginfoRow;
+import ethanfortin_nicaragua.elbluffhospital.DataClasses.Class_FetchDruginfoRow;
+import ethanfortin_nicaragua.elbluffhospital.R;
 
 public class fetchDrugRow extends ListActivity {
 
