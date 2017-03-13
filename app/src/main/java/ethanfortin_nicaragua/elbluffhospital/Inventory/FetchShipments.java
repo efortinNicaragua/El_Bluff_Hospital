@@ -106,14 +106,14 @@ public class FetchShipments extends AppCompatActivity {
                 toast.show();
             } else {
 
-                JSONArray resArr = jsonObject.getJSONArray(ConnVars.TAG_SHIPMENTS);
+                JSONArray resArr = jsonObject.getJSONArray(ConnVars.TAG_SHIPMENT);
 
                 while (count < resArr.length()) {
                     JSONObject resObj = resArr.getJSONObject(count);
-                    drugName = resObj.getString(ConnVars.TAG_SHIPMENTS_DRUGNAME);
-                    drugId = resObj.getString(ConnVars.TAG_SHIPMENTS_DRUGID);
-                    shipQuant = resObj.getString(ConnVars.TAG_SHIPMENTS_SHIPQUANT);
-                    shipDate = resObj.getString(ConnVars.TAG_SHIPMENTS_SHIPDATE);
+                    drugName = resObj.getString(ConnVars.TAG_SHIPMENT_DRUGNAME);
+                    drugId = resObj.getString(ConnVars.TAG_SHIPMENT_DRUGID);
+                    shipQuant = resObj.getString(ConnVars.TAG_SHIPMENT_SHIPQUANT);
+                    shipDate = resObj.getString(ConnVars.TAG_SHIPMENT_SHIPDATE);
 
                     try {
                         totalCast = Integer.parseInt(shipQuant);
