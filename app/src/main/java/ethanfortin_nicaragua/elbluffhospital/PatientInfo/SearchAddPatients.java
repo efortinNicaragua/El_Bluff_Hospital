@@ -89,7 +89,15 @@ public class SearchAddPatients extends Activity {
         /** ATTENTION: This was auto-generated to implement the App Indexing API.
          See https://g.co/AppIndexing/AndroidStudio for more information.*/
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
+
+
     }
+
+    /*take this out after testing
+    public void rxClick(){
+        Intent shortcut_RX = new Intent(this, FetchPrescriptions.class);
+        startActivity(shortcut_RX);
+    }*/
 
     public void buscar(View v) {
         EditText name_EditText = (EditText) findViewById(R.id.edit_name);
@@ -438,5 +446,9 @@ public class SearchAddPatients extends Activity {
         super.onStop();
         client.disconnect();
     }
+
+
+
+
 
 }
