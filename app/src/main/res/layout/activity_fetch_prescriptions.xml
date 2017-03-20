@@ -12,27 +12,26 @@
     <android.support.design.widget.CoordinatorLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app = "http://schemas.android.com/apk/res-auto"
-
         android:id = "@+id/main_content"
         android:layout_height="match_parent"
         android:layout_width="match_parent">
 
 
-        <!--<ExpandableListView
-            android:id="@+id/exp_list"
+        <ExpandableListView
+            android:id="@+id/lvExp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:indicatorLeft="?android:attr/expandableListPreferredItemIndicatorLeft"
             android:dividerHeight="0.5dp"
             android:divider ="@color/colorPrimaryDark"
             >
-        </ExpandableListView>-->
+        </ExpandableListView>
 
-        <ListView
+       <!-- <ListView
             android:id="@+id/LV_fetchPrescriptions"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            />
+            />-->
 
 
         <android.support.design.widget.FloatingActionButton
@@ -41,9 +40,22 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|right"
             android:src="@drawable/plussign"
-            app:layout_anchor="@id/LV_fetchPrescriptions"
+            app:layout_anchor="@id/lvExp"
             app:layout_anchorGravity="bottom|right|end"/>
     </android.support.design.widget.CoordinatorLayout>
+
+    <Button
+        android:text="Initialize onClick!"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="86dp"
+        android:layout_marginEnd="86dp"
+        android:id="@+id/button4"
+        android:onClick="onClick2"/>
+
 
 
 </RelativeLayout>

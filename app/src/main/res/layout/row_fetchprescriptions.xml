@@ -19,7 +19,7 @@
         android:textColor="#00004d"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
-        android:text="ID de Medicina " />
+        android:text="ID de Medicina! " />
 
     <TextView android:id="@+id/PATID"
         android:layout_width="200dp"
@@ -78,6 +78,62 @@
         android:text="Quantity" />
 
     <TextView android:id="@+id/DRUGNAME"
+    android:layout_width="200dp"
+    android:layout_height="60dp"
+    android:gravity="center_vertical"
+    android:layout_alignParentTop="true"
+    android:layout_alignParentBottom="true"
+    android:textStyle="bold"
+    android:textSize="22dp"
+    android:textAlignment="center"
+    android:textColor="#00004d"
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="5dp"
+    android:text="Drug Name" />
+
+    <TextView android:id="@+id/RXID"
+        android:layout_width="200dp"
+        android:layout_height="60dp"
+        android:gravity="center_vertical"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        android:textStyle="bold"
+        android:textSize="22dp"
+        android:textAlignment="center"
+        android:textColor="#00004d"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:text="Drug Name" />
+
+    <TextView android:id="@+id/DIRECTIONS"
+        android:layout_width="200dp"
+        android:layout_height="60dp"
+        android:gravity="center_vertical"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        android:textStyle="bold"
+        android:textSize="22dp"
+        android:textAlignment="center"
+        android:textColor="#00004d"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:text="Drug Name" />
+
+    <TextView android:id="@+id/DOCTOR"
+        android:layout_width="200dp"
+        android:layout_height="60dp"
+        android:gravity="center_vertical"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        android:textStyle="bold"
+        android:textSize="22dp"
+        android:textAlignment="center"
+        android:textColor="#00004d"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:text="Drug Name" />
+
+    <TextView android:id="@+id/SYMPTOMS"
         android:layout_width="200dp"
         android:layout_height="60dp"
         android:gravity="center_vertical"

@@ -77,11 +77,11 @@ public class SearchAddPatients extends Activity {
 
     }
 
-    /*take this out after testing
-    public void rxClick(){
+    //take this out after testing!
+    public void rxClick(View v){
         Intent shortcut_RX = new Intent(this, FetchPrescriptions.class);
         startActivity(shortcut_RX);
-    }*/
+    }
 
     public void buscar(View v) {
         EditText name_EditText = (EditText) findViewById(R.id.edit_name);

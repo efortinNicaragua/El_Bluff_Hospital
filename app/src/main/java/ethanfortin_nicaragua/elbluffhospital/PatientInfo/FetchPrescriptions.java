@@ -17,6 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -41,7 +42,17 @@ import ethanfortin_nicaragua.elbluffhospital.RequestHandler;
 
 public class FetchPrescriptions extends Activity {
 
+    private ExpandableListView listView;
+    private ExpandableListAdapter listAdapter;
+    private List<String> listDataHeader;
+    private HashMap<String, List<String>> listHash;
+
     Context context = this;
+    ArrayList< Class_FetchPrescriptions> patRXdata = new ArrayList();
+    ListView LV_patRX;
+    int count = 0;
+    String sID;
+
 
 
     @Override
@@ -49,14 +60,10 @@ public class FetchPrescriptions extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fetch_prescriptions);
 
-        /**ML: Testing to see if the data that comes back is correct**/
 
+        /**ML: Testing to see if the data that comes back is correct!**/
 
-        ArrayList< Class_FetchPrescriptions> patRXdata = new ArrayList();
-        ArrayAdapter<Class_FetchPrescriptions> adapter = new ArrayAdapter_FetchPrescriptions(this, patRXdata);
-        ListView LV = (ListView) findViewById(R.id.LV_fetchPrescriptions);
-        LV.setAdapter(adapter);
-
+        //patientRXFetch(sID);
 
 
         /**ML: Use FAB to create a new prescription **/
@@ -148,20 +155,20 @@ public class FetchPrescriptions extends Activity {
         });
     }
 
-    public void onClick(View V){
+    /**ML: Needs to be changed back to onClick for the patient selection, take out testing button**/
+    public void onClick2(View V){
 
         //Get patient ID
         /**ML: This would be from the pop up selection dialog, here is hardcoded**/
-        String sID = "patid1";
+        sID = "patid0";
 
         //Search by patient ID
         /**ML: Option to add a second case (argChoice) which searches by patient name**/
-        System.out.println("Searching by patient ID");
-        patientRXFetch(sID,1);
+        patientRXFetch(sID);
     }
 
     /** ML: This method is accessed from inside the onClick**/
-    private void patientRXFetch(final String argVal, final int argChoice){
+    private void patientRXFetch(final String argVal){
 
         class fetchPatientRX extends AsyncTask<Void, Void, String> {
 
@@ -174,19 +181,13 @@ public class FetchPrescriptions extends Activity {
 
                 /**ML- argVal needs to be accesed from user selection on dialog with patients, done in onClick method**/
 
-                switch (argChoice){
 
-                    case 1:
                         map.put("patid", argVal);
                         //search by user selection from pop up menu, map value should be key value
                         s = reqHan.sendGetRequestParam(ConnVars.URL_FETCH_PAT_RX, map);
-                        break;
 
-                    default:
-                        System.out.println("Default -- search did not work: argChoice == " + argChoice);
-                        s = "badMethod";
-                        break;
-                }
+
+
 
                 return s;
             }
@@ -201,6 +202,7 @@ public class FetchPrescriptions extends Activity {
 
         fetchPatientRX patRX = new fetchPatientRX();
         patRX.execute();
+        System.out.println("Completed patientRXFetch method");
     }
 
     /**ML: This method gets the data returned from the DB in the JSON format and sets it to a variable**/
@@ -209,31 +211,96 @@ public class FetchPrescriptions extends Activity {
         try{
             JSONObject jsonObject = new JSONObject(json);
             JSONArray resArr = jsonObject.getJSONArray(ConnVars.TAG_PRESCRIPTIONS);
-
-            /**ML: gets  the first data block, will repeat if necessary**/
-            JSONObject resObj = resArr.getJSONObject(0);
+            System.out.println("got past resArr");
 
             /**ML: r_** are the values returned from the DB, resObj is the first data block
              * returned from the JSON array, getString gets the value associated with the key
              * that is denoted by the ConnVars tag
              */
 
-            String r_rxID = resObj.getString(ConnVars.TAG_PRESCRIPTIONS_RXID);
-            String r_drugID = resObj.getString(ConnVars.TAG_PRESCRIPTIONS_DRUGID);
-            String r_transDate = resObj.getString(ConnVars.TAG_PRESCRIPTIONS_TRANSDATE);
-            String r_quantity = resObj.getString(ConnVars.TAG_PRESCRIPTIONS_QUANTITY);
-            String r_patID = resObj.getString(ConnVars.TAG_PRESCRIPTIONS_PATID);
-            String r_directions = resObj.getString(ConnVars.TAG_PRESCRIPTIONS_DIRECTIONS);
-            String r_duration = resObj.getString(ConnVars.TAG_PRESCRIPTIONS_DURATION);
-            String r_doctor = resObj.getString(ConnVars.TAG_PRESCRIPTIONS_DOCTOR);
-            String r_symptoms = resObj.getString(ConnVars.TAG_PRESCRIPTIONS_SYMPTOMS);
-            String r_drugName = resObj.getString(ConnVars.TAG_PRESCRIPTIONS_DRUGNAME);
+            while(count < resArr.length()) {
+                /**ML: gets  the first data block, will repeat if necessary**/
+                JSONObject resObj = resArr.getJSONObject(0);
+                System.out.println("got past resObj");
+                String r_rxID = resObj.getString(ConnVars.TAG_PRESCRIPTIONS_RXID);
+                System.out.println("1");
+                String r_drugID = resObj.getString(ConnVars.TAG_PRESCRIPTIONS_DRUGID);
+                System.out.println("2");
+                String r_transDate = resObj.getString(ConnVars.TAG_PRESCRIPTIONS_TRANSDATE);
+                System.out.println("3");
+                String r_quantity = resObj.getString(ConnVars.TAG_PRESCRIPTIONS_QUANTITY);
+                System.out.println("4");
+                String r_patID = resObj.getString(ConnVars.TAG_PRESCRIPTIONS_PATID);
+                System.out.println("5");
+                String r_directions = resObj.getString(ConnVars.TAG_PRESCRIPTIONS_DIRECTIONS);
+                System.out.println("6");
+                String r_duration = resObj.getString(ConnVars.TAG_PRESCRIPTIONS_DURATION);
+                System.out.println("7");
+                String r_doctor = resObj.getString(ConnVars.TAG_PRESCRIPTIONS_DOCTOR);
+                System.out.println("8");
+                String r_symptoms = resObj.getString(ConnVars.TAG_PRESCRIPTIONS_SYMPTOMS);
+                System.out.println("9");
+
+                /**ML: This needs to be fixed, JSON exception occurs here because it needs to come from a table join**/
+                //String r_drugName = resObj.getString(ConnVars.TAG_PRESCRIPTIONS_DRUGNAME);
+                // System.out.println("10");
+
+                        try{
+                            Integer r_quantity_int = Integer.parseInt(r_quantity);
+                            patRXdata.add(new Class_FetchPrescriptions(r_rxID, r_drugID, r_transDate, r_quantity_int, r_patID, r_directions, r_duration, r_doctor, r_symptoms));
+                        } catch(NumberFormatException nfe){
+                            System.out.println("Number format exception occured!");
+                        }
+
+                count++;
+            }
 
 
         } catch (JSONException j){
             System.out.println("JSON Exception occurred...HEAAAA");
         }
+
+        //ArrayAdapter<Class_FetchPrescriptions> adapter2 = new ArrayAdapter_FetchPrescriptions(context, patRXdata);
+        //LV_patRX = (ListView) findViewById(R.id.LV_fetchPrescriptions);
+        //LV_patRX.setAdapter(adapter2);
+
+        listView = (ExpandableListView)findViewById(R.id.lvExp);
+        initData();
+        listAdapter = new FetchPrescriptions_ExpListAdapter(this,listDataHeader,listHash);
+        listView.setAdapter(listAdapter);
     }
+
+
+
+    private void initData() {
+        /**ML: Need to make a count variable to select all prescriptions not just the first one (get rid of the o)**/
+        Class_FetchPrescriptions temp1 = patRXdata.get(0);
+        listDataHeader = new ArrayList<>();
+        listHash = new HashMap<>();
+
+        //This is where you set the prescription ID as the Group Item
+        listDataHeader.add(temp1.C_rxid);
+
+        //This is where you set the child items of each group item
+        List<String> rx1 = new ArrayList<>();
+        rx1.add(temp1.C_patid);
+        rx1.add(temp1.C_drugid);
+        rx1.add(temp1.C_directions);
+        rx1.add(temp1.C_doctor);
+        rx1.add(temp1.C_drugname);
+        rx1.add(temp1.C_duration);
+        //rx1.add(temp1.C_quantity);
+        rx1.add(temp1.C_symptoms);
+        rx1.add(temp1.C_transdate);
+
+        //Put the data in the HashMap
+        listHash.put(listDataHeader.get(0), rx1);
+
+    }
+
+
+
+
 
 
     public boolean onCreateOptionsMenu(Menu menu) {

@@ -147,7 +147,7 @@
         android:layout_marginTop="96dp"/>
 
     <Button
-        android:text="CLICK FOR RX"
+        android:text="CLICK FOR RX!"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/click_for_RX"
