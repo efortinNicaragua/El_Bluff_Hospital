@@ -41,7 +41,7 @@ public class FetchPatientInfo extends AppCompatActivity {
     ListView listView;
     ArrayList<Class_FetchAllDrugInfo> patientgeninfo_data = new ArrayList();
 
-@Override
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fetch_patient_info);
@@ -54,7 +54,7 @@ public class FetchPatientInfo extends AppCompatActivity {
         listView = (ListView) findViewById(android.R.id.list);
         ArrayList<Class_FetchPatientGenInfo> patientgeninfo_data = new ArrayList();
 
-        patientgeninfo_data.add(new Class_FetchPatientGenInfo("Nombre", "Pablo Sanchez"));
+       /* patientgeninfo_data.add(new Class_FetchPatientGenInfo("Nombre", "Pablo Sanchez"));
         patientgeninfo_data.add(new Class_FetchPatientGenInfo("ID", "123456"));
         patientgeninfo_data.add(new Class_FetchPatientGenInfo("Direccion", "532 El Bluff"));
         patientgeninfo_data.add(new Class_FetchPatientGenInfo("Tele", "18972892200"));
@@ -65,7 +65,7 @@ public class FetchPatientInfo extends AppCompatActivity {
         patientgeninfo_data.add(new Class_FetchPatientGenInfo("Altura", "86cm"));
         patientgeninfo_data.add(new Class_FetchPatientGenInfo("Pesadura", "65kg"));
         patientgeninfo_data.add(new Class_FetchPatientGenInfo("Alergias", "Penecilinia, Azufre"));
-        patientgeninfo_data.add(new Class_FetchPatientGenInfo("Condiciones Medicos", "Alta presion sanguinea"));
+        patientgeninfo_data.add(new Class_FetchPatientGenInfo("Condiciones Medicos", "Alta presion sanguinea"));*/
 
         ArrayAdapter<Class_FetchPatientGenInfo> adapter = new ArrayAdapter_FetchPatientGenInfo(this, patientgeninfo_data);
 
@@ -184,13 +184,13 @@ public class FetchPatientInfo extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.pat_gen_info:
-                    startActivity(new Intent(this, FetchPatientInfo.class));
-                    return true;
+                startActivity(new Intent(this, FetchPatientInfo.class));
+                return true;
             case R.id.pat_history:
-                    startActivity(new Intent(this, FetchVisits.class));
-                    return true;
+                startActivity(new Intent(this, FetchVisits.class));
+                return true;
             case R.id.pat_prescription:
-                    startActivity(new Intent(this, FetchPrescriptions.class));
+                startActivity(new Intent(this, FetchPrescriptions.class));
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -256,8 +256,8 @@ public class FetchPatientInfo extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
-                            Toast toast = Toast.makeText(getApplicationContext(), "Cambios guardado.", Toast.LENGTH_LONG);
-                            toast.show();
+                        Toast toast = Toast.makeText(getApplicationContext(), "Cambios guardado.", Toast.LENGTH_LONG);
+                        toast.show();
 
                         //Push to DB including ones not above but in Dialog
                         dialog.dismiss();
@@ -267,7 +267,7 @@ public class FetchPatientInfo extends AppCompatActivity {
         builderSingle1.show();
     }
 
-    }
+}
 
 
 

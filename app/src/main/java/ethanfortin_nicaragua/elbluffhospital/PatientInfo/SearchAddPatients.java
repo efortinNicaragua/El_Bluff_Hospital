@@ -1,5 +1,8 @@
 package ethanfortin_nicaragua.elbluffhospital.PatientInfo;
 
+import android.app.Activity;
+import android.app.ListActivity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -13,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.google.android.gms.appindexing.Action;
@@ -32,6 +36,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
+import java.net.InterfaceAddress;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
@@ -40,11 +45,16 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 
-import ethanfortin_nicaragua.elbluffhospital.DataClasses.Class_add_patient_info_row;
+import ethanfortin_nicaragua.elbluffhospital.ArrayAdapters.ArrayAdapter_FetchPatientGenInfo;
+import ethanfortin_nicaragua.elbluffhospital.ConnVars;
+import ethanfortin_nicaragua.elbluffhospital.DataClasses.Class_FetchPatientGenInfo;
 import ethanfortin_nicaragua.elbluffhospital.R;
+import ethanfortin_nicaragua.elbluffhospital.RequestHandler;
 
-public class SearchAddPatients extends AppCompatActivity {
+public class SearchAddPatients extends Activity {
+    ArrayList<Class_FetchPatientGenInfo> patinfo = new ArrayList();
 
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
@@ -74,28 +84,37 @@ public class SearchAddPatients extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_add_patients);
 
+        //patientFetch();
+
         /** ATTENTION: This was auto-generated to implement the App Indexing API.
          See https://g.co/AppIndexing/AndroidStudio for more information.*/
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
+
+
     }
+
+    /*take this out after testing
+    public void rxClick(){
+        Intent shortcut_RX = new Intent(this, FetchPrescriptions.class);
+        startActivity(shortcut_RX);
+    }*/
 
     public void buscar(View v) {
         EditText name_EditText = (EditText) findViewById(R.id.edit_name);
         EditText id_EditText = (EditText) findViewById(R.id.edit_ID);
         String sName = name_EditText.getText().toString();
         String sID = id_EditText.getText().toString();
-        String[] Nombres =
-                {
-                        "Pablo Sanchez 9/8/1991 M 0119235",
-                        "Mario Lugio   1/2/1874 M 1239450",
-                        "Dr. Pali      4/5/1990 M 12345069"
-                };
+
 
 
         if ((sName.matches("")) & (sID.matches(""))) {
             Toast.makeText(this, "Necesitas Entrar un ID o un Nombre", Toast.LENGTH_SHORT).show();
-        } else {
-            /*AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        }
+
+        patientFetch(sID);
+        /*else {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setTitle("Elige el paciente");
             DialogInterface.OnClickListener patient_dialog = new DialogInterface.OnClickListener() {
                 @Override
@@ -106,7 +125,7 @@ public class SearchAddPatients extends AppCompatActivity {
            builder.setItems(Nombres.toString(), );
             builder.show();*/
 
-            AlertDialog.Builder builderSingle = new AlertDialog.Builder(SearchAddPatients.this);
+          /*  AlertDialog.Builder builderSingle = new AlertDialog.Builder(SearchAddPatients.this);
             builderSingle.setTitle("Elige el paciente");
             final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
                     SearchAddPatients.this,
@@ -140,30 +159,114 @@ public class SearchAddPatients extends AppCompatActivity {
                              */
 //                            String strName = arrayAdapter.getItem(which);
 
-                        }
+                   /*     }
                     });
             builderSingle.show();
-        }
+        }*/
 
 
     }
 
+    private void patientFetch(final String patid) {
+        class fetch_patientinfo extends AsyncTask<Void, Class_FetchPatientGenInfo, String> {
+            ProgressDialog loading;
 
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
-    public Action getIndexApiAction() {
-        Thing object = new Thing.Builder()
-                .setName("SearchAddPatients Page")
-                // TODO: Define a title for the content shown.
-                // TODO: Make sure this auto-generated URL is correct.
-                .setUrl(Uri.parse("http://[ENTER-YOUR-URL-HERE]"))
-                .build();
-        return new Action.Builder(Action.TYPE_VIEW)
-                .setObject(object)
-                .setActionStatus(Action.STATUS_TYPE_COMPLETED)
-                .build();
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+                loading = ProgressDialog.show(SearchAddPatients.this, "Buscando...", "Espera, por favor", false, false);
+            }
+
+            // Once JSON received correctly, parse and display it
+            @Override
+            protected void onPostExecute(String s) {
+                super.onPostExecute(s);
+                loading.dismiss();
+                jsonParse(s);
+            }
+
+            // In here, split between argChoice Value (1 or 2)
+            protected String doInBackground(Void... params) {
+
+                RequestHandler reqHan = new RequestHandler();
+                HashMap<String, String> map = new HashMap<>();
+                map.put("patid",patid);
+                String s;
+
+                s = reqHan.sendGetRequestParam (ConnVars.URL_FETCH_PATIENT_GENERAL_INFO, map);
+
+                return s;
+            }
+        }
+        fetch_patientinfo pinfo = new fetch_patientinfo();
+        pinfo.execute();
+    }
+
+    private void jsonParse(String json_string) {
+
+        Context context=this;
+        ListView listView;
+        ArrayList<Class_FetchPatientGenInfo> patGenInfo = new ArrayList();
+
+        int totalCast, count=0;
+        String patid, patname, address, telephone, gender,marstat, allergies, medcond, children, height, weight;
+        int children_int, height_int, weight_int;
+
+        JSONObject jsonObject;
+        JSONArray jsonArray;
+        try {
+
+            // Make JSONObject and designate the array jsonArray to grab the array
+            // that's title is "druginfo" from the received object
+            jsonObject = new JSONObject(json_string);
+            System.out.println("made json object: "+json_string);
+            jsonArray = jsonObject.getJSONArray(ConnVars.TAG_PATIENTINFO);
+            System.out.println("put stuff into jsonobject");
+
+            //initiliaze count for while loop, strings for all data we will get from json
+            //all data comes out as strings so for int values we need to cast them into int values later
+            //while count is less than length of jsonarray
+            while (count < jsonArray.length()) {
+                //get the object put drugid into drugid ect..
+                JSONObject jo = jsonArray.getJSONObject(count);
+                patid= jo.getString("patid");
+                patname= jo.getString("patname");
+                address = jo.getString("address");
+                telephone= jo.getString("telephone");
+                gender = jo.getString("gender");
+                marstat = jo.getString("marstat");
+                allergies=jo.getString("allergies");
+                medcond = jo.getString("medcond");
+                children = jo.getString("children");
+                height = jo.getString("height");
+                weight=jo.getString("weight");
+
+
+                //try to cast string into int
+                try {
+                    children_int = Integer.parseInt(children);
+                    height_int = Integer.parseInt(height);
+                    weight_int = Integer.parseInt(weight);
+                    //add this data as Class_FetchAllDrugInfo to ArrayList
+                    patinfo.add(new Class_FetchPatientGenInfo(patid, patname , address, telephone, gender, marstat, children_int,height_int,weight_int,allergies,medcond));
+
+                } catch (NumberFormatException nfe) {
+                    System.out.println("Number Format Exception occurred...");
+                }
+                //increment count
+                count++;
+            }
+
+        } catch (JSONException e) {
+            System.out.println("JSON Exception occurred...");
+        }
+        ArrayAdapter<Class_FetchPatientGenInfo> adapter = new ArrayAdapter_FetchPatientGenInfo(context, patinfo);
+
+        //setliest view to lsitview in the xml file
+        listView = (ListView) findViewById(R.id.listview_patientgeninfo);
+        // listView = this.getListView();
+        //turn on list view
+        listView.setAdapter(adapter);
     }
 
     public void NuevoPaciente(View V) {
@@ -312,8 +415,6 @@ public class SearchAddPatients extends AppCompatActivity {
                         toast.setText("go catz");
                         toast.show();
 
-                        add_patient_info_row add_patient_info_row = new add_patient_info_row(context);
-                        add_patient_info_row.execute();
 
                         Toast toasty = new Toast(getApplicationContext());
                         toasty.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
@@ -338,196 +439,16 @@ public class SearchAddPatients extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
-
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client.connect();
-        AppIndex.AppIndexApi.start(client, getIndexApiAction());
     }
 
     @Override
     public void onStop() {
         super.onStop();
-
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        AppIndex.AppIndexApi.end(client, getIndexApiAction());
         client.disconnect();
     }
 
-    public class add_patient_info_row extends AsyncTask<Void, Class_add_patient_info_row, String> {
-
-        Context context;
-        AlertDialog alertDialog;
-        String json_string;
-        JSONObject jsonObject;
-        JSONArray jsonArray;
-        LayoutInflater inflater;
-        ArrayList<Class_add_patient_info_row> newpatient_data = new ArrayList();
-
-        public add_patient_info_row(Context ctx) {
-            context = ctx;
-
-        }
-
-        @Override
-        protected String doInBackground(Void... parms) {
-            String link = "http://192.168.0.101/android_connect/add_patientinfo_row.php"; //192.168.0.100
-            String data;
-            String fail = "fail";
-            try {
-                //Create and open the URL connection
-                URL url = new URL(link);
-                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
-                httpURLConnection.setRequestMethod("POST");
-
-                //setDoOutput allows you to access PHP server?
-                //setDoInput lets you to receive data from PHP server?
-                httpURLConnection.setDoOutput(true);
-                httpURLConnection.setDoInput(true);
-
-                //OutputStream Writer is how you write the data along with the connection request
-                OutputStream outputStream = httpURLConnection.getOutputStream();
-
-                //BufferedWriter lets you write to the PHP clasuse
-                BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
-
-                //This is how you send JSON values along with the request
-                String post_data = URLEncoder.encode("patname", "UTF-8") + "=" + URLEncoder.encode(patname, "UTF-8") + "&"
-                        + URLEncoder.encode("patid", "UTF-8") + "=" + URLEncoder.encode(patid, "UTF-8") + "&"
-                        + URLEncoder.encode("address", "UTF-8") + "=" + URLEncoder.encode(address, "UTF-8") + "&"
-                        + URLEncoder.encode("telephone", "UTF-8") + "=" + URLEncoder.encode(telephone, "UTF-8") + "&"
-                        + URLEncoder.encode("gender", "UTF-8") + "=" + URLEncoder.encode(gender, "UTF-8") + "&"
-                        + URLEncoder.encode("marstat", "UTF-8") + "=" + URLEncoder.encode(marstat, "UTF-8") + "&"
-                        + URLEncoder.encode("dob", "UTF-8") + "=" + URLEncoder.encode(s_dob, "UTF-8") + "&"
-                        + URLEncoder.encode("children", "UTF-8") + "=" + URLEncoder.encode(s_children, "UTF-8") + "&"
-                        + URLEncoder.encode("height", "UTF-8") + "=" + URLEncoder.encode(s_height, "UTF-8") + "&"
-                        + URLEncoder.encode("weight", "UTF-8") + "=" + URLEncoder.encode(s_weight, "UTF-8") + "&"
-                        + URLEncoder.encode("allergies", "UTF-8") + "=" + URLEncoder.encode(allergies, "UTF-8") + "&"
-                        + URLEncoder.encode("medcond", "UTF-8") + "=" + URLEncoder.encode(medcond, "UTF-8");
-
-                //bufferedWriter writes data
-                bufferedWriter.write(post_data);
-
-                //Deletes data, closes everything
-                bufferedWriter.flush();
-                bufferedWriter.close();
-                outputStream.close();
-
-                //we will store result in string builder
-                StringBuilder sb = new StringBuilder();
-                String result = "";
-
-                //Input from PHP
-                InputStream inputStream = httpURLConnection.getInputStream();
-                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "iso-8859-1"));
-
-                //Writing data from JSON in to result(string) and sb(String Builder)
-                String line = "";
-                while ((line = bufferedReader.readLine()) != null) {
-                    result += line;
-                    sb.append(line);
-                }
-
-                //Closing all things we opened
-                bufferedReader.close();
-                inputStream.close();
-                httpURLConnection.disconnect();
-
-                //Turning StringBuilder to JSONObject
-                //JSONObject tempJsonObj = new JSONObject(sb.toString());
-
-                //Manipulating JSON DATA into something useful
-                //JSONObject mainObj=new JSONObject(tempJsonOb;
-
-                json_string = sb.toString().trim();
-
-            } catch (MalformedURLException e) {
-                //need to add exception handler
-
-            } catch (IOException e) {
-
-                //need to add exception handler
-
-            }
-            return json_string;
-        }
-
-        @Override
-        protected void onPreExecute() {
-        }
 
 
-        //doInBackground return value (json_string) goes here to onPostExecute
-        @Override
-        protected void onPostExecute(String json_string) {
-            String message;
-
-            //we try to convert string to jsonObject
-            try {
-                //listView = (ListView) findViewById(R.id.activity_add_medicine);
-                jsonObject = new JSONObject(json_string);
-
-                //from object we make json array with the name from the php script
-                jsonArray = jsonObject.getJSONArray("message");
 
 
-                //Initialize count for while loop.
-                // Define strings for all data we will get from json.
-                // For non string values (such as dob and height), need to cast them into strings.
-
-                int count = 0;
-                int children_int, height_int, weight_int;
-                Date dob_date;
-                String patname, patid, adress, tel, gender, marstat, dob, children, height, weight, allergies, medcond;
-
-
-                //while count is less than length of jsonarray
-                while (count < jsonArray.length()) {
-
-                    //get the object put drugid into drugid ect..
-                    JSONObject JO = jsonArray.getJSONObject(count);
-
-                    /**This needs to be added for every variable**/
-                    patname = JO.getString("patname");
-                    patid = JO.getString("patid");
-                    adress = JO.getString("patid");
-                    tel = JO.getString("tel");
-                    gender = JO.getString("gender");
-                    marstat = JO.getString("marstat");
-                    dob = JO.getString("dob");
-                    children = JO.getString("children");
-                    height = JO.getString("height");
-                    weight = JO.getString("weight");
-                    allergies = JO.getString("allergies");
-                    medcond = JO.getString("medcond");
-
-                    //try to cast string into int/date
-                    try {
-                        children_int = Integer.parseInt(children);
-                        height_int = Integer.parseInt(height);
-                        weight_int = Integer.parseInt(weight);
-
-
-                         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-                         dob_date = dateFormat.parse(dob);
-
-                        //add this data as Class_add_patient_info_row to ArrayList
-                        newpatient_data.add(new Class_add_patient_info_row(patname, patid, adress, tel, gender, marstat, dob_date, children_int, height_int, weight_int, allergies, medcond));
-
-                    } catch (NumberFormatException nfe) {
-                        //make exception handlers?
-                    } catch (ParseException ParseE) {
-                        //make exception handlers?
-                    }
-
-                    count++;
-                }
-
-            } catch (JSONException e) {
-                //make exception handler
-            }
-
-        }
-    }
 }
