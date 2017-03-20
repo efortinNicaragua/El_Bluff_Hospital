@@ -17,6 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -41,6 +42,11 @@ import ethanfortin_nicaragua.elbluffhospital.RequestHandler;
 
 public class FetchPrescriptions extends Activity {
 
+    private ExpandableListView listView;
+    private ExpandableListAdapter listAdapter;
+    private List<String> listDataHeader;
+    private HashMap<String, List<String>> listHash;
+
     Context context = this;
     ArrayList< Class_FetchPrescriptions> patRXdata = new ArrayList();
     ListView LV_patRX;
@@ -53,6 +59,7 @@ public class FetchPrescriptions extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fetch_prescriptions);
+
 
         /**ML: Testing to see if the data that comes back is correct!**/
 
@@ -253,10 +260,47 @@ public class FetchPrescriptions extends Activity {
             System.out.println("JSON Exception occurred...HEAAAA");
         }
 
-        ArrayAdapter<Class_FetchPrescriptions> adapter2 = new ArrayAdapter_FetchPrescriptions(context, patRXdata);
-        LV_patRX = (ListView) findViewById(R.id.LV_fetchPrescriptions);
-        LV_patRX.setAdapter(adapter2);
+        //ArrayAdapter<Class_FetchPrescriptions> adapter2 = new ArrayAdapter_FetchPrescriptions(context, patRXdata);
+        //LV_patRX = (ListView) findViewById(R.id.LV_fetchPrescriptions);
+        //LV_patRX.setAdapter(adapter2);
+
+        listView = (ExpandableListView)findViewById(R.id.lvExp);
+        initData();
+        listAdapter = new FetchPrescriptions_ExpListAdapter(this,listDataHeader,listHash);
+        listView.setAdapter(listAdapter);
     }
+
+
+
+    private void initData() {
+        /**ML: Need to make a count variable to select all prescriptions not just the first one (get rid of the o)**/
+        Class_FetchPrescriptions temp1 = patRXdata.get(0);
+        listDataHeader = new ArrayList<>();
+        listHash = new HashMap<>();
+
+        //This is where you set the prescription ID as the Group Item
+        listDataHeader.add(temp1.C_rxid);
+
+        //This is where you set the child items of each group item
+        List<String> rx1 = new ArrayList<>();
+        rx1.add(temp1.C_patid);
+        rx1.add(temp1.C_drugid);
+        rx1.add(temp1.C_directions);
+        rx1.add(temp1.C_doctor);
+        rx1.add(temp1.C_drugname);
+        rx1.add(temp1.C_duration);
+        //rx1.add(temp1.C_quantity);
+        rx1.add(temp1.C_symptoms);
+        rx1.add(temp1.C_transdate);
+
+        //Put the data in the HashMap
+        listHash.put(listDataHeader.get(0), rx1);
+
+    }
+
+
+
+
 
 
     public boolean onCreateOptionsMenu(Menu menu) {
