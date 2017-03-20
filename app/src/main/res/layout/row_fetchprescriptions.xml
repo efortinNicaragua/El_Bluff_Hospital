@@ -19,7 +19,7 @@
         android:textColor="#00004d"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
-        android:text="ID de Medicina " />
+        android:text="ID de Medicina! " />
 
     <TextView android:id="@+id/PATID"
         android:layout_width="200dp"

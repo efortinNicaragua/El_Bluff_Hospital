@@ -5,7 +5,7 @@ package ethanfortin_nicaragua.elbluffhospital.DataClasses;
  */
 
 
-/**ML: Initialize class variable names. Classes are used to access all information as a bulk.**/
+/**ML: Initialize class variable names. Classes are used to access all information as a bulk!**/
 public class Class_FetchPrescriptions {
     public String C_rxid;
     public String C_drugid;

@@ -32,7 +32,7 @@ public class ArrayAdapter_FetchPrescriptions extends ArrayAdapter<Class_FetchPre
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.row_fetchprescriptions, parent, false);
         }
 
-        /**ML: These take the items in the row xml file (R.id.**) and store them as a textview variable to be used**/
+        /**ML: These take the items in the row xml file (R.id.**) and store them as a Textview variable to be used**/
 
         /**ML: Need to add these for every field**/
         TextView Rxid = (TextView) convertView.findViewById(R.id.RXID);

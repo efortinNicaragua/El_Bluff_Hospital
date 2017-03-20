@@ -54,7 +54,7 @@ public class FetchPrescriptions extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fetch_prescriptions);
 
-        /**ML: Testing to see if the data that comes back is correct**/
+        /**ML: Testing to see if the data that comes back is correct!**/
 
         //patientRXFetch(sID);
 
