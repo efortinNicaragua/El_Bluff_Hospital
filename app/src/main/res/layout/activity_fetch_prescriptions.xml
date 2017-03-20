@@ -16,13 +16,24 @@
         android:id = "@+id/main_content"
         android:layout_height="match_parent"
         android:layout_width="match_parent">
-        <ExpandableListView
+
+
+        <!--<ExpandableListView
             android:id="@+id/exp_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:indicatorLeft="?android:attr/expandableListPreferredItemIndicatorLeft"
-            android:dividerHeight="0.5dp">
-        </ExpandableListView>
+            android:dividerHeight="0.5dp"
+            android:divider ="@color/colorPrimaryDark"
+            >
+        </ExpandableListView>-->
+
+        <ListView
+            android:id="@+id/LV_fetchPrescriptions"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+
 
         <android.support.design.widget.FloatingActionButton
             android:id = "@+id/fab_add"
@@ -30,7 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|right"
             android:src="@drawable/plussign"
-            app:layout_anchor="@id/exp_list"
+            app:layout_anchor="@id/LV_fetchPrescriptions"
             app:layout_anchorGravity="bottom|right|end"/>
     </android.support.design.widget.CoordinatorLayout>
 

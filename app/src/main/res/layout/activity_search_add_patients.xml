@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -16,11 +15,11 @@
         android:id="@+id/edit_ID"
         android:textSize="25sp"
         android:hint="ID"
-        android:inputType="number"
         android:layout_below="@+id/text_instructions"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="24dp" />
+        android:layout_marginTop="24dp"
+        android:inputType="text" />
 
     <TextView
         android:layout_width="250dp"
@@ -137,5 +136,24 @@
         android:padding="1dp"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
+
+    <ListView
+        android:id="@+id/listview_patientgeninfo"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/text_NuevoPaciente"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="96dp"/>
+
+    <Button
+        android:text="CLICK FOR RX"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/click_for_RX"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:onClick= "rxClick"/>
 
 </RelativeLayout>
