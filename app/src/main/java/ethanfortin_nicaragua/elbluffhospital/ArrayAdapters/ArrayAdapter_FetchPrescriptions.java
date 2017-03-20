@@ -6,6 +6,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 
 import ethanfortin_nicaragua.elbluffhospital.DataClasses.Class_FetchPrescriptions;
@@ -26,22 +29,34 @@ public class ArrayAdapter_FetchPrescriptions extends ArrayAdapter<Class_FetchPre
         Class_FetchPrescriptions single_patRXinfo = getItem(position);
 
         if(convertView == null){
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.activity_fetch_prescriptions, parent, false);
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.row_fetchprescriptions, parent, false);
         }
 
+        /**ML: These take the items in the row xml file (R.id.**) and store them as a textview variable to be used**/
+
+        /**ML: Need to add these for every field**/
+        TextView Rxid = (TextView) convertView.findViewById(R.id.RXID);
         TextView Drugid = (TextView)convertView.findViewById(R.id.DRUGID);
-        TextView Patid = (TextView)convertView.findViewById(R.id.PATID);
-        TextView Duration = (TextView)convertView.findViewById(R.id.DURATION);
         TextView Transdate = (TextView)convertView.findViewById(R.id.TRANSDATE);
         TextView Quantity = (TextView)convertView.findViewById(R.id.QUANTITY);
-        TextView Drugname = (TextView)convertView.findViewById(R.id.DRUGNAME);
+        TextView Patid = (TextView)convertView.findViewById(R.id.PATID);
+        TextView Directions = (TextView)convertView.findViewById(R.id.DIRECTIONS);
+        TextView Duration = (TextView)convertView.findViewById(R.id.DURATION);
+        TextView Doctor = (TextView)convertView.findViewById(R.id.DOCTOR);
+        TextView Symptoms = (TextView)convertView.findViewById(R.id.SYMPTOMS);
+        //TextView Drugname = (TextView)convertView.findViewById(R.id.DRUGNAME);
 
+        /**ML: This takes the textview variable from above (seen in the row xml file) and sets the class variable to it**/
+        Rxid.setText(single_patRXinfo.C_rxid);
         Drugid.setText(single_patRXinfo.C_drugid);
         Patid.setText(single_patRXinfo.C_patid);
         Duration.setText(single_patRXinfo.C_duration);
         Transdate.setText(single_patRXinfo.C_transdate);
-        Quantity.setText(single_patRXinfo.C_quantity);
-        Drugname.setText(single_patRXinfo.C_drugname);
+        Quantity.setText(Integer.toString(single_patRXinfo.C_quantity));
+       // Drugname.setText(single_patRXinfo.C_drugname);
+        Directions.setText(single_patRXinfo.C_directions);
+        Doctor.setText(single_patRXinfo.C_doctor);
+        Symptoms.setText(single_patRXinfo.C_symptoms);
 
         return convertView;
 
