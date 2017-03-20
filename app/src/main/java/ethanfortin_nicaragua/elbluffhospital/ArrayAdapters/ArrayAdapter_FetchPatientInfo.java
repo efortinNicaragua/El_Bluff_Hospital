@@ -16,8 +16,8 @@ import ethanfortin_nicaragua.elbluffhospital.R;
  * Created by wildcat on 1/26/2017.
  */
 
-public class ArrayAdapter_FetchPatientGenInfo extends ArrayAdapter<Class_FetchPatientGenInfo> {
-    public ArrayAdapter_FetchPatientGenInfo(Context context, ArrayList<Class_FetchPatientGenInfo> patgeninfodata){
+public class ArrayAdapter_FetchPatientInfo extends ArrayAdapter<Class_FetchPatientGenInfo> {
+    public ArrayAdapter_FetchPatientInfo(Context context, ArrayList<Class_FetchPatientGenInfo> patgeninfodata){
         super(context,0,patgeninfodata);
     }
     @Override
@@ -33,6 +33,7 @@ public class ArrayAdapter_FetchPatientGenInfo extends ArrayAdapter<Class_FetchPa
 
         TextView patid=(TextView)convertView.findViewById(R.id.patname);
         TextView patname=(TextView)convertView.findViewById(R.id.patid);
+        TextView dob=(TextView) convertView.findViewById(R.id.dob);
 
         //String test1="DID IT WORK";
         //String test2="YA BRO IT DID";
@@ -40,6 +41,7 @@ public class ArrayAdapter_FetchPatientGenInfo extends ArrayAdapter<Class_FetchPa
         //patname.setText(test2);
         patid.setText(single_patgeninfo.patid);
         patname.setText(single_patgeninfo.patname);
+        dob.setText(single_patgeninfo.dob);
 
         return convertView;
 

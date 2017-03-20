@@ -31,7 +31,6 @@ public class ConnVars {
     public static final String TAG_SHIPMENT_DRUGNAME = "drugname";
     public static final String TAG_SHIPMENT_SHIPQUANT = "shipquant";
 
-
     public static final String TAG_PRESCRIPTIONS = "prescription";
     public static final String TAG_PRESCRIPTIONS_RXID = "rxid";
     public static final String TAG_PRESCRIPTIONS_DRUGID = "drugid";

@@ -1,15 +1,13 @@
 package ethanfortin_nicaragua.elbluffhospital.PatientInfo;
 
 import android.app.Activity;
-import android.app.ListActivity;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -19,35 +17,20 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
-import com.google.android.gms.appindexing.Thing;
 import com.google.android.gms.common.api.GoogleApiClient;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.net.HttpURLConnection;
-import java.net.InterfaceAddress;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLEncoder;
 import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 
-import ethanfortin_nicaragua.elbluffhospital.ArrayAdapters.ArrayAdapter_FetchPatientGenInfo;
+import ethanfortin_nicaragua.elbluffhospital.ArrayAdapters.ArrayAdapter_FetchPatientInfo;
 import ethanfortin_nicaragua.elbluffhospital.ConnVars;
 import ethanfortin_nicaragua.elbluffhospital.DataClasses.Class_FetchPatientGenInfo;
 import ethanfortin_nicaragua.elbluffhospital.R;
@@ -77,6 +60,7 @@ public class SearchAddPatients extends Activity {
     int weight;
     String allergies;
     String medcond;
+    String temp_dob_string;
     Context context = this;
 
     @Override
@@ -112,18 +96,15 @@ public class SearchAddPatients extends Activity {
 
         }
 
-        patientFetch(sID);
-        /*else {
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setTitle("Elige el paciente");
-            DialogInterface.OnClickListener patient_dialog = new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
+        patientFetch(sID,sName);
+        /*LayoutInflater inflater = LayoutInflater.from(SearchAddPatients.this);
+        View findPatient = inflater.inflate(R.layout.dialog_find_patient,null);
 
-                }
-            };
-           builder.setItems(Nombres.toString(), );
-            builder.show();*/
+        AlertDialog.Builder builder= new AlertDialog.Builder(SearchAddPatients.this);
+        builder.setView(findPatient);
+
+        builder.setTitle("Elige un Paciente");*/
+
 
           /*  AlertDialog.Builder builderSingle = new AlertDialog.Builder(SearchAddPatients.this);
             builderSingle.setTitle("Elige el paciente");
@@ -167,7 +148,7 @@ public class SearchAddPatients extends Activity {
 
     }
 
-    private void patientFetch(final String patid) {
+    private void patientFetch(final String patid, final String patname) {
         class fetch_patientinfo extends AsyncTask<Void, Class_FetchPatientGenInfo, String> {
             ProgressDialog loading;
 
@@ -187,10 +168,14 @@ public class SearchAddPatients extends Activity {
 
             // In here, split between argChoice Value (1 or 2)
             protected String doInBackground(Void... params) {
+                String patid_temp, patname_temp;
+                patid_temp='%'+patid+'%';
+                patname_temp='%'+patname+'%';
 
                 RequestHandler reqHan = new RequestHandler();
                 HashMap<String, String> map = new HashMap<>();
-                map.put("patid",patid);
+                map.put("patid",patid_temp);
+                map.put("patname",patname_temp);
                 String s;
 
                 s = reqHan.sendGetRequestParam (ConnVars.URL_FETCH_PATIENT_GENERAL_INFO, map);
@@ -240,6 +225,8 @@ public class SearchAddPatients extends Activity {
                 children = jo.getString("children");
                 height = jo.getString("height");
                 weight=jo.getString("weight");
+                temp_dob_string=jo.getString("dob");
+
 
 
                 //try to cast string into int
@@ -248,7 +235,7 @@ public class SearchAddPatients extends Activity {
                     height_int = Integer.parseInt(height);
                     weight_int = Integer.parseInt(weight);
                     //add this data as Class_FetchAllDrugInfo to ArrayList
-                    patinfo.add(new Class_FetchPatientGenInfo(patid, patname , address, telephone, gender, marstat, children_int,height_int,weight_int,allergies,medcond));
+                    patinfo.add(new Class_FetchPatientGenInfo(patid, patname , address, telephone, gender, marstat, children_int,height_int,weight_int,allergies,medcond,temp_dob_string));
 
                 } catch (NumberFormatException nfe) {
                     System.out.println("Number Format Exception occurred...");
@@ -260,13 +247,22 @@ public class SearchAddPatients extends Activity {
         } catch (JSONException e) {
             System.out.println("JSON Exception occurred...");
         }
-        ArrayAdapter<Class_FetchPatientGenInfo> adapter = new ArrayAdapter_FetchPatientGenInfo(context, patinfo);
+        ArrayAdapter<Class_FetchPatientGenInfo> adapter = new ArrayAdapter_FetchPatientInfo(context, patinfo);
 
         //setliest view to lsitview in the xml file
+        LayoutInflater inflater = LayoutInflater.from(SearchAddPatients.this);
+        View findPatient = inflater.inflate(R.layout.dialog_find_patient,null);
+
+        /*AlertDialog.Builder builder= new AlertDialog.Builder(SearchAddPatients.this);
+        builder.setView(findPatient);
+        builder.setTitle("Elige un Paciente");*/
+
         listView = (ListView) findViewById(R.id.listview_patientgeninfo);
         // listView = this.getListView();
         //turn on list view
         listView.setAdapter(adapter);
+        //builder.show();
+
     }
 
     public void NuevoPaciente(View V) {

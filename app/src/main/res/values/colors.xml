@@ -5,5 +5,5 @@
     <color name="colorAccent">#4070ff</color>
     <color name="cellBackground">#00000000</color>
     <color name="cellBorder">#020202</color>
-    <color name="secondary_text_material_light">#8abe600d</color>
+    <color name="secondary_text_material_light">#fdf60c05</color>
 </resources>
