@@ -72,7 +72,7 @@ public class FetchShipments extends AppCompatActivity {
                 map.put("drugname", str2);
                 map.put("shipdate", str3);
 
-                s = reqHan.sendGetRequestParam(ConnVars.URL_FETCH_SHIPMENTS, map);
+                s = reqHan.sendGetRequestParam(ConnVars.URL_FETCH_SHIPMENT, map);
                 return s;
             }
         }

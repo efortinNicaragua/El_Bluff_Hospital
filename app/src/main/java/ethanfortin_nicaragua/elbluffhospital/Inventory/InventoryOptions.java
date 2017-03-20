@@ -94,7 +94,7 @@ public class InventoryOptions extends AppCompatActivity {
                                 && !dateEnable.isChecked()) {
                             cancel = true;
                             System.out.println("LLLLLLLL:" + cancel);
-                            entryName.setError("Attencion");
+                            entryName.setError("atención");
                             focus = entryName;
                         }
                         if (cancel) {
