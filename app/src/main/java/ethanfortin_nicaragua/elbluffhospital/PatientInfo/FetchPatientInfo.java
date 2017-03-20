@@ -31,7 +31,7 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 
-import ethanfortin_nicaragua.elbluffhospital.ArrayAdapters.ArrayAdapter_FetchPatientGenInfo;
+import ethanfortin_nicaragua.elbluffhospital.ArrayAdapters.ArrayAdapter_FetchPatientInfo;
 import ethanfortin_nicaragua.elbluffhospital.DataClasses.Class_FetchAllDrugInfo;
 import ethanfortin_nicaragua.elbluffhospital.DataClasses.Class_FetchPatientGenInfo;
 import ethanfortin_nicaragua.elbluffhospital.R;
@@ -67,7 +67,7 @@ public class FetchPatientInfo extends AppCompatActivity {
         patientgeninfo_data.add(new Class_FetchPatientGenInfo("Alergias", "Penecilinia, Azufre"));
         patientgeninfo_data.add(new Class_FetchPatientGenInfo("Condiciones Medicos", "Alta presion sanguinea"));*/
 
-        ArrayAdapter<Class_FetchPatientGenInfo> adapter = new ArrayAdapter_FetchPatientGenInfo(this, patientgeninfo_data);
+        ArrayAdapter<Class_FetchPatientGenInfo> adapter = new ArrayAdapter_FetchPatientInfo(this, patientgeninfo_data);
 
         //set list view to listview in the xml file
         ListView listView=(ListView) findViewById(android.R.id.list);

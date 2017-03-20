@@ -11,7 +11,7 @@ public class ConnVars {
     public static final String URL_FETCH_SPECIFIC_DRUG = "http://192.168.0.100/android_connect/fetch_druginfo_row.php";
     public static final String URL_FETCH_DRUGINFO_ALL = "http://192.168.0.100/android_connect/fetch_druginfo_all.php";
     public static final String URL_FETCH_SHIPMENTS = "http://192.168.0.100/android_connect/fetch_shipment_rows.php";
-    public static final String URL_FETCH_PATIENT_GENERAL_INFO="http://192.168.0.100/android_connect/fetch_patientinfo_row.php";
+    public static final String URL_FETCH_PATIENT_GENERAL_INFO="http://192.168.1.4/android_connect/fetch_patientinfo_row.php";
 
     // JSON Tags
 
