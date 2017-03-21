@@ -4,16 +4,16 @@ package ethanfortin_nicaragua.elbluffhospital.DataClasses;
  * Created by wildcat on 1/26/2017.
  */
 
-public class Class_FetchPatientGenInfo {
+public class PatientinfoFields {
 
     public String patid, patname,address, telephone, gender, marstat, allergies, medcond,dob;
     public int children, height, weight;
-    public Class_FetchPatientGenInfo(){
+    public PatientinfoFields(){
         super();
     }
 
-    public Class_FetchPatientGenInfo(String patid, String patname, String address, String telephone, String gender, String marstat, int height, int weight,
-                                     int children, String allergies, String medcond, String dob) {
+    public PatientinfoFields(String patid, String patname, String address, String telephone, String gender, String marstat, int height, int weight,
+                             int children, String allergies, String medcond, String dob) {
 
         super();
         this.patid = patid;

@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:text="Menu Principal de la Farmacia"
+        android:text="@string/titlePharmacyMain"
         android:id="@+id/text_farmaciaMain"
         android:textAlignment="center"
         android:fontFamily="sans-serif-condensed"
@@ -25,7 +25,7 @@
         android:layout_width="800dp"
         android:layout_height="40dp"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Añadir Envio"
+        android:text="@string/textAddShipment"
         android:id="@+id/text_Añadir"
         android:textAlignment="center"
         android:textSize="30sp"
@@ -35,7 +35,7 @@
         android:textColor="@color/colorPrimaryDark" />
 
     <TextView
-        android:text="Toca un botón para seleccionar"
+        android:text="@string/textChooseButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/text_farmaciaSub"
@@ -49,7 +49,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Ver Totales"
+        android:text="@string/textViewTotals"
         android:id="@+id/text_inventory"
         android:textAlignment="center"
         android:textSize="30sp"
@@ -58,6 +58,7 @@
         android:textColor="@color/colorPrimaryDark" />
 
     <ImageButton
+        android:contentDescription="@string/cdShipmentButton"
         android:layout_width="200dp"
         android:layout_height="95dp"
         android:id="@+id/newShipment"
@@ -70,6 +71,7 @@
         android:onClick="createShipmentPage" />
 
     <ImageButton
+        android:contentDescription="@string/cdInventoryButton"
         android:layout_width="200dp"
         android:layout_height="95dp"
         android:id="@+id/button_Totales"

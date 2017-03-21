@@ -9,21 +9,21 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import ethanfortin_nicaragua.elbluffhospital.DataClasses.Class_Fetch_shipment_rows;
+import ethanfortin_nicaragua.elbluffhospital.DataClasses.ShipmentFields;
 import ethanfortin_nicaragua.elbluffhospital.R;
 
 /**
  * Created by Wildcat on 1/3/2017.
  */
 
-public class ArrayAdapter_Fetch_shipment_rows extends ArrayAdapter<Class_Fetch_shipment_rows> {
-    public ArrayAdapter_Fetch_shipment_rows(Context context, ArrayList<Class_Fetch_shipment_rows> drugdata){
+public class ShipmentAdapter extends ArrayAdapter<ShipmentFields> {
+    public ShipmentAdapter(Context context, ArrayList<ShipmentFields> drugdata){
         super(context,0,drugdata);
     }
     @Override
     public View getView(int position, View convertView, ViewGroup parent){
 
-        Class_Fetch_shipment_rows shipRow = getItem(position);
+        ShipmentFields shipRow = getItem(position);
 
         if(convertView == null){
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.row_fetch_shipments_rows, parent, false);

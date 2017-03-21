@@ -16,14 +16,14 @@ import ethanfortin_nicaragua.elbluffhospital.R;
  * Created by Wildcat on 1/30/2017.
  */
 
-public class Adapter_ExpandableList extends BaseExpandableListAdapter{
+public class ExpandableListAdapter extends BaseExpandableListAdapter{
 
     private Context ctx;
     private HashMap<String, List<String>> Movies_Category;
     private List<String> Movies_List;
 
 
-    public Adapter_ExpandableList(Context ctx, HashMap<String, List<String>> Movies_Category, List<String> Movies_List)
+    public ExpandableListAdapter(Context ctx, HashMap<String, List<String>> Movies_Category, List<String> Movies_List)
     {
         this.ctx = ctx;
         this.Movies_Category=Movies_Category;

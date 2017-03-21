@@ -31,15 +31,13 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 
-import ethanfortin_nicaragua.elbluffhospital.ArrayAdapters.ArrayAdapter_FetchPatientInfo;
-import ethanfortin_nicaragua.elbluffhospital.DataClasses.Class_FetchAllDrugInfo;
-import ethanfortin_nicaragua.elbluffhospital.DataClasses.Class_FetchPatientGenInfo;
+import ethanfortin_nicaragua.elbluffhospital.ArrayAdapters.PatientinfoAdapter;
+import ethanfortin_nicaragua.elbluffhospital.DataClasses.PatientinfoFields;
 import ethanfortin_nicaragua.elbluffhospital.R;
 
 public class FetchPatientInfo extends AppCompatActivity {
-    //Create global variables for list view and ArrayList<Class_FetchAllDrugInfo>
+    //Create global variables for list view and ArrayList<DruginfoFields>
     ListView listView;
-    ArrayList<Class_FetchAllDrugInfo> patientgeninfo_data = new ArrayList();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -52,22 +50,22 @@ public class FetchPatientInfo extends AppCompatActivity {
         *
         * */
         listView = (ListView) findViewById(android.R.id.list);
-        ArrayList<Class_FetchPatientGenInfo> patientgeninfo_data = new ArrayList();
+        ArrayList<PatientinfoFields> patientgeninfo_data = new ArrayList();
 
-       /* patientgeninfo_data.add(new Class_FetchPatientGenInfo("Nombre", "Pablo Sanchez"));
-        patientgeninfo_data.add(new Class_FetchPatientGenInfo("ID", "123456"));
-        patientgeninfo_data.add(new Class_FetchPatientGenInfo("Direccion", "532 El Bluff"));
-        patientgeninfo_data.add(new Class_FetchPatientGenInfo("Tele", "18972892200"));
-        patientgeninfo_data.add(new Class_FetchPatientGenInfo("La Fecha de Nacimiento", "23-01-78"));
-        patientgeninfo_data.add(new Class_FetchPatientGenInfo("Genero", "Hombre"));
-        patientgeninfo_data.add(new Class_FetchPatientGenInfo("Casado", "Si"));
-        patientgeninfo_data.add(new Class_FetchPatientGenInfo("Ninos", "Tres: Maria, Juan, Jose"));
-        patientgeninfo_data.add(new Class_FetchPatientGenInfo("Altura", "86cm"));
-        patientgeninfo_data.add(new Class_FetchPatientGenInfo("Pesadura", "65kg"));
-        patientgeninfo_data.add(new Class_FetchPatientGenInfo("Alergias", "Penecilinia, Azufre"));
-        patientgeninfo_data.add(new Class_FetchPatientGenInfo("Condiciones Medicos", "Alta presion sanguinea"));*/
+       /* patientgeninfo_data.add(new PatientinfoFields("Nombre", "Pablo Sanchez"));
+        patientgeninfo_data.add(new PatientinfoFields("ID", "123456"));
+        patientgeninfo_data.add(new PatientinfoFields("Direccion", "532 El Bluff"));
+        patientgeninfo_data.add(new PatientinfoFields("Tele", "18972892200"));
+        patientgeninfo_data.add(new PatientinfoFields("La Fecha de Nacimiento", "23-01-78"));
+        patientgeninfo_data.add(new PatientinfoFields("Genero", "Hombre"));
+        patientgeninfo_data.add(new PatientinfoFields("Casado", "Si"));
+        patientgeninfo_data.add(new PatientinfoFields("Ninos", "Tres: Maria, Juan, Jose"));
+        patientgeninfo_data.add(new PatientinfoFields("Altura", "86cm"));
+        patientgeninfo_data.add(new PatientinfoFields("Pesadura", "65kg"));
+        patientgeninfo_data.add(new PatientinfoFields("Alergias", "Penecilinia, Azufre"));
+        patientgeninfo_data.add(new PatientinfoFields("Condiciones Medicos", "Alta presion sanguinea"));*/
 
-        ArrayAdapter<Class_FetchPatientGenInfo> adapter = new ArrayAdapter_FetchPatientInfo(this, patientgeninfo_data);
+        ArrayAdapter<PatientinfoFields> adapter = new PatientinfoAdapter(this, patientgeninfo_data);
 
         //set list view to listview in the xml file
         ListView listView=(ListView) findViewById(android.R.id.list);

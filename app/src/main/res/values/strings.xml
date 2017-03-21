@@ -28,9 +28,26 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+
     <string name="title_activity_new_visit_history">NewVisitHistory</string>
     <string name="title_activity_new_patient_prescription">NewPatientPrescription</string>
     <string name="title_activity_add_new_visit">AddNewVisit</string>
+
+
+    <string name="hintDrugName">Nombre de Medicina</string>
+    <string name="hintDrugId">ID de Medicina</string>
+    <string name="hintDrugQuantity">Cantidad de medicina en el envío</string>
+    <string name="textCreateShipment">Crear nuevo envío</string>
+    <string name="guardar">textSave</string>
+    <string name="textFind">Encontrar</string>
+    <string name="titleFetchSpecificDrug">Da el nombre o el ID de la medicina</string>
+    <string name="titleInventoryOptions">Opciones de Inventario</string>
+    <string name="titlePharmacyMain">Menu Principal de la Farmacia</string>
+    <string name="textAddShipment">Añadir Envio</string>
+    <string name="textChooseButton">Toca un botón para seleccionar</string>
+    <string name="textViewTotals">Ver Totales</string>
+    <string name="cdInventoryButton">InventoryButton</string>
+    <string name="cdShipmentButton">ShipmentButton</string>
 
     <string-array name="PatientInfoDD">
         <item >Nombre</item>

@@ -9,19 +9,19 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import ethanfortin_nicaragua.elbluffhospital.DataClasses.Class_FetchAllDrugInfo;
+import ethanfortin_nicaragua.elbluffhospital.DataClasses.DruginfoFields;
 import ethanfortin_nicaragua.elbluffhospital.R;
 
-public class ArrayAdapter_FetchAllDrugInfo extends ArrayAdapter<Class_FetchAllDrugInfo> {
+public class DruginfoAdapter extends ArrayAdapter<DruginfoFields> {
 
-    public ArrayAdapter_FetchAllDrugInfo(Context context, ArrayList<Class_FetchAllDrugInfo> drugdata) {
+    public DruginfoAdapter(Context context, ArrayList<DruginfoFields> drugdata) {
         super(context,0,drugdata);
     }
 
     @Override
     public View getView(int position,View convertView, ViewGroup parent) {
 
-        Class_FetchAllDrugInfo single_druginfo = getItem(position);
+        DruginfoFields single_druginfo = getItem(position);
 
         if(convertView == null){
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.row_druginventory_all, parent, false);

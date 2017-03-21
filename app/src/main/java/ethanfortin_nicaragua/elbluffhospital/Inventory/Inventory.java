@@ -15,9 +15,9 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import ethanfortin_nicaragua.elbluffhospital.ArrayAdapters.ArrayAdapter_FetchAllDrugInfo;
+import ethanfortin_nicaragua.elbluffhospital.ArrayAdapters.DruginfoAdapter;
 import ethanfortin_nicaragua.elbluffhospital.ConnVars;
-import ethanfortin_nicaragua.elbluffhospital.DataClasses.Class_FetchAllDrugInfo;
+import ethanfortin_nicaragua.elbluffhospital.DataClasses.DruginfoFields;
 import ethanfortin_nicaragua.elbluffhospital.R;
 import ethanfortin_nicaragua.elbluffhospital.RequestHandler;
 
@@ -75,7 +75,7 @@ public class Inventory extends ListActivity {
 
         Context context = this;
         ListView listView;
-        ArrayList<Class_FetchAllDrugInfo> drugInfoData = new ArrayList();
+        ArrayList<DruginfoFields> drugInfoData = new ArrayList();
 
         int totalCast, count = 0;
         String drugName, drugId, drugTotal;
@@ -92,7 +92,7 @@ public class Inventory extends ListActivity {
 
                 try {
                     totalCast = Integer.parseInt(drugTotal);
-                    drugInfoData.add(new Class_FetchAllDrugInfo(drugId, drugName, totalCast));
+                    drugInfoData.add(new DruginfoFields(drugId, drugName, totalCast));
                 } catch (NumberFormatException e) {
                     System.out.println("Number format exception occurred...");
                 }
@@ -104,7 +104,7 @@ public class Inventory extends ListActivity {
             System.out.println("JSON Exception occurred...");
         }
 
-        ArrayAdapter<Class_FetchAllDrugInfo> adapter = new ArrayAdapter_FetchAllDrugInfo(context, drugInfoData);
+        ArrayAdapter<DruginfoFields> adapter = new DruginfoAdapter(context, drugInfoData);
         listView = (ListView) findViewById(android.R.id.list);
         listView.setAdapter(adapter);
     }

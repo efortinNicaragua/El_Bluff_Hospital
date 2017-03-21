@@ -18,9 +18,9 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import ethanfortin_nicaragua.elbluffhospital.ArrayAdapters.ArrayAdapter_Fetch_shipment_rows;
+import ethanfortin_nicaragua.elbluffhospital.ArrayAdapters.ShipmentAdapter;
 import ethanfortin_nicaragua.elbluffhospital.ConnVars;
-import ethanfortin_nicaragua.elbluffhospital.DataClasses.Class_Fetch_shipment_rows;
+import ethanfortin_nicaragua.elbluffhospital.DataClasses.ShipmentFields;
 import ethanfortin_nicaragua.elbluffhospital.R;
 import ethanfortin_nicaragua.elbluffhospital.RequestHandler;
 
@@ -86,7 +86,7 @@ public class FetchShipments extends AppCompatActivity {
 
         Context context = this;
         ListView listView;
-        ArrayList<Class_Fetch_shipment_rows> shipmentData = new ArrayList();
+        ArrayList<ShipmentFields> shipmentData = new ArrayList();
 
         int totalCast, count = 0;
         String drugId, drugName, shipQuant, shipDate;
@@ -117,7 +117,7 @@ public class FetchShipments extends AppCompatActivity {
 
                     try {
                         totalCast = Integer.parseInt(shipQuant);
-                        shipmentData.add(new Class_Fetch_shipment_rows(shipDate, drugId, drugName, totalCast));
+                        shipmentData.add(new ShipmentFields(shipDate, drugId, drugName, totalCast));
                     } catch (NumberFormatException e) {
                         System.out.println("Number format exception occurred...");
                     }
@@ -125,7 +125,7 @@ public class FetchShipments extends AppCompatActivity {
                     count++;
                 }
 
-                ArrayAdapter<Class_Fetch_shipment_rows> adapter = new ArrayAdapter_Fetch_shipment_rows(context, shipmentData);
+                ArrayAdapter<ShipmentFields> adapter = new ShipmentAdapter(context, shipmentData);
                 listView = (ListView) findViewById(android.R.id.list);
                 listView.setAdapter(adapter);
 

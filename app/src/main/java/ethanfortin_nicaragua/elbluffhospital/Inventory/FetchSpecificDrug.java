@@ -6,13 +6,11 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -22,10 +20,9 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import ethanfortin_nicaragua.elbluffhospital.ArrayAdapters.ArrayAdapter_FetchAllDrugInfo;
+import ethanfortin_nicaragua.elbluffhospital.ArrayAdapters.DruginfoAdapter;
 import ethanfortin_nicaragua.elbluffhospital.ConnVars;
-import ethanfortin_nicaragua.elbluffhospital.DataClasses.Class_FetchAllDrugInfo;
-import ethanfortin_nicaragua.elbluffhospital.DataClasses.Class_FetchDruginfoRow;
+import ethanfortin_nicaragua.elbluffhospital.DataClasses.DruginfoFields;
 import ethanfortin_nicaragua.elbluffhospital.R;
 import ethanfortin_nicaragua.elbluffhospital.RequestHandler;
 
@@ -41,7 +38,7 @@ public class FetchSpecificDrug extends AppCompatActivity implements View.OnClick
     private Button buttonSearch;
 
     // druginfo class array adapter
-    ArrayList<Class_FetchAllDrugInfo> druginfo = new ArrayList();
+    ArrayList<DruginfoFields> druginfo = new ArrayList();
 
 
     // Set layout, initialize layout object handles and listener
@@ -115,7 +112,7 @@ public class FetchSpecificDrug extends AppCompatActivity implements View.OnClick
             String drugId = resObj.getString(ConnVars.TAG_DRUGINFO_ID);
             String drugTotal = resObj.getString(ConnVars.TAG_DRUGINFO_QUANT);
 
-            druginfo.add(new Class_FetchAllDrugInfo(
+            druginfo.add(new DruginfoFields(
                     drugName,
                     drugId,
                     Integer.parseInt(drugTotal)
@@ -127,7 +124,7 @@ public class FetchSpecificDrug extends AppCompatActivity implements View.OnClick
 
         Context context = this;
         ListView listView;
-        ArrayAdapter<Class_FetchAllDrugInfo> adapter = new ArrayAdapter_FetchAllDrugInfo(context, druginfo);
+        ArrayAdapter<DruginfoFields> adapter = new DruginfoAdapter(context, druginfo);
 
         // Sync ListView object with widget in layout file
         listView = (ListView) findViewById(R.id.list);

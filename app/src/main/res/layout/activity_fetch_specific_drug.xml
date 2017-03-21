@@ -16,7 +16,7 @@
         android:inputType="textPersonName"
         android:ems="10"
         android:id="@+id/etDrugID"
-        android:hint="ID de medicina"
+        android:hint="@string/hintDrugId"
         android:layout_marginTop="16dp"
         android:layout_below="@+id/etDrugName"
         android:layout_alignLeft="@+id/etDrugName"
@@ -28,13 +28,13 @@
         android:inputType="textPersonName"
         android:ems="10"
         android:id="@+id/etDrugName"
-        android:hint="Nombre de medicina"
+        android:hint="@string/hintDrugName"
         android:layout_marginTop="20dp"
         android:layout_below="@+id/Title"
         android:layout_centerHorizontal="true" />
 
     <Button
-        android:text="Encontrar"
+        android:text="@string/textFind"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="17dp"
@@ -47,9 +47,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/Title"
-        android:layout_weight="1"
         android:textSize="24sp"
-        android:text="Da el nombre o el ID de la medicina"
+        android:text="@string/titleFetchSpecificDrug"
         android:textColor="@color/colorPrimaryDark"
         android:layout_marginTop="12dp"
         android:layout_alignParentTop="true"
@@ -58,7 +57,8 @@
     <ListView
         android:id="@+id/list"
         android:layout_width="match_parent"
-        android:layout_height="220dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bFind"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
 

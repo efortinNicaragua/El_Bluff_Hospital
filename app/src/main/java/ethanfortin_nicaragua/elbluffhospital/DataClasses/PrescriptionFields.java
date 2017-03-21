@@ -6,7 +6,7 @@ package ethanfortin_nicaragua.elbluffhospital.DataClasses;
 
 
 /**ML: Initialize class variable names. Classes are used to access all information as a bulk!**/
-public class Class_FetchPrescriptions {
+public class PrescriptionFields {
     public String C_rxid;
     public String C_drugid;
     public String C_transdate;
@@ -18,16 +18,16 @@ public class Class_FetchPrescriptions {
     public String C_symptoms;
     public String C_drugname;
 
-    public Class_FetchPrescriptions(){
+    public PrescriptionFields(){
         super();
     }
 
 
     /**ML: Pass the class the r_** variable which is the string returned from the rxShow method in Fetch Prescriptions.
      * Use this. to make the class variable equal to the variable returned from the JSON array. **/
-    public Class_FetchPrescriptions(String r_rxID, String r_drugID, String r_transDate, Integer r_quantity, String r_patID, String r_directions, String r_duration,
-                                    String r_doctor, String r_symptoms
-                                   // ,String r_drugName
+    public PrescriptionFields(String r_rxID, String r_drugID, String r_transDate, Integer r_quantity, String r_patID, String r_directions, String r_duration,
+                              String r_doctor, String r_symptoms
+                              // ,String r_drugName
     ) {
 
         super();

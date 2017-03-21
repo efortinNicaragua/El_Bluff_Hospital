@@ -23,14 +23,14 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
-import ethanfortin_nicaragua.elbluffhospital.ArrayAdapters.Adapter_ExpandableList;
+import ethanfortin_nicaragua.elbluffhospital.ArrayAdapters.ExpandableListAdapter;
 import ethanfortin_nicaragua.elbluffhospital.R;
 
 public class FetchVisits extends AppCompatActivity {
     HashMap<String, List<String>> HashMap_hashmap;
     List<String> HastMap_list;
     ExpandableListView Exp_list;
-    Adapter_ExpandableList adapter;
+    ExpandableListAdapter adapter;
     final Context context = this;
 
 
@@ -43,7 +43,7 @@ public class FetchVisits extends AppCompatActivity {
         Exp_list = (ExpandableListView) findViewById(R.id.exp_list);
         HashMap_hashmap= DataProvider.getInfo();
         HastMap_list=new ArrayList<String>(HashMap_hashmap.keySet());
-        adapter=new Adapter_ExpandableList(this, HashMap_hashmap, HastMap_list);
+        adapter=new ExpandableListAdapter(this, HashMap_hashmap, HastMap_list);
         Exp_list.setAdapter(adapter);
 
         //Example code of things you could do but we dont need this

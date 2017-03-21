@@ -13,7 +13,7 @@
     android:background="@drawable/greygradient">
 
     <TextView
-        android:text="Opciones de Inventario"
+        android:text="@string/titleInventoryOptions"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView8"

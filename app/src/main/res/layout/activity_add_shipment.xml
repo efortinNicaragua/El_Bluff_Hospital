@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_width="275dp"
         android:inputType="text"
-        android:hint="Nombre de Medicina"
+        android:hint="@string/hintDrugName"
         android:textAlignment="center"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp" />
@@ -20,7 +20,7 @@
         android:layout_width="275dp"
         android:layout_height="wrap_content"
         android:inputType="text"
-        android:hint="ID de Medicina"
+        android:hint="@string/hintDrugId"
         android:textAlignment="center"
         android:layout_marginTop="30dp"
         android:layout_below="@+id/addName"
@@ -41,7 +41,7 @@
         android:layout_width="275dp"
         android:layout_height="wrap_content"
         android:inputType="number"
-        android:hint="Cantidad de medicina en el envío"
+        android:hint="@string/hintDrugQuantity"
         android:textAlignment="center"
         android:layout_marginTop="30dp"
         android:layout_below="@+id/addId"
@@ -51,7 +51,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:text="Crear nuevo envío"
+        android:text="@string/textCreateShipment"
         android:id="@+id/text_farmaciaMain"
         android:textAlignment="center"
         android:fontFamily="sans-serif-condensed"
@@ -59,7 +59,7 @@
         android:textSize="30sp" />
 
     <Button
-        android:text="Guardar"
+        android:text="@string/guardar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

@@ -6,16 +6,16 @@ import java.util.Date;
  * Created by Wildcat on 1/3/2017.
  */
 
-public class Class_Fetch_shipment_rows {
+public class ShipmentFields {
     public String drugid;
     public String drugname;
     public int shipquant;
     public String shipdate;
-    public Class_Fetch_shipment_rows(){
+    public ShipmentFields(){
         super();
     }
 
-    public Class_Fetch_shipment_rows(String shipdate, String drugid, String drugname, int shipquant) {
+    public ShipmentFields(String shipdate, String drugid, String drugname, int shipquant) {
 
         super();
         this.drugid = drugid;

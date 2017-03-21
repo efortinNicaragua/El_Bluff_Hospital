@@ -8,35 +8,28 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.lang.reflect.Array;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
-import ethanfortin_nicaragua.elbluffhospital.ArrayAdapters.ArrayAdapter_FetchPrescriptions;
 import ethanfortin_nicaragua.elbluffhospital.ConnVars;
-import ethanfortin_nicaragua.elbluffhospital.DataClasses.Class_FetchPrescriptions;
+import ethanfortin_nicaragua.elbluffhospital.DataClasses.PrescriptionFields;
 import ethanfortin_nicaragua.elbluffhospital.R;
 import ethanfortin_nicaragua.elbluffhospital.RequestHandler;
 
@@ -48,7 +41,7 @@ public class FetchPrescriptions extends Activity {
     private HashMap<String, List<String>> listHash;
 
     Context context = this;
-    ArrayList< Class_FetchPrescriptions> patRXdata = new ArrayList();
+    ArrayList<PrescriptionFields> patRXdata = new ArrayList();
     ListView LV_patRX;
     int count = 0;
     String sID;
@@ -247,7 +240,7 @@ public class FetchPrescriptions extends Activity {
 
                         try{
                             Integer r_quantity_int = Integer.parseInt(r_quantity);
-                            patRXdata.add(new Class_FetchPrescriptions(r_rxID, r_drugID, r_transDate, r_quantity_int, r_patID, r_directions, r_duration, r_doctor, r_symptoms));
+                            patRXdata.add(new PrescriptionFields(r_rxID, r_drugID, r_transDate, r_quantity_int, r_patID, r_directions, r_duration, r_doctor, r_symptoms));
                         } catch(NumberFormatException nfe){
                             System.out.println("Number format exception occured!");
                         }
@@ -260,7 +253,7 @@ public class FetchPrescriptions extends Activity {
             System.out.println("JSON Exception occurred...HEAAAA");
         }
 
-        //ArrayAdapter<Class_FetchPrescriptions> adapter2 = new ArrayAdapter_FetchPrescriptions(context, patRXdata);
+        //ArrayAdapter<PrescriptionFields> adapter2 = new PrescriptionAdapter(context, patRXdata);
         //LV_patRX = (ListView) findViewById(R.id.LV_fetchPrescriptions);
         //LV_patRX.setAdapter(adapter2);
 
@@ -274,7 +267,7 @@ public class FetchPrescriptions extends Activity {
 
     private void initData() {
         /**ML: Need to make a count variable to select all prescriptions not just the first one (get rid of the o)**/
-        Class_FetchPrescriptions temp1 = patRXdata.get(0);
+        PrescriptionFields temp1 = patRXdata.get(0);
         listDataHeader = new ArrayList<>();
         listHash = new HashMap<>();
 
@@ -346,7 +339,7 @@ public class FetchPrescriptions extends Activity {
         {
             HashMap<String, List<String>> rxHeaders = new HashMap<String, List<String>>();
 
-            ArrayList<Class_FetchPrescriptions> rx1 = new ArrayList<Class_FetchPrescriptions>();
+            ArrayList<PrescriptionFields> rx1 = new ArrayList<PrescriptionFields>();
 
             String RXId, DrugId, TransDate, Quantity, PatID, Directions, Duration, Doctor, Symptoms, DrugName;
 

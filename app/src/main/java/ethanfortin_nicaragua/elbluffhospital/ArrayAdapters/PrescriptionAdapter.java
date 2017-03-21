@@ -7,26 +7,21 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 
-import ethanfortin_nicaragua.elbluffhospital.DataClasses.Class_FetchPrescriptions;
+import ethanfortin_nicaragua.elbluffhospital.DataClasses.PrescriptionFields;
 import ethanfortin_nicaragua.elbluffhospital.R;
 
-import static android.R.attr.duration;
-import static ethanfortin_nicaragua.elbluffhospital.R.id.patID;
+public class PrescriptionAdapter extends ArrayAdapter<PrescriptionFields> {
 
-public class ArrayAdapter_FetchPrescriptions extends ArrayAdapter<Class_FetchPrescriptions> {
-
-    public ArrayAdapter_FetchPrescriptions(Context context, ArrayList<Class_FetchPrescriptions> f_patRXdata) {
+    public PrescriptionAdapter(Context context, ArrayList<PrescriptionFields> f_patRXdata) {
         super(context,0,f_patRXdata);
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        Class_FetchPrescriptions single_patRXinfo = getItem(position);
+        PrescriptionFields single_patRXinfo = getItem(position);
 
         if(convertView == null){
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.row_fetchprescriptions, parent, false);

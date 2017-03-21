@@ -1,7 +1,6 @@
 package ethanfortin_nicaragua.elbluffhospital.PatientInfo;
 
 import android.app.Activity;
-import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -30,14 +29,14 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 
-import ethanfortin_nicaragua.elbluffhospital.ArrayAdapters.ArrayAdapter_FetchPatientInfo;
+import ethanfortin_nicaragua.elbluffhospital.ArrayAdapters.PatientinfoAdapter;
 import ethanfortin_nicaragua.elbluffhospital.ConnVars;
-import ethanfortin_nicaragua.elbluffhospital.DataClasses.Class_FetchPatientGenInfo;
+import ethanfortin_nicaragua.elbluffhospital.DataClasses.PatientinfoFields;
 import ethanfortin_nicaragua.elbluffhospital.R;
 import ethanfortin_nicaragua.elbluffhospital.RequestHandler;
 
 public class SearchAddPatients extends Activity {
-    ArrayList<Class_FetchPatientGenInfo> patinfo = new ArrayList();
+    ArrayList<PatientinfoFields> patinfo = new ArrayList();
 
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
@@ -149,7 +148,7 @@ public class SearchAddPatients extends Activity {
     }
 
     private void patientFetch(final String patid, final String patname) {
-        class fetch_patientinfo extends AsyncTask<Void, Class_FetchPatientGenInfo, String> {
+        class fetch_patientinfo extends AsyncTask<Void, PatientinfoFields, String> {
             ProgressDialog loading;
 
             @Override
@@ -191,7 +190,7 @@ public class SearchAddPatients extends Activity {
 
         Context context=this;
         ListView listView;
-        ArrayList<Class_FetchPatientGenInfo> patGenInfo = new ArrayList();
+        ArrayList<PatientinfoFields> patGenInfo = new ArrayList();
 
         int totalCast, count=0;
         String patid, patname, address, telephone, gender,marstat, allergies, medcond, children, height, weight;
@@ -234,8 +233,8 @@ public class SearchAddPatients extends Activity {
                     children_int = Integer.parseInt(children);
                     height_int = Integer.parseInt(height);
                     weight_int = Integer.parseInt(weight);
-                    //add this data as Class_FetchAllDrugInfo to ArrayList
-                    patinfo.add(new Class_FetchPatientGenInfo(patid, patname , address, telephone, gender, marstat, children_int,height_int,weight_int,allergies,medcond,temp_dob_string));
+                    //add this data as DruginfoFields to ArrayList
+                    patinfo.add(new PatientinfoFields(patid, patname , address, telephone, gender, marstat, children_int,height_int,weight_int,allergies,medcond,temp_dob_string));
 
                 } catch (NumberFormatException nfe) {
                     System.out.println("Number Format Exception occurred...");
@@ -247,7 +246,7 @@ public class SearchAddPatients extends Activity {
         } catch (JSONException e) {
             System.out.println("JSON Exception occurred...");
         }
-        ArrayAdapter<Class_FetchPatientGenInfo> adapter = new ArrayAdapter_FetchPatientInfo(context, patinfo);
+        ArrayAdapter<PatientinfoFields> adapter = new PatientinfoAdapter(context, patinfo);
 
         //setliest view to lsitview in the xml file
         LayoutInflater inflater = LayoutInflater.from(SearchAddPatients.this);
