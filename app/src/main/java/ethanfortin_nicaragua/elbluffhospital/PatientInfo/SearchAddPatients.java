@@ -192,8 +192,6 @@ public class SearchAddPatients extends Activity {
 
                 s = reqHan.sendGetRequestParam (ConnVars.URL_FETCH_PATIENT_GENERAL_INFO, map);
 
-                //testing purposes;
-                s="";
                 return s;
             }
         }
@@ -266,13 +264,13 @@ public class SearchAddPatients extends Activity {
         ArrayAdapter<PatientinfoFields> adapter = new PatientinfoAdapter(context, patinfo);
 
 
-        //testing purposes
+       /* //testing purposes
         patinfo.add(new PatientinfoFields("patid1", "ethan", "5", "774", "m", "m", 3, 4, 5, "1", "medcond", "123"));
         patinfo.add(new PatientinfoFields("patid2", "GO GO Dancer", "5", "774", "m", "m", 3, 4, 5, "1", "medcond", "123"));
         patinfo.add(new PatientinfoFields("patid3", "STop", "5", "774", "m", "m", 3, 4, 5, "1", "medcond", "123"));
         patinfo.add(new PatientinfoFields("patid4", "Huck", "5", "774", "m", "m", 3, 4, 5, "1", "medcond", "123"));
         patinfo.add(new PatientinfoFields("patid5", "CATCH!!!!", "5", "774", "m", "m", 3, 4, 5, "1", "medcond", "123"));
-
+*/
         findPatient_dialog= new Dialog(this);
         findPatient_dialog.setTitle("Elige un paciente");
         LayoutInflater li=(LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
