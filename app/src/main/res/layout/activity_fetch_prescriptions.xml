@@ -23,15 +23,10 @@
             android:layout_height="match_parent"
             android:indicatorLeft="?android:attr/expandableListPreferredItemIndicatorLeft"
             android:dividerHeight="0.5dp"
-            android:divider ="@color/colorPrimaryDark"
+            android:divider ="#CCCCCC"
+            android:layout_marginTop="50dp"
             >
         </ExpandableListView>
-
-       <!-- <ListView
-            android:id="@+id/LV_fetchPrescriptions"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            />-->
 
 
         <android.support.design.widget.FloatingActionButton
@@ -42,7 +37,23 @@
             android:src="@drawable/plussign"
             app:layout_anchor="@id/lvExp"
             app:layout_anchorGravity="bottom|right|end"/>
+
+
     </android.support.design.widget.CoordinatorLayout>
+
+    <TextView
+        android:id="@+id/textView17"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif"
+        android:text="Hace click para mas informacion del prescripcion."
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="24sp"
+        android:textStyle="italic"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="10dp"/>
+
 
     <Button
         android:text="Initialize onClick!"
@@ -55,7 +66,6 @@
         android:layout_marginEnd="86dp"
         android:id="@+id/button4"
         android:onClick="onClick2"/>
-
 
 
 </RelativeLayout>
