@@ -40,7 +40,7 @@
     <string name="textCreateShipment">Crear nuevo envío</string>
     <string name="guardar">textSave</string>
     <string name="textFind">Encontrar</string>
-    <string name="titleFetchSpecificDrug">Da el nombre o el ID de la medicina</string>
+    <string name="titleFetchSpecificDrug">Elige de la lista</string>
     <string name="titleInventoryOptions">Opciones de Inventario</string>
     <string name="titlePharmacyMain">Menu Principal de la Farmacia</string>
     <string name="textAddShipment">Añadir Envio</string>
