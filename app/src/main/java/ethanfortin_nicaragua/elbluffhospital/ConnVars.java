@@ -8,11 +8,12 @@ package ethanfortin_nicaragua.elbluffhospital;
 public class ConnVars {
 
     // IP Addresses for PHP Scripts
-    public static final String URL_FETCH_SPECIFIC_DRUG = "http://192.168.1.4/android_connect/fetch_druginfo_row.php";
-    public static final String URL_FETCH_DRUGINFO_ALL = "http://192.168.0.100/android_connect/fetch_druginfo_all.php";
-    public static final String URL_FETCH_SHIPMENT = "http://192.168.0.100/android_connect/fetch_shipment_rows.php";
-    public static final String URL_FETCH_PATIENT_GENERAL_INFO="http://153.104.61.191/android_connect/fetch_patientinfo_row.php";
-    public static final String URL_FETCH_PAT_RX = "http://153.104.61.191/android_connect/fetch_prescription_row.php";
+    public static final String URL_FETCH_SPECIFIC_DRUG = "http://192.104.62.251/android_connect/fetch_druginfo_row.php";
+    public static final String URL_FETCH_DRUGINFO_ALL = "http://192.104.62.251/android_connect/fetch_druginfo_all.php";
+    public static final String URL_FETCH_SHIPMENT = "http://192.104.62.251/android_connect/fetch_shipment_rows.php";
+    public static final String URL_FETCH_PATIENT_GENERAL_INFO="http://153.104.62.251/android_connect/fetch_patientinfo_row.php";
+    public static final String URL_FETCH_PAT_RX = "http://153.104.62.251/android_connect/fetch_prescription_row.php";
+    public static final String URL_FETCH_PAT_VISIT = "http://153.104.62.251/android_connect/fetch_vh_rx_row.php";
 
     // JSON Tags!
 
@@ -44,5 +45,12 @@ public class ConnVars {
     //The drugname will have to come from a join in the php script
     public static final String TAG_PRESCRIPTIONS_DRUGNAME = "drugname";
 
-    //
+    public static final String TAG_VISIT_HISTORY = "visithistory";
+    public static final String TAG_VISITS_PATID = "patid";
+    public static final String TAG_VISITS_VISITDATE = "visitdate";
+    public static final String TAG_VISITS_REASON = "reason";
+    public static final String TAG_VISITS_DOCTOR = "doctor";
+    //this one needs to come from a join in the php script to the prescriptions table
+    public static final String TAG_VISITS_RXID = "rxid";
+
 }

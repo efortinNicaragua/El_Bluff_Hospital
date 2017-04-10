@@ -18,7 +18,7 @@
 
 
         <ExpandableListView
-            android:id="@+id/lvExp"
+            android:id="@+id/exp_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:indicatorLeft="?android:attr/expandableListPreferredItemIndicatorLeft"
@@ -35,7 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|right"
             android:src="@drawable/plussign"
-            app:layout_anchor="@id/lvExp"
+            app:layout_anchor="@id/exp_list"
             app:layout_anchorGravity="bottom|right|end"/>
 
 
