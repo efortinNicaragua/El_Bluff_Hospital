@@ -1,25 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:weightSum="1">
 
-    <!--<TextView
+    <TextView
         android:text="Elige un Paciente "
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:id="@+id/textView13"
         android:textSize="28sp"
-        android:textColor="@color/secondary_text_material_light"
+        android:textColor="@color/colorPrimaryDark"
         android:textAlignment="center"
-        android:textStyle="normal|bold" />-->
+        android:textStyle="normal|bold" />
+
     <ListView
-        android:id="@+id/listview_patientgeninfo1"
+        android:id="@+id/listview_patientgeninfo"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_below="@+id/text_NuevoPaciente"
+        android:layout_height="566dp"
+        android:layout_below="@+id/textView13"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="10dp"/>
-</LinearLayout>
+        android:layout_marginTop="24dp"
+        android:choiceMode="singleChoice"
+        android:listSelector="#FF33B5E5"/>
+
+    <Button
+        android:text="Cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/aceptar"
+        android:layout_toLeftOf="@+id/aceptar"
+        android:layout_toStartOf="@+id/aceptar"
+        android:layout_marginRight="33dp"
+        android:layout_marginEnd="33dp"
+        android:id="@+id/cancel"
+        android:background="@color/cellBackground"
+        android:textColor="@color/colorAccent"
+        android:onClick="selectPatient_cancel" />
+
+
+    <Button
+        android:text="Aceptar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/aceptar"
+        android:background="@color/cellBackground"
+        android:textColor="@color/colorAccent"
+        android:layout_below="@+id/listview_patientgeninfo"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="20dp"
+        android:onClick="selectPatient_accept"
+        />
+
+
+</RelativeLayout>
