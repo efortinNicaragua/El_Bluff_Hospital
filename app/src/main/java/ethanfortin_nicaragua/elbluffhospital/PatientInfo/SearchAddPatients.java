@@ -91,7 +91,7 @@ public class SearchAddPatients extends Activity {
 
     //take this out after testing!
     public void rxClick(View v){
-        Intent shortcut_RX = new Intent(this, FetchPrescriptions.class);
+        Intent shortcut_RX = new Intent(this, FetchVisits.class);
         startActivity(shortcut_RX);
     }
 
