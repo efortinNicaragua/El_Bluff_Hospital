@@ -4,4 +4,8 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="appbar_padding_top">8dp</dimen>
+    <dimen name="item_height">40dp</dimen>
+    <dimen name="item_margin">0dp</dimen>
+    <dimen name="item_inset">2dp</dimen>
+    <dimen name="recycler_height">200dp</dimen>
 </resources>
