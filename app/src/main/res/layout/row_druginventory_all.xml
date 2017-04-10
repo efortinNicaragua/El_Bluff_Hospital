@@ -10,19 +10,20 @@
     android:layout_centerHorizontal="false"
     android:layout_centerInParent="false">
 
-    <TextView android:id="@+id/drugid"
+    <TextView
+        android:id="@+id/drugid"
         android:layout_width="200dp"
         android:layout_height="60dp"
-        android:gravity="center_vertical"
-        android:layout_alignParentTop="true"
         android:layout_alignParentBottom="true"
-        android:textStyle="bold"
-        android:textSize="22dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
+        android:gravity="center_vertical"
+        android:text="ID de Medicina "
         android:textAlignment="center"
         android:textColor="#00004d"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
-        android:text="ID de Medicina " />
+        android:textSize="22dp"
+        android:textStyle="bold" />
 
     <TextView android:id="@+id/drugname"
         android:layout_width="200dp"

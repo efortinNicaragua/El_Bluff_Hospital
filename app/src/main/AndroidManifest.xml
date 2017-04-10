@@ -34,7 +34,6 @@
         <activity android:name=".Inventory.Inventory" />
         <activity android:name=".MainMenu" />
         <activity android:name=".Inventory.AddShipment" />
-        <activity android:name=".Inventory.FetchSpecificDrug" />
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_login" />
@@ -66,6 +65,7 @@
             android:value="@integer/google_play_services_version" />
 
         <activity android:name=".Inventory.FetchShipments"></activity>
+        <activity android:name=".Inventory.FetchSpecificDrug"></activity>
     </application>
 
 </manifest>
