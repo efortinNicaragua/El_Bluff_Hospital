@@ -32,9 +32,8 @@ import ethanfortin_nicaragua.elbluffhospital.ConnVars;
 import ethanfortin_nicaragua.elbluffhospital.DataClasses.DruginfoFields;
 import ethanfortin_nicaragua.elbluffhospital.R;
 import ethanfortin_nicaragua.elbluffhospital.RequestHandler;
-import ethanfortin_nicaragua.elbluffhospital.SpinnerWidget.SearchableSpinner;
 
-public class FetchSpecificDrug extends AppCompatActivity implements SearchableSpinner.OnSelectionChangeListener {
+public class FetchSpecificDrug extends AppCompatActivity {
 
     // Declare global layout variables
     ArrayAdapter<String> adapter;
@@ -212,10 +211,5 @@ public class FetchSpecificDrug extends AppCompatActivity implements SearchableSp
         } catch (JSONException j) {
             System.out.println("JSON Exception occurred...");
         }
-    }
-
-    @Override
-    public void onSelectionChanged(String selection) {
-        Toast.makeText(this, selection + " selected", Toast.LENGTH_SHORT).show();
     }
 }
