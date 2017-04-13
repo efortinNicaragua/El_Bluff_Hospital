@@ -2,8 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:padding = "8dp"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:padding = "8dp">
 
     <TextView
         android:id="@+id/textView18"
@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:text="ID del prescripcion:"
+        android:text="La Fecha de Visita:"
         android:textColor="@color/colorPrimaryDark"
         android:textStyle="bold"
         android:layout_marginLeft="30dp"
@@ -23,7 +23,9 @@
         android:layout_height="wrap_content"
         android:paddingLeft="?android:attr/expandableListPreferredItemPaddingLeft"
         android:textSize="19dp"
-        android:textColor="@color/colorPrimaryDark"/>
+        android:textColor="@color/colorPrimaryDark"
+        />
+
 
 
 </LinearLayout>

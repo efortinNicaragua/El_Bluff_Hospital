@@ -1,19 +1,30 @@
 package ethanfortin_nicaragua.elbluffhospital.PatientInfo;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.AsyncTask;
+import android.os.Handler;
+import android.support.annotation.DrawableRes;
 import android.support.v7.app.AlertDialog;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AbsListView;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.appindexing.AppIndex;
@@ -22,6 +33,7 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -59,15 +71,16 @@ public class SearchAddPatients extends Activity {
     int weight;
     String allergies;
     String medcond;
+    ListView listView;
     String temp_dob_string;
+    Dialog findPatient_dialog;
+    PatientinfoFields selectedListItem;
     Context context = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_add_patients);
-
-        //patientFetch();
 
         /** ATTENTION: This was auto-generated to implement the App Indexing API.
          See https://g.co/AppIndexing/AndroidStudio for more information.*/
@@ -78,7 +91,7 @@ public class SearchAddPatients extends Activity {
 
     //take this out after testing!
     public void rxClick(View v){
-        Intent shortcut_RX = new Intent(this, FetchPrescriptions.class);
+        Intent shortcut_RX = new Intent(this, FetchVisits.class);
         startActivity(shortcut_RX);
     }
 
@@ -189,8 +202,10 @@ public class SearchAddPatients extends Activity {
     private void jsonParse(String json_string) {
 
         Context context=this;
-        ListView listView;
-        ArrayList<PatientinfoFields> patGenInfo = new ArrayList();
+
+        //ArrayList<Class_FetchPatientGenInfo> patGenInfo = new ArrayList();
+        //ListView listView;
+       // ArrayList<PatientinfoFields> patGenInfo = new ArrayList();
 
         int totalCast, count=0;
         String patid, patname, address, telephone, gender,marstat, allergies, medcond, children, height, weight;
@@ -225,8 +240,7 @@ public class SearchAddPatients extends Activity {
                 height = jo.getString("height");
                 weight=jo.getString("weight");
                 temp_dob_string=jo.getString("dob");
-
-
+                System.out.println("The DOB IS " + temp_dob_string);
 
                 //try to cast string into int
                 try {
@@ -244,25 +258,105 @@ public class SearchAddPatients extends Activity {
             }
 
         } catch (JSONException e) {
-            System.out.println("JSON Exception occurred...");
+
         }
+
         ArrayAdapter<PatientinfoFields> adapter = new PatientinfoAdapter(context, patinfo);
 
-        //setliest view to lsitview in the xml file
-        LayoutInflater inflater = LayoutInflater.from(SearchAddPatients.this);
-        View findPatient = inflater.inflate(R.layout.dialog_find_patient,null);
 
-        /*AlertDialog.Builder builder= new AlertDialog.Builder(SearchAddPatients.this);
-        builder.setView(findPatient);
-        builder.setTitle("Elige un Paciente");*/
+       /* //testing purposes
+        patinfo.add(new PatientinfoFields("patid1", "ethan", "5", "774", "m", "m", 3, 4, 5, "1", "medcond", "123"));
+        patinfo.add(new PatientinfoFields("patid2", "GO GO Dancer", "5", "774", "m", "m", 3, 4, 5, "1", "medcond", "123"));
+        patinfo.add(new PatientinfoFields("patid3", "STop", "5", "774", "m", "m", 3, 4, 5, "1", "medcond", "123"));
+        patinfo.add(new PatientinfoFields("patid4", "Huck", "5", "774", "m", "m", 3, 4, 5, "1", "medcond", "123"));
+        patinfo.add(new PatientinfoFields("patid5", "CATCH!!!!", "5", "774", "m", "m", 3, 4, 5, "1", "medcond", "123"));
+*/
+        findPatient_dialog= new Dialog(this);
+        findPatient_dialog.setTitle("Elige un paciente");
+        LayoutInflater li=(LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View v= li.inflate(R.layout.dialog_find_patient,null,false);
+        findPatient_dialog.setContentView(v);
 
-        listView = (ListView) findViewById(R.id.listview_patientgeninfo);
-        // listView = this.getListView();
-        //turn on list view
+        //final ListView listView;
+        //final ArrayAdapter<PatientinfoFields> adapter = new ArrayAdapter_FetchPatientInfo(context, patinfo);
+        listView = (ListView) findPatient_dialog.findViewById(R.id.listview_patientgeninfo);
+        listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+        listView.setSelector(R.drawable.greygradient);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                selectedListItem = (PatientinfoFields) listView.getItemAtPosition(position);
+
+            }
+        });
+
         listView.setAdapter(adapter);
-        //builder.show();
+
+        findPatient_dialog.setCancelable(true);
+        findPatient_dialog.show();
+
 
     }
+
+   /* private class EfficientAdapter extends BaseAdapter {
+        private LayoutInflater mInflater;
+
+        public EfficientAdapter(Context context) {
+            mInflater = LayoutInflater.from(context);
+        }
+
+        public int getCount() {
+            return patinfo.size();
+        }
+
+        public Object getItem(int position) {
+            return position;
+        }
+
+        public long getItemId(int position) {
+            return position;
+        }
+
+        public View getView(int position, View convertView, ViewGroup parent) {
+
+            ViewHolder holder;
+
+            if (convertView == null || convertView.getTag() == null) {
+                convertView = mInflater.inflate(R.layout.row_druginventory_all, null);
+                holder = new ViewHolder();
+                holder.backgroundID = (TextView) convertView
+                        .findViewById(R.id.patid);
+                holder.backgroundPatName= (TextView) convertView
+                        .findViewById(R.id.patname);
+                holder.backgroundDOB= (TextView) convertView
+                        .findViewById(R.id.dob);
+                convertView.setTag(holder);
+            } else {
+                holder = (ViewHolder) convertView.getTag();
+            }
+
+            if(position == selectedListItem) {
+                holder.backgroundID.setBackgroundColor(Color.GRAY);
+                holder.backgroundPatName.setBackgroundColor(Color.GRAY);
+                holder.backgroundDOB.setBackgroundColor(Color.GRAY);
+            } else {
+                holder.backgroundID.setBackgroundColor(Color.WHITE);
+                holder.backgroundPatName.setBackgroundColor(Color.WHITE);
+                holder.backgroundDOB.setBackgroundColor(Color.WHITE);
+            }
+
+            //holder.officesTitle.setText(data.get(position));
+
+            return convertView;
+        }
+
+    }
+    static class ViewHolder {
+        TextView backgroundID;
+        TextView backgroundPatName;
+        TextView backgroundDOB;
+
+    }*/
 
     public void NuevoPaciente(View V) {
         /**Need to make dialog_patient_preccription pull data from DB not my made up stuff
@@ -423,6 +517,13 @@ public class SearchAddPatients extends Activity {
                     }
                 });
         builderSingle1.show();
+    }
+
+    public void selectPatient_accept(View view){
+        System.out.println(selectedListItem.patid);
+        Intent intent = new Intent(getBaseContext(), FetchPrescriptions.class);
+        intent.putExtra("patid", selectedListItem.patid);
+        startActivity(intent);
     }
 
     @Override
