@@ -22,6 +22,7 @@ import javax.net.ssl.HttpsURLConnection;
  */
 
 public class RequestHandler {
+    //a
 
     /*
     * Used to post data to MySQL
@@ -37,7 +38,10 @@ public class RequestHandler {
 
         try {
             // Initialize URL
-            url = new URL(requestURL);
+            //url=new URL(requestURL);
+            url = new URL(requestURL + "?" + getPostDataString(postDataParams));
+            System.out.println("Post Request");
+            System.out.println("URL initiated: " + url);
 
             // Create connection
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -49,15 +53,18 @@ public class RequestHandler {
             con.setDoOutput(true);
             con.setDoInput(true);
 
-            OutputStream os = con.getOutputStream();
+            /*OutputStream os = con.getOutputStream();
 
             // Here is where parameters are defined to the request
             BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(os, "UTF-8"));
             writer.write(getPostDataString(postDataParams));
 
+            System.out.println("Here is the Writter " + getPostDataString(postDataParams) );
             writer.flush();
             writer.close();
-            os.close();
+            os.close();*/
+
+            con.connect();
 
             int responseCode = con.getResponseCode();
 
