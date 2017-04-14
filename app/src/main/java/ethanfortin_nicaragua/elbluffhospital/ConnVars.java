@@ -11,9 +11,11 @@ public class ConnVars {
     public static final String URL_FETCH_SPECIFIC_DRUG = "http://192.168.1.4/android_connect/fetch_druginfo_row.php";
     public static final String URL_FETCH_DRUGINFO_ALL = "http://192.168.0.100/android_connect/fetch_druginfo_all.php";
     public static final String URL_FETCH_SHIPMENT = "http://192.168.0.100/android_connect/fetch_shipment_rows.php";
-    public static final String URL_FETCH_PATIENT_GENERAL_INFO="http://192.168.0.100/android_connect/fetch_patientinfo_row.php";
+    public static final String URL_FETCH_PATIENT_GENERAL_INFO="http://10.0.0.96/android_connect/fetch_patientinfo_row.php";
     public static final String URL_FETCH_PAT_RX = "http://192.168.1.4/android_connect/fetch_prescription_row.php";
     public static final String URL_ADD_PRESCRIPTION="http://10.0.0.96/android_connect/add_shipment_row.php";
+    public static final String URL_FETCH_PAT_VISIT="http://10.0.0.96/android_connect/fetch_vh_rx_row.php";
+    public static final String URL_ADD_PATIENTINFO_ROW="http://10.0.0.96/android_connect/add_patientinfo_row.php";
     // JSON Tags!
 
     public static final String TAG_SUCCESS = "success";
@@ -24,6 +26,7 @@ public class ConnVars {
     public static final String TAG_DRUGINFO_QUANT = "drugtotal";
 
     public static final String TAG_PATIENTINFO= "patientinfo";
+    public static final String TAG_NEWPAT_ERRORMESSAGES="New_ErrorMessages";
 
     public static final String TAG_SHIPMENT = "shipments";
     public static final String TAG_SHIPMENT_SHIPDATE = "shipdate";

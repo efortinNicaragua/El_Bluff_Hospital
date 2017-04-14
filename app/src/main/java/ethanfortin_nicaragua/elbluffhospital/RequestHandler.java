@@ -1,5 +1,7 @@
 package ethanfortin_nicaragua.elbluffhospital;
 
+import android.util.Log;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -40,8 +42,8 @@ public class RequestHandler {
             // Initialize URL
             //url=new URL(requestURL);
             url = new URL(requestURL + "?" + getPostDataString(postDataParams));
-            System.out.println("Post Request");
-            System.out.println("URL initiated: " + url);
+            Log.d("Test1","Post Request");
+            Log.d("Test1","URL initiated: " + url);
 
             // Create connection
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
