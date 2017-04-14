@@ -8,6 +8,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -25,6 +26,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Dictionary;
 import java.util.HashMap;
 import java.util.List;
 
@@ -33,7 +35,7 @@ import ethanfortin_nicaragua.elbluffhospital.DataClasses.PrescriptionFields;
 import ethanfortin_nicaragua.elbluffhospital.R;
 import ethanfortin_nicaragua.elbluffhospital.RequestHandler;
 
-public class FetchPrescriptions extends Activity {
+public class FetchPrescriptions extends AppCompatActivity {
 
     private ExpandableListView listView;
     private ExpandableListAdapter listAdapter;
@@ -213,7 +215,7 @@ public class FetchPrescriptions extends Activity {
 
             while(count < resArr.length()) {
                 /**ML: gets  the first data block, will repeat if necessary**/
-                JSONObject resObj = resArr.getJSONObject(0);
+                JSONObject resObj = resArr.getJSONObject(count);
                 System.out.println("got past resObj");
                 String r_rxID = resObj.getString(ConnVars.TAG_PRESCRIPTIONS_RXID);
                 System.out.println("1");
@@ -257,7 +259,7 @@ public class FetchPrescriptions extends Activity {
         //LV_patRX = (ListView) findViewById(R.id.LV_fetchPrescriptions);
         //LV_patRX.setAdapter(adapter2);
 
-        listView = (ExpandableListView)findViewById(R.id.lvExp);
+        listView = (ExpandableListView)findViewById(R.id.exp_list);
         initData();
         listAdapter = new FetchPrescriptions_ExpListAdapter(this,listDataHeader,listHash);
         listView.setAdapter(listAdapter);
@@ -276,15 +278,15 @@ public class FetchPrescriptions extends Activity {
 
         //This is where you set the child items of each group item
         List<String> rx1 = new ArrayList<>();
-        rx1.add(temp1.C_patid);
-        rx1.add(temp1.C_drugid);
-        rx1.add(temp1.C_directions);
-        rx1.add(temp1.C_doctor);
-        rx1.add(temp1.C_drugname);
-        rx1.add(temp1.C_duration);
-        //rx1.add(temp1.C_quantity);
-        rx1.add(temp1.C_symptoms);
-        rx1.add(temp1.C_transdate);
+        rx1.add("ID de Paciente:    " + temp1.C_patid);
+        rx1.add("ID de Medicina:    " + temp1.C_drugid);
+        rx1.add("La Indicaciones:    " + temp1.C_directions);
+        rx1.add("El Doctor:    " + temp1.C_doctor);
+        rx1.add("La Droga:    " + temp1.C_drugname);
+        rx1.add("La Duración:    " + temp1.C_duration);
+        rx1.add("La Cantidad:    " + temp1.C_quantity);
+        rx1.add("La Sintoma:    " + temp1.C_symptoms);
+        rx1.add("La fecha de Transacción:    " +  temp1.C_transdate);
 
         //Put the data in the HashMap
         listHash.put(listDataHeader.get(0), rx1);
@@ -320,7 +322,7 @@ public class FetchPrescriptions extends Activity {
 
     @Override
     public void onBackPressed(){
-        Intent go_back_to_PGI = new Intent(this, FetchPatientInfo.class);
+        Intent go_back_to_PGI = new Intent(this, SearchAddPatients.class);
         startActivity(go_back_to_PGI);
     }
 
