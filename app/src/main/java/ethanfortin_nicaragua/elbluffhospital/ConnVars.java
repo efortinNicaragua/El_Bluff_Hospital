@@ -8,13 +8,14 @@ package ethanfortin_nicaragua.elbluffhospital;
 public class ConnVars {
 
     // IP Addresses for PHP Scripts
-    public static final String URL_FETCH_SPECIFIC_DRUG = "http://192.168.1.4/android_connect/fetch_druginfo_row.php";
-    public static final String URL_FETCH_DRUGINFO_ALL = "http://192.168.0.100/android_connect/fetch_druginfo_all.php";
-    public static final String URL_FETCH_SHIPMENT = "http://192.168.0.100/android_connect/fetch_shipment_rows.php";
-    public static final String URL_FETCH_PATIENT_GENERAL_INFO="http://10.0.0.96/android_connect/fetch_patientinfo_row.php";
-    public static final String URL_FETCH_PAT_RX = "http://192.168.1.4/android_connect/fetch_prescription_row.php";
+
+    public static final String URL_FETCH_SPECIFIC_DRUG = "http://153.104.62.213/android_connect/fetch_druginfo_row.php";
+    public static final String URL_FETCH_DRUGINFO_ALL = "http://153.104.62.213/android_connect/fetch_druginfo_all.php";
+    public static final String URL_FETCH_SHIPMENT = "http://153.104.62.213/android_connect/fetch_shipment_rows.php";
+    public static final String URL_FETCH_PATIENT_GENERAL_INFO="http://153.104.62.213/android_connect/fetch_patientinfo_row.php";
+    public static final String URL_FETCH_PAT_RX = "http://153.104.62.213/android_connect/fetch_prescription_row.php";
+    public static final String URL_FETCH_PAT_VISIT = "http://153.104.62.213/android_connect/fetch_vh_rx_row.php";
     public static final String URL_ADD_PRESCRIPTION="http://10.0.0.96/android_connect/add_shipment_row.php";
-    public static final String URL_FETCH_PAT_VISIT="http://10.0.0.96/android_connect/fetch_vh_rx_row.php";
     public static final String URL_ADD_PATIENTINFO_ROW="http://10.0.0.96/android_connect/add_patientinfo_row.php";
     // JSON Tags!
 

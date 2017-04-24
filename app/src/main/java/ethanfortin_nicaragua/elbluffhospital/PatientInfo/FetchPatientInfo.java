@@ -38,11 +38,14 @@ import ethanfortin_nicaragua.elbluffhospital.R;
 public class FetchPatientInfo extends AppCompatActivity {
     //Create global variables for list view and ArrayList<DruginfoFields>
     ListView listView;
+    String sID;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fetch_patient_info);
+
+        sID = "patid0";
 
         /*
         *
@@ -182,13 +185,22 @@ public class FetchPatientInfo extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.pat_gen_info:
-                startActivity(new Intent(this, FetchPatientInfo.class));
+                Intent newintent = new Intent(getBaseContext(), FetchPatientInfo.class);
+                newintent.putExtra("patid", sID);
+                startActivity(newintent);
+                //startActivity(new Intent(this, FetchPatientInfo.class));
                 return true;
             case R.id.pat_history:
-                startActivity(new Intent(this, FetchVisits.class));
+                Intent newintent1 = new Intent(getBaseContext(), FetchVisits.class);
+                newintent1.putExtra("patid", sID);
+                startActivity(newintent1);
+                //startActivity(new Intent(this, FetchVisits.class));
                 return true;
             case R.id.pat_prescription:
-                startActivity(new Intent(this, FetchPrescriptions.class));
+                Intent newintent2 = new Intent(getBaseContext(), FetchPrescriptions.class);
+                newintent2.putExtra("patid", sID);
+                startActivity(newintent2);
+                //startActivity(new Intent(this, FetchPrescriptions.class));
             default:
                 return super.onOptionsItemSelected(item);
         }
