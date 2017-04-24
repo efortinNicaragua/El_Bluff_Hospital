@@ -1,6 +1,5 @@
 package ethanfortin_nicaragua.elbluffhospital.PatientInfo;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -26,10 +25,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Dictionary;
 import java.util.HashMap;
 import java.util.List;
 
+import ethanfortin_nicaragua.elbluffhospital.ArrayAdapters.FetchPrescriptions_ExpListAdapter;
 import ethanfortin_nicaragua.elbluffhospital.ConnVars;
 import ethanfortin_nicaragua.elbluffhospital.DataClasses.PrescriptionFields;
 import ethanfortin_nicaragua.elbluffhospital.R;
@@ -340,106 +339,9 @@ public class FetchPrescriptions extends AppCompatActivity {
     }
 
 
-
-
-
-
-
-
-
 }
 
-    /*public class DataProvider {
-        public HashMap<String, List<String> > getInfo()
-        {
-            HashMap<String, List<String>> rxHeaders = new HashMap<String, List<String>>();
 
-            ArrayList<PrescriptionFields> rx1 = new ArrayList<PrescriptionFields>();
-
-            String RXId, DrugId, TransDate, Quantity, PatID, Directions, Duration, Doctor, Symptoms, DrugName;
-
-            //This is fake data used for demonstrations
-            *//*rx1.add("Médico:   Maynor");
-            rx1.add("Droga:   Tylenol");
-            rx1.add("Cantidad:   24");
-            rx1.add("Duración:   Dos semanas");
-            rx1.add("Razón:   Resfriado");
-            rx1.add("Direcciónes:   Haga una píldora cada mañana");
-            rxHeaders.put("2017-03-02 :: Tylenol",rx1);*//*
-
-            //Add real data inside here
-            RXId=textViewRXId.toString();
-            DrugId = textViewDrugId.toString();
-            TransDate = textViewTransDate.toString();
-            Quantity = textViewQuantity.toString();
-            PatID = textViewPatID.toString();
-            Directions = textViewDirections.toString();
-            Duration = textViewDuration.toString();
-            Doctor = textViewDoctor.toString();
-            Symptoms = textViewSymptoms.toString();
-            DrugName = textViewDrugName.toString();
-
-
-            rx1.add(RXId, DrugId, TransDate, Quantity, PatID, Directions, Duration, Doctor, Symptoms, DrugName);
-
-
-            *//* ML- tried this orginally, didn't work
-            rx1.add(textViewRXId.toString());
-            rx1.add(textViewDrugId.toString());
-            rx1.add(textViewTransDate.toString());
-            rx1.add(textViewQuantity.toString());
-            rx1.add(textViewPatID.toString());
-            rx1.add(textViewDirections.toString());
-            rx1.add(textViewDuration.toString());
-            rx1.add(textViewDoctor.toString());
-            rx1.add(textViewSymptoms.toString());
-            rx1.add(textViewDrugName.toString());*//*
-
-
-            //List<String> rx2 = new ArrayList<String>();
-
-            //This is fake data used for demonstrations
-            *//*rx2.add("Médico:   Ethan");
-            rx2.add("Droga:   Nyquil");
-            rx2.add("Cantidad:   14");
-            rx2.add("Duración:   Una semana");
-            rx2.add("Razón:   Resfriado");
-            rx2.add("Direcciónes:   Haga dos píldoras cada mañana");
-            rxHeaders.put("2017-06-04 :: Nyquil",rx2);*//*
-
-            //Add real data inside here
-
-            //List<String> rx3 = new ArrayList<String>();
-
-
-            //This is fake data used for demonstration
-            *//*rx3.add("Médico:   Ethan");
-            rx3.add("Droga:   Ibuprofin");
-            rx3.add("Cantidad:   7");
-            rx3.add("Duración:   Una semana");
-            rx3.add("Razón:   dolor de cabeza");
-            rx3.add("Direcciónes:   Haga una píldora cada noche");
-            rxHeaders.put("2017-12-13 :: Ibuprofin",rx3);*//*
-
-            //Add real data inside here
-
-            //List<String> rx4 = new ArrayList<String>();
-
-            //This is fake data used for demonstration
-            *//*rx4.add("Médico:   Maddie");
-            rx4.add("Droga:   Advil");
-            rx4.add("Cantidad:   7");
-            rx4.add("Duración:   Una semana");
-            rx4.add("Razón:   dolor de cabeza");
-            rx4.add("Direcciónes:   Haga una píldora cada noche");
-            rxHeaders.put("2017-08-23 :: Advil",rx4);*//*
-
-            //Add real data inside here
-
-            return rxHeaders;
-        }
-
-    }*/
 
 
 

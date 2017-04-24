@@ -1,4 +1,4 @@
-package ethanfortin_nicaragua.elbluffhospital.PatientInfo;
+package ethanfortin_nicaragua.elbluffhospital.ArrayAdapters;
 
 import android.content.Context;
 import android.graphics.Typeface;
