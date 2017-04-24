@@ -13,6 +13,7 @@ import android.support.annotation.DrawableRes;
 import android.support.v7.app.AlertDialog;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -75,6 +76,7 @@ public class SearchAddPatients extends Activity {
     String temp_dob_string;
     Dialog findPatient_dialog;
     PatientinfoFields selectedListItem;
+    AlertDialog db_message;
     Context context = this;
 
     @Override
@@ -226,33 +228,33 @@ public class SearchAddPatients extends Activity {
             //all data comes out as strings so for int values we need to cast them into int values later
             //while count is less than length of jsonarray
             while (count < jsonArray.length()) {
-                //get the object put drugid into drugid ect..
-                JSONObject jo = jsonArray.getJSONObject(count);
-                patid= jo.getString("patid");
-                patname= jo.getString("patname");
-                address = jo.getString("address");
-                telephone= jo.getString("telephone");
-                gender = jo.getString("gender");
-                marstat = jo.getString("marstat");
-                allergies=jo.getString("allergies");
-                medcond = jo.getString("medcond");
-                children = jo.getString("children");
-                height = jo.getString("height");
-                weight=jo.getString("weight");
-                temp_dob_string=jo.getString("dob");
-                System.out.println("The DOB IS " + temp_dob_string);
+                    //get the object put drugid into drugid ect..
+                    JSONObject jo = jsonArray.getJSONObject(count);
+                    patid= jo.getString("patid");
+                    patname= jo.getString("patname");
+                    address = jo.getString("address");
+                    telephone= jo.getString("telephone");
+                    gender = jo.getString("gender");
+                    marstat = jo.getString("marstat");
+                    allergies=jo.getString("allergies");
+                    medcond = jo.getString("medcond");
+                    children = jo.getString("children");
+                    height = jo.getString("height");
+                    weight=jo.getString("weight");
+                    temp_dob_string=jo.getString("dob");
+                    System.out.println("The DOB IS " + temp_dob_string);
 
-                //try to cast string into int
-                try {
-                    children_int = Integer.parseInt(children);
-                    height_int = Integer.parseInt(height);
-                    weight_int = Integer.parseInt(weight);
-                    //add this data as DruginfoFields to ArrayList
-                    patinfo.add(new PatientinfoFields(patid, patname , address, telephone, gender, marstat, children_int,height_int,weight_int,allergies,medcond,temp_dob_string));
+                    //try to cast string into int
+                    try {
+                        children_int = Integer.parseInt(children);
+                        height_int = Integer.parseInt(height);
+                        weight_int = Integer.parseInt(weight);
+                        //add this data as DruginfoFields to ArrayList
+                        patinfo.add(new PatientinfoFields(patid, patname , address, telephone, gender, marstat, children_int,height_int,weight_int,allergies,medcond,temp_dob_string));
 
-                } catch (NumberFormatException nfe) {
-                    System.out.println("Number Format Exception occurred...");
-                }
+                    } catch (NumberFormatException nfe) {
+                        System.out.println("Number Format Exception occurred...");
+                    }
                 //increment count
                 count++;
             }
@@ -477,51 +479,170 @@ public class SearchAddPatients extends Activity {
 
                         /***This is the code needed for db communication.***/
 
-                        patname = edit_name2.toString();
-                        patid = edit_ID2.toString();
-                        address = edit_adress2.toString();
-                        telephone = edit_telephone2.toString();
-                        gender = edit_gender2.toString();
-                        marstat = edit_married2.toString();
-                        s_dob = edit_birthday2.toString();
-                        s_children = edit_children2.toString();
-                        s_height = edit_height2.toString();
-                        s_weight = edit_weight2.toString();
-                        allergies = edit_allergies2.toString();
-                        medcond = edit_medicalConditions2.toString();
+                        patname = edit_name2.getText().toString();
+                        patid = edit_ID2.getText().toString();
+                        address = edit_adress2.getText().toString();
+                        telephone = edit_telephone2.getText().toString();
+                        gender = edit_gender2.getText().toString();
+                        marstat = edit_married2.getText().toString();
+                        s_dob = edit_birthday2.getText().toString();
+                        s_children = edit_children2.getText().toString();
+                        s_height = edit_height2.getText().toString();
+                        s_weight = edit_weight2.getText().toString();
+                        allergies = edit_allergies2.getText().toString();
+                        medcond = edit_medicalConditions2.getText().toString();
 
-                        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                        //DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
                         try {
-                            dob = dateFormat.parse(s_dob);
-                            children = Integer.decode(s_children);
-                            height = Integer.decode(s_height);
-                            weight = Integer.decode(s_weight);
+                            //dob = dateFormat.parse(s_dob);
+                            //Log.d("Test1", "dob: " +s_dob);
+                            //children = Integer.decode(s_children);
+                            //height = Integer.decode(s_height);
+                            //weight = Integer.decode(s_weight);
+                            newPatient(patname, patid, address, telephone, gender, marstat, s_dob,s_children,s_height,s_weight,allergies,medcond);
                         } catch (Exception e) {
                         }
-                        Toast toast = new Toast(getApplicationContext());
-                        toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
-                        toast.setDuration(Toast.LENGTH_LONG);
-                        toast.setText("go catz");
-                        toast.show();
-
-
-                        Toast toasty = new Toast(getApplicationContext());
-                        toasty.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
-                        toasty.setDuration(Toast.LENGTH_LONG);
-                        toasty.setText("if you see this, info was sent to DB!!!!");
-                        toasty.show();
-
-                        //Push to DB including ones not above but in Dialog
-                        dialog.dismiss();
 
                     }
                 });
-        builderSingle1.show();
+            builderSingle1.show();
     }
+    private void newPatient(final String patname, final String patid, final String address, final String telephone, final String gender, final String marstat,
+                            final String dob, final String children, final String height, final String weight, final String allergies, final String medcond ) {
+        class get_newPatient extends AsyncTask<Void, Void, String> {
+            ProgressDialog loading;
+
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+                loading = ProgressDialog.show(SearchAddPatients.this, "Buscando...", "Espera, por favor", false, false);
+            }
+
+            // Once JSON received correctly, parse and display it
+            @Override
+            protected void onPostExecute(String s) {
+                super.onPostExecute(s);
+                loading.dismiss();
+                Log.d("Test1","Here is s"+s);
+                int eMessage;
+                eMessage= jsonParseAdd(s);
+
+                if (eMessage==11){
+                    db_message = new AlertDialog.Builder(SearchAddPatients.this).create();
+                    db_message.setTitle("Accion Termino");
+                    db_message.setMessage("Nuevo Paciente Creo");
+                    db_message.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                }
+                            });
+                    db_message.show();
+                }
+                else if (eMessage==10){
+                    db_message = new AlertDialog.Builder(SearchAddPatients.this).create();
+                    db_message.setTitle("ERRORES!");
+                    db_message.setMessage("Habia errores.\n Aseguranse que este paciente ID no existe!\nAseguranse que la informacion esta correcto");
+                    db_message.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                }
+                            });
+                    db_message.show();
+                }
+                else{
+                    db_message = new AlertDialog.Builder(SearchAddPatients.this).create();
+                    db_message.setTitle("ERRORES!");
+                    db_message.setMessage("Habia errores.\n Revisa la informacion. Aseguranse que todo esta llenado");
+                    db_message.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                }
+                            });
+                    db_message.show();
+                }
+            }
+
+            // In here, split between argChoice Value (1 or 2)
+            protected String doInBackground(Void... params) {
+
+                RequestHandler reqHan1 = new RequestHandler();
+                HashMap<String, String> map1 = new HashMap<>();
+                map1.put("p",patname);
+                map1.put("i",patid);
+                map1.put("a", address);
+                map1.put("t",telephone);
+                map1.put("g", gender);
+                map1.put("m",marstat);
+                map1.put("b", s_dob);
+                map1.put("c",children);
+                map1.put("h",height);
+                map1.put("w", weight);
+                map1.put("al",allergies);
+                map1.put("me", medcond);
+                String s;
+                s = reqHan1.sendPostRequest(ConnVars.URL_ADD_PATIENTINFO_ROW, map1);
+                Log.d("Test1", "S is :"+s);
+                return s;
+            }
+        }
+        get_newPatient np = new get_newPatient();
+        np.execute();
+    }
+
+    private int jsonParseAdd(String json_string) {
+
+        Log.d("Test1", "GOT to JsonParseADd");
+        Context context = this;
+
+        int count = 0, int_message = 00;
+        String message = "00";
+
+        JSONObject jsonObject;
+        JSONArray jsonArray;
+        try {
+
+            // Make JSONObject and designate the array jsonArray to grab the array
+            // that's title is "New_ErrorMessages" from the received object
+            Log.d("Test1", "GOT to JsonParseADd");
+            jsonObject = new JSONObject(json_string);
+            jsonArray = jsonObject.getJSONArray(ConnVars.TAG_NEWPAT_ERRORMESSAGES);
+
+            //initiliaze count for while loop, strings for all data we will get from json
+            //all data comes out as strings so for int values we need to cast them into int values later
+            //while count is less than length of jsonarray
+            // while (count < jsonArray.length()) {
+            //get the object put drugid into drugid ect..
+
+
+
+
+           // while (count < jsonArray.length()) {
+                JSONObject jo = jsonArray.getJSONObject(count);
+                Log.d("Test1", "Jo.count0"+jsonArray.getJSONObject(0));
+                //Log.d("Test1", "Jo.count1"+jsonArray.getJSONObject(1));
+                //Log.d("Test1", "Jo.count2"+jsonArray.getJSONObject(2));
+                message = jo.getString("success");
+                Log.d("Test1", "Json string: " + message);
+                try {
+                    int_message = Integer.parseInt(message);
+                    Log.d("Test1", "JsonInt:" + int_message);
+                } catch (NumberFormatException n) {}
+             //   count++;
+            //}
+        }
+             catch(JSONException p){
+                 Log.d("Test1", "JSON ERROR MESSAGE");
+             }
+        return int_message;
+    }
+
 
     public void selectPatient_accept(View view){
         System.out.println(selectedListItem.patid);
-        Intent intent = new Intent(getBaseContext(), FetchVisits.class);
+        Intent intent = new Intent(getBaseContext(), FetchPrescriptions.class);
         intent.putExtra("patid", selectedListItem.patid);
         startActivity(intent);
     }

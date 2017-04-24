@@ -11,55 +11,103 @@
     tools:context="ethanfortin_nicaragua.elbluffhospital.Inventory.FetchSpecificDrug">
 
     <EditText
+        android:id="@+id/filter_bar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:id="@+id/etDrugID"
-        android:hint="@string/hintDrugId"
-        android:layout_marginTop="16dp"
-        android:layout_below="@+id/etDrugName"
-        android:layout_alignLeft="@+id/etDrugName"
-        android:layout_alignStart="@+id/etDrugName" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:id="@+id/etDrugName"
-        android:hint="@string/hintDrugName"
-        android:layout_marginTop="20dp"
-        android:layout_below="@+id/Title"
-        android:layout_centerHorizontal="true" />
-
-    <Button
-        android:text="@string/textFind"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="17dp"
-        android:id="@+id/bFind"
-        android:layout_below="@+id/etDrugID"
-        android:layout_centerHorizontal="true"
-        android:textSize="20sp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/Title"
-        android:textSize="24sp"
-        android:text="@string/titleFetchSpecificDrug"
-        android:textColor="@color/colorPrimaryDark"
-        android:layout_marginTop="12dp"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:ems="10"
+        android:hint="Elige de la lista"
+        android:inputType="textPersonName"
+        android:textSize="24sp" />
 
     <ListView
-        android:id="@+id/list"
+        android:id="@+id/drug_list"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/bFind"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_height="450dp"
+        android:minHeight="75dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/filter_bar"
+        android:choiceMode="singleChoice" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/drug_list"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1" >
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="30dp" />
+
+            <TextView
+                android:id="@+id/name_cap"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nombre:   "
+                android:textAlignment="textEnd"
+                android:layout_gravity="end"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/id_cap"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="ID:   "
+                android:textAlignment="textEnd"
+                android:layout_gravity="end"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/quant_cap"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Cantidad:   "
+                android:textAlignment="textEnd"
+                android:layout_gravity="end"
+                android:textSize="24sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1" >
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="30dp" />
+
+            <TextView
+                android:id="@+id/name_res"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/cellBorder"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/id_res"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/cellBorder"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/quant_res"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/cellBorder"
+                android:textSize="24sp" />
+        </LinearLayout>
+    </LinearLayout>
 
 </RelativeLayout>

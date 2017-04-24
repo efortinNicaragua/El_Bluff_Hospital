@@ -8,13 +8,15 @@ package ethanfortin_nicaragua.elbluffhospital;
 public class ConnVars {
 
     // IP Addresses for PHP Scripts
+
     public static final String URL_FETCH_SPECIFIC_DRUG = "http://153.104.62.213/android_connect/fetch_druginfo_row.php";
     public static final String URL_FETCH_DRUGINFO_ALL = "http://153.104.62.213/android_connect/fetch_druginfo_all.php";
     public static final String URL_FETCH_SHIPMENT = "http://153.104.62.213/android_connect/fetch_shipment_rows.php";
     public static final String URL_FETCH_PATIENT_GENERAL_INFO="http://153.104.62.213/android_connect/fetch_patientinfo_row.php";
     public static final String URL_FETCH_PAT_RX = "http://153.104.62.213/android_connect/fetch_prescription_row.php";
     public static final String URL_FETCH_PAT_VISIT = "http://153.104.62.213/android_connect/fetch_vh_rx_row.php";
-
+    public static final String URL_ADD_PRESCRIPTION="http://10.0.0.96/android_connect/add_shipment_row.php";
+    public static final String URL_ADD_PATIENTINFO_ROW="http://10.0.0.96/android_connect/add_patientinfo_row.php";
     // JSON Tags!
 
     public static final String TAG_SUCCESS = "success";
@@ -25,12 +27,14 @@ public class ConnVars {
     public static final String TAG_DRUGINFO_QUANT = "drugtotal";
 
     public static final String TAG_PATIENTINFO= "patientinfo";
+    public static final String TAG_NEWPAT_ERRORMESSAGES="New_ErrorMessages";
 
     public static final String TAG_SHIPMENT = "shipments";
     public static final String TAG_SHIPMENT_SHIPDATE = "shipdate";
     public static final String TAG_SHIPMENT_DRUGID = "drugid";
     public static final String TAG_SHIPMENT_DRUGNAME = "drugname";
     public static final String TAG_SHIPMENT_SHIPQUANT = "shipquant";
+    public static final String TAG_SHIP_ERRORMESSAGES="Ship_ErrorMessages";
 
     public static final String TAG_PRESCRIPTIONS = "prescription";
     public static final String TAG_PRESCRIPTIONS_RXID = "rxid";
