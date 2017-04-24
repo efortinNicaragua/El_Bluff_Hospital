@@ -29,7 +29,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
-import ethanfortin_nicaragua.elbluffhospital.ArrayAdapters.ExpandableListAdapter;
+import ethanfortin_nicaragua.elbluffhospital.ArrayAdapters.FetchVisits_ExpListAdapter;
 import ethanfortin_nicaragua.elbluffhospital.ConnVars;
 import ethanfortin_nicaragua.elbluffhospital.DataClasses.VisitFields;
 import ethanfortin_nicaragua.elbluffhospital.R;
@@ -179,15 +179,6 @@ public class FetchVisits extends AppCompatActivity {
 
         });
     }
-
-        /*public void onClick3(View v){
-
-            //Get patient id
-            sID = "patid0";
-
-
-    }*/
-
 
 
     /**
@@ -349,52 +340,6 @@ public class FetchVisits extends AppCompatActivity {
     }
 
 }
-
-
-
-
-
-
-//        public void addNewVisit(View v){
-//            Intent i = new Intent(this, AddNewVisit.class);
-//            startActivity(i);
-//        }
-
-
-    /*public static class DataProvider{
-        public static HashMap<String, List<String>> getInfo()
-        {
-            HashMap<String, List<String>> HashMap_details = new HashMap<String, List<String>>();
-
-            List<String> ActionMovies = new ArrayList<String>();
-            ActionMovies.add("Doctor:Barquero");
-            ActionMovies.add("Prescripcion: No");
-            ActionMovies.add("PDF: link");
-
-            List<String>RomanticMovies = new ArrayList<String>();
-            RomanticMovies.add("Doctor:Barquero");
-            RomanticMovies.add("Prescripcion: 12 Tylenol 125mg");
-            RomanticMovies.add("PDF: link");
-
-            List<String>HorrorMovies = new ArrayList<String>();
-            HorrorMovies.add("Doctor:Barquero");
-            HorrorMovies.add("Prescripcion:No");
-            HorrorMovies.add("PDF: link");
-
-            List<String>ComedyMovies = new ArrayList<String>();
-            ComedyMovies.add("Doctor:Barquero");
-            ComedyMovies.add("Prescripcion: No");
-            ComedyMovies.add("PDF: link");
-
-            HashMap_details.put("30/1/2016   Brazo Rompido",ActionMovies);
-            HashMap_details.put("23/12/2015 Inflamacion del pie", RomanticMovies);
-            HashMap_details.put("13/8/2016   Palpaciones irregulares", HorrorMovies);
-            HashMap_details.put("8/11/2015 4 puntadas en la cabeza",ComedyMovies);
-
-            return HashMap_details;
-        }
-
-    }*/
 
 
 
