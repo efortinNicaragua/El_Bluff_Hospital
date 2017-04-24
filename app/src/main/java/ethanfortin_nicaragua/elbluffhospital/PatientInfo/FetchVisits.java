@@ -47,6 +47,7 @@ public class FetchVisits extends AppCompatActivity {
     ArrayList<VisitFields> patVisitdata = new ArrayList();
     ListView LV_patVisit;
     int count = 0;
+    int hash_count = 0;
     String sID;
 
 
@@ -54,6 +55,10 @@ public class FetchVisits extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fetch_visits);
+
+        Intent intent = getIntent();
+        sID = intent.getStringExtra("patid");
+        patientVisitFetch(sID);
 
 
         /*listView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
@@ -175,13 +180,13 @@ public class FetchVisits extends AppCompatActivity {
         });
     }
 
-        public void onClick3(View v){
+        /*public void onClick3(View v){
 
             //Get patient id
             sID = "patid0";
 
-            patientVisitFetch(sID);
-    }
+
+    }*/
 
 
 
@@ -258,11 +263,14 @@ public class FetchVisits extends AppCompatActivity {
 
                     try {
                         patVisitdata.add(new VisitFields(r_patid, r_visitdate, r_reason, r_doctor));
+                        System.out.println(patVisitdata.get(count).D_AllData());
                     } catch(NumberFormatException nfe) {
                         System.out.println("Number format exception occurred.");
                     }
 
                     count++;
+                    hash_count++;
+                    System.out.println(hash_count);
                 }
                 } catch(JSONException j){
                     System.out.println("JSON Exception occurred...HEAAA");
@@ -279,23 +287,28 @@ public class FetchVisits extends AppCompatActivity {
 
             private void initData() {
             /**ML: Need to make a count variable to select all visits not just the first one (get rid of the o)**/
-            VisitFields temp1 = patVisitdata.get(0);
+            int H_count = 0;
             listDataHeader = new ArrayList<>();
             listHash = new HashMap<>();
 
-            //This is where you set the prescription IS as the Group Item
-            listDataHeader.add(temp1.C_visitdate);
+                while (H_count < hash_count) {
+                    VisitFields temp1 = patVisitdata.get(H_count);
 
-            //This is where you set the child items of each group item
-            List<String> visit1 = new ArrayList<>();
-            visit1.add("ID de Paciente:    " + temp1.C_patid);
-            visit1.add("El Doctor:    " + temp1.C_doctor);
-            visit1.add("La Razón:   " + temp1.C_reason);
-            //visit1.add("ID de Prescripcion:   " + temp1.C_rxid);
+                    //This is where you set the prescription IS as the Group Item
+                    listDataHeader.add(temp1.C_visitdate);
 
-             //Put the data in the HashMap
-        listHash.put(listDataHeader.get(0), visit1);
+                    //This is where you set the child items of each group item
+                    List<String> visit1 = new ArrayList<>();
+                    visit1.add("ID de Paciente:    " + temp1.C_patid);
+                    visit1.add("El Doctor:    " + temp1.C_doctor);
+                    visit1.add("La Razón:   " + temp1.C_reason);
+                    //visit1.add("ID de Prescripcion:   " + temp1.C_rxid);
 
+                    //Put the data in the HashMap
+                    listHash.put(listDataHeader.get(H_count), visit1);
+
+                    H_count++;
+                }
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -308,13 +321,22 @@ public class FetchVisits extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.pat_gen_info:
-                startActivity(new Intent(this, FetchPatientInfo.class));
+                Intent newintent = new Intent(getBaseContext(), FetchPatientInfo.class);
+                newintent.putExtra("patid", sID);
+                startActivity(newintent);
+                //startActivity(new Intent(this, FetchPatientInfo.class));
                 return true;
             case R.id.pat_history:
-                startActivity(new Intent(this, FetchVisits.class));
+                Intent newintent1 = new Intent(getBaseContext(), FetchVisits.class);
+                newintent1.putExtra("patid", sID);
+                startActivity(newintent1);
+                //startActivity(new Intent(this, FetchVisits.class));
                 return true;
             case R.id.pat_prescription:
-                startActivity(new Intent(this, FetchPrescriptions.class));
+                Intent newintent2 = new Intent(getBaseContext(), FetchPrescriptions.class);
+                newintent2.putExtra("patid", sID);
+                startActivity(newintent2);
+                //startActivity(new Intent(this, FetchPrescriptions.class));
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -322,7 +344,7 @@ public class FetchVisits extends AppCompatActivity {
 
     @Override
     public void onBackPressed(){
-        Intent go_back_to_PGI_2 = new Intent(this, FetchPatientInfo.class);
+        Intent go_back_to_PGI_2 = new Intent(this, SearchAddPatients.class);
         startActivity(go_back_to_PGI_2);
     }
 

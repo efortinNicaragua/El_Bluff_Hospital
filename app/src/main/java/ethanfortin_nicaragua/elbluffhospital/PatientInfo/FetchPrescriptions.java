@@ -55,6 +55,10 @@ public class FetchPrescriptions extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fetch_prescriptions);
 
+        Intent intent = getIntent();
+        sID = intent.getStringExtra("patid");
+        patientRXFetch(sID);
+
 
         /**ML: Testing to see if the data that comes back is correct!**/
 
@@ -150,17 +154,17 @@ public class FetchPrescriptions extends AppCompatActivity {
         });
     }
 
-    /**ML: Needs to be changed back to onClick for the patient selection, take out testing button**/
-    public void onClick2(View V){
+  //  /**ML: Needs to be changed back to onClick for the patient selection, take out testing button**/
+   // public void onClick2(View V){
 
         //Get patient ID
         /**ML: This would be from the pop up selection dialog, here is hardcoded**/
-        sID = "patid0";
+   //     sID = "patid0";
 
         //Search by patient ID
         /**ML: Option to add a second case (argChoice) which searches by patient name**/
-        patientRXFetch(sID);
-    }
+
+    //}
 
     /** ML: This method is accessed from inside the onClick**/
     private void patientRXFetch(final String argVal){
@@ -308,13 +312,22 @@ public class FetchPrescriptions extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.pat_gen_info:
-                startActivity(new Intent(this, FetchPatientInfo.class));
+                Intent newintent = new Intent(getBaseContext(), FetchPatientInfo.class);
+                newintent.putExtra("patid", sID);
+                startActivity(newintent);
+                //startActivity(new Intent(this, FetchPatientInfo.class));
                 return true;
             case R.id.pat_history:
-                startActivity(new Intent(this, FetchVisits.class));
+                Intent newintent1 = new Intent(getBaseContext(), FetchVisits.class);
+                newintent1.putExtra("patid", sID);
+                startActivity(newintent1);
+                //startActivity(new Intent(this, FetchVisits.class));
                 return true;
             case R.id.pat_prescription:
-                startActivity(new Intent(this, FetchPrescriptions.class));
+                Intent newintent2 = new Intent(getBaseContext(), FetchPrescriptions.class);
+                newintent2.putExtra("patid", sID);
+                startActivity(newintent2);
+                //startActivity(new Intent(this, FetchPrescriptions.class));
             default:
                 return super.onOptionsItemSelected(item);
         }
