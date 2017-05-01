@@ -17,12 +17,16 @@ import ethanfortin_nicaragua.elbluffhospital.R;
  */
 
 public class PatientinfoAdapter extends ArrayAdapter<PatientinfoFields> {
+
     public PatientinfoAdapter(Context context, ArrayList<PatientinfoFields> patgeninfodata){
         super(context,0,patgeninfodata);
     }
+
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent){
-        PatientinfoFields single_patgeninfo=getItem(position);
+
+        PatientinfoFields single_patgeninfo = getItem(position);
 
         if(convertView==null){
             convertView= LayoutInflater.from(getContext()).inflate(R.layout.row_patgeninfo_all, parent, false);
@@ -31,17 +35,33 @@ public class PatientinfoAdapter extends ArrayAdapter<PatientinfoFields> {
         //Needs to be updated for all data from pat info class but for now row_patinfo_all only has 2 text views
 
 
-        TextView patid=(TextView)convertView.findViewById(R.id.patname);
-        TextView patname=(TextView)convertView.findViewById(R.id.patid);
-        TextView dob=(TextView) convertView.findViewById(R.id.dob);
+        TextView patid = (TextView)convertView.findViewById(R.id.patid);
+        TextView patname = (TextView)convertView.findViewById(R.id.patname);
+        TextView address = (TextView)convertView.findViewById(R.id.address);
+        TextView telephone = (TextView)convertView.findViewById(R.id.telephone);
+        TextView height = (TextView)convertView.findViewById(R.id.height);
+        TextView gender = (TextView)convertView.findViewById(R.id.gender);
+        TextView marstat = (TextView)convertView.findViewById(R.id.marstat);
+        TextView children = (TextView)convertView.findViewById(R.id.children);
+        TextView weight = (TextView)convertView.findViewById(R.id.weight);
+        TextView allergies = (TextView)convertView.findViewById(R.id.allergies);
+        TextView medcond = (TextView)convertView.findViewById(R.id.medcond);
+        TextView dob = (TextView) convertView.findViewById(R.id.dob);
 
-        //String test1="DID IT WORK";
-        //String test2="YA BRO IT DID";
-        //patid.setText(test1);
-        //patname.setText(test2);
-        patid.setText(single_patgeninfo.patid);
-        patname.setText(single_patgeninfo.patname);
-        dob.setText(single_patgeninfo.dob);
+
+        patid.setText(single_patgeninfo.C_patid);
+        patname.setText(single_patgeninfo.C_patname);
+        address.setText(single_patgeninfo.C_address);
+        telephone.setText(single_patgeninfo.C_telephone);
+        height.setText(Integer.toString(single_patgeninfo.C_height));
+        gender.setText(single_patgeninfo.C_gender);
+        marstat.setText(single_patgeninfo.C_marstat);
+        children.setText(Integer.toString(single_patgeninfo.C_children));
+        weight.setText(Integer.toString(single_patgeninfo.C_weight));
+        allergies.setText(single_patgeninfo.C_allergies);
+        medcond.setText(single_patgeninfo.C_medcond);
+        dob.setText(single_patgeninfo.C_dob);
+
 
         return convertView;
 

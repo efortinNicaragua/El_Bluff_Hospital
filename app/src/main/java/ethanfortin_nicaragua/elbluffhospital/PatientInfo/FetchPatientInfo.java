@@ -1,5 +1,6 @@
 package ethanfortin_nicaragua.elbluffhospital.PatientInfo;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -29,11 +30,15 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.sql.SQLOutput;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import ethanfortin_nicaragua.elbluffhospital.ArrayAdapters.PatientinfoAdapter;
+import ethanfortin_nicaragua.elbluffhospital.ConnVars;
 import ethanfortin_nicaragua.elbluffhospital.DataClasses.PatientinfoFields;
 import ethanfortin_nicaragua.elbluffhospital.R;
+import ethanfortin_nicaragua.elbluffhospital.RequestHandler;
 
 public class FetchPatientInfo extends AppCompatActivity {
     //Create global variables for list view and ArrayList<DruginfoFields>
@@ -47,13 +52,15 @@ public class FetchPatientInfo extends AppCompatActivity {
 
         sID = "patid0";
 
+        getPatientInfo();
+
         /*
         *
         * Following is only for demonstration, should be commented for PHP functionality
         *
         * */
-        listView = (ListView) findViewById(android.R.id.list);
-        ArrayList<PatientinfoFields> patientgeninfo_data = new ArrayList();
+        //listView = (ListView) findViewById(android.R.id.list);
+        //ArrayList<PatientinfoFields> patientgeninfo_data = new ArrayList();
 
        /* patientgeninfo_data.add(new PatientinfoFields("Nombre", "Pablo Sanchez"));
         patientgeninfo_data.add(new PatientinfoFields("ID", "123456"));
@@ -68,13 +75,13 @@ public class FetchPatientInfo extends AppCompatActivity {
         patientgeninfo_data.add(new PatientinfoFields("Alergias", "Penecilinia, Azufre"));
         patientgeninfo_data.add(new PatientinfoFields("Condiciones Medicos", "Alta presion sanguinea"));*/
 
-        ArrayAdapter<PatientinfoFields> adapter = new PatientinfoAdapter(this, patientgeninfo_data);
+        //ArrayAdapter<PatientinfoFields> adapter = new PatientinfoAdapter(this, patientgeninfo_data);
 
         //set list view to listview in the xml file
-        ListView listView=(ListView) findViewById(android.R.id.list);
+        //ListView listView=(ListView) findViewById(android.R.id.list);
 
         //turn on list view
-        listView.setAdapter(adapter);
+        //listView.setAdapter(adapter);
 
 
 
@@ -88,12 +95,213 @@ public class FetchPatientInfo extends AppCompatActivity {
         */
 
 
-
-
-
     }
 
-    public class add_patientinfo_row extends AsyncTask<Void, AddPatientInfoRow, String> {
+
+    private void getPatientInfo() {
+
+        class getPatInfo extends AsyncTask<Void, Void, String> {
+
+            ProgressDialog loading;
+
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+                loading = ProgressDialog.show(FetchPatientInfo.this, "Buscando...", "Espera, por favor", false, false);
+            }
+
+            @Override
+            protected void onPostExecute(String s) {
+                super.onPostExecute(s);
+                loading.dismiss();
+                parsePatientInfo(s);
+            }
+
+            //In here, split between argChoid Value (1 or 2)
+            protected String doInBackground(Void... params) {
+
+                RequestHandler reqHan = new RequestHandler();
+                HashMap<String, String> map = new HashMap<>();
+                String s;
+
+                s = reqHan.sendGetRequest(ConnVars.URL_FETCH_PATIENT_GENERAL_INFO);
+
+                return s;
+            }
+        }
+
+        getPatInfo info = new getPatInfo();
+        info.execute();
+    }
+
+    private void parsePatientInfo(String json) {
+
+        Context context = this;
+        ListView listView;
+        ArrayList<PatientinfoFields> patientInfoData = new ArrayList();
+
+       int count = 0;
+        String patName, patId, address, telephone, dob, gender, marStat, allergies, medCond, children, height, weight;
+        int childrenCast, heightCast, weightCast;
+
+        try {
+            JSONObject jsonObject = new JSONObject(json);
+            JSONArray resArr = jsonObject.getJSONArray(ConnVars.TAG_PATIENTINFO);
+
+            while (count < resArr.length()) {
+                JSONObject resObj = resArr.getJSONObject(count);
+                patName = resObj.getString(ConnVars.TAG_PATIENTINFO_NAME);
+                patId = resObj.getString(ConnVars.TAG_PATIENTINFO_ID);
+                address = resObj.getString(ConnVars.TAG_PATIENTINFO_ADDRESS);
+                telephone = resObj.getString(ConnVars.TAG_PATIENTINFO_TELEPHONE);
+                dob = resObj.getString(ConnVars.TAG_PATIENTINFO_DOB);
+                gender = resObj.getString(ConnVars.TAG_PATIENTINFO_GENDER);
+                marStat = resObj.getString(ConnVars.TAG_PATIENTINFO_MARSTAT);
+                allergies = resObj.getString(ConnVars.TAG_PATIENTINFO_ALLERGIES);
+                medCond = resObj.getString(ConnVars.TAG_PATIENTINFO_MEDCOND);
+                children = resObj.getString(ConnVars.TAG_PATIENTINFO_CHILDREN);
+                height = resObj.getString(ConnVars.TAG_PATIENTINFO_HEIGHT);
+                weight = resObj.getString(ConnVars.TAG_PATIENTINFO_WEIGHT);
+
+                try {
+                    childrenCast = Integer.parseInt(children);
+                    heightCast = Integer.parseInt(height);
+                    weightCast = Integer.parseInt(weight);
+                    patientInfoData.add(new PatientinfoFields(patId, patName, address, telephone, gender, marStat, heightCast, weightCast, childrenCast, allergies, medCond, dob));
+                } catch (NumberFormatException nfe) {
+                    System.out.println("Number format exception occured...");
+                }
+                count++;
+
+            }
+        } catch (JSONException j) {
+            System.out.println("JSON Exception occured...");
+        }
+
+        ArrayAdapter<PatientinfoFields> adapter = new PatientinfoAdapter(context, patientInfoData);
+        listView = (ListView) findViewById(android.R.id.list);
+        listView.setAdapter(adapter);
+    }
+
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.app_bar, menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.pat_gen_info:
+                Intent newintent = new Intent(getBaseContext(), FetchPatientInfo.class);
+                newintent.putExtra("patid", sID);
+                startActivity(newintent);
+                //startActivity(new Intent(this, FetchPatientInfo.class));
+                return true;
+            case R.id.pat_history:
+                Intent newintent1 = new Intent(getBaseContext(), FetchVisits.class);
+                newintent1.putExtra("patid", sID);
+                startActivity(newintent1);
+                //startActivity(new Intent(this, FetchVisits.class));
+                return true;
+            case R.id.pat_prescription:
+                Intent newintent2 = new Intent(getBaseContext(), FetchPrescriptions.class);
+                newintent2.putExtra("patid", sID);
+                startActivity(newintent2);
+                //startActivity(new Intent(this, FetchPrescriptions.class));
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    @Override
+    public void onBackPressed(){
+        Intent go_back = new Intent(this, SearchAddPatients.class);
+        startActivity(go_back);
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+   /* public void EditPatient(View view){
+
+        LayoutInflater inflater = LayoutInflater.from(FetchPatientInfo.this);
+        View subView = inflater.inflate(R.layout.dialog_patient_gen_info, null);
+
+        //Build dialog set it to subview
+        AlertDialog.Builder builderSingle1 = new AlertDialog.Builder(this);
+        builderSingle1.setView(subView);
+        builderSingle1.setTitle("Editar Paciente");
+
+
+        final EditText edit_name2 = (EditText) subView.findViewById(R.id.newdialog_edit_name);
+        final EditText edit_ID2 = (EditText) subView.findViewById(R.id.newdialog_edit_ID);
+        final EditText edit_adress2 = (EditText) subView.findViewById(R.id.newdialog_edit_adress);
+        final EditText edit_telephone2 = (EditText) subView.findViewById(R.id.newdialog_edit_Telephone);
+        final EditText edit_gender2 = (EditText) subView.findViewById(R.id.newdialog_edit_gender);
+        final EditText edit_married2 = (EditText) subView.findViewById(R.id.newdialog_edit_Married);
+        final EditText edit_birthday2 = (EditText) subView.findViewById(R.id.newdialog_edit_Birthdate);
+        final EditText edit_children2 = (EditText) subView.findViewById(R.id.newdialog_edit_Children);
+        final EditText edit_height2 = (EditText) subView.findViewById(R.id.newdialog_edit_Height);
+        final EditText edit_weight2 = (EditText) subView.findViewById(R.id.newdialog_edit_Weight);
+        final EditText edit_allergies2 = (EditText) subView.findViewById(R.id.newdialog_edit_Allergies);
+        final EditText edit_medicalConditions2 = (EditText) subView.findViewById(R.id.newdialog_edit_MedicalConditions);
+
+        edit_name2.setText("Pablo Sanchez", TextView.BufferType.EDITABLE);
+        edit_ID2.setText("123456", TextView.BufferType.EDITABLE);
+        edit_adress2.setText("532 El Bluff", TextView.BufferType.EDITABLE);
+        edit_telephone2.setText("18972892200", TextView.BufferType.EDITABLE);
+        edit_gender2.setText("Hombre", TextView.BufferType.EDITABLE);
+        edit_married2.setText("Si", TextView.BufferType.EDITABLE);
+        edit_birthday2.setText("23-01-78", TextView.BufferType.EDITABLE);
+        edit_children2.setText("Tres: Maria, Juan, Jose", TextView.BufferType.EDITABLE);
+        edit_height2.setText("86cm", TextView.BufferType.EDITABLE);
+        edit_weight2.setText("65kg", TextView.BufferType.EDITABLE);
+        edit_allergies2.setText("Penecilinia, Azufre", TextView.BufferType.EDITABLE);
+        edit_medicalConditions2.setText("Alta presion sanguinea", TextView.BufferType.EDITABLE);
+
+
+        builderSingle1.setNegativeButton(
+                "Cancel",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+
+        builderSingle1.setPositiveButton(
+                "Guardar",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        Toast toast = Toast.makeText(getApplicationContext(), "Cambios guardado.", Toast.LENGTH_LONG);
+                        toast.show();
+
+                        //Push to DB including ones not above but in Dialog
+                        dialog.dismiss();
+
+                    }
+                });
+        builderSingle1.show();
+    }
+
+
+
+
+
+
+    /*public class add_patientinfo_row extends AsyncTask<Void, AddPatientInfoRow, String> {
 
         public String s_patname = getIntent().getStringExtra("patname");
         public String s_patid = getIntent().getStringExtra("patid");;
@@ -174,110 +382,9 @@ public class FetchPatientInfo extends AppCompatActivity {
             }
             return json_st;
         }
-    }
-
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.app_bar, menu);
-        return true;
-    }
-
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.pat_gen_info:
-                Intent newintent = new Intent(getBaseContext(), FetchPatientInfo.class);
-                newintent.putExtra("patid", sID);
-                startActivity(newintent);
-                //startActivity(new Intent(this, FetchPatientInfo.class));
-                return true;
-            case R.id.pat_history:
-                Intent newintent1 = new Intent(getBaseContext(), FetchVisits.class);
-                newintent1.putExtra("patid", sID);
-                startActivity(newintent1);
-                //startActivity(new Intent(this, FetchVisits.class));
-                return true;
-            case R.id.pat_prescription:
-                Intent newintent2 = new Intent(getBaseContext(), FetchPrescriptions.class);
-                newintent2.putExtra("patid", sID);
-                startActivity(newintent2);
-                //startActivity(new Intent(this, FetchPrescriptions.class));
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
-
-    @Override
-    public void onBackPressed(){
-        Intent go_back = new Intent(this, SearchAddPatients.class);
-        startActivity(go_back);
-    }
+    }*/
 
 
-    public void EditPatient(View view){
-
-        LayoutInflater inflater = LayoutInflater.from(FetchPatientInfo.this);
-        View subView = inflater.inflate(R.layout.dialog_patient_gen_info, null);
-
-        //Build dialog set it to subview
-        AlertDialog.Builder builderSingle1 = new AlertDialog.Builder(this);
-        builderSingle1.setView(subView);
-        builderSingle1.setTitle("Editar Paciente");
-
-
-        final EditText edit_name2 = (EditText) subView.findViewById(R.id.newdialog_edit_name);
-        final EditText edit_ID2 = (EditText) subView.findViewById(R.id.newdialog_edit_ID);
-        final EditText edit_adress2 = (EditText) subView.findViewById(R.id.newdialog_edit_adress);
-        final EditText edit_telephone2 = (EditText) subView.findViewById(R.id.newdialog_edit_Telephone);
-        final EditText edit_gender2 = (EditText) subView.findViewById(R.id.newdialog_edit_gender);
-        final EditText edit_married2 = (EditText) subView.findViewById(R.id.newdialog_edit_Married);
-        final EditText edit_birthday2 = (EditText) subView.findViewById(R.id.newdialog_edit_Birthdate);
-        final EditText edit_children2 = (EditText) subView.findViewById(R.id.newdialog_edit_Children);
-        final EditText edit_height2 = (EditText) subView.findViewById(R.id.newdialog_edit_Height);
-        final EditText edit_weight2 = (EditText) subView.findViewById(R.id.newdialog_edit_Weight);
-        final EditText edit_allergies2 = (EditText) subView.findViewById(R.id.newdialog_edit_Allergies);
-        final EditText edit_medicalConditions2 = (EditText) subView.findViewById(R.id.newdialog_edit_MedicalConditions);
-
-        edit_name2.setText("Pablo Sanchez", TextView.BufferType.EDITABLE);
-        edit_ID2.setText("123456", TextView.BufferType.EDITABLE);
-        edit_adress2.setText("532 El Bluff", TextView.BufferType.EDITABLE);
-        edit_telephone2.setText("18972892200", TextView.BufferType.EDITABLE);
-        edit_gender2.setText("Hombre", TextView.BufferType.EDITABLE);
-        edit_married2.setText("Si", TextView.BufferType.EDITABLE);
-        edit_birthday2.setText("23-01-78", TextView.BufferType.EDITABLE);
-        edit_children2.setText("Tres: Maria, Juan, Jose", TextView.BufferType.EDITABLE);
-        edit_height2.setText("86cm", TextView.BufferType.EDITABLE);
-        edit_weight2.setText("65kg", TextView.BufferType.EDITABLE);
-        edit_allergies2.setText("Penecilinia, Azufre", TextView.BufferType.EDITABLE);
-        edit_medicalConditions2.setText("Alta presion sanguinea", TextView.BufferType.EDITABLE);
-
-
-        builderSingle1.setNegativeButton(
-                "Cancel",
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                });
-
-        builderSingle1.setPositiveButton(
-                "Guardar",
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                        Toast toast = Toast.makeText(getApplicationContext(), "Cambios guardado.", Toast.LENGTH_LONG);
-                        toast.show();
-
-                        //Push to DB including ones not above but in Dialog
-                        dialog.dismiss();
-
-                    }
-                });
-        builderSingle1.show();
-    }
-
-}
 
 
 
