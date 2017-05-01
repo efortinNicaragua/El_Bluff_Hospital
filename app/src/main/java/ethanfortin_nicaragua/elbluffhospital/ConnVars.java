@@ -28,6 +28,18 @@ public class ConnVars {
 
     public static final String TAG_PATIENTINFO= "patientinfo";
     public static final String TAG_NEWPAT_ERRORMESSAGES="New_ErrorMessages";
+    public static final String TAG_PATIENTINFO_ID = "patid";
+    public static final String TAG_PATIENTINFO_NAME = "patname";
+    public static final String TAG_PATIENTINFO_ADDRESS = "address";
+    public static final String TAG_PATIENTINFO_TELEPHONE = "telephone";
+    public static final String TAG_PATIENTINFO_DOB = "dob";
+    public static final String TAG_PATIENTINFO_GENDER = "gender";
+    public static final String TAG_PATIENTINFO_MARSTAT = "marstat";
+    public static final String TAG_PATIENTINFO_CHILDREN = "children";
+    public static final String TAG_PATIENTINFO_HEIGHT = "height";
+    public static final String TAG_PATIENTINFO_WEIGHT = "weight";
+    public static final String TAG_PATIENTINFO_ALLERGIES = "allergies";
+    public static final String TAG_PATIENTINFO_MEDCOND = "medcond";
 
     public static final String TAG_SHIPMENT = "shipments";
     public static final String TAG_SHIPMENT_SHIPDATE = "shipdate";
