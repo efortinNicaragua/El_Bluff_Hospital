@@ -37,29 +37,11 @@ public class PatientinfoAdapter extends ArrayAdapter<PatientinfoFields> {
 
         TextView patid = (TextView)convertView.findViewById(R.id.patid);
         TextView patname = (TextView)convertView.findViewById(R.id.patname);
-        TextView address = (TextView)convertView.findViewById(R.id.address);
-        TextView telephone = (TextView)convertView.findViewById(R.id.telephone);
-        TextView height = (TextView)convertView.findViewById(R.id.height);
-        TextView gender = (TextView)convertView.findViewById(R.id.gender);
-        TextView marstat = (TextView)convertView.findViewById(R.id.marstat);
-        TextView children = (TextView)convertView.findViewById(R.id.children);
-        TextView weight = (TextView)convertView.findViewById(R.id.weight);
-        TextView allergies = (TextView)convertView.findViewById(R.id.allergies);
-        TextView medcond = (TextView)convertView.findViewById(R.id.medcond);
         TextView dob = (TextView) convertView.findViewById(R.id.dob);
 
 
         patid.setText(single_patgeninfo.C_patid);
         patname.setText(single_patgeninfo.C_patname);
-        address.setText(single_patgeninfo.C_address);
-        telephone.setText(single_patgeninfo.C_telephone);
-        height.setText(Integer.toString(single_patgeninfo.C_height));
-        gender.setText(single_patgeninfo.C_gender);
-        marstat.setText(single_patgeninfo.C_marstat);
-        children.setText(Integer.toString(single_patgeninfo.C_children));
-        weight.setText(Integer.toString(single_patgeninfo.C_weight));
-        allergies.setText(single_patgeninfo.C_allergies);
-        medcond.setText(single_patgeninfo.C_medcond);
         dob.setText(single_patgeninfo.C_dob);
 
 

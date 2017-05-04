@@ -641,9 +641,9 @@ public class SearchAddPatients extends Activity {
 
 
     public void selectPatient_accept(View view){
-        System.out.println(selectedListItem.patid);
-        Intent intent = new Intent(getBaseContext(), FetchPrescriptions.class);
-        intent.putExtra("patid", selectedListItem.patid);
+        System.out.println(selectedListItem.getPatid());
+        Intent intent = new Intent(getBaseContext(), FetchPatientInfo.class);
+        intent.putExtra("patid", selectedListItem.getPatid());
         startActivity(intent);
     }
 
