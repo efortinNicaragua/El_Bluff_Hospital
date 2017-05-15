@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/text_choosekids"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    app:layout_scrollFlags="scroll">
+
+    <TextView
+        android:id="@+id/text_month"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:background="@android:color/transparent"
+        android:text="Mes"
+        android:textAlignment="center"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_alignBaseline="@+id/text_Day"
+        android:layout_alignBottom="@+id/text_Day"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/text_year"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:background="@android:color/transparent"
+        android:text="Año"
+        android:textAlignment="center"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_alignTop="@+id/text_month"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="54dp"
+        android:layout_marginEnd="54dp" />
+
+    <TextView
+        android:id="@+id/text_dobPicker"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/button_InfoGeneral"
+        android:background="@android:color/transparent"
+        android:text="Elige la Fecha de Nacimiento"
+        android:textAlignment="center"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="30sp"
+        android:textStyle="bold"/>
+    <TextView
+        android:id="@+id/text_Day"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:background="@android:color/transparent"
+        android:text="Día"
+        android:textAlignment="center"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_above="@+id/day_picker"
+        android:layout_alignRight="@+id/day_picker"
+        android:layout_alignEnd="@+id/day_picker"
+        android:layout_marginRight="63dp"
+        android:layout_marginEnd="63dp" />
+
+    <ethanfortin_nicaragua.elbluffhospital.NumberPicker
+        android:id="@+id/day_picker"
+        android:layout_width="175dp"
+        android:layout_height="150dp"
+        android:layout_alignBaseline="@+id/month_picker"
+        android:layout_alignBottom="@+id/month_picker"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:background="@android:color/transparent"
+        android:inputType="number"
+        android:textAlignment="center"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textSize="40sp"
+        android:visibility="visible" />
+
+    <ethanfortin_nicaragua.elbluffhospital.NumberPicker
+        android:id="@+id/month_picker"
+        android:layout_width="175dp"
+        android:layout_height="150dp"
+        android:layout_below="@+id/text_dobPicker"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="107dp"
+        android:background="@android:color/transparent"
+        android:inputType="number"
+        android:textAlignment="center"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textSize="40sp"
+        android:visibility="visible" />
+
+    <ethanfortin_nicaragua.elbluffhospital.NumberPicker
+        android:id="@+id/year_picker"
+        android:layout_width="175dp"
+        android:layout_height="150dp"
+        android:background="@android:color/transparent"
+        android:inputType="number"
+        android:textAlignment="center"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textSize="40sp"
+        android:visibility="visible"
+        android:layout_alignBaseline="@+id/month_picker"
+        android:layout_alignBottom="@+id/month_picker"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+</RelativeLayout>
