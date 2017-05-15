@@ -25,6 +25,9 @@ import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.NumberPicker;
+import android.widget.Spinner;
+import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,6 +42,7 @@ import org.w3c.dom.Text;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 
@@ -77,6 +81,10 @@ public class SearchAddPatients extends Activity {
     Dialog findPatient_dialog;
     PatientinfoFields selectedListItem;
     AlertDialog db_message;
+    String gender_temp, married_temp, dob_temp;
+    int children_temp, dob_day_temp, dob_month_temp, dob_year_temp;
+    double height_temp,weight_temp;
+    int height_temp_int,weight_temp_int;
     Context context = this;
 
     @Override
@@ -377,14 +385,245 @@ public class SearchAddPatients extends Activity {
         final EditText edit_ID2 = (EditText) subView.findViewById(R.id.newdialog_edit_ID);
         final EditText edit_adress2 = (EditText) subView.findViewById(R.id.newdialog_edit_adress);
         final EditText edit_telephone2 = (EditText) subView.findViewById(R.id.newdialog_edit_Telephone);
-        final EditText edit_gender2 = (EditText) subView.findViewById(R.id.newdialog_edit_gender);
-        final EditText edit_married2 = (EditText) subView.findViewById(R.id.newdialog_edit_Married);
-        final EditText edit_birthday2 = (EditText) subView.findViewById(R.id.newdialog_edit_Birthdate);
-        final EditText edit_children2 = (EditText) subView.findViewById(R.id.newdialog_edit_Children);
-        final EditText edit_height2 = (EditText) subView.findViewById(R.id.newdialog_edit_Height);
-        final EditText edit_weight2 = (EditText) subView.findViewById(R.id.newdialog_edit_Weight);
+        final Spinner edit_gender2 = (Spinner) subView.findViewById(R.id.newdialog_edit_gender);
+        final Spinner edit_married2 = (Spinner) subView.findViewById(R.id.newdialog_edit_Married);
+        final TextView edit_birthday2 =(TextView) subView.findViewById(R.id.newdialog_edit_Birthdate);
+        final TextView edit_children2 = (TextView) subView.findViewById(R.id.newdialog_edit_Children);
+        final TextView edit_height2 = (TextView) subView.findViewById(R.id.newdialog_edit_Height);
+        final TextView edit_weight2 = (TextView) subView.findViewById(R.id.newdialog_edit_Weight);
         final EditText edit_allergies2 = (EditText) subView.findViewById(R.id.newdialog_edit_Allergies);
         final EditText edit_medicalConditions2 = (EditText) subView.findViewById(R.id.newdialog_edit_MedicalConditions);
+
+
+        //Spinner adapters to set style an values of spinner
+        SpinnerAdapter adap = new ArrayAdapter<String>(this, R.layout.spinner_item, new String[]{"Click para elegir","M", "F"});
+        edit_gender2.setAdapter(adap);
+
+        SpinnerAdapter adap1 = new ArrayAdapter<String>(this, R.layout.spinner_item, new String[]{"Click para elegir","Casado", "Soltero"});
+        edit_married2.setAdapter(adap1);
+
+
+        //Here are the methods that will handle when an item gets selected
+        edit_gender2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
+        {
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
+            {
+                 String selectedItem = parent.getItemAtPosition(position).toString();
+                gender_temp=selectedItem;
+
+            }
+            public void onNothingSelected(AdapterView<?> parent)
+            {
+            }
+        });
+        edit_married2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
+        {
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
+            {
+                String selectedItem = parent.getItemAtPosition(position).toString();
+                married_temp=selectedItem;
+
+            }
+            public void onNothingSelected(AdapterView<?> parent)
+            {
+            }
+        });
+
+        //Here is on click for text views to load dialgos
+        edit_children2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LayoutInflater inflater = LayoutInflater.from(SearchAddPatients.this);
+                View subView = inflater.inflate(R.layout.dialog_child_picker, null);
+
+                //Build dialog set it to subview
+                AlertDialog.Builder builderSingle1 = new AlertDialog.Builder(context);
+                builderSingle1.setView(subView);
+
+                final NumberPicker child_number = (NumberPicker) subView.findViewById(R.id.child_np) ;
+                //Here is were we will set values for number picker
+                child_number.setMinValue(0);
+                child_number.setMaxValue(30);
+                child_number.setValue(0);
+                child_number.setWrapSelectorWheel(false);
+
+                builderSingle1.setNegativeButton(
+                        "Cancel",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        });
+                builderSingle1.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        children_temp=child_number.getValue();
+                        edit_children2.setText(children_temp+"");
+                    }
+                });
+                builderSingle1.show();
+
+            }
+        });
+        edit_height2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LayoutInflater inflater = LayoutInflater.from(SearchAddPatients.this);
+                View subView = inflater.inflate(R.layout.dialog_height_picker, null);
+
+                //Build dialog set it to subview
+                final AlertDialog.Builder builderSingle1 = new AlertDialog.Builder(context);
+                builderSingle1.setView(subView);
+
+                final NumberPicker height_picker = (NumberPicker) subView.findViewById(R.id.height_np) ;
+                //Here is were we will set values for number picker
+                height_picker.setMinValue(0);
+                height_picker.setMaxValue(250);
+                height_picker.setValue(165);
+                height_picker.setWrapSelectorWheel(false);
+
+                final NumberPicker height_decimalPicker = (NumberPicker) subView.findViewById(R.id.height_decimal_np) ;
+                height_decimalPicker.setMinValue(0);
+                height_decimalPicker.setMaxValue(99);
+                height_decimalPicker.setValue(0);
+                height_decimalPicker.setWrapSelectorWheel(true);
+
+                builderSingle1.setNegativeButton(
+                        "Cancel",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        });
+                builderSingle1.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        height_temp=height_picker.getValue()+(height_decimalPicker.getValue()/100.0);
+                        height_temp_int=height_picker.getValue();
+                        dialog.cancel();
+                        edit_height2.setText(height_temp+" cm");
+                    }
+                });
+                builderSingle1.show();
+
+            }
+        });
+
+        edit_weight2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LayoutInflater inflater = LayoutInflater.from(SearchAddPatients.this);
+                View subView = inflater.inflate(R.layout.dialog_height_picker, null);
+
+                TextView title = (TextView) subView.findViewById(R.id.text_weightPicker);
+                title.setText("Elige la pesa en Kilogramas");
+                //Build dialog set it to subview
+                AlertDialog.Builder builderSingle1 = new AlertDialog.Builder(context);
+                builderSingle1.setView(subView);
+
+                final NumberPicker height_picker = (NumberPicker) subView.findViewById(R.id.height_np) ;
+                //Here is were we will set values for number picker
+                height_picker.setMinValue(0);
+                height_picker.setMaxValue(200);
+                height_picker.setValue(70);
+                height_picker.setWrapSelectorWheel(false);
+
+                final NumberPicker height_decimalPicker = (NumberPicker) subView.findViewById(R.id.height_decimal_np) ;
+                height_decimalPicker.setMinValue(0);
+                height_decimalPicker.setMaxValue(99);
+                height_decimalPicker.setValue(0);
+                height_decimalPicker.setWrapSelectorWheel(true);
+
+                builderSingle1.setNegativeButton(
+                        "Cancel",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        });
+                builderSingle1.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        weight_temp=height_picker.getValue()+(height_decimalPicker.getValue()/100.0);
+                        weight_temp_int=height_picker.getValue();
+                        dialog.cancel();
+                        edit_weight2.setText(weight_temp+" kg");
+                    }
+                });
+                builderSingle1.show();
+
+            }
+        });
+
+        edit_birthday2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LayoutInflater inflater = LayoutInflater.from(SearchAddPatients.this);
+                View subView = inflater.inflate(R.layout.dialog_dob_picker, null);
+
+                //Build dialog set it to subview
+                AlertDialog.Builder builderSingle1 = new AlertDialog.Builder(context);
+                builderSingle1.setView(subView);
+                Calendar c = Calendar.getInstance();
+                //Date date= c.getTime();
+               // Log.d("Ethan Date", c.get(Calendar.DAY_OF_MONTH)+ " "+ c.get(Calendar.MONTH)+1+  " "+ c.get(Calendar.YEAR));
+
+                final NumberPicker height_picker = (NumberPicker) subView.findViewById(R.id.day_picker) ;
+                //Here is were we will set values for number picker
+                height_picker.setMinValue(1);
+                height_picker.setMaxValue(31);
+                height_picker.setValue(c.get(Calendar.DAY_OF_MONTH));
+                height_picker.setWrapSelectorWheel(true);
+
+                final NumberPicker height_decimalPicker = (NumberPicker) subView.findViewById(R.id.month_picker) ;
+                height_decimalPicker.setMinValue(1);
+                height_decimalPicker.setMaxValue(12);
+                height_decimalPicker.setValue(c.get(Calendar.MONTH)+1);
+                height_decimalPicker.setWrapSelectorWheel(true);
+
+                final NumberPicker year_picker = (NumberPicker) subView.findViewById(R.id.year_picker);
+                year_picker.setMinValue(1900);
+                year_picker.setMaxValue(2500);
+                year_picker.setValue(c.get(Calendar.YEAR));
+                year_picker.setWrapSelectorWheel(true);
+
+                builderSingle1.setNegativeButton(
+                        "Cancel",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        });
+                builderSingle1.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                    String dob_day_temp1, dob_month_temp1;
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dob_day_temp=height_picker.getValue();
+                        if (dob_day_temp<=9){
+                             dob_day_temp1= "0"+dob_day_temp;
+                        }
+                        else{ dob_day_temp1=dob_day_temp+"";}
+                        dob_month_temp=height_decimalPicker.getValue();
+                        if (dob_month_temp<=9){
+                             dob_month_temp1= "0"+dob_month_temp;
+                        }
+                        else{ dob_month_temp1=dob_month_temp+"";}
+                        dob_year_temp=year_picker.getValue();
+
+                        dialog.cancel();
+
+                        edit_birthday2.setText(dob_day_temp1+"-"+dob_month_temp1+"-"+dob_year_temp);
+                        dob_temp=dob_month_temp1+"-"+dob_month_temp1+"-"+dob_year_temp;
+                    }
+                });
+                builderSingle1.show();
+
+            }
+        });
         builderSingle1.setNegativeButton(
                 "Cancel",
                 new DialogInterface.OnClickListener() {
@@ -483,12 +722,17 @@ public class SearchAddPatients extends Activity {
                         patid = edit_ID2.getText().toString();
                         address = edit_adress2.getText().toString();
                         telephone = edit_telephone2.getText().toString();
-                        gender = edit_gender2.getText().toString();
-                        marstat = edit_married2.getText().toString();
-                        s_dob = edit_birthday2.getText().toString();
-                        s_children = edit_children2.getText().toString();
-                        s_height = edit_height2.getText().toString();
-                        s_weight = edit_weight2.getText().toString();
+                        gender = gender_temp;
+                        Log.d("Ethan gender",gender);
+                        marstat = married_temp;
+                        Log.d("Ethan married",marstat);
+                        s_dob = dob_temp;
+                        s_children =children_temp+"";
+                        Log.d("Ethan children",s_children);
+                        s_height = height_temp+"";
+                        //s_height = height_temp_int+"";
+                        s_weight = weight_temp+"";
+                        //s_weight = weight_temp_int+"";
                         allergies = edit_allergies2.getText().toString();
                         medcond = edit_medicalConditions2.getText().toString();
 
@@ -501,6 +745,7 @@ public class SearchAddPatients extends Activity {
                             //weight = Integer.decode(s_weight);
                             newPatient(patname, patid, address, telephone, gender, marstat, s_dob,s_children,s_height,s_weight,allergies,medcond);
                         } catch (Exception e) {
+                            Log.d("ethan","we failed");
                         }
 
                     }
@@ -582,6 +827,8 @@ public class SearchAddPatients extends Activity {
                 map1.put("w", weight);
                 map1.put("al",allergies);
                 map1.put("me", medcond);
+
+                Log.d("g,dob,c,h,w", gender+" " +s_dob+" " + children+" "+ height+" "+ weight);
                 String s;
                 s = reqHan1.sendPostRequest(ConnVars.URL_ADD_PATIENTINFO_ROW, map1);
                 Log.d("Test1", "S is :"+s);
@@ -641,9 +888,9 @@ public class SearchAddPatients extends Activity {
 
 
     public void selectPatient_accept(View view){
-        System.out.println(selectedListItem.patid);
+        System.out.println(selectedListItem.getPatid());
         Intent intent = new Intent(getBaseContext(), FetchPrescriptions.class);
-        intent.putExtra("patid", selectedListItem.patid);
+        intent.putExtra("patid", selectedListItem.getPatid());
         startActivity(intent);
     }
 
