@@ -57,5 +57,6 @@
         android:onClick="selectPatient_accept"
         />
 
+    <!-- change here !-->
 
 </RelativeLayout>

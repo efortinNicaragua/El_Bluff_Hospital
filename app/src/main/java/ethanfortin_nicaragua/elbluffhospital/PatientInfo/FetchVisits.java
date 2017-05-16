@@ -333,6 +333,7 @@ public class FetchVisits extends AppCompatActivity {
         }
     }
 
+    //!!
     @Override
     public void onBackPressed(){
         Intent go_back_to_PGI_2 = new Intent(this, SearchAddPatients.class);

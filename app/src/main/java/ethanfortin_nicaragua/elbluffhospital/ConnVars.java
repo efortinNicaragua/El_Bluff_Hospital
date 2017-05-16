@@ -7,19 +7,19 @@ package ethanfortin_nicaragua.elbluffhospital;
 
 public class ConnVars {
 
+    // IP Addresses for PHP Scripts
+    public static final String URL_FETCH_SPECIFIC_DRUG = "http://192.168.1.2/android_connect/fetch_druginfo_row.php";
+    public static final String URL_FETCH_DRUGINFO_ALL = "http://192.168.1.2/android_connect/fetch_druginfo_all.php";
+    public static final String URL_FETCH_SHIPMENT = "http://192.168.1.2/android_connect/fetch_shipment_rows.php";
+    public static final String URL_FETCH_PATIENT_GENERAL_INFO = "http://192.168.1.2/android_connect/fetch_patientinfo_row.php";
+    public static final String URL_FETCH_PAT_RX = "http://192.168.1.2/android_connect/fetch_prescription_row.php";
+    public static final String URL_FETCH_PAT_VISIT = "http://192.168.1.2/android_connect/fetch_vh_rx_row.php";
+    public static final String URL_ADD_PRESCRIPTION = "http://192.168.1.2/android_connect/add_shipment_row.php";
+    public static final String URL_ADD_PATIENTINFO_ROW = "http://192.168.1.2/android_connect/add_patientinfo_row.php";
     // Image Upload Addresses
     public static final String URL_UPLOAD = "http://153.104.62.23/image_upload/upload.php";
     public static final String URL_IMAGES = "http://153.104.62.23/image_upload/get_image.php";
 
-    // IP Addresses for PHP Scripts
-    public static final String URL_FETCH_SPECIFIC_DRUG = "http://153.104.62.23/android_connect/fetch_druginfo_row.php";
-    public static final String URL_FETCH_DRUGINFO_ALL = "http://153.104.62.23/android_connect/fetch_druginfo_all.php";
-    public static final String URL_FETCH_SHIPMENT = "http://153.104.62.23/android_connect/fetch_shipment_rows.php";
-    public static final String URL_FETCH_PATIENTINFO_ROW="http://153.104.62.23/android_connect/fetch_patientinfo_row.php";
-    public static final String URL_FETCH_PAT_RX = "http://153.104.62.23/android_connect/fetch_prescription_row.php";
-    public static final String URL_FETCH_PAT_VISIT = "http://153.104.62.23/android_connect/fetch_vh_rx_row.php";
-    public static final String URL_ADD_PRESCRIPTION="http://153.104.62.23/android_connect/add_shipment_row.php";
-    public static final String URL_ADD_PATIENTINFO_ROW="http://153.104.62.23/android_connect/add_patientinfo_row.php";
     // JSON Tags!
 
     public static final String TAG_SUCCESS = "success";
