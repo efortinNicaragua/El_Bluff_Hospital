@@ -279,7 +279,7 @@
             <TextView
                 android:layout_width="300dp"
                 android:layout_height="50dp"
-                android:text="Click para elegir"
+                android:hint="Click para elegir"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:id="@+id/newdialog_edit_Birthdate"
                 android:background="@android:color/transparent"
@@ -320,7 +320,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/text_Children"
-                android:text="Click para elegir"
+                android:hint="Click para elegir"
                 android:background="@android:color/transparent"
                 android:textAlignment="center"
                 android:textAppearance="?android:attr/textAppearanceMedium"
@@ -362,7 +362,7 @@
                 android:background="@android:color/transparent"
                 android:textSize="30sp"
                 android:textAlignment="center"
-                android:text="Click para elegir "
+                android:hint="Click para elegir "
                 android:clickable="true"
             />
         </TableRow>
@@ -392,7 +392,7 @@
             <TextView
                 android:layout_width="300dp"
                 android:layout_height="50dp"
-                android:text="Click para elegir"
+                android:hint="Click para elegir"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:id="@+id/newdialog_edit_Weight"
                 android:background="@android:color/transparent"
@@ -421,16 +421,17 @@
                 android:textStyle="bold" />
             </TableRow>
         <TableRow>
+
             <EditText
-                android:layout_height="60dp"
-                android:layout_width="600dp"
-                android:hint="Click to type"
-                android:inputType="text"
-                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:id="@+id/newdialog_edit_Allergies"
+                android:layout_width="600dp"
+                android:layout_height="60dp"
                 android:background="@android:color/transparent"
-                android:textSize="30sp"
-                android:textAlignment="center" />
+                android:hint="Click to type"
+                android:inputType="textImeMultiLine"
+                android:textAlignment="center"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textSize="30sp" />
         </TableRow>
         <TableRow>
 
@@ -449,16 +450,15 @@
         <TableRow>
 
             <EditText
-                android:layout_height="60dp"
-                android:layout_width="600dp"
-                android:hint="Click to type "
-                android:inputType="text"
-                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:id="@+id/newdialog_edit_MedicalConditions"
+                android:layout_width="600dp"
+                android:layout_height="60dp"
                 android:background="@android:color/transparent"
-                android:textSize="30sp"
+                android:hint="Click to type "
+                android:inputType="textImeMultiLine"
                 android:textAlignment="center"
-                />
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textSize="30sp" />
         </TableRow>
     </TableLayout>
     </ScrollView>

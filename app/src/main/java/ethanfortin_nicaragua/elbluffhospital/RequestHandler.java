@@ -34,7 +34,7 @@ public class RequestHandler {
     public String sendPostRequest(String requestURL, HashMap<String, String> postDataParams) {
 
         URL url;
-
+        Log.d("Ethan","we sendPostRequest");
         // String builder stores response from mysql
         StringBuilder sb = new StringBuilder();
 

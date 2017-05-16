@@ -112,9 +112,9 @@ public class FetchVisits extends AppCompatActivity {
                 LayoutInflater inflater = LayoutInflater.from(FetchVisits.this);
                 final View subView = inflater.inflate(R.layout.dialog_add_visit, null);
 
-                final EditText entryDate = (EditText) subView.findViewById(R.id.etRxID);
+                final EditText entryDate = (EditText) subView.findViewById(R.id.etDoctor);
                 final EditText entryReason = (EditText) subView.findViewById(R.id.etPaciente);
-                final EditText entryDoctor = (EditText) subView.findViewById(R.id.etDoctor);
+                final EditText entryDoctor = (EditText) subView.findViewById(R.id.popout_calendar);
                 final EditText entryRx = (EditText) subView.findViewById(R.id.dRx);
                 final EditText entryPDF = (EditText) subView.findViewById(R.id.dPDF);
 

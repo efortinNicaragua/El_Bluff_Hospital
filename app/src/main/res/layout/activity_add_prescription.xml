@@ -150,7 +150,7 @@
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:ems="10"
-        android:id="@+id/etDoctor"
+        android:id="@+id/popout_calendar"
         android:hint="     nombre del médico"
         android:layout_alignBottom="@+id/tvDoctor"
         android:layout_alignLeft="@+id/etDuration" />
@@ -175,7 +175,7 @@
         android:id="@+id/etReason"
         android:hint="  razón por la medicina"
         android:layout_alignBottom="@+id/tvReason"
-        android:layout_alignLeft="@+id/etDoctor" />
+        android:layout_alignLeft="@+id/popout_calendar" />
 
     <Button
         android:text="Confirmar"
