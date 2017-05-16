@@ -129,7 +129,7 @@ public class FetchPatientInfo extends AppCompatActivity {
 
 
                 map.put("patid", sID);
-                s = reqHan.sendGetRequestParam(ConnVars.URL_FETCH_PATIENT_GENERAL_INFO, map);
+                s = reqHan.sendGetRequestParam(ConnVars.URL_FETCH_PATIENTINFO_ROW, map);
 
 
                 return s;
