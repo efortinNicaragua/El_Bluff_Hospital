@@ -9,159 +9,112 @@
         android:text="La Fecha"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/Date"
+        android:id="@+id/vhDate"
         android:textSize="20sp"
-        android:layout_alignBaseline="@+id/etDoctor"
-        android:layout_alignBottom="@+id/etDoctor"
-        android:layout_alignLeft="@+id/txtPatient"
-        android:layout_alignStart="@+id/txtPatient"
-        android:textColor="#00004d"/>
+        android:textColor="#00004d"
+        android:layout_alignBaseline="@+id/vh_calPicker"
+        android:layout_alignBottom="@+id/vh_calPicker"
+        android:layout_alignRight="@+id/txtReason"
+        android:layout_alignEnd="@+id/txtReason" />
 
     <TextView
         android:text="El Razon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="0dp"
-        android:id="@+id/txtPatient"
+        android:id="@+id/txtReason"
         android:textSize="20sp"
-        android:layout_alignBaseline="@+id/etPaciente"
-        android:layout_alignBottom="@+id/etPaciente"
-        android:layout_alignLeft="@+id/txt_date"
-        android:layout_alignStart="@+id/txt_date"
-        android:textColor="#00004d"/>
+        android:textColor="#00004d"
+        android:layout_alignBaseline="@+id/vh_reason"
+        android:layout_alignBottom="@+id/vh_reason"
+        android:layout_alignLeft="@+id/txt_dr"
+        android:layout_alignStart="@+id/txt_dr" />
 
     <TextView
         android:text="El Doctor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="86dp"
-        android:id="@+id/txt_date"
-        android:textSize="20sp"
-        android:layout_alignBaseline="@+id/popout_calendar"
-        android:layout_alignBottom="@+id/popout_calendar"
-        android:textColor="#00004d"/>
-
-    <TextView
-        android:text="La Prescripcion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/Rx"
+        android:layout_marginLeft="48dp"
+        android:id="@+id/txt_dr"
         android:textSize="20sp"
         android:textColor="#00004d"
-        android:layout_alignBaseline="@+id/dRx"
-        android:layout_alignBottom="@+id/dRx"
-        android:layout_alignLeft="@+id/PDF"
-        android:layout_alignStart="@+id/PDF" />
+        android:layout_alignBaseline="@+id/vh_doctor"
+        android:layout_alignBottom="@+id/vh_doctor"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="48dp" />
 
     <TextView
         android:text="El documento archivo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="135dp"
-        android:layout_marginStart="135dp"
         android:id="@+id/PDF"
         android:textSize="20sp"
-        android:layout_alignBaseline="@+id/dPDF"
-        android:layout_alignBottom="@+id/dPDF"
-        android:textColor="#00004d"/>
+        android:textColor="#00004d"
+        android:layout_alignTop="@+id/switch2"
+        android:layout_toRightOf="@+id/switch2"
+        android:layout_toEndOf="@+id/switch2"
+        android:layout_marginLeft="19dp"
+        android:layout_marginStart="19dp" />
 
     <!--These are the variable quantities-->
 
     <EditText
         android:layout_width="400dp"
         android:layout_height="wrap_content"
-        android:id="@+id/etPaciente"
+        android:id="@+id/vh_reason"
         android:textSize="20sp"
         android:textAlignment="center"
         android:layout_gravity ="end"
         android:textColor="@color/colorPrimaryDark"
         android:layout_marginTop="30dp"
-        android:layout_below="@+id/etDoctor"
-        android:layout_alignLeft="@+id/etDoctor"/>
+        android:layout_below="@+id/vh_calPicker"
+        android:layout_alignLeft="@+id/vh_calPicker"/>
         <!--android:layout_alignStart="@+id/ddate"-->
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/popout_calendar"
+        android:id="@+id/vh_doctor"
         android:textSize="20sp"
         android:textAlignment="center"
         android:layout_gravity ="end"
         android:textColor="@color/colorPrimaryDark"
         android:layout_marginTop="30dp"
-        android:layout_below="@+id/etPaciente"
-        android:layout_alignLeft="@+id/etPaciente"/>
+        android:layout_below="@+id/vh_reason"
+        android:layout_alignLeft="@+id/vh_reason"/>
         <!--android:layout_alignStart="@+id/dReason"-->
 
-    <EditText
-        android:layout_width="120dp"
-        android:layout_height="50dp"
-        android:id="@+id/dRx"
-        android:textSize="20sp"
-        android:textAlignment="viewEnd"
-        android:layout_gravity ="end"
-        android:textColor="@color/colorPrimaryDark"
-        android:layout_marginTop="30dp"
-        android:layout_below="@+id/popout_calendar"
-        android:layout_alignParentRight="true"/>
-        <!--android:layout_alignStart="@+id/dDoctor"-->
+    <!--android:layout_alignStart="@+id/dDoctor"-->
 
-    <EditText
-        android:layout_width="120dp"
-        android:layout_height="50dp"
-        android:id="@+id/dPDF"
-        android:textSize="20sp"
-        android:textAlignment="viewEnd"
-        android:layout_gravity ="end"
-        android:textColor="@color/colorPrimaryDark"
-        android:layout_marginTop="30dp"
-        android:layout_below="@+id/dRx"
-        android:layout_alignParentRight="true" />
-
-    <EditText
+    <TextView
         android:layout_width="400dp"
         android:layout_height="wrap_content"
-        android:id="@+id/etDoctor"
+        android:id="@+id/vh_calPicker"
         android:layout_weight="1"
+        android:hint="Click para elegir"
         android:textColor="@color/colorPrimaryDark"
         android:textAlignment="center"
         android:layout_gravity ="end"
         android:textSize="20sp"
+        android:clickable="true"
         android:layout_marginTop="28dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
     <Switch
-        android:layout_width="95dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/switch1"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="35dp"
-        android:textOff = "No RX"
-        android:textOn = "RX"
-        android:trackTint="#00004d"
-        android:textSize="4sp"
-        android:thumbTextPadding="0dp"
-        android:layout_alignBaseline="@+id/dRx"
-        android:layout_alignBottom="@+id/dRx"/>
-    <!--android:layout_alignStart="@+id/PDF"
-    android:switchMinWidth="14.5sp"
-    android:layout_alignRight="@+id/PDF"-->
-
-    <Switch
-        android:layout_width="95dp"
-        android:layout_height="wrap_content"
         android:id="@+id/switch2"
-        android:textOff = "No PDF"
-        android:textOn = "PDF"
-        android:trackTint="#00004d"
-        android:textSize="4sp"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/txt_dr"
+        android:layout_alignStart="@+id/txt_dr"
+        android:layout_below="@+id/vh_doctor"
+        android:layout_marginTop="39dp"
+        android:textOff="No PDF"
+        android:textOn="PDF"
+        android:textSize="10sp"
         android:thumbTextPadding="0dp"
-        android:layout_alignLeft="@+id/switch1"
-        android:layout_alignStart="@+id/switch1"
-        android:layout_alignBaseline="@+id/dPDF"
-        android:layout_alignBottom="@+id/dPDF"/>
+        android:trackTint="#00004d" />
 
 
 </RelativeLayout>
