@@ -223,6 +223,7 @@ public class FetchPatientInfo extends AppCompatActivity {
         Intent go_back = new Intent(this, SearchAddPatients.class);
         startActivity(go_back);
     }
+    //!!
 
 }
 
@@ -392,4 +393,4 @@ public class FetchPatientInfo extends AppCompatActivity {
 
 
 
-
+//!!

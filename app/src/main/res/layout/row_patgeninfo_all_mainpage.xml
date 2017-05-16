@@ -14,6 +14,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <!-- change here !-->
+
         <TableRow>
             <TextView android:id="@+id/patidL"
                 android:layout_width="200dp"

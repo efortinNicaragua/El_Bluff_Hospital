@@ -13,7 +13,7 @@ import ethanfortin_nicaragua.elbluffhospital.DataClasses.PatientinfoFields;
 import ethanfortin_nicaragua.elbluffhospital.R;
 
 /**
- * Created by wildcat on 1/26/2017.
+ * Created by wildcat on 1/26/2017!!
  */
 
 public class PatGenInfoAdapter extends ArrayAdapter<PatientinfoFields> {
