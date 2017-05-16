@@ -16,6 +16,9 @@ public class ConnVars {
     public static final String URL_FETCH_PAT_VISIT = "http://192.168.1.2/android_connect/fetch_vh_rx_row.php";
     public static final String URL_ADD_PRESCRIPTION = "http://192.168.1.2/android_connect/add_shipment_row.php";
     public static final String URL_ADD_PATIENTINFO_ROW = "http://192.168.1.2/android_connect/add_patientinfo_row.php";
+    // Image Upload Addresses
+    public static final String URL_UPLOAD = "http://153.104.62.23/image_upload/upload.php";
+    public static final String URL_IMAGES = "http://153.104.62.23/image_upload/get_image.php";
 
     // JSON Tags!
 

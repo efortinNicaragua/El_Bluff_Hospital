@@ -7,6 +7,7 @@ import android.view.View;
 
 import ethanfortin_nicaragua.elbluffhospital.MainMenu;
 import ethanfortin_nicaragua.elbluffhospital.R;
+import ethanfortin_nicaragua.elbluffhospital.UploadFile;
 
 public class DoctorMain extends AppCompatActivity {
 
@@ -21,7 +22,7 @@ public class DoctorMain extends AppCompatActivity {
         startActivity(patHome);
     }
     public void uploadOldFileHome (View v) {
-        Intent uofHome = new Intent(this, UploadOldFileHome.class);
+        Intent uofHome = new Intent(this, UploadFile.class);
         startActivity(uofHome);
     }
 

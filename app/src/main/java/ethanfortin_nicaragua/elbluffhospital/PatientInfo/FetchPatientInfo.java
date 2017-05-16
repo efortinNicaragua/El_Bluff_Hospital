@@ -127,8 +127,10 @@ public class FetchPatientInfo extends AppCompatActivity {
                 HashMap<String, String> map = new HashMap<>();
                 String s;
 
+
                 map.put("patid", sID);
                 s = reqHan.sendGetRequestParam(ConnVars.URL_FETCH_PATIENT_GENERAL_INFO, map);
+
 
                 return s;
             }
