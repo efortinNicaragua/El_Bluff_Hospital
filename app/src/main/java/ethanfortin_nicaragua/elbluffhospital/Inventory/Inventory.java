@@ -23,7 +23,7 @@ import ethanfortin_nicaragua.elbluffhospital.RequestHandler;
 
 public class Inventory extends ListActivity {
 
-    // Set layout, initialize layout object handles and listener
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

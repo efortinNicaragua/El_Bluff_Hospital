@@ -8,6 +8,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -34,6 +35,7 @@ import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import ethanfortin_nicaragua.elbluffhospital.ArrayAdapters.PatGenInfoAdapter;
 import ethanfortin_nicaragua.elbluffhospital.ArrayAdapters.PatientinfoAdapter;
 import ethanfortin_nicaragua.elbluffhospital.ConnVars;
 import ethanfortin_nicaragua.elbluffhospital.DataClasses.PatientinfoFields;
@@ -50,8 +52,9 @@ public class FetchPatientInfo extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fetch_patient_info);
 
-        sID = "patid0";
-
+        Intent intent = getIntent();
+        sID = intent.getStringExtra("patid");
+        Log.d("patid", sID);
         getPatientInfo();
 
         /*
@@ -124,7 +127,10 @@ public class FetchPatientInfo extends AppCompatActivity {
                 HashMap<String, String> map = new HashMap<>();
                 String s;
 
-                s = reqHan.sendGetRequest(ConnVars.URL_FETCH_PATIENT_GENERAL_INFO);
+
+                map.put("patid", sID);
+                s = reqHan.sendGetRequestParam(ConnVars.URL_FETCH_PATIENTINFO_ROW, map);
+
 
                 return s;
             }
@@ -178,8 +184,8 @@ public class FetchPatientInfo extends AppCompatActivity {
             System.out.println("JSON Exception occured...");
         }
 
-        ArrayAdapter<PatientinfoFields> adapter = new PatientinfoAdapter(context, patientInfoData);
-        listView = (ListView) findViewById(android.R.id.list);
+        ArrayAdapter<PatientinfoFields> adapter = new PatGenInfoAdapter(context, patientInfoData);
+        listView = (ListView) findViewById(R.id.list2);
         listView.setAdapter(adapter);
     }
 
@@ -219,6 +225,7 @@ public class FetchPatientInfo extends AppCompatActivity {
         Intent go_back = new Intent(this, SearchAddPatients.class);
         startActivity(go_back);
     }
+    //!!
 
 }
 
@@ -388,4 +395,4 @@ public class FetchPatientInfo extends AppCompatActivity {
 
 
 
-
+//!!

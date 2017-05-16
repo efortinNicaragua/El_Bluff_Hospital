@@ -200,7 +200,7 @@ public class SearchAddPatients extends Activity {
                 map.put("patname",patname_temp);
                 String s;
 
-                s = reqHan.sendGetRequestParam (ConnVars.URL_FETCH_PATIENT_GENERAL_INFO, map);
+                s = reqHan.sendGetRequestParam (ConnVars.URL_FETCH_PATIENTINFO_ROW, map);
 
                 return s;
             }
@@ -889,7 +889,9 @@ public class SearchAddPatients extends Activity {
 
     public void selectPatient_accept(View view){
         System.out.println(selectedListItem.getPatid());
-        Intent intent = new Intent(getBaseContext(), FetchPrescriptions.class);
+
+        Intent intent = new Intent(getBaseContext(), FetchPatientInfo.class);
+
         intent.putExtra("patid", selectedListItem.getPatid());
         startActivity(intent);
     }
@@ -919,3 +921,4 @@ public class SearchAddPatients extends Activity {
 
 
 }
+

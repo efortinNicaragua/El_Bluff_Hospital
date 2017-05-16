@@ -9,6 +9,9 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
 
     <application
         android:allowBackup="true"
@@ -64,8 +67,10 @@
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
-        <activity android:name=".Inventory.FetchShipments"></activity>
-        <activity android:name=".Inventory.FetchSpecificDrug"></activity>
+        <activity android:name=".Inventory.FetchShipments" />
+        <activity android:name=".Inventory.FetchSpecificDrug" />
+        <activity android:name=".UploadFile"></activity>
+
     </application>
 
 </manifest>
