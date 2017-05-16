@@ -47,6 +47,7 @@ public class ConnVars {
     public static final String TAG_PATIENTINFO_WEIGHT = "weight";
     public static final String TAG_PATIENTINFO_ALLERGIES = "allergies";
     public static final String TAG_PATIENTINFO_MEDCOND = "medcond";
+    public static final String TAG_PATIENTINFO_INVPID = "invpid";
 
     public static final String TAG_SHIPMENT = "shipments";
     public static final String TAG_SHIPMENT_SHIPDATE = "shipdate";

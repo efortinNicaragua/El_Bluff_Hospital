@@ -34,7 +34,6 @@ public class PatGenInfoAdapter extends ArrayAdapter<PatientinfoFields> {
 
         //Needs to be updated for all data from pat info class but for now row_patinfo_all only has 2 text views
 
-
         TextView patid = (TextView)convertView.findViewById(R.id.patid);
         TextView patname = (TextView)convertView.findViewById(R.id.patname);
         TextView address = (TextView)convertView.findViewById(R.id.address);
@@ -49,19 +48,18 @@ public class PatGenInfoAdapter extends ArrayAdapter<PatientinfoFields> {
         TextView dob = (TextView) convertView.findViewById(R.id.dob);
 
 
-        patid.setText(single_patgeninfo.C_patid);
-        patname.setText(single_patgeninfo.C_patname);
-        address.setText(single_patgeninfo.C_address);
-        telephone.setText(single_patgeninfo.C_telephone);
-        height.setText(Integer.toString(single_patgeninfo.C_height));
-        gender.setText(single_patgeninfo.C_gender);
-        marstat.setText(single_patgeninfo.C_marstat);
-        children.setText(Integer.toString(single_patgeninfo.C_children));
-        weight.setText(Integer.toString(single_patgeninfo.C_weight));
-        allergies.setText(single_patgeninfo.C_allergies);
-        medcond.setText(single_patgeninfo.C_medcond);
-        dob.setText(single_patgeninfo.C_dob);
-
+        patid.setText(single_patgeninfo.patid);
+        patname.setText(single_patgeninfo.patname);
+        address.setText(single_patgeninfo.address);
+        telephone.setText(single_patgeninfo.telephone);
+        height.setText(Integer.toString(single_patgeninfo.height));
+        gender.setText(single_patgeninfo.gender);
+        marstat.setText(single_patgeninfo.marstat);
+        children.setText(Integer.toString(single_patgeninfo.children));
+        weight.setText(Integer.toString(single_patgeninfo.weight));
+        allergies.setText(single_patgeninfo.allergies);
+        medcond.setText(single_patgeninfo.medcond);
+        dob.setText(single_patgeninfo.dob);
 
         return convertView;
 

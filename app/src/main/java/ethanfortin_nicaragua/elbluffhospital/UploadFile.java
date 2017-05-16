@@ -234,8 +234,10 @@ public class UploadFile extends AppCompatActivity {
     public void uploadMultipart() {
         // To name the image, use combination of the date and the patient's invisible ID
         // TODO add code to get date from activity, and id from bundle
+
+        Intent intent = getIntent();
+        int id = intent.getIntExtra("invpid", -1);
         String date = "2017-05-05";
-        String id = "90001";
 
         //getting the actual path of the image
         String path = getPath(filePath);
@@ -249,7 +251,7 @@ public class UploadFile extends AppCompatActivity {
             new MultipartUploadRequest(this, uploadId, ConnVars.URL_UPLOAD)
                     .addFileToUpload(path, "image") // Adding file
                     .addParameter("date", date) // Adding text parameter to the request
-                    .addParameter("id", id)
+                    .addParameter("id", String.valueOf(id))
                     .setNotificationConfig(new UploadNotificationConfig())
                     .setMaxRetries(2)
                     .startUpload(); // Starting the upload

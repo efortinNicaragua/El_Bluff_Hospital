@@ -40,9 +40,9 @@ public class PatientinfoAdapter extends ArrayAdapter<PatientinfoFields> {
         TextView dob = (TextView) convertView.findViewById(R.id.dob);
 
 
-        patid.setText(single_patgeninfo.C_patid);
-        patname.setText(single_patgeninfo.C_patname);
-        dob.setText(single_patgeninfo.C_dob);
+        patid.setText(single_patgeninfo.patid);
+        patname.setText(single_patgeninfo.patname);
+        dob.setText(single_patgeninfo.dob);
 
 
         return convertView;
