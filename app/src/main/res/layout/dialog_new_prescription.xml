@@ -13,8 +13,8 @@
         android:textSize="20sp"
         android:layout_alignBaseline="@+id/etDrug"
         android:layout_alignBottom="@+id/etDrug"
-        android:layout_alignLeft="@+id/txtRxID"
-        android:layout_alignRight="@+id/txtRxID"
+        android:layout_alignLeft="@+id/txtDoctor"
+        android:layout_alignRight="@+id/txtDoctor"
         android:textAlignment="center"
         android:textColor="#00004d"/>
 
@@ -26,8 +26,8 @@
         android:textSize="20sp"
         android:layout_alignBaseline="@+id/etQuantity"
         android:layout_alignBottom="@+id/etQuantity"
-        android:layout_alignLeft="@+id/txtRxID"
-        android:layout_alignRight="@+id/txtRxID"
+        android:layout_alignLeft="@+id/txtDoctor"
+        android:layout_alignRight="@+id/txtDoctor"
         android:textAlignment="center"
         android:textColor="#00004d"/>
 
@@ -39,23 +39,24 @@
         android:textSize="20sp"
         android:layout_alignBaseline="@+id/etDuration"
         android:layout_alignBottom="@+id/etDuration"
-        android:layout_alignLeft="@+id/txtRxID"
-        android:layout_alignRight="@+id/txtRxID"
+        android:layout_alignLeft="@+id/txtDoctor"
+        android:layout_alignRight="@+id/txtDoctor"
         android:textAlignment="center"
         android:textColor="#00004d"/>
 
     <TextView
-        android:text="Razón"
+        android:id="@+id/txtReason"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/txtReason"
+        android:text="Síntomas/Razon por prescripción"
+        android:textAlignment="center"
+        android:textColor="#00004d"
         android:textSize="20sp"
+        android:layout_marginLeft="20dp"
         android:layout_alignBaseline="@+id/etReason"
         android:layout_alignBottom="@+id/etReason"
-        android:layout_alignLeft="@+id/txtRxID"
-        android:layout_alignRight="@+id/txtRxID"
-        android:textAlignment="center"
-        android:textColor="#00004d"/>
+        android:layout_toLeftOf="@+id/etReason"
+        android:layout_toStartOf="@+id/etReason" />
 
     <TextView
         android:text="Instrucciónes"
@@ -65,36 +66,36 @@
         android:textSize="20sp"
         android:layout_alignBaseline="@+id/etDirections"
         android:layout_alignBottom="@+id/etDirections"
-        android:layout_alignLeft="@+id/txtRxID"
-        android:layout_alignRight="@+id/txtRxID"
+        android:layout_alignLeft="@+id/txtDoctor"
+        android:layout_alignRight="@+id/txtDoctor"
         android:textAlignment="center"
         android:textColor="#00004d"/>
 
     <TextView
-        android:text="El Doctor"
+        android:id="@+id/txt_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/Doctor"
-        android:textSize="20sp"
-        android:layout_alignBaseline="@+id/etDoctor"
-        android:layout_alignBottom="@+id/etDoctor"
-        android:layout_alignLeft="@+id/txtRxID"
-        android:layout_alignRight="@+id/txtRxID"
+        android:layout_alignBaseline="@+id/popout_calendar"
+        android:layout_alignBottom="@+id/popout_calendar"
+        android:layout_alignLeft="@+id/txtDoctor"
+        android:layout_alignRight="@+id/txtDoctor"
+        android:text="Fecha"
         android:textAlignment="center"
-        android:textColor="#00004d"/>
+        android:textColor="#00004d"
+        android:textSize="20sp" />
 
 
-    <EditText
+    <TextView
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:id="@+id/etDoctor"
+        android:id="@+id/popout_calendar"
         android:textSize="20sp"
+        android:hint="click para elegir"
         android:textAlignment="center"
         android:textColor="@color/colorPrimaryDark"
         android:layout_marginTop="30dp"
-        android:layout_below="@+id/etRxID"
-        android:layout_alignLeft="@+id/etRxID"
-        android:inputType="textPersonName" />
+        android:layout_below="@+id/etDoctor"
+        android:layout_alignLeft="@+id/etDoctor" />
 
     <EditText
         android:layout_width="200dp"
@@ -105,8 +106,8 @@
         android:layout_gravity ="end"
         android:textColor="@color/colorPrimaryDark"
         android:layout_marginTop="30dp"
-        android:layout_below="@+id/etDoctor"
-        android:layout_alignLeft="@+id/etDoctor"
+        android:layout_below="@+id/popout_calendar"
+        android:layout_alignLeft="@+id/popout_calendar"
         android:inputType="textShortMessage" />
 
     <EditText
@@ -123,17 +124,17 @@
         android:inputType="number" />
 
     <EditText
+        android:id="@+id/etDuration"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:id="@+id/etDuration"
-        android:textSize="20sp"
-        android:textAlignment="center"
-        android:layout_gravity ="end"
-        android:textColor="@color/colorPrimaryDark"
-        android:layout_marginTop="30dp"
-        android:layout_below="@+id/etQuantity"
         android:layout_alignLeft="@+id/etQuantity"
-        android:inputType="textShortMessage" />
+        android:layout_below="@+id/etQuantity"
+        android:layout_gravity="end"
+        android:layout_marginTop="30dp"
+        android:inputType="textImeMultiLine"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="20sp" />
 
     <EditText
         android:layout_width="200dp"
@@ -163,34 +164,36 @@
         android:layout_marginBottom="30dp"/>
 
     <TextView
-        android:text="Identificación"
-        android:layout_width="wrap_content"
+        android:id="@+id/txtDoctor"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:id="@+id/txtRxID"
-        android:textSize="20sp"
+        android:layout_marginLeft="59dp"
+        android:text="Doctor"
+        android:textAlignment="center"
         android:textColor="#00004d"
-        android:layout_alignBaseline="@+id/etRxID"
-        android:layout_alignBottom="@+id/etRxID"
-        android:layout_marginLeft="80dp" />
+        android:textSize="20sp"
+        android:layout_above="@+id/popout_calendar"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="59dp" />
 
     <EditText
+        android:id="@+id/etDoctor"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:id="@+id/etRxID"
-        android:textColor="@color/colorPrimaryDark"
-        android:textAlignment="center"
-        android:layout_gravity ="end"
-        android:textSize="20sp"
-        android:layout_marginTop="30dp"
-        android:inputType="none"
-        android:text="XXRT-0029"
         android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/txtRxID"
-        android:layout_toEndOf="@+id/txtRxID"
+        android:layout_gravity="end"
+        android:layout_marginEnd="80dp"
         android:layout_marginLeft="50dp"
-        android:layout_marginStart="50dp"
         android:layout_marginRight="80dp"
-        android:layout_marginEnd="80dp"/>
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="30dp"
+        android:layout_toEndOf="@+id/txtDoctor"
+        android:layout_toRightOf="@+id/txtDoctor"
+        android:inputType="text"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="20sp" />
 
 
 </RelativeLayout>

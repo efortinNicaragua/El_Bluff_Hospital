@@ -23,9 +23,9 @@ public class ConnVars {
     public static final String URL_FETCH_PAT_VISIT = "http://192.168.1.2/android_connect/fetch_vh_rx_row.php";
     public static final String URL_ADD_PRESCRIPTION = "http://192.168.1.2/android_connect/add_shipment_row.php";
     public static final String URL_ADD_PATIENTINFO_ROW = "http://192.168.1.2/android_connect/add_patientinfo_row.php";
+   public static final String URL_UPDATE_DRUG_RX_ROW="http://192.168.1.2/android_connect/update_drug_rx_row.php";
 
-
-    // JSON Tags!
+  // JSON Tags!
     public static final String TAG_SUCCESS = "success";
 
     public static final String TAG_DRUGINFO = "druginfo";
@@ -65,6 +65,7 @@ public class ConnVars {
     public static final String TAG_PRESCRIPTIONS_DURATION = "duration";
     public static final String TAG_PRESCRIPTIONS_DOCTOR = "doctor";
     public static final String TAG_PRESCRIPTIONS_SYMPTOMS = "symptoms";
+    public static final String TAG_NEWPRE_ERRORMESSAGES="Prescription_ErrorMessages";
     //The drugname will have to come from a join in the php script
     public static final String TAG_PRESCRIPTIONS_DRUGNAME = "drugname";
 

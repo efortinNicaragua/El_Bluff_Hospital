@@ -571,18 +571,18 @@ public class SearchAddPatients extends Activity {
                 //Date date= c.getTime();
                // Log.d("Ethan Date", c.get(Calendar.DAY_OF_MONTH)+ " "+ c.get(Calendar.MONTH)+1+  " "+ c.get(Calendar.YEAR));
 
-                final NumberPicker height_picker = (NumberPicker) subView.findViewById(R.id.day_picker) ;
+                final NumberPicker day_picker = (NumberPicker) subView.findViewById(R.id.day_picker) ;
                 //Here is were we will set values for number picker
-                height_picker.setMinValue(1);
-                height_picker.setMaxValue(31);
-                height_picker.setValue(c.get(Calendar.DAY_OF_MONTH));
-                height_picker.setWrapSelectorWheel(true);
+                day_picker.setMinValue(1);
+                day_picker.setMaxValue(31);
+                day_picker.setValue(c.get(Calendar.DAY_OF_MONTH));
+                day_picker.setWrapSelectorWheel(true);
 
-                final NumberPicker height_decimalPicker = (NumberPicker) subView.findViewById(R.id.month_picker) ;
-                height_decimalPicker.setMinValue(1);
-                height_decimalPicker.setMaxValue(12);
-                height_decimalPicker.setValue(c.get(Calendar.MONTH)+1);
-                height_decimalPicker.setWrapSelectorWheel(true);
+                final NumberPicker month_Picker = (NumberPicker) subView.findViewById(R.id.month_picker) ;
+                month_Picker.setMinValue(1);
+                month_Picker.setMaxValue(12);
+                month_Picker.setValue(c.get(Calendar.MONTH)+1);
+                month_Picker.setWrapSelectorWheel(true);
 
                 final NumberPicker year_picker = (NumberPicker) subView.findViewById(R.id.year_picker);
                 year_picker.setMinValue(1900);
@@ -602,12 +602,12 @@ public class SearchAddPatients extends Activity {
                     String dob_day_temp1, dob_month_temp1;
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        dob_day_temp=height_picker.getValue();
+                        dob_day_temp=day_picker.getValue();
                         if (dob_day_temp<=9){
                              dob_day_temp1= "0"+dob_day_temp;
                         }
                         else{ dob_day_temp1=dob_day_temp+"";}
-                        dob_month_temp=height_decimalPicker.getValue();
+                        dob_month_temp=month_Picker.getValue();
                         if (dob_month_temp<=9){
                              dob_month_temp1= "0"+dob_month_temp;
                         }
@@ -753,7 +753,7 @@ public class SearchAddPatients extends Activity {
             builderSingle1.show();
     }
     private void newPatient(final String patname, final String patid, final String address, final String telephone, final String gender, final String marstat,
-                            final String dob, final String children, final String height, final String weight, final String allergies, final String medcond ) {
+                            final String s_dob, final String children, final String height, final String weight, final String allergies, final String medcond ) {
         class get_newPatient extends AsyncTask<Void, Void, String> {
             ProgressDialog loading;
 
@@ -894,6 +894,9 @@ public class SearchAddPatients extends Activity {
 
         intent.putExtra("patid", selectedListItem.getPatid());
         startActivity(intent);
+    }
+    public void selectPatient_cancel(View view){
+       findPatient_dialog.cancel();
     }
 
     @Override
