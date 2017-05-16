@@ -44,7 +44,6 @@
         android:ems="10"
         android:id="@+id/patID"
         android:hint="Numero o nombre del identificacion"
-        android:singleLine="true"
         android:layout_below="@+id/textView12"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
