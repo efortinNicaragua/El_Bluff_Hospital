@@ -124,7 +124,7 @@ public class FetchPatientInfo extends AppCompatActivity {
                 HashMap<String, String> map = new HashMap<>();
                 String s;
 
-                s = reqHan.sendGetRequest(ConnVars.URL_FETCH_PATIENT_GENERAL_INFO);
+                s = reqHan.sendGetRequest(ConnVars.URL_FETCH_PATIENTINFO_ROW);
 
                 return s;
             }
