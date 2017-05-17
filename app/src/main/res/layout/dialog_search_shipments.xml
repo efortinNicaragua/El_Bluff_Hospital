@@ -4,56 +4,145 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:layout_below="@+id/textView28"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/searchByName"
-        android:hint="Nombre de medicina" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:id="@+id/searchByID"
-        android:hint="ID de medicina"
-        android:layout_below="@+id/searchByName"
-        android:layout_alignLeft="@+id/searchByName"
-        android:layout_alignStart="@+id/searchByName" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView28"
-        android:layout_weight="1"
-        android:textSize="24sp"
-        android:text="Nombre o ID"
-        android:textColor="@color/colorPrimaryDark"
-        android:layout_marginTop="21dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:orientation = "vertical"
+        android:id="@+id/linearLayout">
 
-    <DatePicker
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:calendarViewShown="false"
-        android:id="@+id/datePicker2"
-        android:layout_marginTop="23dp"
-        android:layout_below="@+id/dateEnable"
-        android:layout_centerHorizontal="true" />
+        <LinearLayout
+            android:id="@+id/TopHoriLayout"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_weight="1"
+            android:orientation="horizontal">
 
-    <Switch
-        android:text="busca por la fecha del envio    "
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/dateEnable"
-        android:layout_marginTop="18dp"
-        android:layout_below="@+id/searchByID"
-        android:layout_alignLeft="@+id/searchByID"
-        android:layout_alignStart="@+id/searchByID" />
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+
+            <TextView
+                android:id="@+id/drug_name_view"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="Nombre de Droga"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="20sp" />
+
+
+            <EditText
+                android:id="@+id/filter_bar"
+                android:layout_width="200dp"
+                android:layout_height="60dp"
+                android:hint="Nombre de medicina"
+                android:layout_alignParentRight = "true"/>
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation = "horizontal"
+            android:layout_alignParentLeft="true">
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:id="@+id/drug_id_view"
+                android:textSize="20sp"
+                android:text="ID de Droga"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_below="@+id/drug_name_view"/>
+
+
+            <EditText
+                android:id="@+id/searchByID"
+                android:layout_width="200dp"
+                android:layout_height="60dp"
+                android:hint="ID de medicina" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+         </LinearLayout>
+
+        <Switch
+            android:text="busca por la fecha del envio    "
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/dateEnable"
+            android:layout_marginTop="18dp"
+            android:layout_below="@+id/searchByID"
+            android:layout_alignLeft="@+id/searchByID"
+            android:layout_alignStart="@+id/searchByID" />
+
+
+        <DatePicker
+            android:id="@+id/datePicker2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/linearLayout"
+            android:layout_marginLeft="46dp"
+            android:layout_marginStart="46dp" />
+
+
+
+    </LinearLayout>
+
+
+
+
+    <!--  &lt;!&ndash;    <ListView
+              android:id="@+id/drug_name_list"
+              android:layout_width="match_parent"
+              android:layout_height="450dp"
+              android:minHeight="75dp"
+              android:layout_alignParentLeft="true"
+              android:layout_alignParentStart="true"
+              android:layout_below="@id/filter_bar"
+              android:choiceMode="singleChoice" />&ndash;&gt;
+
+         &lt;!&ndash; <EditText
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:inputType="textPersonName"
+              android:ems="10"
+              android:id="@+id/searchByID"
+              android:hint="ID de medicina"
+              android:layout_below="@+id/filter_bar"
+              android:layout_alignRight = "@+id/textView29" />&ndash;&gt;
+      </LinearLayout>&ndash;&gt;-->
+
+
+     <!--
+      -->
+
+
+
+
+
 
 </RelativeLayout>

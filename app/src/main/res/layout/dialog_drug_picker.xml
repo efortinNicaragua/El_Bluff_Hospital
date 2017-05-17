@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+        <ListView
+     android:id="@+id/drug_list_full"
+     android:layout_width="match_parent"
+     android:layout_height="450dp"
+     android:minHeight="75dp"
+     android:layout_alignParentLeft="true"
+     android:layout_alignParentStart="true"
+     android:layout_below="@id/filter_bar"
+     android:choiceMode="singleChoice" />
+
+        <EditText
+           android:layout_width="200dp"
+           android:layout_height="40dp"
+           android:id="@+id/filter_bar2"
+           android:textSize="15sp"
+           android:textAlignment="center"
+           android:layout_gravity ="end"
+           android:textColor="@color/colorPrimaryDark"
+           android:layout_marginTop="30dp"
+           android:layout_below="@+id/popout_calendar"
+           android:layout_alignLeft="@+id/popout_calendar"
+           android:inputType="textShortMessage" />
+
+
+</LinearLayout>
