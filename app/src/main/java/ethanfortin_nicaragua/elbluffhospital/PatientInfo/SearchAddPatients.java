@@ -96,6 +96,8 @@ public class SearchAddPatients extends Activity {
         }
 
         patientFetch(sID,sName);
+        sName=null;
+        sID=null;
     }
 
     private void patientFetch(final String patid, final String patname) {
@@ -658,6 +660,7 @@ public class SearchAddPatients extends Activity {
     }
     public void selectPatient_cancel(View view){
        findPatient_dialog.cancel();
+        patinfo.clear();
     }
 
     @Override
