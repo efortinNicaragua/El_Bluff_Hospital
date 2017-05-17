@@ -6,15 +6,28 @@ import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Switch;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+
+import ethanfortin_nicaragua.elbluffhospital.ArrayAdapters.DrugNameAdapter;
+import ethanfortin_nicaragua.elbluffhospital.ConnVars;
 import ethanfortin_nicaragua.elbluffhospital.R;
 
 public class InventoryOptions extends AppCompatActivity {
@@ -33,7 +46,7 @@ public class InventoryOptions extends AppCompatActivity {
                 LayoutInflater inflater = LayoutInflater.from(InventoryOptions.this);
                 final View subView = inflater.inflate(R.layout.dialog_search_shipments, null);
 
-                final EditText entryName = (EditText) subView.findViewById(R.id.searchByName);
+                final EditText entryName = (EditText) subView.findViewById(R.id.filter_bar);
                 final EditText entryId = (EditText) subView.findViewById(R.id.searchByID);
                 final DatePicker datePicker = (DatePicker) subView.findViewById(R.id.datePicker2);
 

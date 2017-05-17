@@ -9,33 +9,38 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.text.TextUtils;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
 import android.widget.ListView;
 import android.widget.NumberPicker;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 
+import ethanfortin_nicaragua.elbluffhospital.ArrayAdapters.DrugNameAdapter;
 import ethanfortin_nicaragua.elbluffhospital.ArrayAdapters.FetchPrescriptions_ExpListAdapter;
 import ethanfortin_nicaragua.elbluffhospital.ConnVars;
 import ethanfortin_nicaragua.elbluffhospital.DataClasses.PrescriptionFields;
+import ethanfortin_nicaragua.elbluffhospital.Inventory.FetchSpecificDrug;
 import ethanfortin_nicaragua.elbluffhospital.R;
 import ethanfortin_nicaragua.elbluffhospital.RequestHandler;
 
@@ -54,7 +59,10 @@ public class FetchPrescriptions extends AppCompatActivity {
     String dob_day_temp1, dob_month_temp1;
     int dob_day_temp, dob_month_temp, dob_year_temp;
     AlertDialog db_message;
-
+    DrugNameAdapter adapter;
+    ListView lv;
+    String selectedListItem;
+    EditText filter;
 
 
     @Override
@@ -65,6 +73,8 @@ public class FetchPrescriptions extends AppCompatActivity {
         Intent intent = getIntent();
         sID = intent.getStringExtra("patid");
         patientRXFetch(sID);
+
+
 
 
         /**ML: Testing to see if the data that comes back is correct!**/
@@ -81,14 +91,55 @@ public class FetchPrescriptions extends AppCompatActivity {
                 LayoutInflater inflater = LayoutInflater.from(FetchPrescriptions.this);
                 final View subView = inflater.inflate(R.layout.dialog_new_prescription, null);
 
+                //nameListFetch();
                 // final EditText entryDate = (EditText) subView.findViewById(R.id.);
                 final EditText doctor=(EditText) subView.findViewById(R.id.etDoctor);
                 final TextView calendar = (TextView) subView.findViewById(R.id.popout_calendar);
-                final EditText drugname = (EditText) subView.findViewById(R.id.etDrug);
+                final TextView drugname = (TextView) subView.findViewById(R.id.popout_list);
                 final EditText quantity = (EditText) subView.findViewById(R.id.etQuantity);
                 final EditText duration = (EditText) subView.findViewById(R.id.etDuration);
                 final EditText reason = (EditText) subView.findViewById(R.id.etReason);
                 final EditText directions = (EditText) subView.findViewById(R.id.etDirections);
+
+
+
+                drugname.setOnClickListener(new View.OnClickListener(){
+                    @Override
+                    public void onClick(View v){
+                        LayoutInflater inflater = LayoutInflater.from(FetchPrescriptions.this);
+                        View subView = inflater.inflate(R.layout.dialog_drug_picker, null);
+
+                       lv = (ListView) subView.findViewById(R.id.drug_list_full);
+                        filter = (EditText)subView.findViewById(R.id.filter_bar2);
+
+                        //Build dialog set it to subview
+                        AlertDialog.Builder builderSingle2 = new AlertDialog.Builder(context);
+                        builderSingle2.setView(subView);
+
+                        nameListFetch();
+
+                        builderSingle2.setNegativeButton(
+                                "Cancel",
+                                new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        dialog.dismiss();
+                                    }
+                                });
+
+                        builderSingle2.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        dialog.cancel();
+                                        drugname.setText(selectedListItem);
+                                    }
+                        });
+
+                        builderSingle2.show();
+                    }
+
+                });
 
                 calendar.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -171,7 +222,8 @@ public class FetchPrescriptions extends AppCompatActivity {
 
                                 String s_doctor= doctor.getText().toString();
                                 String s_calendar=dob_year_temp+"-"+dob_month_temp1+"-"+dob_day_temp1;
-                                String s_drug = drugname.getText().toString();
+                                //changed this
+                                String s_drug = selectedListItem;
                                 String s_quantity=quantity.getText().toString();
                                 String s_duration = duration.getText().toString();
                                 String s_reason=reason.getText().toString();
@@ -199,6 +251,102 @@ public class FetchPrescriptions extends AppCompatActivity {
 
         });
     }
+
+
+    // Fetches JSON String of all drugs in inventory
+    private void nameListFetch() {
+
+        class fetchNameList extends AsyncTask<Void,Void,String> {
+
+            ProgressDialog loading;
+
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+                loading = ProgressDialog.show(FetchPrescriptions.this,"Buscando...","Espera, por favor",false,false);
+            }
+
+            // Once JSON received correctly, parse and display it
+            @Override
+            protected void onPostExecute(String s) {
+                super.onPostExecute(s);
+                loading.dismiss();
+
+                String drugName;
+                //lv = (ListView) subView.findViewById(R.id.drug_list_full);
+                ArrayList<String> list = new ArrayList<>();
+                int count = 0;
+
+                try {
+                    JSONObject jsonObject = new JSONObject(s);
+                    JSONArray resArr = jsonObject.getJSONArray(ConnVars.TAG_DRUGINFO);
+
+                    while (count < resArr.length()) {
+                        System.out.println("Array: " + list);
+                        JSONObject resObj = resArr.getJSONObject(count);
+                        drugName = resObj.getString(ConnVars.TAG_DRUGINFO_NAME);
+                        list.add(drugName);
+                        count++;
+                    }
+
+                } catch (JSONException j) {
+                    System.out.println("JSON Exception occurred...");
+                }
+
+
+                adapter = new DrugNameAdapter(FetchPrescriptions.this, list);
+
+                //final EditText filter = (EditText)findViewById(R.id.filter_bar2);
+                lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                        selectedListItem = (String) lv.getItemAtPosition(position);
+                        System.out.println("ITEM = " + selectedListItem);
+                        InputMethodManager mgr = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                        mgr.hideSoftInputFromWindow(filter.getWindowToken(), 0);
+                        //drugFetch(selectedListItem);
+                    }
+                });
+
+                lv.setAdapter(adapter);
+
+
+                filter.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+                        FetchPrescriptions.this.adapter.getFilter().filter(s);
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+
+                    }
+                });
+            }
+
+            // Pass user input params to fetch method, even if they are blank
+            protected String doInBackground(Void... params) {
+
+                String s;
+                RequestHandler reqHan = new RequestHandler();
+                s = reqHan.sendGetRequest(ConnVars.URL_FETCH_DRUGINFO_ALL);
+
+                return s;
+            }
+        }
+
+        fetchNameList nameList = new fetchNameList();
+        nameList.execute();
+    }
+
+
+
+
+
     private void newPrescription(final String doctor, final String transaction_date, final String drug, final String quantity, final String duration, final String reason,
                             final String directions ) {
         class get_newPrescription extends AsyncTask<Void, Void, String>{
@@ -278,6 +426,8 @@ public class FetchPrescriptions extends AppCompatActivity {
         }
         get_newPrescription np = new get_newPrescription();
         np.execute();
+
+        System.out.println("Selected List Item:" + selectedListItem);
     }
     private int jsonParseAdd(String json_string) {
 
