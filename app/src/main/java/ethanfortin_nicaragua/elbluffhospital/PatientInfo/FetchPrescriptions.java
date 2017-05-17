@@ -40,7 +40,10 @@ import ethanfortin_nicaragua.elbluffhospital.ArrayAdapters.DrugNameAdapter;
 import ethanfortin_nicaragua.elbluffhospital.ArrayAdapters.FetchPrescriptions_ExpListAdapter;
 import ethanfortin_nicaragua.elbluffhospital.ConnVars;
 import ethanfortin_nicaragua.elbluffhospital.DataClasses.PrescriptionFields;
+
 import ethanfortin_nicaragua.elbluffhospital.Inventory.FetchSpecificDrug;
+import ethanfortin_nicaragua.elbluffhospital.DataClasses.VisitFields;
+
 import ethanfortin_nicaragua.elbluffhospital.R;
 import ethanfortin_nicaragua.elbluffhospital.RequestHandler;
 
@@ -53,16 +56,20 @@ public class FetchPrescriptions extends AppCompatActivity {
 
     Context context = this;
     ArrayList<PrescriptionFields> patRXdata = new ArrayList();
+    ArrayList<String> drugname= new ArrayList<>();
     ListView LV_patRX;
     int count = 0;
     String sID;
     String dob_day_temp1, dob_month_temp1;
     int dob_day_temp, dob_month_temp, dob_year_temp;
     AlertDialog db_message;
+
     DrugNameAdapter adapter;
     ListView lv;
     String selectedListItem;
     EditText filter;
+    int hash_count=0;
+
 
 
     @Override
@@ -456,7 +463,7 @@ public class FetchPrescriptions extends AppCompatActivity {
 
 
 
-            // while (count < jsonArray.length()) {
+             while (count < jsonArray.length()) {
             JSONObject jo = jsonArray.getJSONObject(count);
             Log.d("Test1", "Jo.count0"+jsonArray.getJSONObject(0));
             //Log.d("Test1", "Jo.count1"+jsonArray.getJSONObject(1));
@@ -467,8 +474,8 @@ public class FetchPrescriptions extends AppCompatActivity {
                 int_message = Integer.parseInt(message);
                 Log.d("Test1", "JsonInt:" + int_message);
             } catch (NumberFormatException n) {}
-            //   count++;
-            //}
+              count++;
+            }
         }
         catch(JSONException p){
             Log.d("Test1", "JSON ERROR MESSAGE");
@@ -562,19 +569,21 @@ public class FetchPrescriptions extends AppCompatActivity {
                 System.out.println("8");
                 String r_symptoms = resObj.getString(ConnVars.TAG_PRESCRIPTIONS_SYMPTOMS);
                 System.out.println("9");
-
-                /**ML: This needs to be fixed, JSON exception occurs here because it needs to come from a table join**/
-                //String r_drugName = resObj.getString(ConnVars.TAG_PRESCRIPTIONS_DRUGNAME);
-                // System.out.println("10");
+                String r_drugName = resObj.getString(ConnVars.TAG_PRESCRIPTIONS_DRUGNAME);
+                System.out.println("10 "+r_drugName);
 
                         try{
                             Integer r_quantity_int = Integer.parseInt(r_quantity);
                             patRXdata.add(new PrescriptionFields(r_rxID, r_drugID, r_transDate, r_quantity_int, r_patID, r_directions, r_duration, r_doctor, r_symptoms));
+                            drugname.add(r_drugName);
+                            Log.d("Go kids",patRXdata.get(count).D_RXId().toString());
+                            Log.d("go kids round 2", drugname.get(count));
                         } catch(NumberFormatException nfe){
                             System.out.println("Number format exception occured!");
                         }
 
                 count++;
+                hash_count++;
             }
 
 
@@ -596,7 +605,7 @@ public class FetchPrescriptions extends AppCompatActivity {
 
     private void initData() {
         /**ML: Need to make a count variable to select all prescriptions not just the first one (get rid of the o)**/
-        PrescriptionFields temp1 = patRXdata.get(0);
+        /*PrescriptionFields temp1 = patRXdata.get(0);
         listDataHeader = new ArrayList<>();
         listHash = new HashMap<>();
 
@@ -618,7 +627,40 @@ public class FetchPrescriptions extends AppCompatActivity {
         //Put the data in the HashMap
         listHash.put(listDataHeader.get(0), rx1);
 
+    }*/
+
+        /**ML: Need to make a count variable to select all visits not just the first one (get rid of the o)**/
+        int H_count = 0;
+        listDataHeader = new ArrayList<>();
+        listHash = new HashMap<>();
+
+        while (H_count < hash_count) {
+            PrescriptionFields temp1 = patRXdata.get(H_count);
+            String drugname_temp= drugname.get(H_count);
+
+            //This is where you set the prescription IS as the Group Item
+            listDataHeader.add(temp1.C_rxid);
+
+            //This is where you set the child items of each group item
+            List<String> rx1 = new ArrayList<>();
+            rx1.add("ID de Paciente:    " + temp1.C_patid);
+            rx1.add("ID de Medicina:    " + temp1.C_drugid);
+            rx1.add("La Indicaciones:    " + temp1.C_directions);
+            rx1.add("El Doctor:    " + temp1.C_doctor);
+            rx1.add("La Droga:    " + drugname_temp);
+            rx1.add("La Duración:    " + temp1.C_duration);
+            rx1.add("La Cantidad:    " + temp1.C_quantity);
+            rx1.add("La Sintoma:    " + temp1.C_symptoms);
+            rx1.add("La fecha de Transacción:    " + temp1.C_transdate);
+            ;
+
+            //Put the data in the HashMap
+            listHash.put(listDataHeader.get(H_count), rx1);
+
+            H_count++;
+        }
     }
+
 
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
