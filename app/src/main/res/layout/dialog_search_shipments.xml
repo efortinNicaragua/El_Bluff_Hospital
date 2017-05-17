@@ -14,17 +14,6 @@
         android:id="@+id/searchByName"
         android:hint="Nombre de medicina" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:id="@+id/searchByID"
-        android:hint="ID de medicina"
-        android:layout_below="@+id/searchByName"
-        android:layout_alignLeft="@+id/searchByName"
-        android:layout_alignStart="@+id/searchByName" />
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -51,9 +40,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/dateEnable"
-        android:layout_marginTop="18dp"
-        android:layout_below="@+id/searchByID"
-        android:layout_alignLeft="@+id/searchByID"
-        android:layout_alignStart="@+id/searchByID" />
+        android:layout_marginTop="52dp"
+        android:layout_below="@+id/searchByName"
+        android:layout_alignLeft="@+id/searchByName"
+        android:layout_alignStart="@+id/searchByName" />
 
 </RelativeLayout>
