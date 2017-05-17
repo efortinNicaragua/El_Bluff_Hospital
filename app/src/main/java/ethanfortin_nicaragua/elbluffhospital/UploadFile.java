@@ -43,6 +43,8 @@ public class UploadFile extends AppCompatActivity {
     private TextView tvDate;
     private Button chooseImage, chooseDate, upload;
     private Uri filePath;
+    private boolean gallery;
+    private boolean ready = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,7 +72,7 @@ public class UploadFile extends AppCompatActivity {
         upload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                uploadMultipart();
+                if (ready) uploadMultipart(gallery);
             }
         });
 
@@ -117,10 +119,12 @@ public class UploadFile extends AppCompatActivity {
                 boolean result = Utility.checkPermission(UploadFile.this);
                 if (items[item].equals("Tomar un foto")) {
                     userChosenTask = "Tomar un foto";
+                    gallery = false;
                     if(result) cameraIntent();
 
                 } else if (items[item].equals("Eligir de galería")) {
                     userChosenTask = "Eligir de galería";
+                    gallery = true;
                     if(result) galleryIntent();
 
                 } else if (items[item].equals("Calcelar")) {
@@ -139,9 +143,32 @@ public class UploadFile extends AppCompatActivity {
     }
 
     private void cameraIntent() {
-        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        startActivityForResult(intent, REQUEST_CAMERA);
+        Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+        if (cameraIntent.resolveActivity(getPackageManager()) != null) {
 
+            File photoFile = null;
+            try {
+                photoFile = createImageFile();
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+
+            if(photoFile != null)
+            {
+                cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(photoFile));
+                startActivityForResult(cameraIntent, REQUEST_CAMERA);
+            }
+        }
+    }
+
+    private File createImageFile() throws IOException {
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        String imageFileName = "Image_" + timeStamp + "_";
+
+        File storageDirectory = getExternalFilesDir("");
+        File image = File.createTempFile(imageFileName, ".jpg",storageDirectory);
+        return image;
     }
 
     @Override
@@ -174,29 +201,20 @@ public class UploadFile extends AppCompatActivity {
 
     private void onCaptureImageResult(Intent data) {
 
-        Bitmap thumbnail = (Bitmap) data.getExtras().get("data");
+        File myPath = getExternalFilesDir(null);
 
-        // Handle showing thumbnail on screen
-        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-        thumbnail.compress(Bitmap.CompressFormat.JPEG, 90, bytes);
+        filePath = Uri.parse("file://" + myPath.listFiles()[myPath.listFiles().length - 1].getAbsolutePath());
+        System.out.println("FilePath = " + filePath);
+        Bitmap bm = null;
+        try {
+            bm = MediaStore.Images.Media.getBitmap(getApplicationContext().getContentResolver(), filePath);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
-        ivImage.setImageBitmap((Bitmap) data.getExtras().get("data"));
-
-        String path = MediaStore.Images.Media.insertImage(this.getContentResolver(), thumbnail, "Title", null);
-        filePath = Uri.parse(path);
+        ivImage.setImageBitmap(bm);
+        ready = true;
     }
-
-    /*
-    private File createImageFile() throws IOException {
-        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-        String imageFileName = "JPEG_" + timeStamp + "_";
-        File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
-        File image = File.createTempFile(imageFileName, ".jpg", storageDir);
-
-        String path = image.getAbsolutePath();
-        filePath = Uri.parse(path);
-        return image;
-    } */
 
     @SuppressWarnings("deprecation")
     private void onSelectFromGalleryResult(Intent data) {
@@ -204,6 +222,7 @@ public class UploadFile extends AppCompatActivity {
         Bitmap bm=null;
         if (data != null) {
             filePath = data.getData();
+            System.out.println("FilePath = " + filePath);
             try {
                 bm = MediaStore.Images.Media.getBitmap(getApplicationContext().getContentResolver(), filePath);
             } catch (IOException e) {
@@ -212,6 +231,7 @@ public class UploadFile extends AppCompatActivity {
         }
 
         ivImage.setImageBitmap(bm);
+        ready = true;
     }
 
     public String getPath(Uri uri) {
@@ -231,7 +251,7 @@ public class UploadFile extends AppCompatActivity {
         return path;
     }
 
-    public void uploadMultipart() {
+    public void uploadMultipart(boolean gallery) {
         // To name the image, use combination of the date and the patient's invisible ID
         // TODO add code to get date from activity, and id from bundle
 
@@ -240,7 +260,13 @@ public class UploadFile extends AppCompatActivity {
         String date = "2017-05-05";
 
         //getting the actual path of the image
-        String path = getPath(filePath);
+        String path;
+        if(gallery) {
+            path = getPath(filePath);
+        } else {
+            path = filePath.getPath();
+        }
+
         System.out.println("filePath = " + filePath);
         System.out.println("path = " + path);
         //Uploading code
