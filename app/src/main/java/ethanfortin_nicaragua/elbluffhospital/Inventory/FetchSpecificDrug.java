@@ -51,7 +51,6 @@ public class FetchSpecificDrug extends AppCompatActivity {
         setContentView(R.layout.activity_fetch_specific_drug);
 
         nameListFetch();
-
     }
 
     // Fetches JSON String of all drugs in inventory

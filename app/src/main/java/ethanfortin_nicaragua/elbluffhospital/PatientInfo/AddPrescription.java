@@ -38,14 +38,14 @@ public class AddPrescription extends AppCompatActivity {
                 final EditText entryPillQuant = (EditText)findViewById(R.id.pillQuantity);
                 final EditText entryDirections = (EditText)findViewById(R.id.etDirections);
                 final EditText entryDuration = (EditText)findViewById(R.id.etDuration);
-                final EditText entryDoctor = (EditText)findViewById(R.id.popout_calendar);
+                final EditText entryDoctor = (EditText)findViewById(R.id.etDoctor);
                 final EditText entryReason = (EditText)findViewById(R.id.etReason);
 
                 TextView tv1 = (TextView)subView.findViewById(R.id.dPatIdOrName);
                 TextView tv2 = (TextView)subView.findViewById(R.id.dMedId);
                 TextView tv3 = (TextView)subView.findViewById(R.id.dPillQuantity);
                 TextView tv4 = (TextView)subView.findViewById(R.id.popout_calendar);
-                TextView tv5 = (TextView)subView.findViewById(R.id.date);
+                TextView tv5 = (TextView)subView.findViewById(R.id.visit);
 
                 int eFlag = 0;
 

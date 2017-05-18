@@ -5,6 +5,7 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -61,16 +62,13 @@ public class FetchShipments extends AppCompatActivity {
                 HashMap<String, String> map = new HashMap<>();
                 String s;
 
-                String str1 = getIntent().getStringExtra("drugid");
-                System.out.println("ID: " + str1);
                 String str2 = getIntent().getStringExtra("drugname");
                 System.out.println("Name: " + str2);
                 String str3 = getIntent().getStringExtra("shipdate");
                 System.out.println("Date: " + str3);
 
-                map.put("drugid", str1);
+                if(str3.length()>3){map.put("shipdate", str3);}
                 map.put("drugname", str2);
-                map.put("shipdate", str3);
 
                 s = reqHan.sendGetRequestParam(ConnVars.URL_FETCH_SHIPMENT, map);
                 return s;
@@ -118,6 +116,7 @@ public class FetchShipments extends AppCompatActivity {
                     try {
                         totalCast = Integer.parseInt(shipQuant);
                         shipmentData.add(new ShipmentFields(shipDate, drugId, drugName, totalCast));
+                        Log.d("Ethan shipmentfields",shipmentData.get(count).drugid.toString());
                     } catch (NumberFormatException e) {
                         System.out.println("Number format exception occurred...");
                     }

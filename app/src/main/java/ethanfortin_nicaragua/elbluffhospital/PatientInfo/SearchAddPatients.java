@@ -6,24 +6,15 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.AsyncTask;
-import android.os.Handler;
-import android.support.annotation.DrawableRes;
 import android.support.v7.app.AlertDialog;
 import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.NumberPicker;
 import android.widget.Spinner;
@@ -37,13 +28,9 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.HashMap;
 
 import ethanfortin_nicaragua.elbluffhospital.ArrayAdapters.PatientinfoAdapter;
@@ -60,31 +47,21 @@ public class SearchAddPatients extends Activity {
      * See https://g.co/AppIndexing/AndroidStudio for more information.
      */
     private GoogleApiClient client;
-    String patname;
-    String patid;
-    String address;
-    String telephone;
-    String gender;
-    String marstat;
-    String s_dob;
-    Date dob;
-    String s_children;
-    int children;
-    String s_height;
-    int height;
-    String s_weight;
-    int weight;
-    String allergies;
-    String medcond;
+    String patname, patid, address, telephone, gender, marstat,
+           s_dob, s_children, s_height, s_weight,
+           allergies, medcond,
+           temp_dob_string, gender_temp, married_temp, dob_temp;
+
+    int children, height, weight,
+        children_temp, dob_day_temp, dob_month_temp, dob_year_temp,
+        height_temp_int, weight_temp_int;
+
+    double height_temp,weight_temp;
+
     ListView listView;
-    String temp_dob_string;
     Dialog findPatient_dialog;
     PatientinfoFields selectedListItem;
     AlertDialog db_message;
-    String gender_temp, married_temp, dob_temp;
-    int children_temp, dob_day_temp, dob_month_temp, dob_year_temp;
-    double height_temp,weight_temp;
-    int height_temp_int,weight_temp_int;
     Context context = this;
 
     @Override
@@ -92,17 +69,7 @@ public class SearchAddPatients extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_add_patients);
 
-        /** ATTENTION: This was auto-generated to implement the App Indexing API.
-         See https://g.co/AppIndexing/AndroidStudio for more information.*/
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
-
-
-    }
-
-    //take this out after testing!
-    public void rxClick(View v){
-        Intent shortcut_RX = new Intent(this, FetchVisits.class);
-        startActivity(shortcut_RX);
     }
 
     public void buscar(View v) {
@@ -111,63 +78,13 @@ public class SearchAddPatients extends Activity {
         String sName = name_EditText.getText().toString();
         String sID = id_EditText.getText().toString();
 
-
-
         if ((sName.matches("")) & (sID.matches(""))) {
             Toast.makeText(this, "Necesitas Entrar un ID o un Nombre", Toast.LENGTH_SHORT).show();
-
         }
 
         patientFetch(sID,sName);
-        /*LayoutInflater inflater = LayoutInflater.from(SearchAddPatients.this);
-        View findPatient = inflater.inflate(R.layout.dialog_find_patient,null);
-
-        AlertDialog.Builder builder= new AlertDialog.Builder(SearchAddPatients.this);
-        builder.setView(findPatient);
-
-        builder.setTitle("Elige un Paciente");*/
-
-
-          /*  AlertDialog.Builder builderSingle = new AlertDialog.Builder(SearchAddPatients.this);
-            builderSingle.setTitle("Elige el paciente");
-            final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
-                    SearchAddPatients.this,
-                    android.R.layout.select_dialog_singlechoice);
-            arrayAdapter.add("Pablo Himenz 8/7/1990 M 194356");
-            arrayAdapter.add("Pablo Himnez 6/19/2004 M 23345");
-            arrayAdapter.add("Pablo Shancez 6/1/2010  M 245674");
-            arrayAdapter.add("Pablo Tarin 12/3/2015   M 264510");
-
-
-            builderSingle.setNegativeButton(
-                    "cancel",
-                    new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.dismiss();
-                        }
-                    });
-
-
-            builderSingle.setAdapter(
-                    arrayAdapter,
-                    new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            Intent intent_patientData = new Intent(SearchAddPatients.this, FetchPatientInfo.class);
-                            startActivity(intent_patientData);
-                            /**
-                             * This next line is the variable that will be used to reference the correct row
-                             * in the database for the patient that was clicked
-                             */
-//                            String strName = arrayAdapter.getItem(which);
-
-                   /*     }
-                    });
-            builderSingle.show();
-        }*/
-
-
+        sName=null;
+        sID=null;
     }
 
     private void patientFetch(final String patid, final String patname) {
@@ -212,10 +129,6 @@ public class SearchAddPatients extends Activity {
     private void jsonParse(String json_string) {
 
         Context context=this;
-
-        //ArrayList<Class_FetchPatientGenInfo> patGenInfo = new ArrayList();
-        //ListView listView;
-       // ArrayList<PatientinfoFields> patGenInfo = new ArrayList();
 
         int totalCast, count=0;
         String patid, patname, address, telephone, gender,marstat, allergies, medcond, children, height, weight;
@@ -273,22 +186,12 @@ public class SearchAddPatients extends Activity {
 
         ArrayAdapter<PatientinfoFields> adapter = new PatientinfoAdapter(context, patinfo);
 
-
-       /* //testing purposes
-        patinfo.add(new PatientinfoFields("patid1", "ethan", "5", "774", "m", "m", 3, 4, 5, "1", "medcond", "123"));
-        patinfo.add(new PatientinfoFields("patid2", "GO GO Dancer", "5", "774", "m", "m", 3, 4, 5, "1", "medcond", "123"));
-        patinfo.add(new PatientinfoFields("patid3", "STop", "5", "774", "m", "m", 3, 4, 5, "1", "medcond", "123"));
-        patinfo.add(new PatientinfoFields("patid4", "Huck", "5", "774", "m", "m", 3, 4, 5, "1", "medcond", "123"));
-        patinfo.add(new PatientinfoFields("patid5", "CATCH!!!!", "5", "774", "m", "m", 3, 4, 5, "1", "medcond", "123"));
-*/
         findPatient_dialog= new Dialog(this);
         findPatient_dialog.setTitle("Elige un paciente");
         LayoutInflater li=(LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View v= li.inflate(R.layout.dialog_find_patient,null,false);
         findPatient_dialog.setContentView(v);
 
-        //final ListView listView;
-        //final ArrayAdapter<PatientinfoFields> adapter = new ArrayAdapter_FetchPatientInfo(context, patinfo);
         listView = (ListView) findPatient_dialog.findViewById(R.id.listview_patientgeninfo);
         listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
         listView.setSelector(R.drawable.greygradient);
@@ -305,68 +208,7 @@ public class SearchAddPatients extends Activity {
         findPatient_dialog.setCancelable(true);
         findPatient_dialog.show();
 
-
     }
-
-   /* private class EfficientAdapter extends BaseAdapter {
-        private LayoutInflater mInflater;
-
-        public EfficientAdapter(Context context) {
-            mInflater = LayoutInflater.from(context);
-        }
-
-        public int getCount() {
-            return patinfo.size();
-        }
-
-        public Object getItem(int position) {
-            return position;
-        }
-
-        public long getItemId(int position) {
-            return position;
-        }
-
-        public View getView(int position, View convertView, ViewGroup parent) {
-
-            ViewHolder holder;
-
-            if (convertView == null || convertView.getTag() == null) {
-                convertView = mInflater.inflate(R.layout.row_druginventory_all, null);
-                holder = new ViewHolder();
-                holder.backgroundID = (TextView) convertView
-                        .findViewById(R.id.patid);
-                holder.backgroundPatName= (TextView) convertView
-                        .findViewById(R.id.patname);
-                holder.backgroundDOB= (TextView) convertView
-                        .findViewById(R.id.dob);
-                convertView.setTag(holder);
-            } else {
-                holder = (ViewHolder) convertView.getTag();
-            }
-
-            if(position == selectedListItem) {
-                holder.backgroundID.setBackgroundColor(Color.GRAY);
-                holder.backgroundPatName.setBackgroundColor(Color.GRAY);
-                holder.backgroundDOB.setBackgroundColor(Color.GRAY);
-            } else {
-                holder.backgroundID.setBackgroundColor(Color.WHITE);
-                holder.backgroundPatName.setBackgroundColor(Color.WHITE);
-                holder.backgroundDOB.setBackgroundColor(Color.WHITE);
-            }
-
-            //holder.officesTitle.setText(data.get(position));
-
-            return convertView;
-        }
-
-    }
-    static class ViewHolder {
-        TextView backgroundID;
-        TextView backgroundPatName;
-        TextView backgroundDOB;
-
-    }*/
 
     public void NuevoPaciente(View V) {
         /**Need to make dialog_patient_preccription pull data from DB not my made up stuff
@@ -394,14 +236,12 @@ public class SearchAddPatients extends Activity {
         final EditText edit_allergies2 = (EditText) subView.findViewById(R.id.newdialog_edit_Allergies);
         final EditText edit_medicalConditions2 = (EditText) subView.findViewById(R.id.newdialog_edit_MedicalConditions);
 
-
         //Spinner adapters to set style an values of spinner
         SpinnerAdapter adap = new ArrayAdapter<String>(this, R.layout.spinner_item, new String[]{"Click para elegir","M", "F"});
         edit_gender2.setAdapter(adap);
 
         SpinnerAdapter adap1 = new ArrayAdapter<String>(this, R.layout.spinner_item, new String[]{"Click para elegir","Casado", "Soltero"});
         edit_married2.setAdapter(adap1);
-
 
         //Here are the methods that will handle when an item gets selected
         edit_gender2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
@@ -632,89 +472,12 @@ public class SearchAddPatients extends Activity {
                         dialog.dismiss();
                     }
                 });
+
         builderSingle1.setPositiveButton(
                 "Crear",
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-
-                        /* This is to be used for demonstration where communication
-                        to database is not an option. Take out for actual DB communication.
-
-
-                        boolean cancel = false;
-                        View focusView = null;
-
-                        final String s_edit_name2 = edit_name2.getText().toString();
-                        final String s_edit_ID2 = edit_ID2.getText().toString();
-                        final String s_edit_adress2 = edit_adress2.getText().toString();
-                        final String s_edit_telephone2 = edit_telephone2.getText().toString();
-                        final String s_edit_gender2 = edit_gender2.getText().toString();
-                        final String s_edit_married2 = edit_married2.getText().toString();
-                        final String s_edit_birthday2 = edit_birthday2.getText().toString();
-                        final String s_edit_children2 = edit_children2.getText().toString();
-                        final String s_edit_height2 = edit_height2.getText().toString();
-                        final String s_edit_weight2 = edit_weight2.getText().toString();
-                        final String s_edit_allergies2 = edit_allergies2.getText().toString();
-                        final String s_edit_medicalConditions2 = edit_medicalConditions2.getText().toString();
-
-                       if(s_edit_name2.matches("")){
-                           Toast.makeText(getApplicationContext(), "Por favor rellena todos los campos.", Toast.LENGTH_LONG).show();
-                           return;
-                       }
-                        if(s_edit_ID2.matches("")){
-                            Toast.makeText(getApplicationContext(), "Por favor rellena todos los campos.", Toast.LENGTH_LONG).show();
-                            return;
-                        }
-                        if(s_edit_adress2.matches("")){
-                            Toast.makeText(getApplicationContext(), "Por favor rellena todos los campos.", Toast.LENGTH_LONG).show();
-                            return;
-                        }
-                        if(s_edit_telephone2.matches("")){
-                            Toast.makeText(getApplicationContext(), "Por favor rellena todos los campos.", Toast.LENGTH_LONG).show();
-                            return;
-                        }
-                        if(s_edit_gender2.matches("")){
-                            Toast.makeText(getApplicationContext(), "Por favor rellena todos los campos.", Toast.LENGTH_LONG).show();
-                            return;
-                        }
-                        if(s_edit_married2.matches("")){
-                            Toast.makeText(getApplicationContext(), "Por favor rellena todos los campos.", Toast.LENGTH_LONG).show();
-                            return;
-                        }
-                        if(s_edit_birthday2.matches("")){
-                            Toast.makeText(getApplicationContext(), "Por favor rellena todos los campos.", Toast.LENGTH_LONG).show();
-                            return;
-                        }
-                        if(s_edit_children2.matches("")){
-                            Toast.makeText(getApplicationContext(), "Por favor rellena todos los campos.", Toast.LENGTH_LONG).show();
-                            return;
-                        }
-                        if(s_edit_height2.matches("")){
-                            Toast.makeText(getApplicationContext(), "Por favor rellena todos los campos.", Toast.LENGTH_LONG).show();
-                            return;
-                        }
-                        if(s_edit_weight2.matches("")){
-                            Toast.makeText(getApplicationContext(), "Por favor rellena todos los campos.", Toast.LENGTH_LONG).show();
-                            return;
-                        }
-                        if(s_edit_allergies2.matches("")){
-                            Toast.makeText(getApplicationContext(), "Por favor rellena todos los campos.", Toast.LENGTH_LONG).show();
-                            return;
-                        }
-                        if(s_edit_medicalConditions2.matches("")){
-                            Toast.makeText(getApplicationContext(), "Por favor rellena todos los campos.", Toast.LENGTH_LONG).show();
-                            return;
-                        }
-                        else{
-                            Toast toast = Toast.makeText(getApplicationContext(), "Paciente guarde.", Toast.LENGTH_LONG);
-                            toast.show();
-
-                            Intent i = new Intent(getApplicationContext(), SearchAddPatients.class);
-                            startActivity(i);
-                        }
-                        */
-
 
                         /***This is the code needed for db communication.***/
 
@@ -857,28 +620,15 @@ public class SearchAddPatients extends Activity {
             jsonObject = new JSONObject(json_string);
             jsonArray = jsonObject.getJSONArray(ConnVars.TAG_NEWPAT_ERRORMESSAGES);
 
-            //initiliaze count for while loop, strings for all data we will get from json
-            //all data comes out as strings so for int values we need to cast them into int values later
-            //while count is less than length of jsonarray
-            // while (count < jsonArray.length()) {
-            //get the object put drugid into drugid ect..
+            JSONObject jo = jsonArray.getJSONObject(count);
+            Log.d("Test1", "Jo.count0"+jsonArray.getJSONObject(0));
 
-
-
-
-           // while (count < jsonArray.length()) {
-                JSONObject jo = jsonArray.getJSONObject(count);
-                Log.d("Test1", "Jo.count0"+jsonArray.getJSONObject(0));
-                //Log.d("Test1", "Jo.count1"+jsonArray.getJSONObject(1));
-                //Log.d("Test1", "Jo.count2"+jsonArray.getJSONObject(2));
-                message = jo.getString("success");
-                Log.d("Test1", "Json string: " + message);
-                try {
-                    int_message = Integer.parseInt(message);
-                    Log.d("Test1", "JsonInt:" + int_message);
-                } catch (NumberFormatException n) {}
-             //   count++;
-            //}
+            message = jo.getString("success");
+            Log.d("Test1", "Json string: " + message);
+            try {
+                int_message = Integer.parseInt(message);
+                Log.d("Test1", "JsonInt:" + int_message);
+            } catch (NumberFormatException n) {}
         }
              catch(JSONException p){
                  Log.d("Test1", "JSON ERROR MESSAGE");
@@ -897,6 +647,7 @@ public class SearchAddPatients extends Activity {
     }
     public void selectPatient_cancel(View view){
        findPatient_dialog.cancel();
+        patinfo.clear();
     }
 
     @Override
@@ -915,10 +666,5 @@ public class SearchAddPatients extends Activity {
         super.onStop();
         client.disconnect();
     }
-
-
-
-
-
 }
 

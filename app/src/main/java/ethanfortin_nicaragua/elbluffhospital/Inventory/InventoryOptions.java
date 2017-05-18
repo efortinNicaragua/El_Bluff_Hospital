@@ -46,8 +46,7 @@ public class InventoryOptions extends AppCompatActivity {
                 LayoutInflater inflater = LayoutInflater.from(InventoryOptions.this);
                 final View subView = inflater.inflate(R.layout.dialog_search_shipments, null);
 
-                final EditText entryName = (EditText) subView.findViewById(R.id.filter_bar);
-                final EditText entryId = (EditText) subView.findViewById(R.id.searchByID);
+                final EditText entryName = (EditText) subView.findViewById(R.id.searchByName);
                 final DatePicker datePicker = (DatePicker) subView.findViewById(R.id.datePicker2);
 
                 datePicker.setEnabled(false);
@@ -101,33 +100,33 @@ public class InventoryOptions extends AppCompatActivity {
 
                         // Verify drug name and/or ID + Date
                         String s_drugName = entryName.getText().toString();
-                        String s_drugId = entryId.getText().toString();
+                        int year = datePicker.getYear();
+                        int month = datePicker.getMonth()+1;
+                        int day = datePicker.getDayOfMonth();
+                        String s_day;
+                        String s_month;
 
-                        if (TextUtils.isEmpty(s_drugName) && TextUtils.isEmpty(s_drugId)
-                                && !dateEnable.isChecked()) {
-                            cancel = true;
-                            System.out.println("LLLLLLLL:" + cancel);
-                            entryName.setError("atención");
-                            focus = entryName;
+                        if (day<=9){
+                            s_day= "0"+day;
                         }
-                        if (cancel) {
-                            focus.requestFocus();
-                        } else {
-                            int day = datePicker.getDayOfMonth();
-                            int month = datePicker.getMonth() + 1;
-                            int year = datePicker.getYear();
-                            String sdate = year + "-" + month + "-" + day;
+                        else{ s_day= day+"";}
+                        if (month<=9){
+                            s_month="0"+month;
+                        }
+                        else{s_month=month+"";}
 
-                            if(dateEnable.isChecked()) {
-                                i.putExtra("shipdate", sdate);
-                            } else {
-                                i.putExtra("shipdate", "");
-                            }
-                            i.putExtra("drugid", s_drugId);
-                            i.putExtra("drugname", s_drugName);
+                         if(dateEnable.isChecked()) {
+                        i.putExtra("shipdate",year+"-"+s_month+"-"+s_day);
+                    } else {
+                             i.putExtra("shipdate", "");
+                         }
+
+
+
+                            i.putExtra("drugname",s_drugName);
+
 
                             startActivity(i);
-                        }
                     }
                 });
             }
