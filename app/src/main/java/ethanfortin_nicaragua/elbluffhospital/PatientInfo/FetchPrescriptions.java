@@ -236,15 +236,43 @@ public class FetchPrescriptions extends AppCompatActivity {
                                 String s_calendar=dob_year_temp+"-"+dob_month_temp1+"-"+dob_day_temp1;
                                 //changed this, it's not sent only drugID is
                                 String s_drug = drugname.getText().toString();
-                                String s_drugID = drugid.toString();
-                                System.out.println("s_drugID is being added as:" + s_drugID);
                                 String s_quantity=quantity.getText().toString();
                                 String s_duration = duration.getText().toString();
                                 String s_reason=reason.getText().toString();
                                 String s_directions=directions.getText().toString();
 
-                                newPrescription(s_doctor,s_calendar,s_drug,s_drugID,s_quantity,s_duration,s_reason,s_directions);
-                                Log.d("ethan s_calendar",s_calendar);
+                                Log.d("maddi", "got here");
+                                if(doctor.getText().toString().trim().equals("")){
+                                    doctor.setError("Necesitas entrar un doctor");
+                                    Log.d("Maddi", "got heree too");
+                                }
+                                else if (s_calendar.length()<4){
+                                    calendar.setError("Necesitas entrar una fecha");
+                                }
+                                else if(drugname.getText().toString().trim().equals(""))
+                                {
+                                    drugname.setError("Necesitas entrar una droga");
+                                }
+                                else if (quantity.toString().trim().equals("")){
+                                    quantity.setError("Necesitas entrar una cantidad");
+                                }
+                                else if (duration.toString().trim().equals("")){
+                                    duration.setError("Necesitas entrar una Duracion");
+                                }
+                                else if (reason.toString().trim().equals("")){
+                                    reason.setError("Necesitas entrar una razon");
+                                }
+                                else if (directions.toString().trim().equals("")){
+                                    directions.setError("Necesitas entrar direciones");
+                                }
+                                else{
+                                    Log.d("Maddie", "got here 3");
+                                    String s_drugID = drugid.toString();
+                                    System.out.println("s_drugID is being added as:" + s_drugID);
+                                    newPrescription(s_doctor,s_calendar,s_drug,s_drugID,s_quantity,s_duration,s_reason,s_directions);
+                                    Log.d("ethan s_calendar",s_calendar);}
+
+
                             }
 
                         })
