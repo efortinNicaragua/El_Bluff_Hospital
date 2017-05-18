@@ -14,9 +14,22 @@ public class ConnVars {
     public static final String URL_UPLOAD = "http://192.168.1.3/image_upload/upload.php";
     public static final String URL_IMAGES = "http://192.168.1.3/image_upload/get_image.php";
 
+
+    // IP Addresses for PHP Scripts
+    public static final String URL_FETCH_SPECIFIC_DRUG = "http://192.168.1.3/android_connect/fetch_druginfo_row.php";
+    public static final String URL_FETCH_DRUGINFO_ALL = "http://192.168.1.3/android_connect/fetch_druginfo_all.php";
+    public static final String URL_FETCH_SHIPMENT = "http://192.168.1.3/android_connect/fetch_shipment_rows.php";
+    public static final String URL_FETCH_PATIENTINFO_ROW = "http://192.168.1.3/android_connect/fetch_patientinfo_row.php";
+    public static final String URL_FETCH_PAT_RX = "http://192.168.1.3/android_connect/fetch_prescription_row.php";
+    public static final String URL_FETCH_PAT_VISIT = "http://192.168.1.3/android_connect/fetch_vh_rx_row.php";
+    public static final String URL_ADD_PRESCRIPTION = "http://192.168.1.3/android_connect/add_shipment_row.php";
+    public static final String URL_ADD_PATIENTINFO_ROW = "http://192.168.1.3/android_connect/add_patientinfo_row.php";
+   public static final String URL_UPDATE_DRUG_RX_ROW="http://192.168.1.3/android_connect/update_drug_rx_row.php";
+
     //Tag values to read from json
     public static final String TAG_IMAGE_URL = "image";
     public static final String TAG_NAME = "name";
+
 
     // IP Addresses for PHP Scripts
     public static final String URL_FETCH_SPECIFIC_DRUG = "http://192.168.1.3/android_connect/fetch_druginfo_row.php";
