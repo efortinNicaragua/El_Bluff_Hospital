@@ -69,7 +69,9 @@ public class AddShipment extends Activity {//AppCompatActivity {
             cancel = true;
             System.out.println("%%%%%%%%%%%%%%%%%%%%11111111%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
         }
-
+        else{
+            et_drugName.setError(null,null);
+        }
         // Verify drug id
         String s_drugId = et_drugId.getText().toString();
         if(TextUtils.isEmpty(s_drugId)) {
@@ -78,6 +80,7 @@ public class AddShipment extends Activity {//AppCompatActivity {
             cancel = true;
             System.out.println("%%%%%%%%%%%%%%%%%%%%11111111%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
         }
+        else{et_drugId.setError(null,null);}
 
         // Verify drug quantity
         String s_drugQuant = et_drugQuant.getText().toString();
@@ -87,6 +90,7 @@ public class AddShipment extends Activity {//AppCompatActivity {
             cancel = true;
             System.out.println("%%%%%%%%%%%%%%%%%%%%11111111%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
         }
+        else{et_drugQuant.setError(null,null);}
 
         //Change format of date picker!
         //Get int of day, month, year

@@ -3,15 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="500dp">
 
     <ScrollView
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
+        android:layout_height="500dp">
 
     <TableLayout
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="500dp"
         android:id="@+id/table_general1"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -207,7 +207,6 @@
                 style="@android:style/Widget.Holo.Light.Spinner"
                 android:layout_width="300dp"
                 android:layout_height="50dp"
-
                 android:layout_below="@+id/text_gender"
                 android:background="@android:color/transparent"
                 android:gravity="center"

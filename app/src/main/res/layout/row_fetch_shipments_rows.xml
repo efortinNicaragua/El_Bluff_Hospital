@@ -3,15 +3,15 @@
     android:layout_width="match_parent" android:layout_height="match_parent">
 
     <TextView
-        android:text="date"
-        android:textSize="23sp"
-        android:textColor="@android:color/background_light"
+        android:id="@+id/shipdate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/shipdate"
+        android:layout_alignParentTop="true"
+        android:text="date"
+        android:textColor="@color/colorAccent"
+        android:textSize="23sp"
         android:textStyle="normal|bold" />
 
     <TextView

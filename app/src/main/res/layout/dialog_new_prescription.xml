@@ -1,120 +1,120 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@drawable/greygradient">
+    android:background="@android:color/white"
+    android:orientation="vertical">
 
     <LinearLayout
 
         android:layout_width="match_parent"
+
         android:layout_height="600sp"
         android:orientation = "vertical"
         android:layout_alignParentLeft="true">
 
         <TextView
-            android:text="Droga"
-            android:layout_width="150dp"
-            android:layout_height="40dp"
             android:id="@+id/txtDrug"
-            android:textSize="15sp"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:layout_alignBottom="@+id/filter_bar2"
+            android:layout_alignParentLeft="true"
             android:layout_marginTop="30dp"
-            android:layout_alignParentLeft = "true"
             android:layout_toRightOf="@+id/filter_bar2"
-            android:layout_alignBottom = "@+id/filter_bar2"
+            android:text="Droga"
             android:textAlignment="center"
-            android:textColor="#00004d" />
-
+            android:textColor="#00004d"
+            android:textSize="15sp" />
 
 
         <TextView
-            android:text="Cantidad"
-            android:layout_width="150dp"
-            android:layout_height="40dp"
             android:id="@+id/txtQuantity"
-            android:textSize="15sp"
-            android:layout_below = "@+id/txtDrug"
-            android:layout_alignLeft = "@+id/txtDrug"
-            android:textAlignment="center"
-            android:textColor="#00004d"
-            android:layout_marginTop="30dp"/>
-
-        <TextView
-            android:text="Duración"
             android:layout_width="150dp"
             android:layout_height="40dp"
-            android:id="@+id/txtDuration"
-            android:textSize="15sp"
-            android:layout_below = "@+id/txtQuantity"
-            android:layout_alignLeft = "@+id/txtQuantity"
+            android:layout_alignLeft="@+id/txtDrug"
+            android:layout_below="@+id/txtDrug"
+            android:layout_marginTop="30dp"
+            android:text="Cantidad"
             android:textAlignment="center"
             android:textColor="#00004d"
-            android:layout_marginTop="30dp"/>
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/txtDuration"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:layout_alignLeft="@+id/txtQuantity"
+            android:layout_below="@+id/txtQuantity"
+            android:layout_marginTop="30dp"
+            android:text="Duración"
+            android:textAlignment="center"
+            android:textColor="#00004d"
+            android:textSize="15sp" />
 
         <TextView
             android:id="@+id/txtReason"
             android:layout_width="160dp"
             android:layout_height="50dp"
+            android:layout_alignLeft="@+id/txtDuration"
+            android:layout_below="@+id/txtDuration"
+            android:layout_marginTop="30dp"
             android:text="Síntomas/Razon por prescripción"
             android:textAlignment="center"
             android:textColor="#00004d"
-            android:textSize="15sp"
-            android:layout_below = "@+id/txtDuration"
-            android:layout_alignLeft = "@+id/txtDuration"
-            android:layout_marginTop="30dp"/>
+            android:textSize="15sp" />
 
         <TextView
-            android:text="Instrucciónes"
+            android:id="@+id/txtDirections"
             android:layout_width="150dp"
             android:layout_height="40dp"
-            android:id="@+id/txtDirections"
-            android:textSize="15sp"
-            android:layout_below = "@+id/txtReason"
-            android:layout_alignLeft = "@+id/txtReason"
+            android:layout_alignLeft="@+id/txtReason"
+            android:layout_below="@+id/txtReason"
+            android:layout_marginTop="30dp"
+            android:text="Instrucciónes"
             android:textAlignment="center"
             android:textColor="#00004d"
-            android:layout_marginTop="30dp"/>
+            android:textSize="15sp" />
 
         <TextView
             android:id="@+id/txtDoctor"
             android:layout_width="150dp"
             android:layout_height="40dp"
-            android:text="Doctor"
-            android:textColor="#00004d"
-            android:textSize="15sp"
-            android:layout_below = "@+id/txtDirections"
-            android:layout_alignLeft = "@+id/txtDirections"
+            android:layout_alignLeft="@+id/txtDirections"
+            android:layout_below="@+id/txtDirections"
             android:layout_marginTop="30dp"
-            android:textAlignment="center"/>
+            android:text="Doctor"
+            android:textAlignment="center"
+            android:textColor="#00004d"
+            android:textSize="15sp" />
 
         <TextView
             android:id="@+id/txt_date"
             android:layout_width="150dp"
             android:layout_height="40dp"
-            android:layout_below = "@+id/txtDoctor"
-            android:layout_alignLeft = "@+id/txtDoctor"
+            android:layout_alignLeft="@+id/txtDoctor"
+            android:layout_below="@+id/txtDoctor"
+            android:layout_marginTop="30dp"
             android:text="Fecha"
             android:textAlignment="center"
             android:textColor="#00004d"
-            android:textSize="15sp"
-            android:layout_marginTop="30dp"/>
+            android:textSize="15sp" />
 
 
     </LinearLayout>
 
 
-
-    <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
+
         android:layout_height="600sp"
         android:orientation="vertical"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical">
 
-       <!-- <EditText
+        <!-- <EditText
             android:layout_width="200dp"
             android:layout_height="40dp"
             android:id="@+id/filter_bar2"
@@ -128,20 +128,20 @@
             android:inputType="textShortMessage" />-->
 
         <TextView
+            android:id="@+id/popout_list"
             android:layout_width="200dp"
             android:layout_height="40dp"
-            android:id="@+id/popout_list"
-            android:textSize="15sp"
+            android:layout_alignLeft="@+id/popout_calendar"
+            android:layout_below="@+id/popout_calendar"
             android:layout_gravity="end"
+            android:layout_marginTop="30dp"
+            android:clickable="true"
             android:hint="click para elegir"
             android:textAlignment="center"
             android:textColor="@color/colorPrimaryDark"
-            android:layout_marginTop="30dp"
-            android:layout_below = "@+id/popout_calendar"
-            android:layout_alignLeft = "@+id/popout_calendar"
-            android:clickable="true"/>
+            android:textSize="15sp" />
 
-       <!-- <ListView
+        <!-- <ListView
          android:id="@+id/drug_list_full"
          android:layout_width="match_parent"
          android:layout_height="450dp"
@@ -153,17 +153,17 @@
 -->
 
         <EditText
+            android:id="@+id/etQuantity"
             android:layout_width="200dp"
             android:layout_height="40dp"
-            android:id="@+id/etQuantity"
-            android:textSize="15sp"
-            android:textAlignment="center"
-            android:layout_gravity ="end"
-            android:textColor="@color/colorPrimaryDark"
-            android:layout_marginTop="30dp"
-            android:layout_below="@+id/filter_bar"
             android:layout_alignLeft="@+id/filter_bar"
-            android:inputType="number" />
+            android:layout_below="@+id/filter_bar"
+            android:layout_gravity="end"
+            android:layout_marginTop="30dp"
+            android:inputType="number"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="15sp" />
 
         <EditText
             android:id="@+id/etDuration"
@@ -179,30 +179,30 @@
             android:textSize="15sp" />
 
         <EditText
+            android:id="@+id/etReason"
             android:layout_width="200dp"
             android:layout_height="40dp"
-            android:id="@+id/etReason"
-            android:textSize="15sp"
-            android:textAlignment="center"
-            android:layout_gravity ="end"
-            android:textColor="@color/colorPrimaryDark"
-            android:layout_marginTop="30dp"
+            android:layout_alignLeft="@+id/etDuration"
             android:layout_below="@+id/etDuration"
+            android:layout_gravity="end"
+            android:layout_marginTop="30dp"
             android:inputType="textMultiLine"
-            android:layout_alignLeft="@+id/etDuration"/>
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="15sp" />
 
         <EditText
+            android:id="@+id/etDirections"
             android:layout_width="200dp"
             android:layout_height="40dp"
-            android:id="@+id/etDirections"
-            android:textSize="15sp"
-            android:textAlignment="center"
-            android:layout_gravity ="end"
-            android:textColor="@color/colorPrimaryDark"
-            android:layout_marginTop="30dp"
+            android:layout_alignLeft="@+id/etReason"
             android:layout_below="@+id/etReason"
+            android:layout_gravity="end"
+            android:layout_marginTop="30dp"
             android:inputType="textMultiLine"
-            android:layout_alignLeft="@+id/etReason" />
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="15sp" />
 
 
         <EditText
@@ -219,24 +219,20 @@
             android:textSize="15sp" />
 
         <TextView
+            android:id="@+id/popout_calendar"
             android:layout_width="200dp"
             android:layout_height="40dp"
-            android:id="@+id/popout_calendar"
-            android:textSize="15sp"
+            android:layout_alignLeft="@+id/etDoctor"
+            android:layout_below="@+id/etDoctor"
             android:layout_gravity="end"
+            android:layout_marginTop="30dp"
             android:hint="click para elegir"
             android:textAlignment="center"
             android:textColor="@color/colorPrimaryDark"
-            android:layout_marginTop="30dp"
-            android:layout_below = "@+id/etDoctor"
-            android:layout_alignLeft = "@+id/etDoctor"/>
+            android:textSize="15sp" />
 
 
     </LinearLayout>
-
-
-
-
 
 
 </RelativeLayout>
