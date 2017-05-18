@@ -63,6 +63,9 @@ public class FetchPrescriptions extends AppCompatActivity {
     ListView lv;
     String selectedListItem;
     EditText filter;
+    String drugid;
+    HashMap<String, String> pickerinfo = new HashMap<>();
+
 
 
     @Override
@@ -222,14 +225,16 @@ public class FetchPrescriptions extends AppCompatActivity {
 
                                 String s_doctor= doctor.getText().toString();
                                 String s_calendar=dob_year_temp+"-"+dob_month_temp1+"-"+dob_day_temp1;
-                                //changed this
-                                String s_drug = selectedListItem;
+                                //changed this, it's not sent only drugID is
+                                String s_drug = drugname.getText().toString();
+                                String s_drugID = drugid.toString();
+                                System.out.println("s_drugID is being added as:" + s_drugID);
                                 String s_quantity=quantity.getText().toString();
                                 String s_duration = duration.getText().toString();
                                 String s_reason=reason.getText().toString();
                                 String s_directions=directions.getText().toString();
 
-                                newPrescription(s_doctor,s_calendar,s_drug,s_quantity,s_duration,s_reason,s_directions);
+                                newPrescription(s_doctor,s_calendar,s_drug,s_drugID,s_quantity,s_duration,s_reason,s_directions);
                                 Log.d("ethan s_calendar",s_calendar);
                             }
 
@@ -273,6 +278,7 @@ public class FetchPrescriptions extends AppCompatActivity {
                 loading.dismiss();
 
                 String drugName;
+
                 //lv = (ListView) subView.findViewById(R.id.drug_list_full);
                 ArrayList<String> list = new ArrayList<>();
                 int count = 0;
@@ -285,7 +291,11 @@ public class FetchPrescriptions extends AppCompatActivity {
                         System.out.println("Array: " + list);
                         JSONObject resObj = resArr.getJSONObject(count);
                         drugName = resObj.getString(ConnVars.TAG_DRUGINFO_NAME);
+                        drugid = resObj.getString(ConnVars.TAG_DRUGINFO_ID);
                         list.add(drugName);
+
+                        pickerinfo.put(drugName, drugid);
+                        //System.out.println("hashmapout:" + pickerinfo.toString());
                         count++;
                     }
 
@@ -347,7 +357,7 @@ public class FetchPrescriptions extends AppCompatActivity {
 
 
 
-    private void newPrescription(final String doctor, final String transaction_date, final String drug, final String quantity, final String duration, final String reason,
+    private void newPrescription(final String doctor, final String transaction_date, final String drug, final String drugid, final String quantity, final String duration, final String reason,
                             final String directions ) {
         class get_newPrescription extends AsyncTask<Void, Void, String>{
             ProgressDialog loading;
@@ -407,9 +417,14 @@ public class FetchPrescriptions extends AppCompatActivity {
             protected String doInBackground(Void... params) {
 
                 RequestHandler reqHan1 = new RequestHandler();
+
                 HashMap<String, String> map1 = new HashMap<>();
-                map1.put("did",drug);
-                Log.d("Ethan transaction_date",transaction_date);
+
+               // System.out.println("pickerinfo is:" + pickerinfo.toString());
+                String tempDrugID = pickerinfo.get(selectedListItem).toString();
+                System.out.println("tempDrugID is:" + tempDrugID);
+                map1.put("did",tempDrugID);
+                //Log.d("Ethan transaction_date",transaction_date);
                 map1.put("date",transaction_date);
                 map1.put("q", quantity);
                 map1.put("pid",sID);
@@ -543,25 +558,15 @@ public class FetchPrescriptions extends AppCompatActivity {
             while(count < resArr.length()) {
                 /**ML: gets  the first data block, will repeat if necessary**/
                 JSONObject resObj = resArr.getJSONObject(count);
-                System.out.println("got past resObj");
                 String r_rxID = resObj.getString(ConnVars.TAG_PRESCRIPTIONS_RXID);
-                System.out.println("1");
                 String r_drugID = resObj.getString(ConnVars.TAG_PRESCRIPTIONS_DRUGID);
-                System.out.println("2");
                 String r_transDate = resObj.getString(ConnVars.TAG_PRESCRIPTIONS_TRANSDATE);
-                System.out.println("3");
                 String r_quantity = resObj.getString(ConnVars.TAG_PRESCRIPTIONS_QUANTITY);
-                System.out.println("4");
                 String r_patID = resObj.getString(ConnVars.TAG_PRESCRIPTIONS_PATID);
-                System.out.println("5");
                 String r_directions = resObj.getString(ConnVars.TAG_PRESCRIPTIONS_DIRECTIONS);
-                System.out.println("6");
                 String r_duration = resObj.getString(ConnVars.TAG_PRESCRIPTIONS_DURATION);
-                System.out.println("7");
                 String r_doctor = resObj.getString(ConnVars.TAG_PRESCRIPTIONS_DOCTOR);
-                System.out.println("8");
                 String r_symptoms = resObj.getString(ConnVars.TAG_PRESCRIPTIONS_SYMPTOMS);
-                System.out.println("9");
 
                 /**ML: This needs to be fixed, JSON exception occurs here because it needs to come from a table join**/
                 //String r_drugName = resObj.getString(ConnVars.TAG_PRESCRIPTIONS_DRUGNAME);
