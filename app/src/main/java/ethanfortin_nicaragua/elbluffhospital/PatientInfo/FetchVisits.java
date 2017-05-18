@@ -163,12 +163,21 @@ public class FetchVisits extends AppCompatActivity {
                         .setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
 
+
+                               if(Reason.getText().toString().trim().equals(""))
+                               {Reason.setError("Necesitas un razon");}
+                                else if(Date.getText().toString().trim().equals(""))
+                                {Date.setError("Necesitas un razon");}
+                                else if(Doctor.getText().toString().trim().equals(""))
+                                {Doctor.setError("Necesitas un razon");}
+
+                              else{
                                 String reason=Reason.getText().toString();
                                 String doctor=Doctor.getText().toString();
                                 String date= dob_year_temp+"-"+dob_month_temp1+"-"+dob_day_temp1;
 
                                 newVH(date,sID,reason,doctor);
-                                Log.d("ethan date",date);
+                                Log.d("ethan date",date);}
 
 
                             }
