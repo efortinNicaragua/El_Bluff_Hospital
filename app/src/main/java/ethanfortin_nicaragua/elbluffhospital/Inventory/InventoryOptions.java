@@ -121,12 +121,20 @@ public class InventoryOptions extends AppCompatActivity {
                              i.putExtra("shipdate", "");
                          }
 
+                        if(entryName.getText().toString().trim().equals("") && dateEnable.isChecked()==false){
+                            entryName.setError("Necesitas un droga o una fecha");
+                            dateEnable.setError("Necesitas un droga o una fecha");
+                        }
+
+                         else{
+                                entryName.setError(null,null);
+                                dateEnable.setError(null,null);
+                                i.putExtra("drugname",s_drugName);
+                                startActivity(i);
+                            }
 
 
-                            i.putExtra("drugname",s_drugName);
 
-
-                            startActivity(i);
                     }
                 });
             }

@@ -7,6 +7,7 @@ import android.view.View;
 
 import ethanfortin_nicaragua.elbluffhospital.Inventory.PharmacyMain;
 import ethanfortin_nicaragua.elbluffhospital.PatientInfo.DoctorMain;
+import ethanfortin_nicaragua.elbluffhospital.PatientInfo.SearchAddPatients;
 
 public class MainMenu extends AppCompatActivity {
 
@@ -26,7 +27,7 @@ public class MainMenu extends AppCompatActivity {
     }
 
     public void doctorHome(View v) {
-        Intent docHome = new Intent(this, DoctorMain.class);
+        Intent docHome = new Intent(this, SearchAddPatients.class);
         startActivity(docHome);
     }
 

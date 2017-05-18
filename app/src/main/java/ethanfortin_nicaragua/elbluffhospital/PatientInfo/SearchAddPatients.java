@@ -36,6 +36,7 @@ import java.util.HashMap;
 import ethanfortin_nicaragua.elbluffhospital.ArrayAdapters.PatientinfoAdapter;
 import ethanfortin_nicaragua.elbluffhospital.ConnVars;
 import ethanfortin_nicaragua.elbluffhospital.DataClasses.PatientinfoFields;
+import ethanfortin_nicaragua.elbluffhospital.MainMenu;
 import ethanfortin_nicaragua.elbluffhospital.R;
 import ethanfortin_nicaragua.elbluffhospital.RequestHandler;
 
@@ -48,13 +49,13 @@ public class SearchAddPatients extends Activity {
      */
     private GoogleApiClient client;
     String patname, patid, address, telephone, gender, marstat,
-           s_dob, s_children, s_height, s_weight,
-           allergies, medcond,
-           temp_dob_string, gender_temp, married_temp, dob_temp;
+            s_dob, s_children, s_height, s_weight,
+            allergies, medcond,
+            temp_dob_string, gender_temp, married_temp, dob_temp;
 
     int children, height, weight,
-        children_temp, dob_day_temp, dob_month_temp, dob_year_temp,
-        height_temp_int, weight_temp_int;
+            children_temp, dob_day_temp, dob_month_temp, dob_year_temp,
+            height_temp_int, weight_temp_int;
 
     double height_temp,weight_temp;
 
@@ -78,13 +79,18 @@ public class SearchAddPatients extends Activity {
         String sName = name_EditText.getText().toString();
         String sID = id_EditText.getText().toString();
 
-        if ((sName.matches("")) & (sID.matches(""))) {
-            Toast.makeText(this, "Necesitas Entrar un ID o un Nombre", Toast.LENGTH_SHORT).show();
-        }
+        if(name_EditText.getText().toString().trim().equals("") && id_EditText.getText().toString().equals("")) {
+            name_EditText.setError("Necesitas el nombre o la ID de la paciente");
+            id_EditText.setError("Necesitas el nombre o la ID de la paciente");
 
-        patientFetch(sID,sName);
-        sName=null;
-        sID=null;
+        }
+        else {
+            name_EditText.setError(null,null);
+            id_EditText.setError(null,null);
+            patientFetch(sID, sName);
+            sName = null;
+            sID = null;
+        }
     }
 
     private void patientFetch(final String patid, final String patname) {
@@ -149,33 +155,33 @@ public class SearchAddPatients extends Activity {
             //all data comes out as strings so for int values we need to cast them into int values later
             //while count is less than length of jsonarray
             while (count < jsonArray.length()) {
-                    //get the object put drugid into drugid ect..
-                    JSONObject jo = jsonArray.getJSONObject(count);
-                    patid= jo.getString("patid");
-                    patname= jo.getString("patname");
-                    address = jo.getString("address");
-                    telephone= jo.getString("telephone");
-                    gender = jo.getString("gender");
-                    marstat = jo.getString("marstat");
-                    allergies=jo.getString("allergies");
-                    medcond = jo.getString("medcond");
-                    children = jo.getString("children");
-                    height = jo.getString("height");
-                    weight=jo.getString("weight");
-                    temp_dob_string=jo.getString("dob");
-                    System.out.println("The DOB IS " + temp_dob_string);
+                //get the object put drugid into drugid ect..
+                JSONObject jo = jsonArray.getJSONObject(count);
+                patid= jo.getString("patid");
+                patname= jo.getString("patname");
+                address = jo.getString("address");
+                telephone= jo.getString("telephone");
+                gender = jo.getString("gender");
+                marstat = jo.getString("marstat");
+                allergies=jo.getString("allergies");
+                medcond = jo.getString("medcond");
+                children = jo.getString("children");
+                height = jo.getString("height");
+                weight=jo.getString("weight");
+                temp_dob_string=jo.getString("dob");
+                System.out.println("The DOB IS " + temp_dob_string);
 
-                    //try to cast string into int
-                    try {
-                        children_int = Integer.parseInt(children);
-                        height_int = Integer.parseInt(height);
-                        weight_int = Integer.parseInt(weight);
-                        //add this data as DruginfoFields to ArrayList
-                        patinfo.add(new PatientinfoFields(patid, patname , address, telephone, gender, marstat, children_int,height_int,weight_int,allergies,medcond,temp_dob_string));
+                //try to cast string into int
+                try {
+                    children_int = Integer.parseInt(children);
+                    height_int = Integer.parseInt(height);
+                    weight_int = Integer.parseInt(weight);
+                    //add this data as DruginfoFields to ArrayList
+                    patinfo.add(new PatientinfoFields(patid, patname , address, telephone, gender, marstat, children_int,height_int,weight_int,allergies,medcond,temp_dob_string));
 
-                    } catch (NumberFormatException nfe) {
-                        System.out.println("Number Format Exception occurred...");
-                    }
+                } catch (NumberFormatException nfe) {
+                    System.out.println("Number Format Exception occurred...");
+                }
                 //increment count
                 count++;
             }
@@ -248,7 +254,7 @@ public class SearchAddPatients extends Activity {
         {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
             {
-                 String selectedItem = parent.getItemAtPosition(position).toString();
+                String selectedItem = parent.getItemAtPosition(position).toString();
                 gender_temp=selectedItem;
 
             }
@@ -300,6 +306,7 @@ public class SearchAddPatients extends Activity {
                     public void onClick(DialogInterface dialog, int which) {
                         children_temp=child_number.getValue();
                         edit_children2.setText(children_temp+"");
+                        dialog.dismiss();
                     }
                 });
                 builderSingle1.show();
@@ -409,7 +416,7 @@ public class SearchAddPatients extends Activity {
                 builderSingle1.setView(subView);
                 Calendar c = Calendar.getInstance();
                 //Date date= c.getTime();
-               // Log.d("Ethan Date", c.get(Calendar.DAY_OF_MONTH)+ " "+ c.get(Calendar.MONTH)+1+  " "+ c.get(Calendar.YEAR));
+                // Log.d("Ethan Date", c.get(Calendar.DAY_OF_MONTH)+ " "+ c.get(Calendar.MONTH)+1+  " "+ c.get(Calendar.YEAR));
 
                 final NumberPicker day_picker = (NumberPicker) subView.findViewById(R.id.day_picker) ;
                 //Here is were we will set values for number picker
@@ -444,12 +451,12 @@ public class SearchAddPatients extends Activity {
                     public void onClick(DialogInterface dialog, int which) {
                         dob_day_temp=day_picker.getValue();
                         if (dob_day_temp<=9){
-                             dob_day_temp1= "0"+dob_day_temp;
+                            dob_day_temp1= "0"+dob_day_temp;
                         }
                         else{ dob_day_temp1=dob_day_temp+"";}
                         dob_month_temp=month_Picker.getValue();
                         if (dob_month_temp<=9){
-                             dob_month_temp1= "0"+dob_month_temp;
+                            dob_month_temp1= "0"+dob_month_temp;
                         }
                         else{ dob_month_temp1=dob_month_temp+"";}
                         dob_year_temp=year_picker.getValue();
@@ -513,7 +520,7 @@ public class SearchAddPatients extends Activity {
 
                     }
                 });
-            builderSingle1.show();
+        builderSingle1.show();
     }
     private void newPatient(final String patname, final String patid, final String address, final String telephone, final String gender, final String marstat,
                             final String s_dob, final String children, final String height, final String weight, final String allergies, final String medcond ) {
@@ -630,9 +637,9 @@ public class SearchAddPatients extends Activity {
                 Log.d("Test1", "JsonInt:" + int_message);
             } catch (NumberFormatException n) {}
         }
-             catch(JSONException p){
-                 Log.d("Test1", "JSON ERROR MESSAGE");
-             }
+        catch(JSONException p){
+            Log.d("Test1", "JSON ERROR MESSAGE");
+        }
         return int_message;
     }
 
@@ -646,13 +653,13 @@ public class SearchAddPatients extends Activity {
         startActivity(intent);
     }
     public void selectPatient_cancel(View view){
-       findPatient_dialog.cancel();
+        findPatient_dialog.cancel();
         patinfo.clear();
     }
 
     @Override
     public void onBackPressed() {
-        Intent go_back = new Intent(this, DoctorMain.class);
+        Intent go_back = new Intent(this, MainMenu.class);
         startActivity(go_back);
     }
 
@@ -667,4 +674,3 @@ public class SearchAddPatients extends Activity {
         client.disconnect();
     }
 }
-
