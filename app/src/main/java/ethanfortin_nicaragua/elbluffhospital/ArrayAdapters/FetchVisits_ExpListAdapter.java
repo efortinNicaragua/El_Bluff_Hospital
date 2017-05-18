@@ -26,6 +26,8 @@ public class FetchVisits_ExpListAdapter extends BaseExpandableListAdapter {
         this.context = context;
         this.listDataHeader = listDataHeader;
         this.listHashMap = listHashMap;
+        System.out.println("contents of listDataHeader: " + listDataHeader.toString());
+        System.out.println("contents of listHashMap: " + listHashMap.toString());
     }
 
     @Override

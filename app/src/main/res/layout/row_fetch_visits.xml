@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:padding="5dp"
+    app:layout_collapseParallaxMultiplier="1.0"
+    android:layout_centerHorizontal="false"
+    android:layout_centerInParent="false">
+
+    <TextView
+        android:id="@+id/visitdate"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        android:text="Visit Date"
+        android:textAlignment="center"
+        android:textColor="#00004d"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:paddingLeft="10dp" />
+
+    <TextView android:id="@+id/reason"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:gravity="center_vertical"
+        android:textStyle="bold"
+        android:textSize="22sp"
+        android:textAlignment="center"
+        android:textColor="#00004d"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:text="Reason"
+        android:layout_weight="1"/>
+
+
+</LinearLayout>

@@ -11,8 +11,12 @@ public class ConnVars {
     // Bartley May 16 - 192.168.1.2
 
     // Image Upload Addresses - 192.168.1.2
-    public static final String URL_UPLOAD = "http://192.168.1.2/image_upload/upload.php";
-    public static final String URL_IMAGES = "http://192.168.1.2/image_upload/get_image.php";
+    public static final String URL_UPLOAD = "http://192.168.1.3/image_upload/upload.php";
+    public static final String URL_IMAGES = "http://192.168.1.3/image_upload/get_image.php";
+
+    //Tag values to read from json
+    public static final String TAG_IMAGE_URL = "image";
+    public static final String TAG_NAME = "name";
 
     // IP Addresses for PHP Scripts
     public static final String URL_FETCH_SPECIFIC_DRUG = "http://192.168.1.3/android_connect/fetch_druginfo_row.php";
@@ -70,12 +74,13 @@ public class ConnVars {
     //The drugname will have to come from a join in the php script
     public static final String TAG_PRESCRIPTIONS_DRUGNAME = "drugname";
 
-    public static final String TAG_VISIT_HISTORY = "visithistory";
-    public static final String TAG_VISITS_PATID = "patid";
-    public static final String TAG_VISITS_VISITDATE = "visitdate";
-    public static final String TAG_VISITS_REASON = "reason";
-    public static final String TAG_VISITS_DOCTOR = "doctor";
-    public static final String TAG_NEWVH_ERRORMESSAGES="VH_ErrorMessages";
+    public static final String TAG_VISITHISTORY = "visithistory";
+    public static final String TAG_VISITHISTORY_VISITID = "visitid";
+    public static final String TAG_VISITHISTORY_PATID = "patid";
+    public static final String TAG_VISITHISTORY_VISITDATE = "visitdate";
+    public static final String TAG_VISITHISTORY_REASON = "reason";
+    public static final String TAG_VISITHISTORY_DOCTOR = "doctor";
+    public static final String TAG_VISITHISTORY_ERRORMESSAGES="VH_ErrorMessages";
     //this one needs to come from a join in the php script to the prescriptions table
     public static final String TAG_VISITS_RXID = "rxid";
 

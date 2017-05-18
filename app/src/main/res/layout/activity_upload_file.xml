@@ -12,9 +12,6 @@
         android:id="@+id/upload_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
         android:fontFamily="sans-serif"
         android:text="Subir Archivo"
         android:textAlignment="center"
@@ -25,7 +22,7 @@
         android:id="@+id/textView23"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Eliga una imagen y una foto"
+        android:text="Eliga la evaluación y una foto"
         android:textAlignment="center"
         android:textColor="#121254"
         android:textSize="24sp"
@@ -35,39 +32,39 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30sp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginTop="30sp">
 
         <Space
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_weight="1"/>
 
         <Button
             android:id="@+id/image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Eligir imagen"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:text="Eligir imagen" />
 
         <Space
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_weight="1"/>
 
         <Button
-            android:id="@+id/date"
+            android:id="@+id/visit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Eligir la fecha"
+            android:text="Eligir la evaluación"
             android:textSize="20sp" />
 
         <Space
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_weight="1"/>
 
     </LinearLayout>
 
@@ -84,6 +81,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAlignment="center"
+        android:layout_gravity="center_horizontal"
         android:textColor="#121254"
         android:textSize="24sp"
         android:typeface="serif" />
