@@ -10,9 +10,9 @@ public class DruginfoFields {
     public int drugtotal;
 
 public DruginfoFields(String drugid, String drugname, int drugtotal) {
-        super();
-        this.drugid = drugid;
-        this.drugname = drugname;
-        this.drugtotal = drugtotal;
+    super();
+    this.drugid = drugid;
+    this.drugname = drugname;
+    this.drugtotal = drugtotal;
     }
 }

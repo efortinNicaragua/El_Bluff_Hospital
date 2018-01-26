@@ -12,7 +12,7 @@
     tools:context="ethanfortin_nicaragua.elbluffhospital.Inventory.FetchSpecificDrug">
 
     <EditText
-        android:id="@+id/filter_bar"
+        android:id="@+id/filter_bar1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -20,7 +20,8 @@
         android:ems="10"
         android:hint="Elige de la lista"
         android:inputType="textPersonName"
-        android:textSize="24sp" />
+        android:textSize="24sp"
+        android:textAlignment="center"/>
 
     <ListView
         android:id="@+id/drug_list"
@@ -29,7 +30,7 @@
         android:minHeight="75dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@id/filter_bar"
+        android:layout_below="@id/filter_bar1"
         android:choiceMode="singleChoice" />
 
     <LinearLayout
@@ -37,7 +38,7 @@
         android:layout_height="match_parent"
         android:layout_below="@+id/drug_list"
         android:layout_centerHorizontal="true"
-        android:orientation="horizontal">
+        android:orientation="horizontal" android:baselineAligned="false">
 
 
         <LinearLayout

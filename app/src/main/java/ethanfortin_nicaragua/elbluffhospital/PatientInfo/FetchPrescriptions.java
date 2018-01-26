@@ -241,7 +241,6 @@ public class FetchPrescriptions extends AppCompatActivity {
                                 String s_reason=reason.getText().toString();
                                 String s_directions=directions.getText().toString();
 
-                                Log.d("maddi", "got here");
                                 if(doctor.getText().toString().trim().equals("")){
                                     doctor.setError("Necesitas entrar un doctor");
                                     Log.d("Maddi", "got heree too");

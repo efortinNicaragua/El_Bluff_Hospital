@@ -24,6 +24,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Date;
 import java.util.HashMap;
 
 import ethanfortin_nicaragua.elbluffhospital.ArrayAdapters.PatientinfoAdapter;
@@ -33,13 +34,16 @@ import ethanfortin_nicaragua.elbluffhospital.PatientInfo.SearchAddPatients;
 import ethanfortin_nicaragua.elbluffhospital.R;
 import ethanfortin_nicaragua.elbluffhospital.RequestHandler;
 
-public class AddShipment extends Activity {//AppCompatActivity {
-    //aa
+public class AddShipment extends AppCompatActivity { //Activity{
+
 
     private EditText et_drugName;
     private EditText et_drugId;
     private EditText et_drugQuant;
+    private EditText et_drugUnit;
     private DatePicker et_shipdate;
+    private DatePicker et_expdate;
+
     int error;
     AlertDialog db_message;
 
@@ -56,7 +60,9 @@ public class AddShipment extends Activity {//AppCompatActivity {
         et_drugName = (EditText)findViewById(R.id.addName);
         et_drugId = (EditText)findViewById(R.id.addId);
         et_drugQuant = (EditText)findViewById(R.id.addQuantity);
+        et_drugUnit=(EditText)findViewById(R.id.addUnits);
         et_shipdate=(DatePicker)findViewById(R.id.datePicker3);
+        et_expdate=(DatePicker)findViewById(R.id.datePicker4);
 
         boolean cancel = false;
         View focusView = null;
@@ -67,7 +73,6 @@ public class AddShipment extends Activity {//AppCompatActivity {
             et_drugName.setError("Not Valid");
             focusView = et_drugName;
             cancel = true;
-            System.out.println("%%%%%%%%%%%%%%%%%%%%11111111%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
         }
         else{
             et_drugName.setError(null,null);
@@ -78,7 +83,6 @@ public class AddShipment extends Activity {//AppCompatActivity {
             et_drugId.setError("Not Valid");
             focusView = et_drugId;
             cancel = true;
-            System.out.println("%%%%%%%%%%%%%%%%%%%%11111111%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
         }
         else{et_drugId.setError(null,null);}
 
@@ -88,9 +92,17 @@ public class AddShipment extends Activity {//AppCompatActivity {
             et_drugQuant.setError("Not Valid");
             focusView = et_drugQuant;
             cancel = true;
-            System.out.println("%%%%%%%%%%%%%%%%%%%%11111111%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
         }
         else{et_drugQuant.setError(null,null);}
+
+        // Verify drug units
+        String s_drugUnit = et_drugUnit.getText().toString();
+        if(TextUtils.isEmpty(s_drugUnit)) {
+            et_drugUnit.setError("Not Valid");
+            focusView = et_drugUnit;
+            cancel = true;
+        }
+        else{et_drugUnit.setError(null,null);}
 
         //Change format of date picker!
         //Get int of day, month, year
@@ -99,8 +111,13 @@ public class AddShipment extends Activity {//AppCompatActivity {
         int month_shipDate=et_shipdate.getMonth()+1;
         int year_shipDate =et_shipdate.getYear();
 
+        int day_expDate=et_expdate.getDayOfMonth();
+        int month_expDate=et_expdate.getMonth()+1;
+        int year_expDate=et_expdate.getYear();
+
         //Turn day moth year into individual strings and concatonate into what suits you.
         String s_day_shipDate, s_month_shipDate, s_year_shipDate, s_shipDate;
+        String s_day_expDate, s_month_expDate, s_year_expDate, s_expDate;
 
         //if value of day or month
         if(day_shipDate<10){
@@ -115,11 +132,28 @@ public class AddShipment extends Activity {//AppCompatActivity {
 
         s_year_shipDate=String.valueOf(year_shipDate);
 
+
+        if(day_shipDate<10) {
+           s_day_expDate="0"+String.valueOf(day_expDate);
+        }
+        else{s_day_expDate=String.valueOf(day_expDate);}
+
+        if(month_shipDate<10){
+            s_month_expDate="0"+String.valueOf(month_expDate);
+        }
+        else{s_month_expDate=String.valueOf(month_expDate);}
+
+        s_year_expDate=String.valueOf(year_expDate);
+
         //put these all into string called shipdate with format that PHP prefers;
 
         s_shipDate=s_year_shipDate+"-"+s_month_shipDate+"-"+s_day_shipDate;
+        s_expDate=s_year_expDate+"-"+s_month_expDate+"-"+s_day_expDate;
+
         System.out.println("Here is the format and value of individual date values " + s_day_shipDate + " " + s_month_shipDate + " "+ s_year_shipDate);
         System.out.println("Here is the format and value of the concat date " + s_shipDate);
+        System.out.println("EXP Here is the format and value of individual date values " + s_day_expDate + " " + s_month_expDate + " "+ s_year_expDate);
+        System.out.println("EXP Here is the format and value of the concat date " + s_expDate);
 
 
         if(cancel) {
@@ -127,7 +161,7 @@ public class AddShipment extends Activity {//AppCompatActivity {
         }
         else {
 
-            addShipment(s_drugId,s_drugName,s_drugQuant,s_shipDate);
+            addShipment(s_drugId,s_drugName,s_drugQuant,s_drugUnit,s_shipDate,s_expDate);
 
             /*int duration = Toast.LENGTH_LONG;
             Context context = getApplicationContext();
@@ -139,7 +173,7 @@ public class AddShipment extends Activity {//AppCompatActivity {
         }
     }
 
-    private void addShipment(final String drugid, final String drugname, final String drugincr, final String shipdate) {
+    private void addShipment(final String drugid, final String drugname, final String drugincr, final String drugunit, final String shipdate, final String expdate) {
         class get_addShipment extends AsyncTask<Void, Void, String> {
             ProgressDialog loading;
 
@@ -154,7 +188,7 @@ public class AddShipment extends Activity {//AppCompatActivity {
             protected void onPostExecute(String s) {
                 super.onPostExecute(s);
                 loading.dismiss();
-                System.out.println("Here is s"+s);
+                System.out.println("Here is s "+s);
                 int errortemp=jsonParse(s);
                 System.out.println("HEre is errortemp "+errortemp);
                 Log.d("Test1", "Error temp "+ errortemp);
@@ -204,7 +238,9 @@ public class AddShipment extends Activity {//AppCompatActivity {
                 map.put("drugid",drugid);
                 map.put("drugname",drugname);
                 map.put("drugincr", drugincr);
+                map.put("drugunit",drugunit);
                 map.put("shipdate",shipdate);
+                map.put("expdate",expdate);
                 String s;
 
                 s = reqHan.sendPostRequest(ConnVars.URL_ADD_PRESCRIPTION, map);
@@ -243,39 +279,33 @@ public class AddShipment extends Activity {//AppCompatActivity {
 
             JSONObject jo = jsonArray.getJSONObject(count);
 
-            Log.d("Test1",  "first: "+count);
+
 
             new_drug = jo.getString("new_drug");
-            Log.d("Test1 ND", new_drug);
-            Log.d("Test1",  "Second: "+count);
             count++;
 
             jo = jsonArray.getJSONObject(count);
             ship_success = jo.getString("ship_success");
-            Log.d("Test1 SS", ship_success);
-            Log.d("Test1", "third: "+count);
             count++;
 
             jo = jsonArray.getJSONObject(count);
             info_success = jo.getString("info_success");
-            Log.d("Test1 IS", info_success);
 
-
+            System.out.println("here are new_drug,ship_success,info_success: "+new_drug+" "+ship_success+" "+info_success);
 
 
             int_new_drug=Integer.parseInt(new_drug);
             int_ship_success=Integer.parseInt(ship_success);
             int_info_success=Integer.parseInt(info_success);
 
-            Log.d("Test1", "Int Drug " +int_new_drug);
-            Log.d("Test1",  "Int Ship " +int_ship_success);
-            Log.d("Test1", "Int Info "+int_info_success);
 
             //increment count
             // count++;
             //}
 
         } catch (JSONException e) {
+
+            System.out.println("JSON Exception on try to get values for errors");
 
         }
 

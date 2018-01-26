@@ -19,6 +19,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Switch;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -33,9 +34,13 @@ import ethanfortin_nicaragua.elbluffhospital.R;
 public class InventoryOptions extends AppCompatActivity {
 
     final Context context = this;
+    //set variable for knowing when switch is on or off
+    int on_off=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inventory_options);
 
@@ -49,18 +54,33 @@ public class InventoryOptions extends AppCompatActivity {
                 final EditText entryName = (EditText) subView.findViewById(R.id.searchByName);
                 final DatePicker datePicker = (DatePicker) subView.findViewById(R.id.datePicker2);
 
-                datePicker.setEnabled(false);
+                //datePicker.setEnabled(false);
+                datePicker.setVisibility(View.INVISIBLE);
 
                 final Switch dateEnable = (Switch) subView.findViewById(R.id.dateEnable);
+
+
+
                 // Clicking on the switch will toggle whether the user
                 // would like to search by date or not.
                 dateEnable.setChecked(false);
 
                 dateEnable.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                        datePicker.setEnabled(!datePicker.isEnabled());
+
+                        if(on_off==0) {
+                            datePicker.setVisibility(View.VISIBLE);
+                            datePicker.setEnabled(!datePicker.isEnabled());
+                            on_off=1;
+                        }
+                        else {
+                            datePicker.setVisibility(View.INVISIBLE);
+                            on_off=0;
+                        }
+
                     }
                 });
+
 
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
 

@@ -4,9 +4,11 @@ import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
+import ethanfortin_nicaragua.elbluffhospital.MainMenu;
 import ethanfortin_nicaragua.elbluffhospital.R;
 
 public class PharmacyMain extends AppCompatActivity {
@@ -116,6 +118,12 @@ public class PharmacyMain extends AppCompatActivity {
     public void seeInventory(View v) {
         Intent seeInv = new Intent(this, InventoryOptions.class);
         startActivity(seeInv);
+    }
+    @Override
+    public void onBackPressed() {
+        Log.d("onBackPressed","backpPressed");
+        Intent go_back = new Intent(this, MainMenu.class);
+        startActivity(go_back);
     }
 
 }

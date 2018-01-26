@@ -5,7 +5,11 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import org.json.JSONArray;
@@ -14,6 +18,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import ethanfortin_nicaragua.elbluffhospital.ArrayAdapters.DruginfoAdapter;
 import ethanfortin_nicaragua.elbluffhospital.ConnVars;
@@ -21,7 +26,12 @@ import ethanfortin_nicaragua.elbluffhospital.DataClasses.DruginfoFields;
 import ethanfortin_nicaragua.elbluffhospital.R;
 import ethanfortin_nicaragua.elbluffhospital.RequestHandler;
 
-public class Inventory extends ListActivity {
+public class Inventory extends AppCompatActivity {
+
+    ArrayAdapter<DruginfoFields> adapter;
+    ListView listView;
+    ArrayList<DruginfoFields> drugInfoData = new ArrayList();
+    EditText et_search;
 
 
     @Override
@@ -29,9 +39,60 @@ public class Inventory extends ListActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inventory);
 
+        listView= (ListView) findViewById(R.id.inventory_list);
+        et_search=(EditText) findViewById(R.id.filter_bar1);
         getInventory();
+        et_search.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int i, int i1, int i2) {
+                if(s.toString().equals("")){
+                getInventory();
+                }
+                else{
+                    //perform search
+                    System.out.println("s="+s.toString());
+                    searchItem(s.toString());
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
     }
 
+    public void searchItem(String textToSearch){
+
+        ArrayList<DruginfoFields> temp_drugInfoData = drugInfoData;
+        ArrayList<DruginfoFields> temp= new ArrayList<>();
+        int temp_size=drugInfoData.size();
+
+       // System.out.println("Temp DName: "+temp_drugInfoData.get(0).drugname);
+        //if(temp_drugInfoData.get(0).drugname.contains("a")){ System.out.println("Cotains a: "+temp_drugInfoData.get(0).drugname);}
+        for (int i=0; i<temp_size;i++){
+            //System.out.println("i= "+i);
+            //System.out.println("Temp DName: "+temp_drugInfoData.get(i).getDrugname());
+            if (!temp_drugInfoData.get(i).drugname.equalsIgnoreCase(textToSearch)) {
+               temp.add(temp_drugInfoData.get(i));
+                //System.out.println("Temp DName: "+temp_drugInfoData.get(i).getDrugname());
+            }
+
+
+        }
+         drugInfoData.removeAll(temp);
+        /*for (int i=0; i<drugInfoData.size();i++) {
+            System.out.println("DrugName "+drugInfoData.get(i).drugname);
+        }*/
+
+         adapter.notifyDataSetChanged();
+         listView.setAdapter(adapter);
+    }
     private void getInventory() {
 
         class getInv extends AsyncTask<Void,Void,String> {
@@ -49,6 +110,8 @@ public class Inventory extends ListActivity {
                 super.onPostExecute(s);
                 loading.dismiss();
                 parseInventory(s);
+
+
             }
 
             // In here, split between argChoice Value (1 or 2)
@@ -74,8 +137,6 @@ public class Inventory extends ListActivity {
     private void parseInventory(String json) {
 
         Context context = this;
-        ListView listView;
-        ArrayList<DruginfoFields> drugInfoData = new ArrayList();
 
         int totalCast, count = 0;
         String drugName, drugId, drugTotal;
@@ -104,8 +165,7 @@ public class Inventory extends ListActivity {
             System.out.println("JSON Exception occurred...");
         }
 
-        ArrayAdapter<DruginfoFields> adapter = new DruginfoAdapter(context, drugInfoData);
-        listView = (ListView) findViewById(android.R.id.list);
+         adapter = new DruginfoAdapter(context, drugInfoData);
         listView.setAdapter(adapter);
     }
 }

@@ -16,8 +16,8 @@ public class MainMenu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
 
-        Intent startLogin = new Intent(this, LoginActivity.class);
-        startActivity(startLogin);
+        //Intent startLogin = new Intent(this, LoginActivity.class);
+        //startActivity(startLogin);
 
     }
 
@@ -33,7 +33,8 @@ public class MainMenu extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        finish();
+        //finish();
+        moveTaskToBack(true);
     }
 
 

@@ -36,7 +36,10 @@
 
     <string name="hintDrugName">Nombre de Medicina</string>
     <string name="hintDrugId">ID de Medicina</string>
-    <string name="hintDrugQuantity">Cantidad de medicina en el envío</string>
+    <string name="hintDrugQuantity">Cantidad</string>
+    <string name="hintDrugUnits">Formato</string>
+    <string name="hintDate">Fecha de Envío</string>
+    <string name="hintDateExp">Fecha de Caducidad</string>
     <string name="textCreateShipment">Crear nuevo envío</string>
     <string name="guardar">textSave</string>
     <string name="textFind">Encontrar</string>

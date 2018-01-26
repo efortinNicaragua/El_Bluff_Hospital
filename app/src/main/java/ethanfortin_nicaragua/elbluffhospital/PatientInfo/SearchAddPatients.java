@@ -659,6 +659,7 @@ public class SearchAddPatients extends Activity {
 
     @Override
     public void onBackPressed() {
+        Log.d("onBackPressed","backpPressed");
         Intent go_back = new Intent(this, MainMenu.class);
         startActivity(go_back);
     }

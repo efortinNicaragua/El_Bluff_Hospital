@@ -15,19 +15,15 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
 import ethanfortin_nicaragua.elbluffhospital.ArrayAdapters.DrugNameAdapter;
-import ethanfortin_nicaragua.elbluffhospital.ArrayAdapters.DruginfoAdapter;
-import ethanfortin_nicaragua.elbluffhospital.ArrayAdapters.PatientinfoAdapter;
 import ethanfortin_nicaragua.elbluffhospital.ConnVars;
 import ethanfortin_nicaragua.elbluffhospital.DataClasses.DruginfoFields;
 import ethanfortin_nicaragua.elbluffhospital.R;
@@ -95,7 +91,7 @@ public class FetchSpecificDrug extends AppCompatActivity {
 
                 adapter = new DrugNameAdapter(FetchSpecificDrug.this, list);
 
-                final EditText filter = (EditText)findViewById(R.id.filter_bar);
+                final EditText filter = (EditText)findViewById(R.id.filter_bar1);
                 lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                         selectedListItem = (String) lv.getItemAtPosition(position);

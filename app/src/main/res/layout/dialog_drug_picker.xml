@@ -44,7 +44,7 @@
              android:minHeight="75dp"
              android:layout_alignParentLeft="true"
              android:layout_alignParentStart="true"
-             android:layout_below="@id/filter_bar"
+             android:layout_below="@id/filter_bar1"
              android:choiceMode="singleChoice" />
 
 </LinearLayout>
