@@ -1,118 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_fetch_specific_drug"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="@drawable/greygradient"
-    tools:context="ethanfortin_nicaragua.elbluffhospital.Inventory.FetchSpecificDrug">
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:paddingBottom="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp"
+    android:paddingLeft="16dp"
+    android:background="@drawable/greygradient">
 
-    <EditText
-        android:id="@+id/filter_bar1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <TextView
+        android:id="@+id/text_drugid"
+        android:layout_width="175dp"
+        android:layout_height="40dp"
+        android:gravity="center_vertical"
+        android:text="ID"
+        android:textAlignment="center"
+        android:textColor="@color/colorAccent"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="0dp"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:ems="10"
-        android:hint="Elige de la lista"
-        android:inputType="textPersonName"
-        android:textSize="24sp"
-        android:textAlignment="center"/>
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"  />
+    <TextView
+        android:id="@+id/text_drugname"
+        android:layout_width="175dp"
+        android:layout_height="40dp"
+        android:gravity="center_vertical"
+        android:text="Nombre"
+        android:textAlignment="center"
+        android:textColor="@color/colorAccent"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_marginLeft="185dp"
+        android:layout_marginTop="0dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"  />
+    <TextView
+        android:id="@+id/text_drugtotal"
+        android:layout_width="175dp"
+        android:layout_height="40dp"
+        android:gravity="center_vertical"
+        android:text="Total"
+        android:textAlignment="center"
+        android:textColor="@color/colorAccent"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_marginLeft="370dp"
+        android:layout_marginTop="0dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"  />
+
+
 
     <ListView
-        android:id="@+id/drug_list"
-        android:layout_width="match_parent"
-        android:layout_height="450dp"
-        android:minHeight="75dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@id/filter_bar1"
-        android:choiceMode="singleChoice" />
+        android:id="@+id/list_specific_drug"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginTop="60dp"
+        android:scrollbarSize="10dp"
+        android:scrollbarThumbVertical="@color/colorAccent">
+    </ListView>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/drug_list"
-        android:layout_centerHorizontal="true"
-        android:orientation="horizontal" android:baselineAligned="false">
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_weight="1" >
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="30dp" />
-
-            <TextView
-                android:id="@+id/name_cap"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:text="Nombre:   "
-                android:textAlignment="textEnd"
-                android:textColor="@color/colorAccent"
-                android:textSize="30sp" />
-
-            <TextView
-                android:id="@+id/id_cap"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:text="ID:   "
-                android:textAlignment="textEnd"
-                android:textColor="@color/colorAccent"
-                android:textSize="30sp" />
-
-            <TextView
-                android:id="@+id/quant_cap"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:text="Cantidad:   "
-                android:textAlignment="textEnd"
-                android:textColor="@color/colorAccent"
-                android:textSize="30sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_weight="1" >
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="30dp" />
-
-            <TextView
-                android:id="@+id/name_res"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/cellBorder"
-                android:textSize="24sp" />
-
-            <TextView
-                android:id="@+id/id_res"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/cellBorder"
-                android:textSize="24sp" />
-
-            <TextView
-                android:id="@+id/quant_res"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/cellBorder"
-                android:textSize="24sp" />
-        </LinearLayout>
-    </LinearLayout>
 
 </RelativeLayout>

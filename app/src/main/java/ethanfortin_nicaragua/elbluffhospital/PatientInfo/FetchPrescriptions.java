@@ -340,7 +340,7 @@ public class FetchPrescriptions extends AppCompatActivity {
                 }
 
 
-                adapter = new DrugNameAdapter(FetchPrescriptions.this, list);
+                //adapter = new DrugNameAdapter(FetchPrescriptions.this, list);
 
                 //final EditText filter = (EditText)findViewById(R.id.filter_bar2);
                 lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {

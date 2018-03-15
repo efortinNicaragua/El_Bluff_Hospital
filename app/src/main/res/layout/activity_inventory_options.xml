@@ -41,7 +41,7 @@
         android:layout_below="@+id/textView8"
         android:layout_centerHorizontal="true" />
 
-    <Button
+    <!--  <Button
         android:text="@string/specificDrug"
         android:layout_width="500dp"
         android:layout_height="100dp"
@@ -54,7 +54,7 @@
         android:layout_below="@+id/b_searchShipments"
         android:layout_alignLeft="@+id/b_searchShipments"
         android:layout_alignStart="@+id/b_searchShipments"
-        android:onClick="specificDrug" />
+        android:onClick="specificDrug" />-->
 
     <Button
         android:text="@string/searchShipments"
@@ -68,6 +68,7 @@
         android:layout_marginTop="99dp"
         android:layout_below="@+id/b_entireInventory"
         android:layout_alignLeft="@+id/b_entireInventory"
-        android:layout_alignStart="@+id/b_entireInventory" />
+        android:layout_alignStart="@+id/b_entireInventory"
+        android:onClick="searchShipments"/>
 
 </RelativeLayout>

@@ -1,17 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
 
     <TextView
-        android:id="@+id/row_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="TextView"
-        android:textAlignment="center"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="24sp"
-        android:padding="5dp"/>
+        android:text="Fecha"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:textColor="@color/colorAccent"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="5dp"
+        android:id="@+id/text_Fecha" />
 
-</LinearLayout>
+
+
+    <TextView
+        android:id="@+id/qualQuant"
+        android:layout_width="110dp"
+        android:layout_height="30dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="50dp"
+        android:text="Cantidad: "
+        android:textColor="#00004d"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:text="shipquant"
+        android:textSize="25sp"
+        android:textColor="@color/colorAccent"
+        android:layout_width="200dp"
+        android:layout_height="30dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="115dp"
+        android:layout_marginTop="50dp"
+        android:id="@+id/shipquant" />
+    <TextView
+        android:id="@+id/txt_expD"
+        android:layout_width="140dp"
+        android:layout_height="30dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="250dp"
+        android:text="Caudicidad: "
+        android:textColor="#00004d"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:text="Exp Date"
+        android:textSize="25sp"
+        android:textColor="@color/colorAccent"
+        android:layout_width="200dp"
+        android:layout_height="30dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="395dp"
+        android:layout_marginTop="50dp"
+        android:id="@+id/expD" />
+</RelativeLayout>

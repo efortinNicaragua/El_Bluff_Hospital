@@ -8,10 +8,55 @@
     android:paddingLeft="16dp"
     android:background="@drawable/greygradient">
 
+    <TextView
+        android:id="@+id/text_dp"
+        android:layout_width="200dp"
+        android:layout_height="175dp"
+        android:gravity="center_vertical"
+        android:text="Fecha del Envio"
+        android:textAlignment="center"
+        android:textColor="#00004d"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="0dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"  />
+
+    <DatePicker
+        android:id="@+id/shipment_dp"
+        android:layout_width="wrap_content"
+        android:layout_height="190dp"
+        android:layout_marginLeft="225dp"
+        android:layout_marginTop="0dp"
+        android:calendarViewShown="false" />
+
+
     <ListView
-        android:id="@android:id/list"
+        android:id="@+id/shipment_list"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="200dp"
+        android:scrollbarSize="10dp"
+        android:scrollbarThumbVertical="@color/colorAccent">
+    </ListView>
+    <TextView
+            android:id="@+id/text_noresults"
+            android:visibility="gone"
+            android:layout_width="200dp"
+            android:layout_height="100dp"
+            android:gravity="center_vertical"
+            android:text="No Hay Resultados"
+            android:textAlignment="center"
+            android:textColor="#00004d"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:layout_marginLeft="200dp"
+            android:layout_marginTop="200dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"  />
+
 
 </RelativeLayout>

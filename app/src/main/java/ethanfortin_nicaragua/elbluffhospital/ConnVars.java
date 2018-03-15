@@ -21,7 +21,7 @@ public class ConnVars {
 
 
     // IP Addresses for PHP Scripts
-    public static final String URL_FETCH_SPECIFIC_DRUG = "http://192.168.1.2/android_connect/fetch_druginfo_row.php";
+    public static final String URL_FETCH_SPECIFIC_DRUG = "http://192.168.1.2/android_connect/fetch_specific_drug.php";
     public static final String URL_FETCH_DRUGINFO_ALL = "http://192.168.1.2/android_connect/fetch_druginfo_all.php";
     public static final String URL_FETCH_SHIPMENT = "http://192.168.1.2/android_connect/fetch_shipment_rows.php";
     public static final String URL_FETCH_PATIENTINFO_ROW = "http://192.168.1.2/android_connect/fetch_patientinfo_row.php";
@@ -56,6 +56,7 @@ public class ConnVars {
     public static final String TAG_PATIENTINFO_INVPID = "invpid";
 
     public static final String TAG_SHIPMENT = "shipment";
+    public static final String TAG_SHIPMENT_EXPDATE = "experation_date";
     public static final String TAG_SHIPMENT_SHIPDATE = "shipdate";
     public static final String TAG_SHIPMENT_DRUGID = "drugid";
     public static final String TAG_SHIPMENT_DRUGNAME = "drugname";

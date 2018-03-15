@@ -16,7 +16,7 @@
         android:layout_width="275dp"
         android:layout_height="50dp"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"
         android:textSize="24sp"
         android:textAlignment="center" />
@@ -28,7 +28,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginLeft="310dp"
         android:ems="10"
-        android:hint="Elige de la lista"
+        android:hint="Click"
         android:inputType="textPersonName"
         android:textSize="24sp"
         android:textAlignment="center"/>
@@ -82,7 +82,9 @@
         android:id="@+id/inventory_list"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_marginTop="165dp">
+        android:layout_marginTop="165dp"
+        android:scrollbarSize="10dp"
+        android:scrollbarThumbVertical="@color/colorAccent">
 
     </ListView>
 

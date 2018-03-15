@@ -32,12 +32,12 @@ public class ShipmentAdapter extends ArrayAdapter<ShipmentFields> {
         TextView drugid = (TextView)convertView.findViewById(R.id.drugid);
         TextView drugname = (TextView)convertView.findViewById(R.id.drugname);
         TextView shipquant = (TextView)convertView.findViewById(R.id.shipquant);
-        TextView shipdate = (TextView)convertView.findViewById(R.id.shipdate) ;
+        TextView expDate= (TextView)convertView.findViewById(R.id.expD);
 
         drugid.setText(shipRow.drugid);
         drugname.setText(shipRow.drugname);
         shipquant.setText(Integer.toString(shipRow.shipquant));
-        shipdate.setText(shipRow.shipdate);
+        expDate.setText(shipRow.expdate);
 
         return convertView;
 

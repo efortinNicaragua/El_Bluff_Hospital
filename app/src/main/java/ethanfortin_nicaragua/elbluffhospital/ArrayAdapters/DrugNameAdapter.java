@@ -11,25 +11,31 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import ethanfortin_nicaragua.elbluffhospital.DataClasses.DruginfoFields;
+import ethanfortin_nicaragua.elbluffhospital.DataClasses.ShipmentFields;
 import ethanfortin_nicaragua.elbluffhospital.R;
 
-public class DrugNameAdapter extends ArrayAdapter<String> {
+public class DrugNameAdapter extends ArrayAdapter<ShipmentFields> {
 
-    public DrugNameAdapter(Context context, ArrayList<String> drugNames) {
-        super(context,0,drugNames);
+    public DrugNameAdapter(Context context,  ArrayList<ShipmentFields> drugdata) {
+        super(context,0,drugdata);
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        String drugName = getItem(position);
+        ShipmentFields shipRow = getItem(position);
+
         if(convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.row_specific_drug, parent, false);
         }
 
-        TextView name = (TextView)convertView.findViewById(R.id.row_name);
+        TextView date = (TextView)convertView.findViewById(R.id.text_Fecha);
+        TextView shipquant = (TextView)convertView.findViewById(R.id.shipquant);
+        TextView expDate=(TextView)convertView.findViewById(R.id.expD);
 
-        name.setText(drugName);
+        date.setText(shipRow.shipdate);
+        shipquant.setText(Integer.toString(shipRow.shipquant));
+        expDate.setText(shipRow.expdate);
 
         return convertView;
     }

@@ -1,16 +1,21 @@
 package ethanfortin_nicaragua.elbluffhospital.Inventory;
 
+import android.app.Activity;
 import android.app.ListActivity;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -23,6 +28,7 @@ import java.util.List;
 import ethanfortin_nicaragua.elbluffhospital.ArrayAdapters.DruginfoAdapter;
 import ethanfortin_nicaragua.elbluffhospital.ConnVars;
 import ethanfortin_nicaragua.elbluffhospital.DataClasses.DruginfoFields;
+import ethanfortin_nicaragua.elbluffhospital.MainMenu;
 import ethanfortin_nicaragua.elbluffhospital.R;
 import ethanfortin_nicaragua.elbluffhospital.RequestHandler;
 
@@ -31,6 +37,7 @@ public class Inventory extends AppCompatActivity {
     ArrayAdapter<DruginfoFields> adapter;
     ListView listView;
     ArrayList<DruginfoFields> drugInfoData = new ArrayList();
+    ArrayList<DruginfoFields> temp_drugInfoData = new ArrayList();
     EditText et_search;
 
 
@@ -69,33 +76,53 @@ public class Inventory extends AppCompatActivity {
 
     public void searchItem(String textToSearch){
 
-        ArrayList<DruginfoFields> temp_drugInfoData = drugInfoData;
+        for (int i=0; i<drugInfoData.size();i++){
+            System.out.println("drugname="+drugInfoData.get(i).drugname.toString());
+        }
+
+
         ArrayList<DruginfoFields> temp= new ArrayList<>();
         int temp_size=drugInfoData.size();
+        temp_drugInfoData.clear();
 
-       // System.out.println("Temp DName: "+temp_drugInfoData.get(0).drugname);
-        //if(temp_drugInfoData.get(0).drugname.contains("a")){ System.out.println("Cotains a: "+temp_drugInfoData.get(0).drugname);}
         for (int i=0; i<temp_size;i++){
             //System.out.println("i= "+i);
             //System.out.println("Temp DName: "+temp_drugInfoData.get(i).getDrugname());
-            if (!temp_drugInfoData.get(i).drugname.equalsIgnoreCase(textToSearch)) {
+
+            //set add druginfodata to temp_druginfo array
+            temp_drugInfoData.add(drugInfoData.get(i));
+
+            //add drugname to temp list if it does not match searched for character
+            if (!temp_drugInfoData.get(i).drugname.toLowerCase().contains(textToSearch.toLowerCase())) {
                temp.add(temp_drugInfoData.get(i));
-                //System.out.println("Temp DName: "+temp_drugInfoData.get(i).getDrugname());
             }
-
-
         }
-         drugInfoData.removeAll(temp);
+
+        System.out.println("pause");
+        for (int i=0; i<drugInfoData.size();i++){
+            System.out.println("drugname="+drugInfoData.get(i).drugname.toString());
+        }
+
+        for (int j = temp.size()-1; j >= 0; j--) {
+            temp_drugInfoData.remove(temp.get(j));
+        }
+        //temp_drugInfoData.removeAll(temp);
+
+        //System.out.println("temp size after removal="+temp_drugInfoData.size());
         /*for (int i=0; i<drugInfoData.size();i++) {
             System.out.println("DrugName "+drugInfoData.get(i).drugname);
         }*/
-
+        System.out.println("pause1");
+        for (int i=0; i<drugInfoData.size();i++){
+            System.out.println("drugname="+drugInfoData.get(i).drugname.toString());
+        }
          adapter.notifyDataSetChanged();
          listView.setAdapter(adapter);
     }
     private void getInventory() {
 
         class getInv extends AsyncTask<Void,Void,String> {
+
 
             ProgressDialog loading;
 
@@ -110,8 +137,6 @@ public class Inventory extends AppCompatActivity {
                 super.onPostExecute(s);
                 loading.dismiss();
                 parseInventory(s);
-
-
             }
 
             // In here, split between argChoice Value (1 or 2)
@@ -136,7 +161,7 @@ public class Inventory extends AppCompatActivity {
     // Should only return one drug record, i.e. one name, id, and quantity
     private void parseInventory(String json) {
 
-        Context context = this;
+        final Context context = this;
 
         int totalCast, count = 0;
         String drugName, drugId, drugTotal;
@@ -165,7 +190,25 @@ public class Inventory extends AppCompatActivity {
             System.out.println("JSON Exception occurred...");
         }
 
-         adapter = new DruginfoAdapter(context, drugInfoData);
+        for(int i=0;i<drugInfoData.size();i++){
+            temp_drugInfoData.add(drugInfoData.get(i));
+        }
+
+        adapter = new DruginfoAdapter(context, temp_drugInfoData);
         listView.setAdapter(adapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id){
+                //System.out.println( temp_drugInfoData.get(position));
+                Intent intent = new Intent(Inventory.this, FetchSpecificDrug.class);
+                Bundle b = new Bundle();
+                b.putString("drugid", temp_drugInfoData.get(position).drugid); //Your id
+                intent.putExtras(b); //Put your id to your next Intent
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 }

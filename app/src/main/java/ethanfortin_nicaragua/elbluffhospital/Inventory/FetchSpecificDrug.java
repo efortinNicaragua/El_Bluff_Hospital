@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
@@ -22,29 +23,43 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import ethanfortin_nicaragua.elbluffhospital.ArrayAdapters.DrugNameAdapter;
+import ethanfortin_nicaragua.elbluffhospital.ArrayAdapters.ShipmentAdapter;
 import ethanfortin_nicaragua.elbluffhospital.ConnVars;
 import ethanfortin_nicaragua.elbluffhospital.DataClasses.DruginfoFields;
+import ethanfortin_nicaragua.elbluffhospital.DataClasses.ShipmentFields;
 import ethanfortin_nicaragua.elbluffhospital.R;
 import ethanfortin_nicaragua.elbluffhospital.RequestHandler;
 
 public class FetchSpecificDrug extends AppCompatActivity {
 
     // Declare global layout variables
-    ArrayAdapter<String> adapter;
+    ArrayAdapter<ShipmentFields> adapter;
 
     // druginfo class array adapter
     ArrayList<DruginfoFields> druginfo = new ArrayList();
 
-    ListView lv;
-    String selectedListItem;
-
+    ListView listView;
+    TextView txt_drugid;
+    TextView txt_drugname;
+    TextView txt_drugtotal;
+    String drug_id;
     // Set layout, initialize layout object handles and listener
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fetch_specific_drug);
+
+        listView=(ListView) findViewById(R.id.list_specific_drug);
+        txt_drugid=(TextView) findViewById(R.id.text_drugid);
+        txt_drugname=(TextView) findViewById(R.id.text_drugname);
+        txt_drugtotal=(TextView) findViewById(R.id.text_drugtotal);
+
+        Bundle b = getIntent().getExtras();
+        if(b != null)
+            drug_id= b.getString("drugid");
 
         nameListFetch();
     }
@@ -67,68 +82,18 @@ public class FetchSpecificDrug extends AppCompatActivity {
             protected void onPostExecute(String s) {
                 super.onPostExecute(s);
                 loading.dismiss();
-
-                String drugName;
-                lv = (ListView)findViewById(R.id.drug_list);
-                ArrayList<String> list = new ArrayList<>();
-                int count = 0;
-
-                try {
-                    JSONObject jsonObject = new JSONObject(s);
-                    JSONArray resArr = jsonObject.getJSONArray(ConnVars.TAG_DRUGINFO);
-
-                    while (count < resArr.length()) {
-                        System.out.println("Array: " + list);
-                        JSONObject resObj = resArr.getJSONObject(count);
-                        drugName = resObj.getString(ConnVars.TAG_DRUGINFO_NAME);
-                        list.add(drugName);
-                        count++;
-                    }
-
-                } catch (JSONException j) {
-                    System.out.println("JSON Exception occurred...");
-                }
-
-                adapter = new DrugNameAdapter(FetchSpecificDrug.this, list);
-
-                final EditText filter = (EditText)findViewById(R.id.filter_bar1);
-                lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                        selectedListItem = (String) lv.getItemAtPosition(position);
-                        System.out.println("ITEM = " + selectedListItem);
-                        InputMethodManager mgr = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                        mgr.hideSoftInputFromWindow(filter.getWindowToken(), 0);
-                        drugFetch(selectedListItem);
-                    }
-                });
-
-                lv.setAdapter(adapter);
-
-
-                filter.addTextChangedListener(new TextWatcher() {
-                    @Override
-                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-                    }
-
-                    @Override
-                    public void onTextChanged(CharSequence s, int start, int before, int count) {
-                        FetchSpecificDrug.this.adapter.getFilter().filter(s);
-                    }
-
-                    @Override
-                    public void afterTextChanged(Editable s) {
-
-                    }
-                });
+                parseShipments(s);
             }
 
             // Pass user input params to fetch method, even if they are blank
             protected String doInBackground(Void... params) {
 
+                HashMap<String, String> map = new HashMap<>();
                 String s;
+                //map.put("drugid",id);
+                map.put("drugid",drug_id);
                 RequestHandler reqHan = new RequestHandler();
-                s = reqHan.sendGetRequest(ConnVars.URL_FETCH_DRUGINFO_ALL);
+                s = reqHan.sendGetRequestParam(ConnVars.URL_FETCH_SPECIFIC_DRUG, map);
 
                 return s;
             }
@@ -138,73 +103,77 @@ public class FetchSpecificDrug extends AppCompatActivity {
         nameList.execute();
     }
 
-    // Takes entered name and Id as args,
-    private void drugFetch(final String name) {
-
-        class fetchSpecificDrug extends AsyncTask<Void,Void,String> {
-
-            ProgressDialog loading;
-
-            @Override
-            protected void onPreExecute() {
-                super.onPreExecute();
-                loading = ProgressDialog.show(FetchSpecificDrug.this,"Buscando...","Espera, por favor",false,false);
-            }
-
-            // Once JSON received correctly, parse and display it
-            @Override
-            protected void onPostExecute(String s) {
-                super.onPostExecute(s);
-                loading.dismiss();
-                System.out.println("Executing Drugshow");
-                drugShow(s);
-            }
-
-            // Pass user input params to fetch method, even if they are blank
-            protected String doInBackground(Void... params) {
-
-                RequestHandler reqHan = new RequestHandler();
-                HashMap<String, String> map = new HashMap<>();
-                String s;
-
-                // Will only pass key-value if EditText was populated
-                if (!TextUtils.equals("", name)) map.put("drugname", name);
-
-                s = reqHan.sendGetRequestParam(ConnVars.URL_FETCH_SPECIFIC_DRUG, map);
-
-                return s;
-
-            }
-        }
-
-        fetchSpecificDrug specDrug = new fetchSpecificDrug();
-        specDrug.execute();
-    }
-
-    // Parses JSON - listview involved
-    private void drugShow(String json) {
-
-        TextView txtName = (TextView)findViewById(R.id.name_res);
-        TextView txtId = (TextView)findViewById(R.id.id_res);
-        TextView txtQuant = (TextView)findViewById(R.id.quant_res);
+    private void parseShipments(String json) {
         System.out.println(json);
 
+        Context context = this;
+        ArrayList<ShipmentFields> shipmentData = new ArrayList();
+
+        int totalCast, count = 0;
+        String drugId, drugName, drugQuant, shipQuant, shipDate, expDate;
+
         try {
-            System.out.println("Mark 1");
             JSONObject jsonObject = new JSONObject(json);
-            JSONArray resArr = jsonObject.getJSONArray(ConnVars.TAG_DRUGINFO);
-            JSONObject resObj = resArr.getJSONObject(0);
+            System.out.println("json="+json.toString());
+            System.out.println("jsonObj="+jsonObject.toString());
 
-            String drugName = resObj.getString(ConnVars.TAG_DRUGINFO_NAME);
-            String drugId = resObj.getString(ConnVars.TAG_DRUGINFO_ID);
-            String drugTotal = resObj.getString(ConnVars.TAG_DRUGINFO_QUANT);
 
-            txtName.setText(drugName);
-            txtId.setText(drugId);
-            txtQuant.setText(drugTotal);
+                JSONArray resArr = jsonObject.getJSONArray(ConnVars.TAG_SHIPMENT);
+                //System.out.println("resArr="+resArr.toString());
+                while (count < resArr.length()) {
+                    JSONObject resObj = resArr.getJSONObject(count);
+                    //System.out.println("resobj="+resObj.toString());
+                    drugName = resObj.getString(ConnVars.TAG_SHIPMENT_DRUGNAME);
+                    drugId = resObj.getString(ConnVars.TAG_SHIPMENT_DRUGID);
+                    shipQuant = resObj.getString(ConnVars.TAG_SHIPMENT_SHIPQUANT);
+                    shipDate = resObj.getString(ConnVars.TAG_SHIPMENT_SHIPDATE);
+                    expDate= resObj.getString(ConnVars.TAG_SHIPMENT_EXPDATE);
 
-        } catch (JSONException j) {
+
+                    try {
+                        totalCast = Integer.parseInt(shipQuant);
+                        shipmentData.add(new ShipmentFields(shipDate, drugId, drugName, totalCast, expDate));
+                        //Log.d("Ethan shipmentfields", shipmentData.get(count).drugid.toString());
+                    } catch (NumberFormatException e) {
+                        System.out.println("Number format exception occurred...");
+                    }
+
+                    count++;
+                }
+
+                adapter = new DrugNameAdapter(context, shipmentData);
+                listView.setAdapter(adapter);
+
+                json=(json.substring(json.lastIndexOf("druginfo")-14));
+                //System.out.println("json="+json.toString());
+                jsonObject = new JSONObject(json);
+                //System.out.println("jsonObj="+jsonObject.toString());
+                JSONArray druginfoArr=jsonObject.getJSONArray(ConnVars.TAG_DRUGINFO);
+                //System.out.println(druginfoArr.toString());
+                JSONObject druginfoObj=druginfoArr.getJSONObject(0);
+                //System.out.println(druginfoObj.toString());
+                drugName=druginfoObj.getString(ConnVars.TAG_DRUGINFO_NAME);
+                drugId=druginfoObj.getString(ConnVars.TAG_DRUGINFO_ID);
+                drugQuant=druginfoObj.getString(ConnVars.TAG_DRUGINFO_QUANT);
+
+                txt_drugname.setText(drugName);
+                txt_drugid.setText("ID:"+drugId);
+                txt_drugtotal.setText("Total:"+drugQuant);
+
+
+
+        }
+
+        catch (JSONException j) {
             System.out.println("JSON Exception occurred...");
         }
+
+
     }
+    @Override
+    public void onBackPressed() {
+        finish();
+    }
+
 }
+
