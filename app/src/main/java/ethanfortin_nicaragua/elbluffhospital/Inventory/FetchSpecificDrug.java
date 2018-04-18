@@ -25,8 +25,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import ethanfortin_nicaragua.elbluffhospital.ArrayAdapters.DrugNameAdapter;
-import ethanfortin_nicaragua.elbluffhospital.ArrayAdapters.ShipmentAdapter;
+
+import ethanfortin_nicaragua.elbluffhospital.ArrayAdapters.ShipmentAdapter1;
 import ethanfortin_nicaragua.elbluffhospital.ConnVars;
 import ethanfortin_nicaragua.elbluffhospital.DataClasses.DruginfoFields;
 import ethanfortin_nicaragua.elbluffhospital.DataClasses.ShipmentFields;
@@ -141,7 +141,7 @@ public class FetchSpecificDrug extends AppCompatActivity {
                     count++;
                 }
 
-                adapter = new DrugNameAdapter(context, shipmentData);
+                adapter = new ShipmentAdapter1(context, shipmentData);
                 listView.setAdapter(adapter);
 
                 json=(json.substring(json.lastIndexOf("druginfo")-14));

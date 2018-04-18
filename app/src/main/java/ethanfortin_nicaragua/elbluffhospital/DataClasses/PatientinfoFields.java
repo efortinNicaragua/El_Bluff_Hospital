@@ -6,28 +6,21 @@ package ethanfortin_nicaragua.elbluffhospital.DataClasses;
 
 public class PatientinfoFields {
 
-    public String patid, patname, address, telephone, gender, marstat, allergies, medcond, dob;
-    public int children, height, weight;
+    public String patid, patname, fileid, address, telephone, gender, civil_status;
     public PatientinfoFields(){
         super();
     }
 
-    public PatientinfoFields(String patid, String patname, String address, String telephone, String gender, String marstat, int height, int weight,
-                             int children, String allergies, String medcond, String dob) {
+    public PatientinfoFields(String patid, String fileid, String patname, String address, String telephone, String gender, String civil_status) {
 
         super();
         this.patid = patid;
+        this.fileid=fileid;
         this.patname = patname;
         this.address = address;
         this.telephone = telephone;
-        this.height = height;
         this.gender = gender;
-        this.marstat = marstat;
-        this.children = children;
-        this.weight = weight;
-        this.allergies = allergies;
-        this.medcond = medcond;
-        this.dob = dob;
+        this.civil_status = civil_status;
     }
 
     public String getPatid() { return patid; }
@@ -35,27 +28,16 @@ public class PatientinfoFields {
     public String getAddress() { return address; }
     public String getTelephone() { return telephone; }
     public String getGender() { return gender; }
-    public String getMarstat() { return  marstat; }
-    public String getAllergies() { return allergies; }
-    public String getMedcond() { return medcond; }
-    public String getDob() { return dob; }
-    public int getHeight() { return height; }
-    public int getChildren() { return children; }
-    public int getWeight() { return weight; }
+    public String getCivil_Status() { return  civil_status; }
 
     public String getAllData(){
         String all = patid + " "
+                + fileid + " "
                 + patname + " "
                 + address + " "
                 + telephone + " "
-                + height + " "
                 + gender + " "
-                + marstat + " "
-                + children + " "
-                + weight + " "
-                + allergies + " "
-                + medcond + " "
-                + weight;
+                + civil_status + " ";
         return all;
     }
 }

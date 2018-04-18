@@ -17,12 +17,14 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -36,7 +38,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import ethanfortin_nicaragua.elbluffhospital.ArrayAdapters.PatGenInfoAdapter;
-import ethanfortin_nicaragua.elbluffhospital.ArrayAdapters.PatientinfoAdapter;
+//import ethanfortin_nicaragua.elbluffhospital.ArrayAdapters.PatientinfoAdapter;
 import ethanfortin_nicaragua.elbluffhospital.ConnVars;
 import ethanfortin_nicaragua.elbluffhospital.DataClasses.PatientinfoFields;
 import ethanfortin_nicaragua.elbluffhospital.R;
@@ -47,11 +49,26 @@ public class FetchPatientInfo extends AppCompatActivity {
     ListView listView;
     String sID;
     int invpid;
+    TextView patid,fileid,patname,genero, address, telephone,civil_status, peso,talla,pa,t,fc;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fetch_patient_info);
+
+        patid= (TextView) findViewById(R.id.geninfo_patid);
+        fileid=(TextView)findViewById(R.id.geninfo_fileid);
+        genero=(TextView)findViewById(R.id.geninfo_gender);
+        patname= (TextView)findViewById(R.id.geninfo_name);
+        address= (TextView)findViewById(R.id.geninfo_address);
+        telephone = (TextView)findViewById(R.id.geninfo_telephone);
+        civil_status = (TextView)findViewById(R.id.geninfo_civil_status);
+        peso= (TextView) findViewById(R.id.geninfo_lastweight) ;
+        talla=(TextView) findViewById(R.id.geninfo_lastheight);
+        pa=(TextView) findViewById(R.id.geninfo_lastbp);
+        t=(TextView) findViewById(R.id.geninfo_lasttemp);
+        fc=(TextView) findViewById(R.id.geninfo_lasthb);
 
         Intent intent = getIntent();
         sID = intent.getStringExtra("patid");
@@ -103,48 +120,127 @@ public class FetchPatientInfo extends AppCompatActivity {
         ListView listView;
         ArrayList<PatientinfoFields> patientInfoData = new ArrayList();
 
-       int count = 0;
-        String patName, patId, address, telephone, dob, gender, marStat, allergies, medCond, children, height, weight;
-        int childrenCast, heightCast, weightCast;
+      // int count = 0;
+        String patName, patId, fileId, Address, Telephone, Gender, Civil_status;
 
         try {
             JSONObject jsonObject = new JSONObject(json);
             JSONArray resArr = jsonObject.getJSONArray(ConnVars.TAG_PATIENTINFO);
+            System.out.println("json="+json.toString());
+            System.out.println("jsonObj="+jsonObject.toString());
 
-            while (count < resArr.length()) {
-                JSONObject resObj = resArr.getJSONObject(count);
+            //while (count < resArr.length()) {
+                JSONObject resObj = resArr.getJSONObject(0);
                 patName = resObj.getString(ConnVars.TAG_PATIENTINFO_NAME);
                 patId = resObj.getString(ConnVars.TAG_PATIENTINFO_ID);
-                address = resObj.getString(ConnVars.TAG_PATIENTINFO_ADDRESS);
-                telephone = resObj.getString(ConnVars.TAG_PATIENTINFO_TELEPHONE);
-                dob = resObj.getString(ConnVars.TAG_PATIENTINFO_DOB);
-                gender = resObj.getString(ConnVars.TAG_PATIENTINFO_GENDER);
-                marStat = resObj.getString(ConnVars.TAG_PATIENTINFO_MARSTAT);
-                allergies = resObj.getString(ConnVars.TAG_PATIENTINFO_ALLERGIES);
-                medCond = resObj.getString(ConnVars.TAG_PATIENTINFO_MEDCOND);
-                children = resObj.getString(ConnVars.TAG_PATIENTINFO_CHILDREN);
-                height = resObj.getString(ConnVars.TAG_PATIENTINFO_HEIGHT);
-                weight = resObj.getString(ConnVars.TAG_PATIENTINFO_WEIGHT);
-                invpid = resObj.getInt(ConnVars.TAG_PATIENTINFO_INVPID);
+                Address = resObj.getString(ConnVars.TAG_PATIENTINFO_ADDRESS);
+                Gender=resObj.getString(ConnVars.TAG_PATIENTINFO_GENDER);
+                Telephone = resObj.getString(ConnVars.TAG_PATIENTINFO_TELEPHONE);
+                Civil_status = resObj.getString(ConnVars.TAG_PATIENTINFO_CIVILSTATUS);
+                fileId= resObj.getString(ConnVars.TAG_PATIENTINFO_FILEID);
 
-                try {
-                    childrenCast = Integer.parseInt(children);
-                    heightCast = Integer.parseInt(height);
-                    weightCast = Integer.parseInt(weight);
-                    patientInfoData.add(new PatientinfoFields(patId, patName, address, telephone, gender, marStat, heightCast, weightCast, childrenCast, allergies, medCond, dob));
-                } catch (NumberFormatException nfe) {
-                    System.out.println("Number format exception occured...");
-                }
-                count++;
 
-            }
+                patid.setText(patId);
+                patname.setText(patName);
+                fileid.setText(fileId);
+                address.setText("Direccion: "+Address);
+                telephone.setText("Tele: "+Telephone);
+                civil_status.setText("Estado Civil: "+Civil_status);
+                genero.setText("Genero: "+Gender);
+
+                //count++;
+
+            //}
+            //Get the weight
+            json=(json.substring(json.lastIndexOf("peso")-23));
+            System.out.println("json="+json.toString());
+            jsonObject = new JSONObject(json);
+            System.out.println("jsonObj="+jsonObject.toString());
+            JSONArray vitalinfoArr=jsonObject.getJSONArray(ConnVars.TAG_VISITHISTORY_PESO);
+            //System.out.println(vitalinfoArr.toString());
+            JSONObject vitalinfoObj=vitalinfoArr.getJSONObject(0);
+            //System.out.println(vitalinfoObj.toString());
+
+
+            String Peso=vitalinfoObj.getString(ConnVars.TAG_VISITHISTORY_PESO);
+            System.out.println("Peso= "+Peso);
+            //txt_drugname.setText(drugName);*/
+            peso.setText("Peso: "+Peso+"kg");
+
+
+            //get Height
+            json=(json.substring(json.lastIndexOf("talla")-24));
+            System.out.println("json="+json.toString());
+            jsonObject = new JSONObject(json);
+            System.out.println("jsonObj="+jsonObject.toString());
+            vitalinfoArr=jsonObject.getJSONArray(ConnVars.TAG_VISITHISTORY_TALLA);
+            //System.out.println(vitalinfoArr.toString());
+             vitalinfoObj=vitalinfoArr.getJSONObject(0);
+            //System.out.println(vitalinfoObj.toString());
+
+
+            String Talla=vitalinfoObj.getString(ConnVars.TAG_VISITHISTORY_TALLA);
+            System.out.println("Talla= "+Talla);
+            //txt_drugname.setText(drugName);*/
+            talla.setText("Talla: "+Talla+"cm");
+
+            //Get Blood Preassure
+            json=(json.substring(json.lastIndexOf("pa")-21));
+            System.out.println("json="+json.toString());
+            jsonObject = new JSONObject(json);
+            System.out.println("jsonObj="+jsonObject.toString());
+            vitalinfoArr=jsonObject.getJSONArray(ConnVars.TAG_VISITHISTORY_PA);
+            //System.out.println(vitalinfoArr.toString());
+            vitalinfoObj=vitalinfoArr.getJSONObject(0);
+            //System.out.println(vitalinfoObj.toString());
+
+
+            String Pa=vitalinfoObj.getString(ConnVars.TAG_VISITHISTORY_PA);
+            System.out.println("Pa= "+Pa);
+            //txt_drugname.setText(drugName);*/
+            pa.setText("Pa: "+Pa+"mmHg");
+
+            //ArrayAdapter<PatientinfoFields> adapter = new PatGenInfoAdapter(context, patientInfoData);
+            //listView = (ListView) findViewById(R.id.list2);
+            //listView.setAdapter(adapter);
+
+            //Get temperature
+            json=(json.substring(json.lastIndexOf("t")-20));
+            System.out.println("json="+json.toString());
+            jsonObject = new JSONObject(json);
+            System.out.println("jsonObj="+jsonObject.toString());
+            vitalinfoArr=jsonObject.getJSONArray(ConnVars.TAG_VISITHISTORY_T);
+            //System.out.println(vitalinfoArr.toString());
+            vitalinfoObj=vitalinfoArr.getJSONObject(0);
+            //System.out.println(vitalinfoObj.toString());
+
+
+            String T=vitalinfoObj.getString(ConnVars.TAG_VISITHISTORY_T);
+            System.out.println("T= "+T);
+            //txt_drugname.setText(drugName);*/
+            t.setText("T: "+T+"c");
+
+            //Get heartbeat / heart rate
+            json=(json.substring(json.lastIndexOf("fc")-21));
+            System.out.println("json="+json.toString());
+            jsonObject = new JSONObject(json);
+            System.out.println("jsonObj="+jsonObject.toString());
+            vitalinfoArr=jsonObject.getJSONArray(ConnVars.TAG_VISITHISTORY_FC);
+            //System.out.println(vitalinfoArr.toString());
+            vitalinfoObj=vitalinfoArr.getJSONObject(0);
+            //System.out.println(vitalinfoObj.toString());
+
+
+            String Fc=vitalinfoObj.getString(ConnVars.TAG_VISITHISTORY_FC);
+            System.out.println("FC= "+Fc);
+            //txt_drugname.setText(drugName);*/
+            fc.setText("fc: "+Fc+"minutos");
+
         } catch (JSONException j) {
             System.out.println("JSON Exception occured...");
         }
 
-        ArrayAdapter<PatientinfoFields> adapter = new PatGenInfoAdapter(context, patientInfoData);
-        listView = (ListView) findViewById(R.id.list2);
-        listView.setAdapter(adapter);
+
     }
 
 

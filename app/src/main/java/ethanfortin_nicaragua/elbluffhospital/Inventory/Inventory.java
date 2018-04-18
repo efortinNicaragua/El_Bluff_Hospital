@@ -1,7 +1,6 @@
 package ethanfortin_nicaragua.elbluffhospital.Inventory;
 
-import android.app.Activity;
-import android.app.ListActivity;
+
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -15,20 +14,16 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
 import ethanfortin_nicaragua.elbluffhospital.ArrayAdapters.DruginfoAdapter;
 import ethanfortin_nicaragua.elbluffhospital.ConnVars;
 import ethanfortin_nicaragua.elbluffhospital.DataClasses.DruginfoFields;
-import ethanfortin_nicaragua.elbluffhospital.MainMenu;
 import ethanfortin_nicaragua.elbluffhospital.R;
 import ethanfortin_nicaragua.elbluffhospital.RequestHandler;
 
@@ -143,7 +138,6 @@ public class Inventory extends AppCompatActivity {
             protected String doInBackground(Void... params) {
 
                 RequestHandler reqHan = new RequestHandler();
-                HashMap<String, String> map = new HashMap<>();
                 String s;
 
                 s = reqHan.sendGetRequest(ConnVars.URL_FETCH_DRUGINFO_ALL);

@@ -37,12 +37,12 @@ public class PatientinfoAdapter extends ArrayAdapter<PatientinfoFields> {
 
         TextView patid = (TextView)convertView.findViewById(R.id.patid);
         TextView patname = (TextView)convertView.findViewById(R.id.patname);
-        TextView dob = (TextView) convertView.findViewById(R.id.dob);
+        TextView fileid = (TextView) convertView.findViewById(R.id.fileid);
 
 
         patid.setText(single_patgeninfo.patid);
         patname.setText(single_patgeninfo.patname);
-        dob.setText(single_patgeninfo.dob);
+        fileid.setText(single_patgeninfo.fileid);
 
 
         return convertView;

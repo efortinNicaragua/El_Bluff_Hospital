@@ -34,32 +34,20 @@ public class PatGenInfoAdapter extends ArrayAdapter<PatientinfoFields> {
 
         //Needs to be updated for all data from pat info class but for now row_patinfo_all only has 2 text views
 
-        TextView patid = (TextView)convertView.findViewById(R.id.patid);
-        TextView patname = (TextView)convertView.findViewById(R.id.patname);
-        TextView address = (TextView)convertView.findViewById(R.id.address);
-        TextView telephone = (TextView)convertView.findViewById(R.id.telephone);
-        TextView height = (TextView)convertView.findViewById(R.id.height);
-        TextView gender = (TextView)convertView.findViewById(R.id.gender);
-        TextView marstat = (TextView)convertView.findViewById(R.id.marstat);
-        TextView children = (TextView)convertView.findViewById(R.id.children);
-        TextView weight = (TextView)convertView.findViewById(R.id.weight);
-        TextView allergies = (TextView)convertView.findViewById(R.id.allergies);
-        TextView medcond = (TextView)convertView.findViewById(R.id.medcond);
-        TextView dob = (TextView) convertView.findViewById(R.id.dob);
+        TextView patid = (TextView)convertView.findViewById(R.id.geninfo_patid);
+        TextView fileid=(TextView)convertView.findViewById(R.id.geninfo_fileid);
+        TextView patname = (TextView)convertView.findViewById(R.id.geninfo_name);
+        TextView address = (TextView)convertView.findViewById(R.id.geninfo_address);
+        TextView telephone = (TextView)convertView.findViewById(R.id.geninfo_telephone);
+        TextView civil_status = (TextView)convertView.findViewById(R.id.geninfo_civil_status);
 
 
-        patid.setText(single_patgeninfo.patid);
-        patname.setText(single_patgeninfo.patname);
-        address.setText(single_patgeninfo.address);
-        telephone.setText(single_patgeninfo.telephone);
-        height.setText(Integer.toString(single_patgeninfo.height));
-        gender.setText(single_patgeninfo.gender);
-        marstat.setText(single_patgeninfo.marstat);
-        children.setText(Integer.toString(single_patgeninfo.children));
-        weight.setText(Integer.toString(single_patgeninfo.weight));
-        allergies.setText(single_patgeninfo.allergies);
-        medcond.setText(single_patgeninfo.medcond);
-        dob.setText(single_patgeninfo.dob);
+         patid.setText(single_patgeninfo.patid);
+         patname.setText(single_patgeninfo.patname);
+         fileid.setText(single_patgeninfo.fileid);
+         address.setText("Direccion: "+single_patgeninfo.address);
+         telephone.setText("Tele: "+single_patgeninfo.telephone);
+         civil_status.setText("Estado Civil: "+single_patgeninfo.civil_status);
 
         return convertView;
 

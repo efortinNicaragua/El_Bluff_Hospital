@@ -1,7 +1,6 @@
 package ethanfortin_nicaragua.elbluffhospital.ArrayAdapters;
 
 import android.content.Context;
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,13 +9,12 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import ethanfortin_nicaragua.elbluffhospital.DataClasses.DruginfoFields;
 import ethanfortin_nicaragua.elbluffhospital.DataClasses.ShipmentFields;
 import ethanfortin_nicaragua.elbluffhospital.R;
 
-public class DrugNameAdapter extends ArrayAdapter<ShipmentFields> {
+public class ShipmentAdapter1 extends ArrayAdapter<ShipmentFields> {
 
-    public DrugNameAdapter(Context context,  ArrayList<ShipmentFields> drugdata) {
+    public ShipmentAdapter1(Context context,  ArrayList<ShipmentFields> drugdata) {
         super(context,0,drugdata);
     }
 

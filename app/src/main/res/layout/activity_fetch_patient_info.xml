@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/pat_gen_info"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:paddingBottom="16dp"
@@ -8,11 +9,171 @@
     android:paddingLeft="16dp"
     android:background="@drawable/greygradient">
 
-    <ListView
-        android:id="@+id/list2"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_marginTop="10dp"/>
-    <!-- change here !-->
+    <!--  <ListView
+            android:id="@+id/list2"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginTop="10dp"/>-->
+    <TextView
+        android:id="@+id/geninfo_name"
+        android:layout_width="215dp"
+        android:layout_height="55dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="2dp"
+        android:layout_marginTop="2dp"
+        android:text="Nombre de Paciente"
+        android:textAlignment="center"
+        android:textColor="@color/colorAccent"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+    <TextView
+        android:id="@+id/geninfo_patid"
+        android:layout_width="150dp"
+        android:layout_height="55dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="220dp"
+        android:layout_marginTop="2dp"
+        android:text="Nombre de Paciente"
+        android:textAlignment="center"
+        android:textColor="@color/colorAccent"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+    <TextView
+        android:id="@+id/geninfo_fileid"
+        android:layout_width="150dp"
+        android:layout_height="55dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="375dp"
+        android:layout_marginTop="2dp"
+        android:text="Nombre de Paciente"
+        android:textAlignment="center"
+        android:textColor="@color/colorAccent"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/geninfo_gender"
+        android:layout_width="500dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginLeft="60dp"
+        android:text="Genero"
+        android:gravity="left|center_vertical"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/geninfo_address"
+        android:layout_width="500dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="123dp"
+        android:layout_marginLeft="60dp"
+        android:text="Direccion"
+        android:gravity="left|center_vertical"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+    <TextView
+        android:id="@+id/geninfo_telephone"
+        android:layout_width="500dp"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="176dp"
+        android:text="Tele"
+        android:gravity="left|center_vertical"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/geninfo_civil_status"
+        android:layout_width="500dp"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="228dp"
+        android:text="Estado Civil"
+        android:gravity="left|center_vertical"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/geninfo_lastvitals"
+        android:layout_width="500dp"
+        android:layout_height="55dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="325dp"
+        android:gravity="left|center_vertical"
+        android:text="Medidas del Ultimo Examen Fisico"
+        android:textColor="@color/colorAccent"
+        android:textSize="26sp"
+        android:textStyle="bold" />
+    <TextView
+        android:id="@+id/geninfo_lastweight"
+        android:layout_width="500dp"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="382dp"
+        android:text="Peso"
+        android:gravity="left|center_vertical"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/geninfo_lastheight"
+        android:layout_width="500dp"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="434dp"
+        android:text="Talla"
+        android:gravity="left|center_vertical"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/geninfo_lastbp"
+        android:layout_width="500dp"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="486dp"
+        android:text="pa"
+        android:gravity="left|center_vertical"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/geninfo_lasttemp"
+        android:layout_width="500dp"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="538dp"
+        android:text="T"
+        android:gravity="left|center_vertical"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+    <TextView
+        android:id="@+id/geninfo_lasthb"
+        android:layout_width="500dp"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="600dp"
+        android:text="FC"
+        android:gravity="left|center_vertical"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
 </RelativeLayout>

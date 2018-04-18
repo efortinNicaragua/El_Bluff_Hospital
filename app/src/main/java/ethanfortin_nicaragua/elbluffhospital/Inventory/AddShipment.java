@@ -27,7 +27,7 @@ import org.json.JSONObject;
 import java.util.Date;
 import java.util.HashMap;
 
-import ethanfortin_nicaragua.elbluffhospital.ArrayAdapters.PatientinfoAdapter;
+//import ethanfortin_nicaragua.elbluffhospital.ArrayAdapters.PatientinfoAdapter;
 import ethanfortin_nicaragua.elbluffhospital.ConnVars;
 import ethanfortin_nicaragua.elbluffhospital.DataClasses.PatientinfoFields;
 import ethanfortin_nicaragua.elbluffhospital.PatientInfo.SearchAddPatients;

@@ -26,16 +26,19 @@
             </intent-filter>
         </activity>
         <activity android:name=".Inventory.PharmacyMain" />
-        <activity android:name=".PatientInfo.SearchAddPatients" />
+        <activity android:name=".PatientInfo.SearchAddPatients"
+                android:windowSoftInputMode="stateUnchanged"/>
         <activity android:name=".Inventory.InventoryOptions" />
         <activity android:name=".PatientInfo.AddPrescription" />
         <activity android:name=".PatientInfo.PrescriptionConfirmation" />
         <activity android:name=".PatientInfo.DoctorMain" />
         <activity android:name=".PatientInfo.UploadOldFileHome" />
         <activity android:name=".PatientInfo.PDFConfirmationandUpload" />
-        <activity android:name=".Inventory.Inventory" />
+        <activity android:name=".Inventory.Inventory"
+                android:windowSoftInputMode="stateUnchanged"/>
         <activity android:name=".MainMenu" />
-        <activity android:name=".Inventory.AddShipment" />
+        <activity android:name=".Inventory.AddShipment"
+                android:windowSoftInputMode="stateUnchanged"/>
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_login" />

@@ -11,8 +11,8 @@ public class ConnVars {
     // Bartley May 16 - 192.168.1.2
 
     // Image Upload Addresses - 192.168.1.2
-    public static final String URL_UPLOAD = "http://192.168.1.2/image_upload/upload.php";
-    public static final String URL_IMAGES = "http://192.168.1.2/image_upload/get_image.php";
+    public static final String URL_UPLOAD = "http://192.168.1.5/image_upload/upload.php";
+    public static final String URL_IMAGES = "http://192.168.1.5/image_upload/get_image.php";
 
 
     //Tag values to read from json
@@ -45,15 +45,9 @@ public class ConnVars {
     public static final String TAG_PATIENTINFO_NAME = "patname";
     public static final String TAG_PATIENTINFO_ADDRESS = "address";
     public static final String TAG_PATIENTINFO_TELEPHONE = "telephone";
-    public static final String TAG_PATIENTINFO_DOB = "dob";
     public static final String TAG_PATIENTINFO_GENDER = "gender";
-    public static final String TAG_PATIENTINFO_MARSTAT = "marstat";
-    public static final String TAG_PATIENTINFO_CHILDREN = "children";
-    public static final String TAG_PATIENTINFO_HEIGHT = "height";
-    public static final String TAG_PATIENTINFO_WEIGHT = "weight";
-    public static final String TAG_PATIENTINFO_ALLERGIES = "allergies";
-    public static final String TAG_PATIENTINFO_MEDCOND = "medcond";
-    public static final String TAG_PATIENTINFO_INVPID = "invpid";
+    public static final String TAG_PATIENTINFO_CIVILSTATUS="civil_status";
+    public static final String TAG_PATIENTINFO_FILEID="fileid";
 
     public static final String TAG_SHIPMENT = "shipment";
     public static final String TAG_SHIPMENT_EXPDATE = "experation_date";
@@ -83,6 +77,11 @@ public class ConnVars {
     public static final String TAG_VISITHISTORY_VISITDATE = "visitdate";
     public static final String TAG_VISITHISTORY_REASON = "reason";
     public static final String TAG_VISITHISTORY_DOCTOR = "doctor";
+    public static final String TAG_VISITHISTORY_PESO="peso";
+    public static final String TAG_VISITHISTORY_TALLA="talla";
+    public static final String TAG_VISITHISTORY_PA="pa";
+    public static final String TAG_VISITHISTORY_T="t";
+    public static final String TAG_VISITHISTORY_FC="fc";
     public static final String TAG_VISITHISTORY_ERRORMESSAGES="VH_ErrorMessages";
     //this one needs to come from a join in the php script to the prescriptions table
     public static final String TAG_VISITS_RXID = "rxid";

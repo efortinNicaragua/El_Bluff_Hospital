@@ -1,37 +1,26 @@
 package ethanfortin_nicaragua.elbluffhospital.PatientInfo;
 
 import android.app.Activity;
-import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.support.v7.app.AlertDialog;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.NumberPicker;
-import android.widget.Spinner;
-import android.widget.SpinnerAdapter;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.android.gms.appindexing.AppIndex;
-import com.google.android.gms.common.api.GoogleApiClient;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.HashMap;
 
 import ethanfortin_nicaragua.elbluffhospital.ArrayAdapters.PatientinfoAdapter;
 import ethanfortin_nicaragua.elbluffhospital.ConnVars;
@@ -41,92 +30,129 @@ import ethanfortin_nicaragua.elbluffhospital.R;
 import ethanfortin_nicaragua.elbluffhospital.RequestHandler;
 
 public class SearchAddPatients extends Activity {
-    ArrayList<PatientinfoFields> patinfo = new ArrayList();
-
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
-    private GoogleApiClient client;
-    String patname, patid, address, telephone, gender, marstat,
-            s_dob, s_children, s_height, s_weight,
-            allergies, medcond,
-            temp_dob_string, gender_temp, married_temp, dob_temp;
-
-    int children, height, weight,
-            children_temp, dob_day_temp, dob_month_temp, dob_year_temp,
-            height_temp_int, weight_temp_int;
-
-    double height_temp,weight_temp;
-
+    ArrayAdapter<PatientinfoFields> adapter;
     ListView listView;
-    Dialog findPatient_dialog;
-    PatientinfoFields selectedListItem;
-    AlertDialog db_message;
-    Context context = this;
+    ArrayList<PatientinfoFields> patInfoData = new ArrayList();
+    ArrayList<PatientinfoFields> temp_patInfoData = new ArrayList();
+    EditText et_search;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_add_patients);
 
-        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
-    }
 
-    public void buscar(View v) {
-        EditText name_EditText = (EditText) findViewById(R.id.edit_name);
-        EditText id_EditText = (EditText) findViewById(R.id.edit_ID);
-        String sName = name_EditText.getText().toString();
-        String sID = id_EditText.getText().toString();
-
-        if(name_EditText.getText().toString().trim().equals("") && id_EditText.getText().toString().equals("")) {
-            name_EditText.setError("Necesitas el nombre o la ID de la paciente");
-            id_EditText.setError("Necesitas el nombre o la ID de la paciente");
+        listView= (ListView) findViewById(R.id.patient_list);
+        et_search=(EditText) findViewById(R.id.filter_bar2);
+        patientFetch();
+        et_search.addTextChangedListener(new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
         }
-        else {
-            name_EditText.setError(null,null);
-            id_EditText.setError(null,null);
-            patientFetch(sID, sName);
-            sName = null;
-            sID = null;
+
+        @Override
+        public void onTextChanged(CharSequence s, int i, int i1, int i2) {
+            System.out.println("ontxt change s="+s);
+            if(s.toString().equals("")){
+                System.out.println("its empy="+s);
+                patientFetch();
+            }
+            else{
+                //perform search
+                System.out.println("s="+s.toString());
+                searchItem(s.toString());
+            }
         }
+
+        @Override
+        public void afterTextChanged(Editable editable) {
+
+            }
+        });
     }
 
-    private void patientFetch(final String patid, final String patname) {
-        class fetch_patientinfo extends AsyncTask<Void, PatientinfoFields, String> {
-            ProgressDialog loading;
 
-            @Override
-            protected void onPreExecute() {
-                super.onPreExecute();
-                loading = ProgressDialog.show(SearchAddPatients.this, "Buscando...", "Espera, por favor", false, false);
+
+    public void searchItem(String textToSearch){
+
+        for (int i=0; i<patInfoData.size();i++){
+            System.out.println("drugname="+patInfoData.get(i).patname.toString());
+        }
+
+
+        ArrayList<PatientinfoFields> temp= new ArrayList<>();
+        int temp_size=patInfoData.size();
+        temp_patInfoData.clear();
+
+        for (int i=0; i<temp_size;i++){
+            //System.out.println("i= "+i);
+            //System.out.println("Temp DName: "+temp_drugInfoData.get(i).getDrugname());
+
+            //set add druginfodata to temp_druginfo array
+            temp_patInfoData.add(patInfoData.get(i));
+
+            //add drugname to temp list if it does not match searched for character
+            if (!temp_patInfoData.get(i).patname.toLowerCase().contains(textToSearch.toLowerCase())) {
+                temp.add(temp_patInfoData.get(i));
             }
+        }
 
-            // Once JSON received correctly, parse and display it
-            @Override
-            protected void onPostExecute(String s) {
-                super.onPostExecute(s);
-                loading.dismiss();
-                jsonParse(s);
-            }
+        System.out.println("pause");
+        for (int i=0; i<patInfoData.size();i++){
+            System.out.println("drugname="+patInfoData.get(i).patname.toString());
+        }
 
-            // In here, split between argChoice Value (1 or 2)
-            protected String doInBackground(Void... params) {
-                String patid_temp, patname_temp;
-                patid_temp='%'+patid+'%';
-                patname_temp='%'+patname+'%';
+        for (int j = temp.size()-1; j >= 0; j--) {
+            temp_patInfoData.remove(temp.get(j));
+        }
+        //temp_drugInfoData.removeAll(temp);
 
-                RequestHandler reqHan = new RequestHandler();
-                HashMap<String, String> map = new HashMap<>();
-                map.put("patid",patid_temp);
-                map.put("patname",patname_temp);
-                String s;
+        //System.out.println("temp size after removal="+temp_drugInfoData.size());
+        /*for (int i=0; i<drugInfoData.size();i++) {
+            System.out.println("DrugName "+drugInfoData.get(i).drugname);
+        }*/
+        System.out.println("pause1");
+        for (int i=0; i<patInfoData.size();i++){
+            System.out.println("drugname="+patInfoData.get(i).patname.toString());
+        }
+        adapter.notifyDataSetChanged();
+        listView.setAdapter(adapter);
+    }
 
-                s = reqHan.sendGetRequestParam (ConnVars.URL_FETCH_PATIENTINFO_ROW, map);
 
-                return s;
-            }
+
+
+    private void patientFetch() {
+        class fetch_patientinfo extends AsyncTask<Void, Void, String> {
+                ProgressDialog loading;
+
+                @Override
+                protected void onPreExecute() {
+                    System.out.println("got here");
+
+                    super.onPreExecute();
+                    loading = ProgressDialog.show(SearchAddPatients.this, "Buscando...", "Espera, por favor", false, false);
+                }
+
+                // Once JSON received correctly, parse and display it
+                @Override
+                protected void onPostExecute(String s) {
+                    super.onPostExecute(s);
+                    loading.dismiss();
+                    jsonParse(s);
+                }
+
+                // In here, split between argChoice Value (1 or 2)
+                protected String doInBackground(Void... params) {
+
+                    RequestHandler reqHan = new RequestHandler();
+                    String s;
+
+                    s = reqHan.sendGetRequest (ConnVars.URL_FETCH_PATIENTINFO_ROW);
+
+                    return s;
+                }
         }
         fetch_patientinfo pinfo = new fetch_patientinfo();
         pinfo.execute();
@@ -137,8 +163,7 @@ public class SearchAddPatients extends Activity {
         Context context=this;
 
         int totalCast, count=0;
-        String patid, patname, address, telephone, gender,marstat, allergies, medcond, children, height, weight;
-        int children_int, height_int, weight_int;
+        String patid, patname,fileid, address, telephone, gender,civil_status;
 
         JSONObject jsonObject;
         JSONArray jsonArray;
@@ -158,30 +183,19 @@ public class SearchAddPatients extends Activity {
                 //get the object put drugid into drugid ect..
                 JSONObject jo = jsonArray.getJSONObject(count);
                 patid= jo.getString("patid");
+                fileid=jo.getString("fileid");
                 patname= jo.getString("patname");
                 address = jo.getString("address");
                 telephone= jo.getString("telephone");
-                gender = jo.getString("gender");
-                marstat = jo.getString("marstat");
-                allergies=jo.getString("allergies");
-                medcond = jo.getString("medcond");
-                children = jo.getString("children");
-                height = jo.getString("height");
-                weight=jo.getString("weight");
-                temp_dob_string=jo.getString("dob");
-                System.out.println("The DOB IS " + temp_dob_string);
+                gender=jo.getString("gender");
+                civil_status = jo.getString("civil_status");
 
                 //try to cast string into int
-                try {
-                    children_int = Integer.parseInt(children);
-                    height_int = Integer.parseInt(height);
-                    weight_int = Integer.parseInt(weight);
-                    //add this data as DruginfoFields to ArrayList
-                    patinfo.add(new PatientinfoFields(patid, patname , address, telephone, gender, marstat, children_int,height_int,weight_int,allergies,medcond,temp_dob_string));
 
-                } catch (NumberFormatException nfe) {
-                    System.out.println("Number Format Exception occurred...");
-                }
+
+                    //add this data as DruginfoFields to ArrayList
+                   patInfoData.add(new PatientinfoFields(patid, fileid, patname , address, telephone, gender, civil_status));
+
                 //increment count
                 count++;
             }
@@ -189,38 +203,36 @@ public class SearchAddPatients extends Activity {
         } catch (JSONException e) {
 
         }
+        //System.out.println(patInfoData.size()+" that was size of pat info data");
+        for(int i=0;i<patInfoData.size();i++){
+            temp_patInfoData.add(patInfoData.get(i));
+           // System.out.println("name="+temp_patInfoData.get(i).patname.toString());
+        }
 
-        ArrayAdapter<PatientinfoFields> adapter = new PatientinfoAdapter(context, patinfo);
+        adapter = new PatientinfoAdapter(context, temp_patInfoData);
+        listView.setAdapter(adapter);
 
-        findPatient_dialog= new Dialog(this);
-        findPatient_dialog.setTitle("Elige un paciente");
-        LayoutInflater li=(LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View v= li.inflate(R.layout.dialog_find_patient,null,false);
-        findPatient_dialog.setContentView(v);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
 
-        listView = (ListView) findPatient_dialog.findViewById(R.id.listview_patientgeninfo);
-        listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
-        listView.setSelector(R.drawable.greygradient);
-
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                selectedListItem = (PatientinfoFields) listView.getItemAtPosition(position);
-
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id){
+                //System.out.println( temp_drugInfoData.get(position));
+                Intent intent = new Intent(SearchAddPatients.this, FetchPatientInfo.class);
+                Bundle b = new Bundle();
+                b.putString("patid", temp_patInfoData.get(position).patid); //Your id
+                intent.putExtras(b); //Put your id to your next Intent
+                startActivity(intent);
+                finish();
             }
         });
 
-        listView.setAdapter(adapter);
-
-        findPatient_dialog.setCancelable(true);
-        findPatient_dialog.show();
-
     }
 
-    public void NuevoPaciente(View V) {
+   /* public void NuevoPaciente(View V) {
         /**Need to make dialog_patient_preccription pull data from DB not my made up stuff
          *create layout inflater and subView assign sub view to dialog xml
          * */
-        LayoutInflater inflater = LayoutInflater.from(SearchAddPatients.this);
+         /*  LayoutInflater inflater = LayoutInflater.from(SearchAddPatients.this);
         View subView = inflater.inflate(R.layout.dialog_new_patient, null);
 
         //Build dialog set it to subview
@@ -488,7 +500,7 @@ public class SearchAddPatients extends Activity {
 
                         /***This is the code needed for db communication.***/
 
-                        patname = edit_name2.getText().toString();
+                       /* patname = edit_name2.getText().toString();
                         patid = edit_ID2.getText().toString();
                         address = edit_adress2.getText().toString();
                         telephone = edit_telephone2.getText().toString();
@@ -655,7 +667,7 @@ public class SearchAddPatients extends Activity {
     public void selectPatient_cancel(View view){
         findPatient_dialog.cancel();
         patinfo.clear();
-    }
+    }*/
 
     @Override
     public void onBackPressed() {
@@ -672,6 +684,5 @@ public class SearchAddPatients extends Activity {
     @Override
     public void onStop() {
         super.onStop();
-        client.disconnect();
     }
 }

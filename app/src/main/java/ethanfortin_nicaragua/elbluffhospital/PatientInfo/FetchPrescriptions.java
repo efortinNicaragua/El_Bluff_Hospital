@@ -36,13 +36,11 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 
-import ethanfortin_nicaragua.elbluffhospital.ArrayAdapters.DrugNameAdapter;
 import ethanfortin_nicaragua.elbluffhospital.ArrayAdapters.FetchPrescriptions_ExpListAdapter;
+import ethanfortin_nicaragua.elbluffhospital.ArrayAdapters.ShipmentAdapter1;
 import ethanfortin_nicaragua.elbluffhospital.ConnVars;
 import ethanfortin_nicaragua.elbluffhospital.DataClasses.PrescriptionFields;
 
-import ethanfortin_nicaragua.elbluffhospital.Inventory.FetchSpecificDrug;
-import ethanfortin_nicaragua.elbluffhospital.DataClasses.VisitFields;
 
 import ethanfortin_nicaragua.elbluffhospital.R;
 import ethanfortin_nicaragua.elbluffhospital.RequestHandler;
@@ -64,7 +62,7 @@ public class FetchPrescriptions extends AppCompatActivity {
     int dob_day_temp, dob_month_temp, dob_year_temp;
     AlertDialog db_message;
 
-    DrugNameAdapter adapter;
+    ShipmentAdapter1 adapter;
     ListView lv;
     String selectedListItem;
     EditText filter;
