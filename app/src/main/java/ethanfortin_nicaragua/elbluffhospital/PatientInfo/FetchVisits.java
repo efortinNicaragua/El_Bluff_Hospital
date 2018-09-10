@@ -16,11 +16,13 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ExpandableListView;
 import android.widget.ListView;
 import android.widget.NumberPicker;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -44,40 +46,48 @@ import ethanfortin_nicaragua.elbluffhospital.UploadFile;
 
 public class FetchVisits extends AppCompatActivity {
 
-    private ExpandableListView listView;
-    private FetchVisits_ExpListAdapter listAdapter;
-    private List<String> listDataHeader;
-    private HashMap<String, List<String>> listHash;
-    private HashMap<String,String> keyMap;
+
+
     private Button addDocument;
 
     final Context context = this;
     ArrayList<VisitFields> patVisitdata = new ArrayList();
-    ListView LV_patVisit;
-    int count = 0;
-    int hash_count = 0;
+    //int count = 0;
+    //int hash_count = 0;
     String sID;
-    String dob_day_temp1, dob_month_temp1;
-    int dob_day_temp, dob_month_temp, dob_year_temp;
-    AlertDialog db_message;
+    Spinner year;
+    //String dob_day_temp1, dob_month_temp1;
+   // int dob_day_temp, dob_month_temp, dob_year_temp;
+    //AlertDialog db_message;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fetch_visits);
 
-        addDocument = (Button)findViewById(R.id.add_doc);
-        addDocument.setOnClickListener(new View.OnClickListener() {
+        year= (Spinner) findViewById(R.id.filter_year);
+        ArrayList<String> years=new ArrayList<String>();
+        int thisYear= Calendar.getInstance().get(Calendar.YEAR);
+        for (int i=thisYear; i>=2000; i--){
+            years.add(Integer.toString(i));
+        }
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, years);
+
+        Spinner spinYear = (Spinner)findViewById(R.id.filter_year);
+        spinYear.setAdapter(adapter);
+        // String[] months=new String[]={"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul","Aug", "Sep", "Nov", "Dec"}
+        //addDocument = (Button) findViewById(R.id.add_doc);
+        /*addDocument.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 addDoc();
             }
-        });
+        });*/
 
         Intent intent = getIntent();
         sID = intent.getStringExtra("patid");
-        patientVisitFetch(sID);
-
+        //patientVisitFetch(sID);
+/*
         final FloatingActionButton addVisit = (FloatingActionButton) findViewById(R.id.fab_add);
 
         addVisit.setOnClickListener(new View.OnClickListener() {
@@ -301,134 +311,6 @@ public class FetchVisits extends AppCompatActivity {
     }
 
 
-    /**
-     * ML: This method is accessed from inside the onCLick
-     **/
-    private void patientVisitFetch(final String argVal) {
-
-        /**ML: This method normally gets called on the onCLick but I think here it may need to be calle don the onCreate**/
-        class fetchPatientVisit extends AsyncTask<Void, Void, String> {
-
-            //In here, get the information from the user's selection
-            protected String doInBackground(Void... params) {
-                RequestHandler reqHan = new RequestHandler();
-                HashMap<String, String> map = new HashMap<>();
-                String s;
-
-                /**ML: argVal needs to be passed the patient id from the gen info page**/
-
-                map.put("patid", argVal);
-                //Search bu passed in patient ID
-                s = reqHan.sendGetRequestParam(ConnVars.URL_FETCH_PAT_VISIT, map);
-
-
-                return s;
-
-            }
-
-            //Once JSON received correctly, parse and display it
-            @Override
-            protected void onPostExecute(String s) {
-                super.onPostExecute(s);
-                visitShow(s);
-            }
-        }
-        fetchPatientVisit patVisit = new fetchPatientVisit();
-        patVisit.execute();
-        System.out.println("Completed fetchPatientVisit method");
-    }
-
-
-    /**ML: This method gets the data returned from the DB in the JSON format and sets it to a variable**/
-    public void visitShow(String json) {
-
-        try {
-            System.out.println(json);
-            JSONObject jsonObject = new JSONObject(json);
-            System.out.println("made json object");
-            JSONArray resArr = jsonObject.getJSONArray(ConnVars.TAG_VISITHISTORY);
-            System.out.println("made result array");
-
-
-            /**ML: r_** are the values returned from the DB, resObj is the first data block
-             * returned from the JSON array, getString gets the value associated with the key
-             * that is denoted by the ConnVars tag
-             */
-
-            while (count < resArr.length()) {
-                /**ML: gets the first data block, will repeat if necessary**/
-                JSONObject resObj = resArr.getJSONObject(count);
-
-                String r_visitid = resObj.getString(ConnVars.TAG_VISITHISTORY_VISITID);
-                String r_patid = resObj.getString(ConnVars.TAG_VISITHISTORY_PATID);
-                String r_visitdate = resObj.getString(ConnVars.TAG_VISITHISTORY_VISITDATE);
-                String r_reason = resObj.getString(ConnVars.TAG_VISITHISTORY_REASON);
-                String r_doctor = resObj.getString(ConnVars.TAG_VISITHISTORY_DOCTOR);
-
-                int i_visitid = Integer.parseInt(r_visitid);
-
-                /**ML: This needs to be fixed, JSON exception occurs here because it needs to come from a table join**/
-                try {
-                    patVisitdata.add(new VisitFields(i_visitid, r_patid, r_visitdate, r_reason, r_doctor));
-                    System.out.println(patVisitdata.get(count).D_AllData());
-                } catch(NumberFormatException nfe) {
-                    System.out.println("Number format exception occurred.");
-                }
-
-                count++;
-                hash_count++;
-                System.out.println(hash_count);
-            }
-
-        } catch(JSONException j) {
-            System.out.println("JSON Exception occurred...HEAAA");
-        }
-
-        listView = (ExpandableListView) findViewById(R.id.exp_list);
-        initData();
-        listAdapter = new FetchVisits_ExpListAdapter(this, listDataHeader, listHash);
-        listView.setAdapter(listAdapter);
-
-        listView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
-            @Override
-            public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-                if(childPosition == 3) {
-                    System.out.println("You are clicking on position 3.");
-
-                    // TODO: Add logic that pulls up dialog or new page with grid view of clickable images
-                    // TODO: visitDocs.visitid is the visit ID to search by.
-                    VisitFields visitDocs = patVisitdata.get(groupPosition);
-                    System.out.println(visitDocs.visitid);
-                }
-
-                return false;
-            }
-        });
-    }
-
-    private void initData() {
-        int H_count = 0;
-        listDataHeader = new ArrayList<>();
-        listHash = new HashMap<>();
-
-        while (H_count < hash_count) {
-            VisitFields temp1 = patVisitdata.get(H_count);
-
-            //This is where you set the prescription IS as the Group Item
-            listDataHeader.add(temp1.visitdate + "  (ID: " + Integer.toString(temp1.visitid) + ")");
-            //This is where you set the child items of each group item
-            List<String> visit1 = new ArrayList<>();
-            visit1.add("ID de Paciente:    " + temp1.patid);
-            visit1.add("El Doctor:    " + temp1.doctor);
-            visit1.add("La Razón:   " + temp1.reason);
-            visit1.add("Hace click aqui para ver documentos de la evaluación");
-
-            //Put the data in the HashMap
-            listHash.put(listDataHeader.get(H_count), visit1);
-
-            H_count++;
-        }
-    }
 
     private void addDoc() {
         Intent intent = getIntent();
@@ -464,7 +346,7 @@ public class FetchVisits extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
-    }
+    */}
 
     @Override
     public void onBackPressed(){

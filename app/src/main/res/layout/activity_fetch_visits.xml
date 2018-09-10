@@ -7,60 +7,87 @@
     android:paddingLeft="16dp"
     android:background="@drawable/greygradient"
     android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="fill_parent"
     android:orientation="horizontal">
 
-    <android.support.design.widget.CoordinatorLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app = "http://schemas.android.com/apk/res-auto"
-        android:id = "@+id/main_content"
-        android:layout_height="match_parent"
-        android:layout_width="match_parent">
+    <TextView
+        android:id="@+id/text_datesearch"
+        android:layout_width="275dp"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:text="Ano"
+        android:textAlignment="center"
+        android:textColor="#00004d"
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
-        <ExpandableListView
-            android:id="@+id/exp_list"
-            android:layout_width="match_parent"
-            android:layout_height="668dp"
-            android:indicatorLeft="?android:attr/expandableListPreferredItemIndicatorLeft"
-            android:dividerHeight="0.5dp"
-            android:divider ="#CCCCCC"
-            android:layout_marginTop="50dp">
-
-        </ExpandableListView>
-
-        <android.support.design.widget.FloatingActionButton
-            android:id = "@+id/fab_add"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|right"
-            android:src="@drawable/plussign"
-            app:layout_anchor="@id/exp_list"
-            app:layout_anchorGravity="bottom|right|end"/>
-
-    </android.support.design.widget.CoordinatorLayout>
+    <Spinner
+        android:id="@+id/filter_year"
+        android:layout_width="275dp"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="310dp"
+        android:background="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown"
+        android:textSize="24sp"
+        android:textAlignment="center"/>
+    <TextView
+        android:id="@+id/header_date"
+        android:layout_width="200dp"
+        android:layout_height="60dp"
+        android:gravity="center_vertical"
+        android:text="Fecha"
+        android:textAlignment="center"
+        android:textColor="#00004d"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="100dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" android:layout_marginStart="10dp" />
 
     <TextView
-        android:id="@+id/textView17"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="sans-serif"
-        android:text="Hace click para mas informacion del visitas."
+        android:id="@+id/header_doctor"
+        android:layout_width="200dp"
+        android:layout_height="60dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="100dp"
+        android:layout_toEndOf="@+id/header_date"
+        android:layout_toRightOf="@+id/header_date"
+        android:gravity="center_vertical"
+        android:text="Doctor"
         android:textAlignment="center"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="24sp"
-        android:textStyle="italic"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="10dp"
-        />
+        android:textColor="#00004d"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+    <TextView
+        android:id="@+id/header_mc"
+        android:layout_width="200dp"
+        android:layout_height="60dp"
+        android:gravity="center_vertical"
+        android:text="MC"
+        android:textAlignment="center"
+        android:textColor="#00004d"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:layout_marginTop="100dp"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/header_doctor"
+        android:layout_toEndOf="@+id/header_doctor" />
 
-    <Button
-        android:id="@+id/add_doc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:text="Agregar documento"
-        android:textSize="20sp" />
+    <ListView
+        android:id="@+id/patient_list"
+        android:layout_width="fill_parent"
+        android:layout_height="600dp"
+        android:layout_marginTop="165dp"
+        android:layout_marginBottom="10dp"
+        android:scrollbarSize="10dp"
+        android:scrollbarThumbVertical="@color/colorAccent">
+
+    </ListView>
 
 
 </RelativeLayout>
