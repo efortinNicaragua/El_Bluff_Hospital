@@ -121,8 +121,6 @@ public class SearchAddPatients extends Activity {
     }
 
 
-
-
     private void patientFetch() {
         class fetch_patientinfo extends AsyncTask<Void, Void, String> {
                 ProgressDialog loading;
@@ -226,6 +224,11 @@ public class SearchAddPatients extends Activity {
             }
         });
 
+    }
+
+    public void NuevoPaciente(View V)    {
+        Intent newPat = new Intent(SearchAddPatients.this, AddNewPatient.class);
+        startActivity(newPat);
     }
 
    /* public void NuevoPaciente(View V) {

@@ -61,6 +61,13 @@
             android:name=".PatientInfo.AddNewVisit"
             android:label="@string/title_activity_add_new_visit"
             android:theme="@style/AppTheme.NoActionBar" />
+
+        <!-- I MADE THIS SO IF ITS WRONG GET RID OF IT ~Brianna -->
+        <activity
+            android:name=".PatientInfo.AddNewPatient"
+            android:label="AddNewPatient"
+            android:theme="@style/AppTheme.NoActionBar" />
+
         <!--
  ATTENTION: This was auto-generated to add Google Play services to your project for
      App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information.

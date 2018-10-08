@@ -52,6 +52,22 @@
     <string name="cdInventoryButton">InventoryButton</string>
     <string name="cdShipmentButton">ShipmentButton</string>
 
+    <!-- Brianna -->
+    <string name="hintEdit">Click para Editar</string>
+    <string name="patName">Nombre</string>
+    <string name="patID">ID</string>
+    <string name="patAddress">Dirección</string>
+    <string name="patPhone">Tele</string>
+    <string name="patGender">Género</string>
+    <string name="patMarriage">Casado</string>
+    <string name="pattBirthday">Fecha de Nacimiento</string>
+    <string name="patChildren">Niños</string>
+    <string name="patHeight">Altura</string>
+    <string name="patWeight">Pesadura</string>
+    <string name="patAlergies">Alergias</string>
+    <string name="patIllness">Condiciones Medicos</string>
+
+
     <string-array name="PatientInfoDD">
         <item>Nombre</item>
         <item>ID</item>
