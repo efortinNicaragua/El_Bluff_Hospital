@@ -57,6 +57,16 @@
         android:layout_marginTop="50dp"
         android:textColor="@color/colorPrimaryDark" />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Existing Perscriptions"
+        android:id="@+id/text_existPers"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:layout_marginTop="620dp"
+        android:textColor="@color/colorPrimaryDark" />
+
     <ImageButton
         android:contentDescription="@string/cdShipmentButton"
         android:layout_width="180dp"
@@ -83,5 +93,29 @@
         android:layout_marginTop="5dp"
         android:layout_centerHorizontal="true" />
 
+    <ImageButton
+        android:contentDescription="@string/cdInventoryButton"
+        android:layout_width="180dp"
+        android:layout_height="140dp"
+        android:id="@+id/button_existPers"
+        android:src="@drawable/existingperscription"
+        android:scaleType="fitCenter"
+        android:background="@drawable/imagebutton_border"
+        android:onClick="existingShipment"
+        android:layout_below="@+id/text_existPers"
+        android:layout_marginTop="5dp"
+        android:layout_centerHorizontal="true" />
+
+ <!--   <Button
+        android:text="Existing Perscription"
+        android:layout_width="180dp"
+        android:layout_height="140dp"
+        android:layout_marginTop="650dp"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/button5"
+        android:background="@color/colorPrimaryDark"
+        android:textSize="24sp"
+        android:textColor="#ffffff"
+        android:onClick="existingShipment" />-->
 
 </RelativeLayout>

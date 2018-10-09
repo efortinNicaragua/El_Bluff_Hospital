@@ -119,6 +119,12 @@ public class PharmacyMain extends AppCompatActivity {
         Intent seeInv = new Intent(this, InventoryOptions.class);
         startActivity(seeInv);
     }
+
+    public void existingShipment(View v) {
+        Intent existPers = new Intent(this, ExistingPerscription.class);
+        startActivity(existPers);
+    }
+
     @Override
     public void onBackPressed() {
         Log.d("onBackPressed","backpPressed");
