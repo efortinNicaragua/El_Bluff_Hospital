@@ -59,14 +59,14 @@
 
                 <EditText
                     android:id="@+id/patName"
-                    android:layout_width="fill_parent"
-                    android:layout_height="50dp"
+                    android:layout_width= "80dp"
+                    android:layout_height="wrap_content"
                     android:layout_below="@+id/button_InfoGeneral"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentLeft="true"
                     android:background="@android:color/transparent"
                     android:hint="@string/hintEdit"
-                    android:inputType="textCapWords"
+                    android:inputType="textPersonName"
                     android:textAlignment="center"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="@color/colorPrimaryDark"
@@ -95,8 +95,8 @@
 
                 <EditText
                     android:id="@+id/patID"
-                    android:layout_width="fill_parent"
-                    android:layout_height="50dp"
+                    android:layout_width= "80dp"
+                    android:layout_height="wrap_content"
                     android:layout_below="@+id/button_InfoGeneral"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentLeft="true"
@@ -181,14 +181,14 @@
 
                 <EditText
                     android:id="@+id/patAddress"
-                    android:layout_width="fill_parent"
-                    android:layout_height="50dp"
+                    android:layout_width= "80dp"
+                    android:layout_height="wrap_content"
                     android:layout_below="@+id/button_InfoGeneral"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentLeft="true"
                     android:background="@android:color/transparent"
                     android:hint="@string/hintEdit"
-                    android:inputType="textPostalAddress"
+                    android:inputType="textMultiLine"
                     android:textAlignment="center"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="@color/colorPrimaryDark"
@@ -217,8 +217,8 @@
 
                 <EditText
                     android:id="@+id/patPhone"
-                    android:layout_width="fill_parent"
-                    android:layout_height="50dp"
+                    android:layout_width= "80dp"
+                    android:layout_height="wrap_content"
                     android:layout_below="@+id/button_InfoGeneral"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentLeft="true"
@@ -253,8 +253,8 @@
 
                 <EditText
                     android:id="@+id/patGender"
-                    android:layout_width="fill_parent"
-                    android:layout_height="50dp"
+                    android:layout_width= "80dp"
+                    android:layout_height="wrap_content"
                     android:layout_below="@+id/button_InfoGeneral"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentLeft="true"
@@ -289,8 +289,8 @@
 
                 <EditText
                     android:id="@+id/patMarriage"
-                    android:layout_width="fill_parent"
-                    android:layout_height="50dp"
+                    android:layout_width= "80dp"
+                    android:layout_height="wrap_content"
                     android:layout_below="@+id/button_InfoGeneral"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentLeft="true"
@@ -302,7 +302,7 @@
                     android:textColor="@color/colorPrimaryDark"
                     android:textSize="20sp" />
             </TableRow>
-
+<!--
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
@@ -325,8 +325,8 @@
 
                 <EditText
                     android:id="@+id/patKids"
-                    android:layout_width="fill_parent"
-                    android:layout_height="50dp"
+                    android:layout_width= "80dp"
+                    android:layout_height="wrap_content"
                     android:layout_below="@+id/button_InfoGeneral"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentLeft="true"
@@ -361,8 +361,8 @@
 
                 <EditText
                     android:id="@+id/patHeight"
-                    android:layout_width="fill_parent"
-                    android:layout_height="50dp"
+                    android:layout_width= "80dp"
+                    android:layout_height="wrap_content"
                     android:layout_below="@+id/button_InfoGeneral"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentLeft="true"
@@ -397,8 +397,8 @@
 
                 <EditText
                     android:id="@+id/patWeight"
-                    android:layout_width="fill_parent"
-                    android:layout_height="50dp"
+                    android:layout_width= "80dp"
+                    android:layout_height="wrap_content"
                     android:layout_below="@+id/button_InfoGeneral"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentLeft="true"
@@ -433,14 +433,14 @@
 
                 <EditText
                     android:id="@+id/patAlergies"
-                    android:layout_width="fill_parent"
-                    android:layout_height="50dp"
+                    android:layout_width= "80dp"
+                    android:layout_height="wrap_content"
                     android:layout_below="@+id/button_InfoGeneral"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentLeft="true"
                     android:background="@android:color/transparent"
                     android:hint="@string/hintEdit"
-                    android:inputType="textLongMessage"
+                    android:inputType="textMultiLine"
                     android:textAlignment="center"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="@color/colorPrimaryDark"
@@ -469,20 +469,20 @@
 
                 <EditText
                     android:id="@+id/patMeds"
-                    android:layout_width="match_parent"
+                    android:layout_width= "80dp"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/button_InfoGeneral"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentLeft="true"
                     android:background="@android:color/transparent"
                     android:hint="@string/hintEdit"
-                    android:inputType="text"
+                    android:inputType="textMultiLine"
                     android:textAlignment="center"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="@color/colorPrimaryDark"
                     android:textSize="20sp" />
             </TableRow>
-
+-->
             <Button
                 android:id="@+id/button5"
                 android:layout_width="match_parent"
@@ -490,7 +490,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_gravity="center"
                 android:background="@color/colorPrimaryDark"
-                android:onClick="CreatePatient"
+                android:onClick="createPatient"
                 android:text=" Guardar "
                 android:textColor="#ffffff"
                 android:textSize="24sp" />
