@@ -43,3 +43,7 @@ public class AddNewPatient extends AppCompatActivity {
         startActivity(donePat);
     }
 }
+
+
+
+

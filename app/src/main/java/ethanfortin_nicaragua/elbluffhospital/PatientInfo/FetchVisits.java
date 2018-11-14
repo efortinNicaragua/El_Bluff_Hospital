@@ -47,7 +47,6 @@ import ethanfortin_nicaragua.elbluffhospital.UploadFile;
 public class FetchVisits extends AppCompatActivity {
 
 
-
     private Button addDocument;
 
     final Context context = this;
@@ -57,7 +56,7 @@ public class FetchVisits extends AppCompatActivity {
     String sID;
     Spinner year;
     //String dob_day_temp1, dob_month_temp1;
-   // int dob_day_temp, dob_month_temp, dob_year_temp;
+    // int dob_day_temp, dob_month_temp, dob_year_temp;
     //AlertDialog db_message;
 
     @Override
@@ -65,15 +64,15 @@ public class FetchVisits extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fetch_visits);
 
-        year= (Spinner) findViewById(R.id.filter_year);
-        ArrayList<String> years=new ArrayList<String>();
-        int thisYear= Calendar.getInstance().get(Calendar.YEAR);
-        for (int i=thisYear; i>=2000; i--){
+        year = (Spinner) findViewById(R.id.filter_year);
+        ArrayList<String> years = new ArrayList<String>();
+        int thisYear = Calendar.getInstance().get(Calendar.YEAR);
+        for (int i = thisYear; i >= 2000; i--) {
             years.add(Integer.toString(i));
         }
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, years);
 
-        Spinner spinYear = (Spinner)findViewById(R.id.filter_year);
+        Spinner spinYear = (Spinner) findViewById(R.id.filter_year);
         spinYear.setAdapter(adapter);
         // String[] months=new String[]={"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul","Aug", "Sep", "Nov", "Dec"}
         //addDocument = (Button) findViewById(R.id.add_doc);
@@ -346,12 +345,18 @@ public class FetchVisits extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
-    */}
-
-    @Override
-    public void onBackPressed(){
-        Intent go_back_to_PGI_2 = new Intent(this, SearchAddPatients.class);
-        startActivity(go_back_to_PGI_2);
+    */
     }
 
+    @Override
+
+    public void onBackPressed(){
+        Intent go_back = new Intent(this, SearchAddPatients.class);
+        startActivity(go_back);
+    }
+
+    public void AddNewVisit(View V) {
+        Intent newPat = new Intent(FetchVisits.this, NewFetchVisit.class);
+        startActivity(newPat);
+    }
 }

@@ -82,12 +82,27 @@
         android:id="@+id/patient_list"
         android:layout_width="fill_parent"
         android:layout_height="600dp"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="165dp"
         android:layout_marginBottom="10dp"
         android:scrollbarSize="10dp"
         android:scrollbarThumbVertical="@color/colorAccent">
 
     </ListView>
+
+    <Button
+        android:id="@+id/button_id2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="425dp"
+        android:layout_marginTop="700dp"
+        android:text="@string/newvisit"
+        android:layout_marginLeft="425dp"
+        android:onClick="AddNewVisit"
+        android:textSize="22sp"
+        android:textColor="#ffffff"
+        android:background="@color/colorPrimaryDark"
+        />
 
 
 </RelativeLayout>

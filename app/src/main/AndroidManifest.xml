@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="ethanfortin_nicaragua.elbluffhospital">
 
     <!-- <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> -->
@@ -69,9 +70,26 @@
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
+            android:name=".PatientInfo.NewFetchVisit"
+            android:label="NewFetchVisit"
+            android:theme="@style/AppTheme.NoActionBar"
+            />
+
+        <activity
             android:name=".Inventory.ExistingPerscription"
             android:label="existingPerscription"
             android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:name=".PatientInfo.AddNewPrescription2"
+            android:label="AddNewPrescription2"
+            android:theme="@style/AppTheme.NoActionBar"
+            />
+        <activity
+            android:name=".PatientInfo.FakePDF"
+            android:label="FakePDF"
+            android:theme="@style/AppTheme.NoActionBar"
+            />
 
         <!--
  ATTENTION: This was auto-generated to add Google Play services to your project for

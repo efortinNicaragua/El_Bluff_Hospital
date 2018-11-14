@@ -326,7 +326,8 @@
                 android:textSize="30sp"
                 android:visibility="visible"
                 android:onClick="choose_children"
-                android:clickable="true"/>
+                android:clickable="true"
+                tools:ignore="OnClick" />
         </TableRow>
         <TableRow
             android:layout_width="match_parent"

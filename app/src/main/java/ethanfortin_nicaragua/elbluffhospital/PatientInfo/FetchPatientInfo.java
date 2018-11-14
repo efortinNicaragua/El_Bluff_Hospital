@@ -59,16 +59,16 @@ public class FetchPatientInfo extends AppCompatActivity {
 
         patid= (TextView) findViewById(R.id.geninfo_patid);
         fileid=(TextView)findViewById(R.id.geninfo_fileid);
-        genero=(TextView)findViewById(R.id.geninfo_gender);
+        //genero=(TextView)findViewById(R.id.geninfo_gender);
         patname= (TextView)findViewById(R.id.geninfo_name);
         address= (TextView)findViewById(R.id.geninfo_address);
         telephone = (TextView)findViewById(R.id.geninfo_telephone);
         civil_status = (TextView)findViewById(R.id.geninfo_civil_status);
-        peso= (TextView) findViewById(R.id.geninfo_lastweight) ;
+       // peso= (TextView) findViewById(R.id.geninfo_lastweight) ;
         talla=(TextView) findViewById(R.id.geninfo_lastheight);
-        pa=(TextView) findViewById(R.id.geninfo_lastbp);
-        t=(TextView) findViewById(R.id.geninfo_lasttemp);
-        fc=(TextView) findViewById(R.id.geninfo_lasthb);
+       // pa=(TextView) findViewById(R.id.geninfo_lastbp);
+        //t=(TextView) findViewById(R.id.geninfo_lasttemp);
+//        fc=(TextView) findViewById(R.id.geninfo_lasthb);
 
         Intent intent = getIntent();
         sID = intent.getStringExtra("patid");
