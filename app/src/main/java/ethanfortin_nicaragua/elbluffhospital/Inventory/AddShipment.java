@@ -57,6 +57,8 @@ public class AddShipment extends AppCompatActivity { //Activity{
 
     public void createShipment(View v) {
 
+
+        // every edit text is matched to a vairable ad every variable (in string s drug name)
         et_drugName = (EditText)findViewById(R.id.addName);
         et_drugId = (EditText)findViewById(R.id.addId);
         et_drugQuant = (EditText)findViewById(R.id.addQuantity);
@@ -66,19 +68,19 @@ public class AddShipment extends AppCompatActivity { //Activity{
 
         boolean cancel = false;
         View focusView = null;
-
+        // every field needs to be found by id
         // Verify drug name
-        String s_drugName = et_drugName.getText().toString();
-        if(TextUtils.isEmpty(s_drugName)) {
-            et_drugName.setError("Not Valid");
-            focusView = et_drugName;
+        String s_drugName = et_drugName.getText().toString();       // we get this from the fields before
+        if(TextUtils.isEmpty(s_drugName)) {                         // see if it is empty
+            et_drugName.setError("Not Valid");                      // if empty set error (do not access data base)
+            focusView = et_drugName;                                //lets you know that it is empty and need to be filled
             cancel = true;
         }
         else{
             et_drugName.setError(null,null);
         }
         // Verify drug id
-        String s_drugId = et_drugId.getText().toString();
+        String s_drugId = et_drugId.getText().toString();           // doing this for every text view
         if(TextUtils.isEmpty(s_drugId)) {
             et_drugId.setError("Not Valid");
             focusView = et_drugId;
@@ -107,7 +109,7 @@ public class AddShipment extends AppCompatActivity { //Activity{
         //Change format of date picker!
         //Get int of day, month, year
 
-        int day_shipDate = et_shipdate.getDayOfMonth();
+        int day_shipDate = et_shipdate.getDayOfMonth();     //turn the date into a string the database can handle
         int month_shipDate=et_shipdate.getMonth()+1;
         int year_shipDate =et_shipdate.getYear();
 
@@ -120,7 +122,7 @@ public class AddShipment extends AppCompatActivity { //Activity{
         String s_day_expDate, s_month_expDate, s_year_expDate, s_expDate;
 
         //if value of day or month
-        if(day_shipDate<10){
+        if(day_shipDate<10){                                        // gotta do this stuff for birthday
             s_day_shipDate="0"+String.valueOf(day_shipDate);
         }
         else{s_day_shipDate=String.valueOf(day_shipDate);}
@@ -157,11 +159,11 @@ public class AddShipment extends AppCompatActivity { //Activity{
 
 
         if(cancel) {
-            focusView.requestFocus();
+            focusView.requestFocus();           //pops a message on everythign that is blank
         }
-        else {
+        else {          //if cancel is false then add the shipment
 
-            addShipment(s_drugId,s_drugName,s_drugQuant,s_drugUnit,s_shipDate,s_expDate);
+            addShipment(s_drugId,s_drugName,s_drugQuant,s_drugUnit,s_shipDate,s_expDate);   // all the string values from before
 
             /*int duration = Toast.LENGTH_LONG;
             Context context = getApplicationContext();
@@ -172,13 +174,13 @@ public class AddShipment extends AppCompatActivity { //Activity{
             // finish();
         }
     }
-
+//must provide alll the string variables youre going to give it
     private void addShipment(final String drugid, final String drugname, final String drugincr, final String drugunit, final String shipdate, final String expdate) {
         class get_addShipment extends AsyncTask<Void, Void, String> {
             ProgressDialog loading;
 
             @Override
-            protected void onPreExecute() {
+            protected void onPreExecute() {     //shows the loadng screen
                 super.onPreExecute();
                 loading = ProgressDialog.show(AddShipment.this, "Buscando...", "Espera, por favor", false, false);
             }
@@ -186,16 +188,16 @@ public class AddShipment extends AppCompatActivity { //Activity{
             // Once JSON received correctly, parse and display it
             @Override
             protected void onPostExecute(String s) {
-                super.onPostExecute(s);
+                super.onPostExecute(s);     //all that json stuff
                 loading.dismiss();
                 System.out.println("Here is s "+s);
                 int errortemp=jsonParse(s);
                 System.out.println("HEre is errortemp "+errortemp);
                 Log.d("Test1", "Error temp "+ errortemp);
-                if(errortemp==0) {
+                if(errortemp==0) {      //return errortemp for each php file, associated with anything that goes wrong
                     db_message = new AlertDialog.Builder(AddShipment.this).create();
                     db_message.setTitle("Accion Termino");
-                    db_message.setMessage("Shipment Creado!\n Totales Cambiados!");
+                    db_message.setMessage("Shipment Creado!\n Totales Cambiados!"); //it all worked youre all good
                     db_message.setButton(AlertDialog.BUTTON_NEGATIVE, "Cancel",
                             new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {
@@ -206,7 +208,7 @@ public class AddShipment extends AppCompatActivity { //Activity{
                 }
                 else if (errortemp==1){
                     db_message = new AlertDialog.Builder(AddShipment.this).create();
-                    db_message.setTitle("Termino Sin Errores");
+                    db_message.setTitle("Termino Sin Errores"); //it finished with some errors
                     db_message.setMessage("Nueva Droga Creado!\n Shipment Creado\n Totales Cambiado");
                     db_message.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
                             new DialogInterface.OnClickListener() {
@@ -218,7 +220,7 @@ public class AddShipment extends AppCompatActivity { //Activity{
                 }
                 else{
                     db_message = new AlertDialog.Builder(AddShipment.this).create();
-                    db_message.setTitle("ERRORES!");
+                    db_message.setTitle("ERRORES!");    //there are waaaaay too many errors (oops!)
                     db_message.setMessage("Habia errores creando el nuevo shipment.\n Aseguranse que no hay un shipment de esa droga en esa dia\n Solo puedes tener un shipment por droga por dia.");
                     db_message.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
                             new DialogInterface.OnClickListener() {
@@ -234,7 +236,7 @@ public class AddShipment extends AppCompatActivity { //Activity{
             protected String doInBackground(Void... params) {
 
                 RequestHandler reqHan = new RequestHandler();
-                HashMap<String, String> map = new HashMap<>();
+                HashMap<String, String> map = new HashMap<>();  //variables must have two pieces
                 map.put("drugid",drugid);
                 map.put("drugname",drugname);
                 map.put("drugincr", drugincr);
@@ -251,7 +253,7 @@ public class AddShipment extends AppCompatActivity { //Activity{
         get_addShipment shipment = new get_addShipment();
         shipment.execute();
     }
-    private int jsonParse(String json_string) {
+    private int jsonParse(String json_string) { //where you get the values back
 
         Context context = this;
 

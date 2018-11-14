@@ -53,7 +53,7 @@
     <string name="cdShipmentButton">ShipmentButton</string>
 
     <!-- Brianna -->
-    <string name="hintEdit">Click para Editar</string>
+    <string name="hintEdit">Clic para agregar</string>
     <string name="patName">Nombre</string>
     <string name="patID">ID</string>
     <string name="patAddress">Dirección</string>

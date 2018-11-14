@@ -161,7 +161,7 @@ public class SearchAddPatients extends Activity {
         Context context=this;
 
         int totalCast, count=0;
-        String patid, patname,fileid, address, telephone, gender,civil_status;
+        String patid, patname,birthday, address, telephone, gender,civil_status;
 
         JSONObject jsonObject;
         JSONArray jsonArray;
@@ -181,7 +181,7 @@ public class SearchAddPatients extends Activity {
                 //get the object put drugid into drugid ect..
                 JSONObject jo = jsonArray.getJSONObject(count);
                 patid= jo.getString("patid");
-                fileid=jo.getString("fileid");
+                birthday=jo.getString("birthday");
                 patname= jo.getString("patname");
                 address = jo.getString("address");
                 telephone= jo.getString("telephone");
@@ -192,7 +192,7 @@ public class SearchAddPatients extends Activity {
 
 
                     //add this data as DruginfoFields to ArrayList
-                   patInfoData.add(new PatientinfoFields(patid, fileid, patname , address, telephone, gender, civil_status));
+                   patInfoData.add(new PatientinfoFields(patid, birthday, patname , address, telephone, gender, civil_status));
 
                 //increment count
                 count++;

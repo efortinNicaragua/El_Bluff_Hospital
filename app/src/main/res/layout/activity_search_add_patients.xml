@@ -68,7 +68,7 @@
         android:layout_width="200dp"
         android:layout_height="60dp"
         android:gravity="center_vertical"
-        android:text="File ID"
+        android:text="Fecha de Nacimiento"
         android:textAlignment="center"
         android:textColor="#00004d"
         android:textSize="22sp"
