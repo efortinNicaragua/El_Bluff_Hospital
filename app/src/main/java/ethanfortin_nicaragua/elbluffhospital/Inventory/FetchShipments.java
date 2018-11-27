@@ -55,8 +55,6 @@ public class FetchShipments extends AppCompatActivity {
         });
     }
 
-
-
     private void getShipments() {
 
         class fetchShipments extends AsyncTask<Void,Void,String> {
