@@ -140,22 +140,22 @@
                     android:headerBackground="#00004d" />
 
                 <!--
-            <EditText
-                android:id="@+id/patBday"
-                android:layout_width="fill_parent"
-                android:layout_height="50dp"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_below="@+id/button_InfoGeneral"
-                android:background="@android:color/transparent"
-                android:hint= "Click"
-                android:textAlignment="center"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="30sp"
-                android:textStyle="bold" />
+       <EditText
+           android:id="@+id/patBday"
+           android:layout_width="fill_parent"
+           android:layout_height="50dp"
+           android:layout_alignParentLeft="true"
+           android:layout_alignParentStart="true"
+           android:layout_below="@+id/button_InfoGeneral"
+           android:background="@android:color/transparent"
+           android:hint= "Click"
+           android:textAlignment="center"
+           android:textAppearance="?android:attr/textAppearanceMedium"
+           android:textColor="@color/colorPrimaryDark"
+           android:textSize="30sp"
+           android:textStyle="bold" />
 
-                -->
+           -->
 
             </TableRow>
 

@@ -14,6 +14,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -49,7 +50,7 @@ public class FetchPatientInfo extends AppCompatActivity {
     ListView listView;
     String sID;
     int invpid;
-    TextView patid,fileid,patname,genero, address, telephone,civil_status, peso,talla,pa,t,fc;
+    TextView patid, birthday, patname, genero, address, telephone, civil_status;
 
 
     @Override
@@ -58,14 +59,14 @@ public class FetchPatientInfo extends AppCompatActivity {
         setContentView(R.layout.activity_fetch_patient_info);
 
         patid= (TextView) findViewById(R.id.geninfo_patid);
-        fileid=(TextView)findViewById(R.id.geninfo_fileid);
-        //genero=(TextView)findViewById(R.id.geninfo_gender);
-        patname= (TextView)findViewById(R.id.geninfo_name);
+        birthday=(TextView)findViewById(R.id.geninfo_birthday);
+        genero=(TextView)findViewById(R.id.geninfo_gender);
+        patname= (TextView) findViewById(R.id.geninfo_name);
         address= (TextView)findViewById(R.id.geninfo_address);
         telephone = (TextView)findViewById(R.id.geninfo_telephone);
         civil_status = (TextView)findViewById(R.id.geninfo_civil_status);
        // peso= (TextView) findViewById(R.id.geninfo_lastweight) ;
-        talla=(TextView) findViewById(R.id.geninfo_lastheight);
+        //talla=(TextView) findViewById(R.id.geninfo_lastheight);
        // pa=(TextView) findViewById(R.id.geninfo_lastbp);
         //t=(TextView) findViewById(R.id.geninfo_lasttemp);
 //        fc=(TextView) findViewById(R.id.geninfo_lasthb);
@@ -121,7 +122,7 @@ public class FetchPatientInfo extends AppCompatActivity {
         ArrayList<PatientinfoFields> patientInfoData = new ArrayList();
 
       // int count = 0;
-        String patName, patId, fileId, Address, Telephone, Gender, Civil_status;
+        String patName, patId, Birthday, Address, Telephone, Gender, Civil_status;
 
         try {
             JSONObject jsonObject = new JSONObject(json);
@@ -137,23 +138,24 @@ public class FetchPatientInfo extends AppCompatActivity {
                 Gender=resObj.getString(ConnVars.TAG_PATIENTINFO_GENDER);
                 Telephone = resObj.getString(ConnVars.TAG_PATIENTINFO_TELEPHONE);
                 Civil_status = resObj.getString(ConnVars.TAG_PATIENTINFO_CIVILSTATUS);
-                fileId= resObj.getString(ConnVars.TAG_PATIENTINFO_FILEID);
+                Birthday= resObj.getString(ConnVars.TAG_PATIENTINFO_BIRTHDAY);
 
 
                 patid.setText(patId);
                 patname.setText(patName);
-                fileid.setText(fileId);
+                //birthday.setText(birthday);
                 address.setText("Direccion: "+Address);
                 telephone.setText("Tele: "+Telephone);
                 civil_status.setText("Estado Civil: "+Civil_status);
                 genero.setText("Genero: "+Gender);
+                birthday.setText("Fecha de Nacciamento: "+Birthday);
 
                 //count++;
 
             //}
-            //Get the weight
+ /*           //Get the weight
             json=(json.substring(json.lastIndexOf("peso")-23));
-            System.out.println("json="+json.toString());
+            System.out.println("Myjson="+json.toString());
             jsonObject = new JSONObject(json);
             System.out.println("jsonObj="+jsonObject.toString());
             JSONArray vitalinfoArr=jsonObject.getJSONArray(ConnVars.TAG_VISITHISTORY_PESO);
@@ -164,7 +166,7 @@ public class FetchPatientInfo extends AppCompatActivity {
 
             String Peso=vitalinfoObj.getString(ConnVars.TAG_VISITHISTORY_PESO);
             System.out.println("Peso= "+Peso);
-            //txt_drugname.setText(drugName);*/
+            //txt_drugname.setText(drugName);
             peso.setText("Peso: "+Peso+"kg");
 
 
@@ -181,7 +183,7 @@ public class FetchPatientInfo extends AppCompatActivity {
 
             String Talla=vitalinfoObj.getString(ConnVars.TAG_VISITHISTORY_TALLA);
             System.out.println("Talla= "+Talla);
-            //txt_drugname.setText(drugName);*/
+            //txt_drugname.setText(drugName);
             talla.setText("Talla: "+Talla+"cm");
 
             //Get Blood Preassure
@@ -197,7 +199,7 @@ public class FetchPatientInfo extends AppCompatActivity {
 
             String Pa=vitalinfoObj.getString(ConnVars.TAG_VISITHISTORY_PA);
             System.out.println("Pa= "+Pa);
-            //txt_drugname.setText(drugName);*/
+            //txt_drugname.setText(drugName);
             pa.setText("Pa: "+Pa+"mmHg");
 
             //ArrayAdapter<PatientinfoFields> adapter = new PatGenInfoAdapter(context, patientInfoData);
@@ -217,7 +219,7 @@ public class FetchPatientInfo extends AppCompatActivity {
 
             String T=vitalinfoObj.getString(ConnVars.TAG_VISITHISTORY_T);
             System.out.println("T= "+T);
-            //txt_drugname.setText(drugName);*/
+            //txt_drugname.setText(drugName);
             t.setText("T: "+T+"c");
 
             //Get heartbeat / heart rate
@@ -233,16 +235,13 @@ public class FetchPatientInfo extends AppCompatActivity {
 
             String Fc=vitalinfoObj.getString(ConnVars.TAG_VISITHISTORY_FC);
             System.out.println("FC= "+Fc);
-            //txt_drugname.setText(drugName);*/
+            //txt_drugname.setText(drugName);
             fc.setText("fc: "+Fc+"minutos");
-
+*/
         } catch (JSONException j) {
             System.out.println("JSON Exception occured...");
         }
-
-
     }
-
 
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -260,11 +259,31 @@ public class FetchPatientInfo extends AppCompatActivity {
                 //startActivity(new Intent(this, FetchPatientInfo.class));
                 return true;
             case R.id.pat_history:
+
+
+
                 Intent newintent1 = new Intent(getBaseContext(), FetchVisits.class);
+                Bundle b = new Bundle();
+                b.putString("patid", sID);
+                newintent1.putExtras(b);
+                startActivity(newintent1);
+                finish();
+                System.out.println("The pat ID is: " + sID);
+                /*
                 newintent1.putExtra("patid", sID);
                 newintent1.putExtra("invpid", invpid);
+                System.out.println("The pat ID is: " + sID);
                 startActivity(newintent1);
                 //startActivity(new Intent(this, FetchVisits.class));
+
+                        //System.out.println( temp_drugInfoData.get(position));
+                        Intent intent = new Intent(SearchAddPatients.this, FetchPatientInfo.class);
+                        Bundle b = new Bundle();
+                        b.putString("patid", temp_patInfoData.get(position).patid); //Your id
+                        intent.putExtras(b); //Put your id to your next Intent
+                        startActivity(intent);
+                        finish();
+           */
                 return true;
             case R.id.pat_prescription:
                 Intent newintent2 = new Intent(getBaseContext(), FetchPrescriptions.class);

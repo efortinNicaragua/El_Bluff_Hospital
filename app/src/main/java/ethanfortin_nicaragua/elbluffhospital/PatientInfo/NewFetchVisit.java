@@ -20,17 +20,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import android.app.Activity;
-import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
-import android.os.AsyncTask;
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.TextView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -39,28 +29,12 @@ import org.json.JSONObject;
 import java.util.Date;
 import java.util.HashMap;
 
-import android.app.Dialog;
-import android.content.DialogInterface;
-import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.Gravity;
-import android.view.View;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-
-//import ethanfortin_nicaragua.elbluffhospital.ArrayAdapters.PatientinfoAdapter;
+import ethanfortin_nicaragua.elbluffhospital.ArrayAdapters.PatientinfoAdapter;
 import ethanfortin_nicaragua.elbluffhospital.ConnVars;
 import ethanfortin_nicaragua.elbluffhospital.DataClasses.PatientinfoFields;
+import ethanfortin_nicaragua.elbluffhospital.MainMenu;
 import ethanfortin_nicaragua.elbluffhospital.PatientInfo.SearchAddPatients;
-import ethanfortin_nicaragua.elbluffhospital.R;
-import ethanfortin_nicaragua.elbluffhospital.RequestHandler;
-import ethanfortin_nicaragua.elbluffhospital.ArrayAdapters.ShipmentAdapter1;
-import ethanfortin_nicaragua.elbluffhospital.ConnVars;
-import ethanfortin_nicaragua.elbluffhospital.DataClasses.DruginfoFields;
-import ethanfortin_nicaragua.elbluffhospital.DataClasses.ShipmentFields;
-import ethanfortin_nicaragua.elbluffhospital.Inventory.FetchSpecificDrug;
+import ethanfortin_nicaragua.elbluffhospital.PatientInfo.FetchPatientInfo;
 import ethanfortin_nicaragua.elbluffhospital.R;
 import ethanfortin_nicaragua.elbluffhospital.RequestHandler;
 
@@ -73,6 +47,9 @@ public class NewFetchVisit extends AppCompatActivity {
     private EditText et_allergies;
     private EditText et_ill;
     private EditText et_meds;
+//    private EditText et_patId;
+
+    String sID;
 
     int error;
     AlertDialog db_message;
@@ -81,6 +58,11 @@ public class NewFetchVisit extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_fetch_visit);
+
+        Intent intent = getIntent();
+        sID = intent.getStringExtra("patid");
+        Log.d("patid", sID);
+        System.out.println("patid is: " + sID);
     }
 
     public void newVisit(View V) {
@@ -93,6 +75,7 @@ public class NewFetchVisit extends AppCompatActivity {
         et_allergies = (EditText) findViewById(R.id.allergies);
         et_ill = (EditText) findViewById(R.id.illness);
         et_meds = (EditText) findViewById(R.id.medicines);
+//        et_patId = (EditText) findViewById(R.id.patIdagain);
 
         boolean cancel = false;
         View focusView = null;
@@ -180,6 +163,17 @@ public class NewFetchVisit extends AppCompatActivity {
             et_meds.setError(null, null);
         }
 
+/*        // Verify pat ID
+        String s_patId = et_patId.getText().toString();           // doing this for every text view
+        if (TextUtils.isEmpty(s_patId)) {
+            et_patId.setError("Not Valid");
+            focusView = et_patId;
+            cancel = true;
+        } else {
+            et_patId.setError(null, null);
+        }
+*/
+        System.out.println("Here patID " + sID);
         System.out.println("Here visitDate " + s_visitDate);
         System.out.println("Here docName " + s_docName);
         System.out.println("Here height " + s_height);
@@ -223,6 +217,12 @@ public class NewFetchVisit extends AppCompatActivity {
                             new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {
                                     dialog.dismiss();
+                                    Intent newvis = new Intent(NewFetchVisit.this,  FetchVisits.class);
+                                    Bundle b = new Bundle();
+                                    b.putString("patid", sID); //Your id
+                                    newvis.putExtras(b); //Put your id to your next Intent
+                                    startActivity(newvis);
+                                    finish();
                                 }
                             });
                     db_message.show();
@@ -256,8 +256,9 @@ public class NewFetchVisit extends AppCompatActivity {
 
                 RequestHandler reqHan = new RequestHandler();
                 HashMap<String, String> map = new HashMap<>();  //variables must have two pieces
-                map.put("visitDate", visitDate);
-                map.put("docName", docName);
+                map.put("patid", sID);
+                map.put("visitdate", visitDate);
+                map.put("doctor", docName);
                 map.put("height", height);
                 map.put("weight", weight);
                 map.put("allergies", allergies);
@@ -280,8 +281,8 @@ public class NewFetchVisit extends AppCompatActivity {
         Context context = this;
 
         //int count = 0;
-        String s_New_ErrorMessages;
-        int int_New_ErrorMessages = 500;
+        String s_VH_ErrorMessages;
+        int int_VH_ErrorMessages = 500;
 
         JSONObject jsonObject;
         //JSONArray jsonArray;
@@ -289,29 +290,16 @@ public class NewFetchVisit extends AppCompatActivity {
         try {
 
             // Make JSONObject and designate the array jsonArray to grab the array
-            // that's title is "druginfo" from the received object
             jsonObject = new JSONObject(json_string);
             System.out.println("made json object: " + json_string);
-            //jsonArray = jsonObject.getJSONArray(ConnVars.TAG_NEWPAT_ERRORMESSAGES);
-            //System.out.println("jsonArray: " + jsonArray);
 
-            // initiliaze count for while loop, strings for all data we will get from json
-            // all data comes out as strings so for int values we need to cast them into int values later
-            // while count is less than length of jsonarray
-            // while (count < jsonArray.length()) {
-            // get the object put drugid into drugid ect..
-
-
-            //JSONObject jo = jsonArray.getJSONObject(count);
-            //JSONObject jo = jsonObject;
-
-            s_New_ErrorMessages = jsonObject.getString("New_ErrorMessages");
-            //s_New_ErrorMessages = jo.getString("New_ErrorMessages");
+            s_VH_ErrorMessages = jsonObject.getString("VH_ErrorMessages");
+            //s_VH_ErrorMessages = jo.getString("VH_ErrorMessages");
             //count++;
 
-            System.out.println("here is New_ErrorMessages " + s_New_ErrorMessages);
+            System.out.println("here is VH_ErrorMessages " + s_VH_ErrorMessages);
 
-            int_New_ErrorMessages = Integer.parseInt(s_New_ErrorMessages);
+            int_VH_ErrorMessages = Integer.parseInt(s_VH_ErrorMessages);
 
         } catch (JSONException e) {
 
@@ -319,11 +307,11 @@ public class NewFetchVisit extends AppCompatActivity {
 
         }
 
-        if (int_New_ErrorMessages == 200) {      //successful
+        if (int_VH_ErrorMessages == 200) {      //successful
             Log.d("Test1", "Case1");
             error = 0;
             return error;
-        } else if (int_New_ErrorMessages == 400) { //bad request
+        } else if (int_VH_ErrorMessages == 400) { //bad request
             Log.d("Test1", "Case2");
             error = 1;
             return error;
@@ -335,9 +323,11 @@ public class NewFetchVisit extends AppCompatActivity {
         }
     }
 
+    @Override
     public void onBackPressed() {
-        Intent go_back_to_PGI_2 = new Intent(this, FetchVisits.class);
-        startActivity(go_back_to_PGI_2);
+        Log.d("onBackPressed", "backpPressed");
+        Intent go_back = new Intent(this, SearchAddPatients.class);
+        startActivity(go_back);
     }
 
     public void AddNewPrescription2(View V) {
@@ -351,156 +341,6 @@ public class NewFetchVisit extends AppCompatActivity {
 
     }
 }
-
-/*
-package ethanfortin_nicaragua.elbluffhospital.PatientInfo;
-
-import android.app.Activity;
-import android.app.ProgressDialog;
-import android.content.Context;
-import android.content.Intent;
-import android.os.AsyncTask;
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.TextView;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-
-import ethanfortin_nicaragua.elbluffhospital.ArrayAdapters.ShipmentAdapter1;
-import ethanfortin_nicaragua.elbluffhospital.ConnVars;
-import ethanfortin_nicaragua.elbluffhospital.DataClasses.DruginfoFields;
-import ethanfortin_nicaragua.elbluffhospital.DataClasses.ShipmentFields;
-import ethanfortin_nicaragua.elbluffhospital.Inventory.FetchSpecificDrug;
-import ethanfortin_nicaragua.elbluffhospital.R;
-import ethanfortin_nicaragua.elbluffhospital.RequestHandler;
-//package com.anuragdhunna.www.customdialogbox;
-
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.content.DialogInterface;
-import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.Gravity;
-import android.view.View;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-
-
-public class NewFetchVisit extends AppCompatActivity {
-
-    Button button_fake2;
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_fetch_visit);
-
-        button_fake2 = (Button) findViewById(R.id.button_fake2);
-
-        button_fake2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openDialog();
-            }
-        });
-    }
-
-    public void openDialog() {
-
-        AlertDialog alertDialog = new AlertDialog.Builder(this).create();
-
-        // Set Custom Title
-        TextView title = new TextView(this);
-        // Title Properties
-        title.setText("Fantastico");
-        title.setPadding(10, 10, 10, 10);   // Set Position
-        title.setGravity(Gravity.CENTER);
-        title.setTextColor(Color.BLACK);
-        title.setTextSize(20);
-        alertDialog.setCustomTitle(title);
-
-        // Set Message
-        /*TextView msg = new TextView(this);
-        // Message Properties
-        msg.setText("I am a Custom Dialog Box. \n Please Customize me.");
-        msg.setGravity(Gravity.CENTER_HORIZONTAL);
-        msg.setTextColor(Color.BLACK);
-        alertDialog.setView(msg);
-
-
-        // Set Button
-        // you can more buttons
-        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "Back", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int which) {
-                // Perform Action on Button
-
-
-            }
-        });
-/*
-        alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE,"CANCEL", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int which) {
-                // Perform Action on Button
-            }
-        });
-
-        new Dialog(getApplicationContext());
-        alertDialog.show();
-
-        // Set Properties for back Button
-        final Button okBT = alertDialog.getButton(AlertDialog.BUTTON_NEUTRAL);
-        LinearLayout.LayoutParams neutralBtnLP = (LinearLayout.LayoutParams) okBT.getLayoutParams();
-        neutralBtnLP.gravity = Gravity.FILL_HORIZONTAL;
-        okBT.setPadding(10, 10, 10, 10);   // Set Position
-        okBT.setTextColor(Color.BLUE);
-        okBT.setLayoutParams(neutralBtnLP);
-/*
-        final Button cancelBT = alertDialog.getButton(AlertDialog.BUTTON_NEGATIVE);
-        LinearLayout.LayoutParams negBtnLP = (LinearLayout.LayoutParams) okBT.getLayoutParams();
-        negBtnLP.gravity = Gravity.FILL_HORIZONTAL;
-        cancelBT.setTextColor(Color.RED);
-        cancelBT.setLayoutParams(negBtnLP);
-    }
-
-    }
-
-
-
-
-
-
-    public void onBackPressed() {
-        Intent go_back_to_PGI_2 = new Intent(this, FetchVisits.class);
-        startActivity(go_back_to_PGI_2);
-    }
-
-    public void AddNewPrescription2(View V) {
-        Intent newPat = new Intent(NewFetchVisit.this, AddNewPrescription2.class);
-        startActivity(newPat);
-    }
-
-    public void FakePDF(View V) {
-        Intent newPat = new Intent(NewFetchVisit.this, FakePDF.class);
-        startActivity(newPat);
-
-    }
-
-    public void FakeNewVisit2(View V) {
-        Intent int1= new Intent(NewFetchVisit.this,FetchPatientInfo.class);
-        startActivity(int1);
-    }
-    }
-
-*/
 
 
 

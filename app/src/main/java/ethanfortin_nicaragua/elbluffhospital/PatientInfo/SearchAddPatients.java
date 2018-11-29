@@ -161,7 +161,7 @@ public class SearchAddPatients extends Activity {
         Context context=this;
 
         int totalCast, count=0;
-        String patid, patname,birthday, address, telephone, gender,civil_status;
+        String patid, patname, birthday, address, telephone, gender, civil_status;
 
         JSONObject jsonObject;
         JSONArray jsonArray;

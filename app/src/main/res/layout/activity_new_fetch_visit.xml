@@ -13,8 +13,6 @@
     tools:context="ethanfortin_nicaragua.elbluffhospital.PatientInfo.NewFetchVisit"
     >
 
-
-
      <TextView
         android:id="@+id/textView1"
         android:layout_width="match_parent"
@@ -43,7 +41,36 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:stretchColumns="*">
+            <!--
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_marginTop="15dp">
 
+                            <TextView
+                                android:id="@+id/putID"
+                                android:layout_width="wrap_content"
+                                android:layout_height="50dp"
+                                android:gravity="left|center_vertical"
+                                android:text="PatID:"
+                                android:textAlignment="center"
+                                android:textColor="@color/colorPrimaryDark"
+                                android:textSize="20sp"
+                                android:textStyle="bold" />
+
+                            <EditText
+                                android:id="@+id/patIdagain"
+                                android:layout_width="fill_parent"
+                                android:layout_height="50dp"
+                                android:background="@android:color/transparent"
+                                android:hint="@string/hintEdit"
+                                android:inputType="text"
+                                android:textAlignment="center"
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:textColor="@color/colorPrimaryDark"
+                                android:textSize="20sp" />
+                        </TableRow>
+            -->
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
@@ -93,7 +120,7 @@
                     android:layout_height="50dp"
                     android:background="@android:color/transparent"
                     android:hint="@string/hintEdit"
-                    android:inputType="numberDecimal"
+                    android:inputType="text"
                     android:textAlignment="center"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="@color/colorPrimaryDark"
@@ -249,7 +276,7 @@
                     android:layout_height="wrap_content"
                     android:background="@android:color/transparent"
                     android:hint="@string/hintEdit"
-                    android:inputType="text"
+                    android:inputType="textLongMessage"
                     android:textAlignment="center"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="@color/colorPrimaryDark"
@@ -279,7 +306,7 @@
                     android:layout_height="wrap_content"
                     android:background="@android:color/transparent"
                     android:hint="@string/hintEdit"
-                    android:inputType="text"
+                    android:inputType="textLongMessage"
                     android:textAlignment="center"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="@color/colorPrimaryDark"

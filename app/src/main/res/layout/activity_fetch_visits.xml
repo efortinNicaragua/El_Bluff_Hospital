@@ -49,20 +49,20 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" android:layout_marginStart="10dp" />
 
-    <TextView
-        android:id="@+id/header_doctor"
-        android:layout_width="200dp"
-        android:layout_height="60dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="100dp"
-        android:layout_toEndOf="@+id/header_date"
-        android:layout_toRightOf="@+id/header_date"
-        android:gravity="center_vertical"
-        android:text="Doctor"
-        android:textAlignment="center"
-        android:textColor="#00004d"
-        android:textSize="22sp"
-        android:textStyle="bold" />
+    <!--    <TextView
+            android:id="@+id/header_doctor"
+            android:layout_width="200dp"
+            android:layout_height="60dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="100dp"
+            android:layout_toEndOf="@+id/header_date"
+            android:layout_toRightOf="@+id/header_date"
+            android:gravity="center_vertical"
+            android:text="Doctor"
+            android:textAlignment="center"
+            android:textColor="#00004d"
+            android:textSize="22sp"
+            android:textStyle="bold" /> -->
     <TextView
         android:id="@+id/header_mc"
         android:layout_width="200dp"
@@ -75,11 +75,11 @@
         android:textStyle="bold"
         android:layout_marginTop="100dp"
         android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/header_doctor"
-        android:layout_toEndOf="@+id/header_doctor" />
+        android:layout_toRightOf="@+id/header_date"
+        android:layout_toEndOf="@+id/header_date" />
 
     <ListView
-        android:id="@+id/patient_list"
+        android:id="@+id/visit_list"
         android:layout_width="fill_parent"
         android:layout_height="600dp"
         android:layout_centerHorizontal="true"
@@ -91,18 +91,19 @@
     </ListView>
 
     <Button
-        android:id="@+id/button_id2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="425dp"
-        android:layout_marginTop="700dp"
-        android:text="@string/newvisit"
-        android:layout_marginLeft="425dp"
+        android:id="@+id/button_newpatient"
+        android:layout_width="400dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/visit_list"
+        android:layout_weight="1"
+        android:background="#00004d"
         android:onClick="AddNewVisit"
-        android:textSize="22sp"
-        android:textColor="#ffffff"
-        android:background="@color/colorPrimaryDark"
-        />
-
+        android:padding="1dp"
+        android:text="@string/newvisit"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textColor="#cccccc"
+        android:textSize="35sp" />
 
 </RelativeLayout>

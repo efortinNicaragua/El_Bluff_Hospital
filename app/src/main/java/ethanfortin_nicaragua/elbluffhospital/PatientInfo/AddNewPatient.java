@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -170,6 +171,9 @@ public class AddNewPatient extends AppCompatActivity {
 
             addNewPatient(s_patName, s_patId, s_patAddress, s_patPhone, s_patBday, s_patGender, s_patMarriage);   // all the string values from before
         }
+
+
+
     }
 
     private void addNewPatient(final String patName, final String patId, final String patAddress, final String patPhone, final String patBday, final String patGender, final String patMarriage) {
@@ -199,6 +203,8 @@ public class AddNewPatient extends AppCompatActivity {
                             new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {
                                     dialog.dismiss();
+                                    Intent newPat = new Intent(AddNewPatient.this, SearchAddPatients.class);
+                                    startActivity(newPat);
                                 }
                             });
                     db_message.show();

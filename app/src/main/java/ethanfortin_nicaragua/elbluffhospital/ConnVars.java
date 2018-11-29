@@ -70,18 +70,20 @@ public class ConnVars {
     public static final String TAG_NEWPRE_ERRORMESSAGES="Prescription_ErrorMessages";
     //The drugname will have to come from a join in the php script
     public static final String TAG_PRESCRIPTIONS_DRUGNAME = "drugname";
-
+    public static final String TAG_PATIENTINFO_BIRTHDAY = "birthday";
     public static final String TAG_VISITHISTORY = "visithistory";
     public static final String TAG_VISITHISTORY_VISITID = "visitid";
     public static final String TAG_VISITHISTORY_PATID = "patid";
     public static final String TAG_VISITHISTORY_VISITDATE = "visitdate";
     public static final String TAG_VISITHISTORY_REASON = "reason";
+
+
     public static final String TAG_VISITHISTORY_DOCTOR = "doctor";
-    public static final String TAG_VISITHISTORY_PESO="peso";
-    public static final String TAG_VISITHISTORY_TALLA="talla";
-    public static final String TAG_VISITHISTORY_PA="pa";
-    public static final String TAG_VISITHISTORY_T="t";
-    public static final String TAG_VISITHISTORY_FC="fc";
+    public static final String TAG_VISITHISTORY_HEIGHT ="height";
+    public static final String TAG_VISITHISTORY_WEIGHT="weight";
+    public static final String TAG_VISITHISTORY_ALLERGIES="allergies";
+    public static final String TAG_VISITHISTORY_ILLNESS="illness";
+    public static final String TAG_VISITHISTORY_MEDS="meds";
     public static final String TAG_VISITHISTORY_ERRORMESSAGES="VH_ErrorMessages";
     //this one needs to come from a join in the php script to the prescriptions table
     public static final String TAG_VISITS_RXID = "rxid";
