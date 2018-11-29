@@ -177,7 +177,7 @@ public class FetchVisits extends AppCompatActivity {
 
                 //add this data as VisitFields to ArrayList
                 patVisitdata.add(new VisitFields(visitid, patid, visitdate, doctor, height, weight, allergies, illness, meds));
-                            // took  weight, allergies, illness, meds out of this
+                // took  weight, allergies, illness, meds out of this
 
                 //increment count
                 count++;
@@ -203,6 +203,7 @@ public class FetchVisits extends AppCompatActivity {
                 Intent intent = new Intent(FetchVisits.this, FetchSpecificVisit.class);
                 Bundle b = new Bundle();
                 b.putString("patid", temp_patVisitdata.get(position).patid); //Your id
+                b.putString("visitdate", temp_patVisitdata.get(position).visitdate); //Your date
                 intent.putExtras(b); //Put your id to your next Intent
                 startActivity(intent);
                 finish();

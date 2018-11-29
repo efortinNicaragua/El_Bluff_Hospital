@@ -341,6 +341,3 @@ public class NewFetchVisit extends AppCompatActivity {
 
     }
 }
-
-
-
